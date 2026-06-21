@@ -97,6 +97,8 @@ body{background:var(--bg-primary);margin:0;padding:0;display:flex;justify-conten
 .anniversary-label{font-size:10px;color:var(--text-secondary);letter-spacing:1.5px;text-transform:uppercase}
 .anniversary-days{font-size:22px;font-weight:700;color:var(--accent-dark);letter-spacing:-0.5px;transition:color 0.3s ease}
 .anniversary-sub{font-size:10px;color:var(--text-muted)}
+/* Hero卡片内嵌天气 */
+.hero-weather{transition:opacity 0.2s}.hero-weather:hover{opacity:0.7}
 .app-pages{flex:1;overflow:hidden;position:relative;z-index:2}
 .app-pages-inner{display:flex;width:200%;height:100%;transition:transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94)}
 .app-page{width:50%;height:100%;overflow-y:auto}
@@ -571,7 +573,7 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 .cinema-status{text-align:center;font-size:10px;color:var(--text-muted);padding:10px 0;font-weight:400;letter-spacing:1px;font-style:italic;opacity:0.7}
 .cinema-status::before{content:'— '}.cinema-status::after{content:' —'}
 /* 输入栏 */
-#cinemaBar{background:var(--header-bg);border-top:1px solid var(--border-light);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:10px 10px calc(10px + env(safe-area-inset-bottom,0px));gap:8px}
+#cinemaBar{position:relative;background:var(--header-bg);border-top:1px solid var(--border-light);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:10px 10px calc(10px + env(safe-area-inset-bottom,0px));gap:8px}
 #cinemaBar .chat-input{background:var(--input-bg);color:var(--text-primary);border:1.5px solid var(--border-light);border-radius:18px;height:38px;font-size:13px;font-family:var(--font);padding:0 14px;transition:all 0.25s ease}
 #cinemaBar .chat-input:disabled{opacity:0.45;cursor:not-allowed;background:var(--bg-tertiary)}
 #cinemaBar .chat-input::placeholder{color:var(--text-muted);font-weight:400}
@@ -592,6 +594,108 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 #cinemaSettingsPop button:hover{background:var(--accent-light);color:var(--accent-dark)}
 #cinemaSettingsPop span{color:var(--text-muted);font-size:11px}
 
+
+/* ===== 放映室风格皮肤 ===== */
+/* ── 复古QQ ── */
+#cinemaPane.retro{flex-direction:column!important;gap:4px;background:#c8d6e5;padding:4px;font-family:'SimSun','宋体',serif;font-size:12px}
+#cinemaPane.retro .cinema-player{flex:none;height:200px;width:100%;border-radius:0;box-shadow:0 0 0 2px #1a1a1a;margin:0 0 4px;border:3px solid;border-color:#555 #fff #fff #555;background:#000;display:flex;flex-direction:column}
+#cinemaPane.retro .cinema-player iframe{flex:1;height:auto!important;border:none}
+#cinemaPane.retro .cinema-player-bar{border-radius:0;background:#1a1a1a;color:#888;font-size:10px;font-family:'SimSun','宋体',serif;font-weight:normal;backdrop-filter:none;-webkit-backdrop-filter:none;border-top:1px solid #444;padding:3px 6px;gap:4px}
+#cinemaPane.retro .cinema-player-bar span{color:#888;opacity:1}
+#cinemaPane.retro .cinema-chat{flex:1;min-width:0;display:flex;flex-direction:column;background:#fff;border:2px solid;border-color:#555 #fff #fff #555;margin:0;padding:0;gap:0;overflow:hidden}
+#cinemaPane.retro #cinemaRetroInfo{display:block!important;background:#d0e0f0;padding:3px 8px;border-bottom:1px solid #999;font-size:11px;color:#000;flex-shrink:0}
+#cinemaPane.retro .cinema-chat .chat-msg-row{display:block;margin:1px 0;padding:0 6px;animation:none;opacity:1;text-align:left;line-height:1.7}
+#cinemaPane.retro .cinema-chat .chat-msg-avatar{display:none}
+#cinemaPane.retro .cinema-chat .chat-msg-bubble{display:inline;background:transparent!important;color:#000!important;font-size:12px!important;padding:0!important;border-radius:0!important;box-shadow:none!important;border:none!important;line-height:inherit;font-family:'SimSun','宋体',serif}
+#cinemaPane.retro .cinema-chat .chat-msg-row.ta .chat-msg-bubble::before{content:'Murphy: ';color:#0000cc;font-weight:bold}
+#cinemaPane.retro .cinema-status{font-style:normal;font-size:10px;color:#888;font-family:'SimSun','宋体',serif;letter-spacing:0;text-align:center;padding:2px 0}
+#cinemaPane.retro .cinema-status::before,#cinemaPane.retro .cinema-status::after{content:none}
+#cinemaPane.retro #cinemaBar{background:#fff;border-top:1px solid #999;backdrop-filter:none;-webkit-backdrop-filter:none;padding:2px 3px 3px;gap:2px;border-radius:0;font-family:'SimSun','宋体',serif}
+#cinemaPane.retro #cinemaBar .chat-img-btn{background:#c0c0c0;border:1px solid;border-color:#fff #555 #555 #fff;border-radius:0;padding:1px 5px;font-size:11px;color:#000}
+#cinemaPane.retro #cinemaBar .chat-input{border-radius:0;border:2px solid;border-color:#555 #fff #fff #555;background:#fff;color:#000;font-size:12px;height:30px;padding:0 6px;font-family:'SimSun','宋体',serif}
+#cinemaPane.retro #cinemaBar .chat-input::placeholder{color:#999}
+#cinemaPane.retro #cinemaBar .chat-send{border-radius:0;background:#c0c0c0;color:#000;border:2px solid;border-color:#fff #555 #555 #fff;font-size:11px;height:30px;padding:0 14px;font-weight:bold;box-shadow:none;font-family:'SimSun','宋体',serif}
+#cinemaPane.retro #cinemaBar .chat-send:active{border-color:#555 #fff #fff #555}
+#cinemaPane.retro .cinema-emoji-pop{border-radius:0;border:2px solid;border-color:#fff #555 #555 #fff;background:#c0c0c0}
+#cinemaPane.retro .cinema-emoji-pop .ce-item{border-radius:0;border:1px solid #999;font-size:14px;width:26px;height:26px}
+#cinemaPane.retro .cinema-emoji-pop .ce-item:hover{background:#e0e0e0;transform:none}
+#cinemaPane.retro #cinemaSettingsPop{border-radius:0;border:2px solid;border-color:#fff #555 #555 #fff;background:#c0c0c0;backdrop-filter:none;-webkit-backdrop-filter:none;font-family:'SimSun','宋体',serif;color:#000}
+#cinemaPane.retro #cinemaSettingsPop>div:first-child{color:#000080}
+#cinemaPane.retro #cinemaSettingsPop input[type="number"]{border-radius:0;border:2px solid;border-color:#555 #fff #fff #555;background:#fff;font-family:'SimSun','宋体',serif}
+#cinemaPane.retro #cinemaSettingsPop button{border-radius:0;background:#c0c0c0;color:#000;border:2px solid;border-color:#fff #555 #555 #fff;font-family:'SimSun','宋体',serif}
+#cinemaPane.retro #cinemaSettingsPop button:hover{background:#d0d0d0;color:#000}
+#cinemaPane.retro #cinemaSkinToggle{background:transparent!important;color:#000!important}
+
+/* ── 像素游戏 ── */
+#cinemaPane.pixel{flex-direction:column!important;gap:4px;background:linear-gradient(180deg,#5b8c4e,#4a7a3e);padding:4px;font-family:'Press Start 2P','SimHei',monospace;font-size:8px;box-shadow:inset 0 0 0 3px #3d3318;position:relative}
+#cinemaPane.pixel .cinema-player{border-radius:0;box-shadow:0 0 0 2px #3d2810,0 8px 0 rgba(0,0,0,0.2);margin:0;border:4px solid #8b6e4a;border-top-color:#a0805a;border-left-color:#a0805a;border-bottom-color:#5a3e20;border-right-color:#5a3e20;background:#000;flex:none;height:200px;width:auto}
+#cinemaPane.pixel .cinema-player iframe{border:none}
+#cinemaPane.pixel .cinema-player-bar{background:#c4945a;color:#2d1f0e;font-family:inherit;backdrop-filter:none;-webkit-backdrop-filter:none;border-top:2px solid #8b5e3c;padding:3px 8px;font-size:7px;font-weight:bold}
+#cinemaPane.pixel .cinema-player-bar span{color:#2d1f0e!important}
+#cinemaPane.pixel .cinema-chat{flex:1;display:flex;flex-direction:column;background:transparent;padding:4px;gap:4px}
+#cinemaPane.pixel #cinemaRetroInfo{display:none!important}
+#cinemaPane.pixel .cinema-chat .chat-msg-row{margin:0;animation:none;opacity:1!important}
+#cinemaPane.pixel .cinema-chat .chat-msg-row.ta .chat-msg-bubble{background:#f5e8c8!important;color:#3d2810!important;font-size:7px!important;padding:6px 8px!important;border-radius:0!important;border:3px solid #8b6e4a!important;box-shadow:0 3px 0 rgba(0,0,0,0.15)!important;line-height:1.6!important;font-family:inherit!important;position:relative}
+#cinemaPane.pixel .cinema-chat .chat-msg-row.ta .chat-msg-bubble::before{content:'Murphy';display:block;background:#c4945a;padding:2px 6px;margin:-6px -8px 4px;font-size:6px;color:#2d1f0e;border-bottom:2px solid #8b5e3c}
+#cinemaPane.pixel .cinema-chat .chat-msg-row.me .chat-msg-bubble{background:#e8f0d8!important;color:#2d3d1e!important;font-size:7px!important;padding:6px 8px!important;border-radius:0!important;border:3px solid #6b8e4a!important;box-shadow:0 3px 0 rgba(0,0,0,0.12)!important;line-height:1.6!important;font-family:inherit!important}
+#cinemaPane.pixel .cinema-chat .chat-msg-avatar{width:22px;height:22px;border-radius:0;border:2px solid #8b6e4a;font-size:10px;image-rendering:pixelated}
+#cinemaPane.pixel .cinema-status{font-style:normal;font-size:6px;color:#8bb87a;text-align:center;text-shadow:1px 1px 0 #2d4a1e}
+#cinemaPane.pixel .cinema-status::before{content:'★ '}#cinemaPane.pixel .cinema-status::after{content:' ★'}
+#cinemaPane.pixel #cinemaBar{background:rgba(0,0,0,0.3);border-radius:0;padding:6px;gap:4px;backdrop-filter:none;-webkit-backdrop-filter:none;font-family:inherit}
+#cinemaPane.pixel #cinemaBar .chat-input{border-radius:0!important;border:3px solid #8b6e4a!important;background:#f5e8c8!important;color:#3d2810!important;font-size:7px!important;height:30px!important;font-family:inherit!important}
+#cinemaPane.pixel #cinemaBar .chat-input::placeholder{color:#b8a080}
+#cinemaPane.pixel #cinemaBar .chat-send{border-radius:0!important;background:#c4945a!important;color:#2d1f0e!important;border:3px solid #8b6e4a!important;font-size:7px!important;height:30px!important;padding:0 12px!important;box-shadow:0 3px 0 rgba(0,0,0,0.15)!important;font-family:inherit!important}
+#cinemaPane.pixel #cinemaBar .chat-send:active{transform:translateY(2px);box-shadow:none}
+#cinemaPane.pixel #cinemaSkinToggle{background:#6b4e2a!important;color:#f5e8c8!important;border:2px solid #8b5e3c!important;font-family:inherit!important;font-size:7px!important}
+#cinemaPane.pixel .cinema-emoji-pop{border-radius:0;border:3px solid #8b6e4a}
+#cinemaPane.pixel #cinemaSettingsPop{border-radius:0;border:3px solid #8b6e4a;background:#f5e8c8;backdrop-filter:none;-webkit-backdrop-filter:none;color:#3d2810;font-family:inherit}
+#cinemaPane.pixel #cinemaSettingsPop>div:first-child{color:#6b4e2a}
+#cinemaPane.pixel #cinemaSettingsPop button{border-radius:0;background:#c4945a;color:#2d1f0e;border:2px solid #8b5e3c;font-family:inherit}
+
+/* ── BP机 ── */
+#cinemaPane.beeper{flex-direction:column!important;gap:2px;background:#2d2d2d;padding:4px;font-family:'Courier New','SimHei',monospace;font-size:8px;border:4px solid #1a1a1a;position:relative}
+#cinemaPane.beeper .cinema-player{border-radius:2px;box-shadow:inset 0 2px 8px rgba(0,0,0,0.5),0 0 0 4px #1a1a1a;margin:0 0 3px;border:3px solid #2a2a2a;border-top-color:#1a1a1a;border-left-color:#1a1a1a;border-bottom-color:#555;border-right-color:#555;background:#1a1a1a;flex:none;height:180px;width:auto}
+#cinemaPane.beeper .cinema-player iframe{border:none;filter:grayscale(0.3) brightness(0.8)}
+#cinemaPane.beeper .cinema-player-bar{background:#1a1a1a;color:#4a6a4a;font-family:inherit;backdrop-filter:none;-webkit-backdrop-filter:none;border-top:1px solid #333;padding:2px 6px;font-size:7px}
+#cinemaPane.beeper .cinema-player-bar span{color:#4a6a4a!important}
+#cinemaPane.beeper .cinema-chat{flex:1;display:flex;flex-direction:column;background:#9eb8a0;border:3px solid #2a2a2a;border-top-color:#1a1a1a;border-left-color:#1a1a1a;border-bottom-color:#444;border-right-color:#444;padding:4px;gap:0;box-shadow:inset 0 2px 8px rgba(0,0,0,0.3);position:relative;overflow:hidden}#cinemaPane.beeper .cinema-chat::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:5;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px)}
+#cinemaPane.beeper #cinemaRetroInfo{display:none!important}
+#cinemaPane.beeper .cinema-chat .chat-msg-row{display:block;margin:2px 0;padding:2px 4px;animation:none;opacity:1;text-align:left;line-height:1.5}#cinemaPane.beeper .cinema-chat .chat-msg-row.ta{border-left:2px solid #3a6a3a;background:rgba(0,0,0,0.04)}#cinemaPane.beeper .cinema-chat .chat-msg-row.me{border-left:2px solid #5a5a3a;background:rgba(0,0,0,0.02)}
+#cinemaPane.beeper .cinema-chat .chat-msg-avatar{display:none}
+#cinemaPane.beeper .cinema-chat .chat-msg-bubble{display:inline;background:transparent!important;color:#2a4a2a!important;font-size:7px!important;padding:0!important;border-radius:0!important;box-shadow:none!important;border:none!important;line-height:inherit;font-family:'Courier New','SimHei',monospace;letter-spacing:0.5px}
+#cinemaPane.beeper .cinema-chat .chat-msg-row.ta .chat-msg-bubble::before{content:'FM:Murphy ';color:#1a3a1a;font-weight:bold;font-size:7px}
+#cinemaPane.beeper .cinema-chat .chat-msg-row.me .chat-msg-bubble::before{content:'TO:Murphy ';color:#1a3a1a;font-weight:bold;font-size:7px}
+#cinemaPane.beeper .cinema-chat .chat-msg-bubble img{display:none}
+#cinemaPane.beeper .cinema-status{font-style:normal;font-size:6px;color:#5a7a5a;text-align:center;border-top:1px dotted rgba(0,0,0,0.1);border-bottom:1px dotted rgba(0,0,0,0.1);padding:2px 0;margin:2px 0}
+#cinemaPane.beeper .cinema-status::before{content:'-- '}#cinemaPane.beeper .cinema-status::after{content:' --'}
+#cinemaPane.beeper #cinemaBar{background:#3a3a3a;border-radius:0;padding:4px;gap:3px;backdrop-filter:none;-webkit-backdrop-filter:none;font-family:inherit;border-top:2px solid #2a2a2a}
+#cinemaPane.beeper #cinemaBar .chat-img-btn{background:#3d3d3d;border:2px solid #2a2a2a;border-bottom-color:#555;color:#999;font-size:8px;border-radius:2px;padding:2px 5px}
+#cinemaPane.beeper #cinemaBar .chat-input{border-radius:2px;border:2px solid #2a2a2a;border-top-color:#1a1a1a;border-left-color:#1a1a1a;border-bottom-color:#444;background:#9eb8a0;color:#2a4a2a;font-size:7px;height:28px;font-family:'Courier New','SimHei',monospace}
+#cinemaPane.beeper #cinemaBar .chat-input::placeholder{color:#6a8a6a}
+#cinemaPane.beeper #cinemaBar .chat-send{border-radius:2px;background:#3d3d3d;color:#999;border:2px solid #2a2a2a;border-bottom-color:#555;border-right-color:#555;font-size:7px;height:28px;padding:0 10px;box-shadow:0 2px 0 #1a1a1a;font-family:inherit}
+#cinemaPane.beeper #cinemaBar .chat-send:active{transform:translateY(1px);box-shadow:0 1px 0 #1a1a1a}
+#cinemaPane.beeper #cinemaSkinToggle{background:#3d3d3d!important;color:#999!important;border:2px solid #2a2a2a!important;border-bottom-color:#555!important;font-family:'Courier New','SimHei',monospace!important;font-size:7px!important}
+#cinemaPane.beeper #cinemaSettingsPop{border-radius:2px;border:2px solid #2a2a2a;background:#3a3a3a;backdrop-filter:none;-webkit-backdrop-filter:none;color:#999;font-family:'Courier New','SimHei',monospace}
+#cinemaPane.beeper #cinemaSettingsPop>div:first-child{color:#daa860}
+#cinemaPane.beeper #cinemaSettingsPop button{border-radius:2px;background:#3d3d3d;color:#999;border:2px solid #2a2a2a;font-family:inherit}
+
+
+/* 放映室皮肤：清除美化CSS的伪元素装饰 */
+#cinemaPane.retro .cinema-chat .chat-msg-bubble::after,
+#cinemaPane.pixel .cinema-chat .chat-msg-bubble::after,
+#cinemaPane.beeper .cinema-chat .chat-msg-bubble::after,
+#cinemaPane.retro .cinema-chat .chat-msg-row.me .chat-msg-bubble::before,
+#cinemaPane.beeper .cinema-chat .chat-msg-row.me .chat-msg-bubble::before,
+#cinemaPane.beeper .cinema-chat .chat-msg-row.ta .chat-msg-bubble::before{content:none!important;background:none!important;animation:none!important;position:static!important;width:auto!important;height:auto!important;background-image:none!important}
+#cinemaPane.pixel .cinema-chat .chat-msg-row.me .chat-msg-bubble::before{content:none!important}
+#cinemaPane.retro .cinema-chat .chat-msg-row.ta .chat-msg-bubble::before{content:'Murphy: '!important;color:#0000cc!important;font-weight:bold!important;position:static!important;background:none!important;animation:none!important}
+#cinemaPane.pixel .cinema-chat .chat-msg-row.ta .chat-msg-bubble::before{content:'Murphy'!important;display:block!important;background:#c4945a!important;padding:2px 6px!important;margin:-6px -8px 4px!important;font-size:6px!important;color:#2d1f0e!important;border-bottom:2px solid #8b5e3c!important;animation:none!important;position:static!important;width:auto!important;height:auto!important;background-image:none!important}
+
+/* ── 皮肤顶部装饰栏 ── */
+.cinema-skin-bar{display:none;flex-shrink:0;width:100%;box-sizing:border-box}
+#cinemaPane.retro .cinema-skin-bar-retro{display:block;background:linear-gradient(90deg,#000080,#1084d0);color:#fff;font-size:11px;font-weight:bold;font-family:'SimSun','宋体',serif;padding:3px 8px;letter-spacing:1px}
+#cinemaPane.pixel .cinema-skin-bar-pixel{display:block;background:#c4945a;color:#3d2810;font-size:8px;font-weight:bold;font-family:'Press Start 2P','SimHei',monospace;padding:5px 10px;border:3px solid #8b6e4a;border-top-color:#a0805a;border-left-color:#a0805a;border-bottom-color:#6b3e1c;border-right-color:#6b3e1c;margin-bottom:4px;text-align:center;letter-spacing:2px;box-shadow:inset 1px 1px 0 rgba(255,255,255,0.15),inset -1px -1px 0 rgba(0,0,0,0.1)}
+#cinemaPane.beeper .cinema-skin-bar-beeper{display:flex;justify-content:space-between;align-items:center;background:#2a2a2a;color:#555;font-size:7px;font-weight:bold;font-family:'Courier New',monospace;padding:2px 8px;letter-spacing:2px;border-bottom:1px solid #1a1a1a}
 /* ===== Yes or No ===== */
 .yn-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:var(--overlay-bg);z-index:225;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:18px;padding:60px 30px 40px;overflow-y:auto}
 /* 标题 */
@@ -971,7 +1075,7 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 
     <!-- 备份 -->
   <div class="survey-overlay" id="backupOverlay" style="display:none">
-    <div class="rl-header"><div class="rl-back" id="backupBack">‹ 返回</div><div class="rl-title">💾 数据备份</div><div></div></div>
+    <div class="rl-header"><div class="rl-back" id="backupBack">‹ 返回</div><div class="rl-title">📊 数据管理</div><div></div></div>
     <div class="survey-body">
       <div class="settings-section"><div class="settings-section-title"><i class="fas fa-comment-dots"></i> 聊天记录</div><div style="font-size:12px;color:var(--text-muted);margin-bottom:8px">导出/导入聊天消息</div><div style="display:flex;gap:8px"><button class="rl-btn" id="backupExportChat" style="flex:1"><i class="fas fa-download"></i> 导出记录</button><button class="rl-btn" id="backupImportChat" style="flex:1"><i class="fas fa-upload"></i> 导入记录</button><input type="file" id="backupImportChatFile" accept=".json" style="display:none"></div></div>
       <div class="settings-section"><div class="settings-section-title"><i class="fas fa-archive"></i> 全量备份</div><div style="font-size:12px;color:var(--text-muted);margin-bottom:8px">包含回复库、聊天、设置、问卷、信封等全部文字数据（不含图片贴图）</div><div style="display:flex;gap:8px"><button class="rl-btn" id="backupExportAll" style="flex:1"><i class="fas fa-download"></i> 导出全部</button><button class="rl-btn" id="backupImportAll" style="flex:1"><i class="fas fa-upload"></i> 导入恢复</button><input type="file" id="backupImportAllFile" accept=".json" style="display:none"></div></div>
@@ -984,6 +1088,9 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
       <div class="hero-time"><div class="time" id="homeTime">9:41</div><div class="date" id="homeDate">6月18日 星期四</div></div>
       <div class="hero-divider-wrap"><div class="hero-divider"></div><div class="hero-couple" id="heroCouple" title="点击编辑资料"><div class="couple-avatar" id="myHeroAvatar">👩🏻</div><div class="couple-heart">❤️</div><div class="couple-avatar" id="partnerHeroAvatar">🧑🏻</div></div></div>
       <div class="couple-label" id="coupleLabel">你 和 TA</div>
+      <div class="hero-weather" id="heroWeather" title="点击设置TA的城市" style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-secondary);cursor:pointer;margin-top:2px">
+        <span class="hw-icon">--</span><span class="hw-temp">--°</span><span class="hw-desc">加载中</span><span class="hw-city"></span>
+      </div>
     </div>
 
     <div class="widgets-area">
@@ -997,7 +1104,7 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
           <div><div class="quote-text" id="quoteText">从回复库加载中...</div><div class="quote-from">— 来自TA的悄悄话</div></div>
         </div>
       </div>
-    </div>
+          </div>
 
           <div class="app-grid">
             <div class="app-icon app-chat" id="appChat"><div class="app-icon-img"><i class="ph-fill ph-chats-circle"></i></div><span class="app-icon-label">Murphy传讯</span></div>
@@ -1006,7 +1113,7 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
             <div class="app-icon app-settings" id="appSettings"><div class="app-icon-img"><i class="ph-fill ph-gear"></i></div><span class="app-icon-label">设置</span></div>
             <div class="app-icon app-reply" id="appReply"><div class="app-icon-img"><i class="ph-fill ph-clipboard-text"></i></div><span class="app-icon-label">回复库</span></div>
             <div class="app-icon app-beauty" id="appBeauty"><div class="app-icon-img"><i class="ph-fill ph-paint-brush"></i></div><span class="app-icon-label">美化</span></div>
-            <div class="app-icon app-journal" id="appJournal"><div class="app-icon-img"><i class="ph-fill ph-floppy-disk"></i></div><span class="app-icon-label">备份</span></div>
+            <div class="app-icon app-journal" id="appJournal"><div class="app-icon-img"><i class="ph-fill ph-floppy-disk"></i></div><span class="app-icon-label">数据</span></div>
             <div class="app-icon app-check" id="appCheck"><div class="app-icon-img"><i class="ph-fill ph-map-pin"></i></div><span class="app-icon-label">查岗</span></div>
             <div class="app-icon app-diary" id="appDiary"><div class="app-icon-img"><i class="ph-fill ph-book-open"></i></div><span class="app-icon-label">日记本</span></div>
             <div class="app-icon app-movie" id="appMovie"><div class="app-icon-img"><i class="ph-fill ph-film-strip"></i></div><span class="app-icon-label">一起看电影</span></div>
@@ -1161,6 +1268,9 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
     </div>
     <!-- 放映室 -->
     <div id="cinemaPane" style="display:none;flex-direction:column;flex:1;overflow:hidden">
+      <div class="cinema-skin-bar cinema-skin-bar-retro">🐧 放映室 — OICQ</div>
+      <div class="cinema-skin-bar cinema-skin-bar-pixel">🎬 えいが</div>
+      <div class="cinema-skin-bar cinema-skin-bar-beeper">MOTOROLA&nbsp;&nbsp;◆&nbsp;&nbsp;Advisor Elite</div>
       <div class="cinema-player">
         <iframe id="cinemaIframe" src="" allowfullscreen allow="autoplay; fullscreen; encrypted-media" referrerpolicy="no-referrer"></iframe>
         <div class="cinema-player-bar">
@@ -1187,9 +1297,12 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
           <button id="cinemaSettingsClose" style="width:100%;height:28px;border-radius:14px;border:none;background:var(--accent-soft);color:var(--text-secondary);cursor:pointer;font-size:11px">关闭</button>
         </div>
       </div>
+      <div id="cinemaRetroInfo"></div>
       <div class="cinema-chat" id="cinemaChat"></div>
       <div class="chat-bar" id="cinemaBar">
         <span class="chat-img-btn" id="cinemaEmojiBtn" title="表情">😊</span>
+        <span id="cinemaSkinToggle" title="切换风格" style="cursor:pointer;font-size:14px;padding:0 4px;opacity:0.5">▾</span>
+        <div id="cinemaSkinPop" style="display:none;position:absolute;bottom:100%;right:8px;z-index:11;background:var(--bg-secondary);border-radius:12px;padding:10px;box-shadow:var(--shadow-lg);width:150px;font-size:12px;color:var(--text-primary);margin-bottom:4px"><div style="font-weight:600;margin-bottom:8px;color:var(--accent);font-size:11px">🎨 放映室风格</div><div id="cinemaSkinList" style="display:flex;flex-direction:column;gap:3px"></div></div>
         <input type="text" class="chat-input" id="cinemaInput" placeholder="说点什么..." autocomplete="off">
         <button class="chat-send" id="cinemaSend">发送</button>
         <div class="cinema-emoji-pop" id="cinemaEmojiPop" style="display:none"></div>
@@ -1451,7 +1564,7 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
       <div id="reportContent"></div>
     </div>
   </div>
-<div class="survey-overlay" id="beautyOverlay" style="display:none"><div class="rl-header"><div class="rl-back" id="beautyBack">‹ 返回</div><div class="rl-title">🎨 外观设置</div><div style="font-size:11px;color:var(--accent);cursor:pointer" id="beautyReset">重置</div></div><div class="survey-body"><div id="beautyNav" class="beauty-grid"><div class="beauty-card" data-panel="theme"><i class="fas fa-paint-roller"></i><span>主题配色</span><small>7色换肤</small></div><div class="beauty-card" data-panel="fontbg"><i class="fas fa-font"></i><span>背景 & 字体</span><small>字号+壁纸</small></div><div class="beauty-card" data-panel="bubble"><i class="fas fa-comment"></i><span>气泡 & CSS</span><small>样式+颜色</small></div><div class="beauty-card" data-panel="avatar"><i class="fas fa-user-circle"></i><span>聊天头像</span><small>大小+圆角</small></div><div class="beauty-card" data-panel="moments"><i class="fas fa-globe-asia"></i><span>朋友圈封面</span><small>背景图片</small></div></div><div id="beautyPanels"><div class="beauty-panel" id="beautyPanelTheme"><div class="settings-section-title"><i class="fas fa-paint-roller"></i> 快捷换肤</div><div style="display:flex;flex-wrap:wrap;gap:6px" id="beautyThemeDots"></div><button class="rl-btn rl-btn-add" style="width:100%;margin-top:8px" onclick="document.getElementById('settingsOverlay').style.display='flex';renderSettings()">更多主题设置 →</button></div><div class="beauty-panel" id="beautyPanelFontbg"><div class="settings-section-title"><i class="fas fa-font"></i> 字体大小</div><div class="beauty-font-row"><label>全局</label><input type="range" id="bfontSize" min="12" max="22" value="16"><span id="bfontSizeVal">16px</span></div><div class="beauty-font-row"><label>消息</label><input type="range" id="bmsgSize" min="12" max="24" value="16"><span id="bmsgSizeVal">16px</span></div><div class="settings-section-title" style="margin-top:10px"><i class="fas fa-image"></i> 聊天背景</div><div class="beauty-bg-grid" id="beautyBgGrid"><div class="beauty-bg-item add" id="beautyBgAdd">+</div></div><button class="rl-btn" id="beautyBgReset" style="width:100%;margin-top:6px">恢复默认背景</button><input type="file" id="beautyBgInput" accept="image/*" style="display:none"><div class="settings-section-title" style="margin-top:10px"><i class="fas fa-images"></i> 全屏壁纸</div><div style="font-size:11px;color:var(--text-muted);margin-bottom:6px">为不同页面设置背景图片</div><div class="beauty-row"><label>目标页面</label><select id="bgTarget" style="font-size:12px;height:28px;border-radius:8px;border:1px solid var(--border-light);background:var(--input-bg);color:var(--text-primary);flex:1"><option value="home">主屏</option><option value="lock">锁屏</option><option value="chat">传讯聊天</option><option value="reply">回复库</option><option value="mail">信封邮件</option><option value="movie">一起看电影</option><option value="diary">日记本</option><option value="memo">备忘录</option><option value="survey">问卷</option><option value="checkin">查岗</option><option value="murmur">碎碎念</option><option value="yn">命运抉择</option><option value="report">相处报告</option><option value="settings">设置</option></select></div><div class="beauty-bg-grid" id="beautyBgAllGrid"><div class="beauty-bg-item add" id="beautyBgAllAdd">+</div></div><div style="display:flex;gap:6px;margin-top:6px"><button class="rl-btn rl-btn-add" id="beautyBgApplyAll" style="flex:1">🌐 应用到全部页面</button><button class="rl-btn" id="beautyBgAllReset" style="flex:1">清除当前页</button></div><input type="file" id="beautyBgAllInput" accept="image/*" style="display:none"></div><div class="beauty-panel" id="beautyPanelBubble"><div class="settings-section-title"><i class="fas fa-comment"></i> 气泡样式</div><div class="beauty-bubble-presets" id="beautyBubblePresets"><div class="beauty-bubble-preset active" data-style="0"><div class="bubble-preview"></div>标准尖角</div><div class="beauty-bubble-preset" data-style="1"><div class="bubble-preview"></div>圆角</div><div class="beauty-bubble-preset" data-style="2"><div class="bubble-preview"></div>大圆角胶囊</div><div class="beauty-bubble-preset" data-style="3"><div class="bubble-preview"></div>方形直角</div></div><div class="beauty-row" style="margin-top:8px"><label>我方色</label><input type="color" id="bSentColor" value="#95ec69"></div><div class="beauty-row"><label>对方色</label><input type="color" id="bRecvColor" value="#ffffff"></div><div class="settings-section-title" style="margin-top:10px"><i class="fas fa-code"></i> 自定义CSS</div><textarea class="beauty-css-area" id="bbCssRaw" placeholder="/* 自定义CSS */" style="min-height:60px"></textarea><div class="settings-section-title" style="margin-top:8px"><i class="ph-fill ph-app-window"></i> 图标CSS</div><textarea class="beauty-css-area" id="bbIconCssRaw" placeholder="/* 图标美化，可用选择器：&#10;.app-icon-img — 图标圆圈&#10;.app-icon-label — 图标文字&#10;.app-chat .app-icon-img — 单个图标 */" style="min-height:60px"></textarea><div class="settings-section-title" style="margin-top:8px"><i class="ph-fill ph-squares-four"></i> 首页卡片CSS</div><textarea class="beauty-css-area" id="bbWidgetCssRaw" placeholder="/* 首页小卡片美化，可用选择器：&#10;.widget — 所有卡片&#10;.widget-anniversary — 纪念日卡片&#10;.widget-quote — 悄悄话卡片&#10;.hero-card — 顶部Hero卡片 */" style="min-height:50px"></textarea><div class="settings-section-title" style="margin-top:8px"><i class="fas fa-envelope"></i> 信件CSS</div><textarea class="beauty-css-area" id="bbMailCssRaw" placeholder="/* 信件美化，可用选择器：&#10;.mail-letter — 信件卡片&#10;.mail-letter.new — 新信件&#10;.mail-compose textarea — 写信框&#10;.mail-view-body — 读信正文&#10;.mail-view-top — 弹窗顶部 */" style="min-height:50px"></textarea></div><div class="beauty-panel" id="beautyPanelAvatar"><div class="settings-section-title"><i class="fas fa-user-circle"></i> 聊天头像</div><div class="beauty-font-row"><label>大小</label><input type="range" id="bAvatarSize" min="24" max="48" value="36"><span id="bAvatarSizeVal">36px</span></div><div class="beauty-font-row"><label>圆角</label><input type="range" id="bAvatarRadius" min="0" max="24" value="6"><span id="bAvatarRadiusVal">6px</span></div></div><div class="beauty-panel" id="beautyPanelMoments"><div class="settings-section-title"><i class="fas fa-globe-asia"></i> 朋友圈封面</div><div style="font-size:11px;color:var(--text-muted);margin-bottom:8px">设置朋友圈顶部的背景图片</div><div class="beauty-bg-grid" id="beautyMomentsBgGrid"><div class="beauty-bg-item add" id="beautyMomentsBgAdd">+</div></div><div style="display:flex;gap:6px;margin-top:6px"><button class="rl-btn rl-btn-danger" id="beautyMomentsBgReset" style="flex:1">清除封面</button></div><input type="file" id="beautyMomentsBgInput" accept="image/*" style="display:none"></div></div><button class="rl-btn" id="beautyBackNav" style="width:100%;margin-top:8px;display:none">‹ 返回</button></div></div>
+<div class="survey-overlay" id="beautyOverlay" style="display:none"><div class="rl-header"><div class="rl-back" id="beautyBack">‹ 返回</div><div class="rl-title">🎨 外观设置</div><div style="font-size:11px;color:var(--accent);cursor:pointer" id="beautyReset">重置</div></div><div class="survey-body"><div id="beautyNav" class="beauty-grid"><div class="beauty-card" data-panel="theme"><i class="fas fa-paint-roller"></i><span>主题配色</span><small>7色换肤</small></div><div class="beauty-card" data-panel="fontbg"><i class="fas fa-font"></i><span>背景 & 字体</span><small>字号+壁纸</small></div><div class="beauty-card" data-panel="bubble"><i class="fas fa-comment"></i><span>气泡 & CSS</span><small>样式+颜色</small></div><div class="beauty-card" data-panel="avatar"><i class="fas fa-user-circle"></i><span>聊天头像</span><small>大小+圆角</small></div><div class="beauty-card" data-panel="moments"><i class="fas fa-globe-asia"></i><span>朋友圈封面</span><small>背景图片</small></div></div><div id="beautyPanels"><div class="beauty-panel" id="beautyPanelTheme"><div class="settings-section-title"><i class="fas fa-paint-roller"></i> 快捷换肤</div><div style="display:flex;flex-wrap:wrap;gap:6px" id="beautyThemeDots"></div><button class="rl-btn rl-btn-add" style="width:100%;margin-top:8px" onclick="document.getElementById('settingsOverlay').style.display='flex';renderSettings()">更多主题设置 →</button></div><div class="beauty-panel" id="beautyPanelFontbg"><div class="settings-section-title"><i class="fas fa-font"></i> 字体大小</div><div class="beauty-font-row"><label>全局</label><input type="range" id="bfontSize" min="12" max="22" value="16"><span id="bfontSizeVal">16px</span></div><div class="beauty-font-row"><label>消息</label><input type="range" id="bmsgSize" min="12" max="24" value="16"><span id="bmsgSizeVal">16px</span></div><div class="settings-section-title" style="margin-top:10px"><i class="fas fa-image"></i> 聊天背景</div><div class="beauty-bg-grid" id="beautyBgGrid"><div class="beauty-bg-item add" id="beautyBgAdd">+</div></div><button class="rl-btn" id="beautyBgReset" style="width:100%;margin-top:6px">恢复默认背景</button><input type="file" id="beautyBgInput" accept="image/*" style="display:none"><div class="settings-section-title" style="margin-top:10px"><i class="fas fa-images"></i> 全屏壁纸</div><div style="font-size:11px;color:var(--text-muted);margin-bottom:6px">为不同页面设置背景图片</div><div class="beauty-row"><label>目标页面</label><select id="bgTarget" style="font-size:12px;height:28px;border-radius:8px;border:1px solid var(--border-light);background:var(--input-bg);color:var(--text-primary);flex:1"><option value="home">主屏</option><option value="lock">锁屏</option><option value="chat">传讯聊天</option><option value="reply">回复库</option><option value="mail">信封邮件</option><option value="movie">一起看电影</option><option value="diary">日记本</option><option value="memo">备忘录</option><option value="survey">问卷</option><option value="checkin">查岗</option><option value="murmur">碎碎念</option><option value="yn">命运抉择</option><option value="report">相处报告</option><option value="settings">设置</option></select></div><div class="beauty-bg-grid" id="beautyBgAllGrid"><div class="beauty-bg-item add" id="beautyBgAllAdd">+</div></div><div style="display:flex;gap:6px;margin-top:6px"><button class="rl-btn rl-btn-add" id="beautyBgApplyAll" style="flex:1">🌐 应用到全部页面</button><button class="rl-btn" id="beautyBgAllReset" style="flex:1">清除当前页</button></div><input type="file" id="beautyBgAllInput" accept="image/*" style="display:none"></div><div class="beauty-panel" id="beautyPanelBubble"><div class="settings-section-title"><i class="fas fa-comment"></i> 气泡样式</div><div class="beauty-bubble-presets" id="beautyBubblePresets"><div class="beauty-bubble-preset active" data-style="0"><div class="bubble-preview"></div>标准尖角</div><div class="beauty-bubble-preset" data-style="1"><div class="bubble-preview"></div>圆角</div><div class="beauty-bubble-preset" data-style="2"><div class="bubble-preview"></div>大圆角胶囊</div><div class="beauty-bubble-preset" data-style="3"><div class="bubble-preview"></div>方形直角</div></div><div class="beauty-row" style="margin-top:8px"><label>我方色</label><input type="color" id="bSentColor" value="#95ec69"></div><div class="beauty-row"><label>对方色</label><input type="color" id="bRecvColor" value="#ffffff"></div><div class="settings-section-title" style="margin-top:10px"><i class="fas fa-code"></i> 自定义CSS</div><textarea class="beauty-css-area" id="bbCssRaw" placeholder="/* 自定义CSS */" style="min-height:60px"></textarea><div class="settings-section-title" style="margin-top:8px"><i class="ph-fill ph-app-window"></i> 图标CSS</div><textarea class="beauty-css-area" id="bbIconCssRaw" placeholder="/* 图标美化，可用选择器：&#10;.app-icon-img — 图标圆圈&#10;.app-icon-label — 图标文字&#10;.app-chat .app-icon-img — 单个图标 */" style="min-height:60px"></textarea><div class="settings-section-title" style="margin-top:8px"><i class="ph-fill ph-squares-four"></i> 首页卡片CSS</div><textarea class="beauty-css-area" id="bbWidgetCssRaw" placeholder="/* 首页小卡片美化，可用选择器：&#10;.widget — 所有卡片&#10;.widget-anniversary — 纪念日卡片&#10;.widget-quote — 悄悄话卡片&#10;.widget-weather — 天气卡片&#10;.weather-icon — 天气图标&#10;.weather-temp — 天气温度&#10;.hero-card — 顶部Hero卡片 */" style="min-height:50px"></textarea><div class="settings-section-title" style="margin-top:8px"><i class="fas fa-envelope"></i> 信件CSS</div><textarea class="beauty-css-area" id="bbMailCssRaw" placeholder="/* 信件美化，可用选择器：&#10;.mail-letter — 信件卡片&#10;.mail-letter.new — 新信件&#10;.mail-compose textarea — 写信框&#10;.mail-view-body — 读信正文&#10;.mail-view-top — 弹窗顶部 */" style="min-height:50px"></textarea></div><div class="beauty-panel" id="beautyPanelAvatar"><div class="settings-section-title"><i class="fas fa-user-circle"></i> 聊天头像</div><div class="beauty-font-row"><label>大小</label><input type="range" id="bAvatarSize" min="24" max="48" value="36"><span id="bAvatarSizeVal">36px</span></div><div class="beauty-font-row"><label>圆角</label><input type="range" id="bAvatarRadius" min="0" max="24" value="6"><span id="bAvatarRadiusVal">6px</span></div></div><div class="beauty-panel" id="beautyPanelMoments"><div class="settings-section-title"><i class="fas fa-globe-asia"></i> 朋友圈封面</div><div style="font-size:11px;color:var(--text-muted);margin-bottom:8px">设置朋友圈顶部的背景图片</div><div class="beauty-bg-grid" id="beautyMomentsBgGrid"><div class="beauty-bg-item add" id="beautyMomentsBgAdd">+</div></div><div style="display:flex;gap:6px;margin-top:6px"><button class="rl-btn rl-btn-danger" id="beautyMomentsBgReset" style="flex:1">清除封面</button></div><input type="file" id="beautyMomentsBgInput" accept="image/*" style="display:none"></div></div><button class="rl-btn" id="beautyBackNav" style="width:100%;margin-top:8px;display:none">‹ 返回</button></div></div>
 
   <!-- 浮动音乐播放器 -->
   <div class="music-float" id="musicFloat" style="display:none">
@@ -1661,6 +1774,137 @@ U();setInterval(U,1000);
 	function SD(d){localStorage.setItem(AK,d.getTime().toString())}
 	function UD(){var s=AD(),n=new Date();$('anniversaryDays').textContent=Math.floor((n-s)/86400000)}
 	UD();setInterval(UD,600000);$('anniversaryWidget').addEventListener('click',function(){var c=AD();var y=c.getFullYear(),m=String(c.getMonth()+1).padStart(2,'0'),d=String(c.getDate()).padStart(2,'0');var i=prompt('相识日期（年-月-日）',y+'-'+m+'-'+d);if(!i)return;var p=i.split('-');if(p.length!==3)return alert('格式错误');var nd=new Date(parseInt(p[0]),parseInt(p[1])-1,parseInt(p[2]));if(isNaN(nd.getTime()))return alert('无效');SD(nd);UD()});
+
+// ===== 天气卡片 =====
+var weatherIcons={0:'☀️',1:'🌤️',2:'⛅',3:'☁️',45:'🌫️',48:'🌫️',51:'🌦️',53:'🌦️',55:'🌧️',61:'🌧️',63:'🌧️',65:'🌧️',71:'🌨️',73:'🌨️',75:'🌨️',77:'🌨️',80:'🌦️',81:'🌧️',82:'🌧️',85:'🌨️',86:'🌨️',95:'⛈️',96:'⛈️',99:'⛈️'};
+function weatherDesc(code){
+  if(code<=1)return '晴朗';if(code<=3)return '多云';
+  if(code<=48)return '有雾';if(code<=55)return '小雨';
+  if(code<=65)return '有雨';if(code<=77)return '有雪';
+  if(code<=82)return '阵雨';if(code<=86)return '阵雪';return '雷雨'
+}
+function fetchWeather(lat,lon,sideId,cityName){
+  var url='https://api.open-meteo.com/v1/forecast?latitude='+lat+'&longitude='+lon+'&current=temperature_2m,weather_code,relative_humidity_2m&timezone=auto';
+  fetch(url).then(function(r){return r.json()}).then(function(d){
+    var c=d.current;var code=c.weather_code;
+    var icon=weatherIcons[code]||'🌡️';
+    var temp=Math.round(c.temperature_2m);
+    var desc=weatherDesc(code);
+    var hum=c.relative_humidity_2m;
+    var side=$(sideId);
+    side.querySelector('.weather-icon').textContent=icon;
+    side.querySelector('.weather-temp').textContent=temp+'°';
+    side.querySelector('.weather-desc').textContent=desc;
+    side.querySelector('.weather-city').textContent=cityName;
+    var humEl=side.querySelector('.weather-humidity');
+    if(humEl)humEl.textContent='湿度 '+hum+'%';
+  }).catch(function(e){console.log('Weather fetch failed:',e)});
+}
+// 获取用户位置（浏览器定位 or 默认北京）
+function fetchMyWeather(){
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(function(pos){
+      fetchWeather(pos.coords.latitude,pos.coords.longitude,'weatherMy','我在这里');
+    },function(){
+      fetchWeather(39.9042,116.4074,'weatherMy','北京'); // fallback
+    },{timeout:5000});
+  }else{
+    fetchWeather(39.9042,116.4074,'weatherMy','北京');
+  }
+}
+
+function updateHeroWeather(icon,temp,desc,city){
+  var hw=$('heroWeather');if(!hw)return;
+  hw.querySelector('.hw-icon').textContent=icon;
+  hw.querySelector('.hw-temp').textContent=temp+'°';
+  hw.querySelector('.hw-desc').textContent=desc;
+  hw.querySelector('.hw-city').textContent=city?' · '+city:'';
+}
+// 模拟天气引擎
+var simWeather={temp:22,code:0,lastUpdate:0};
+var weatherPool={
+  // 冬季(-5~8°C)
+  winter:[{code:0,desc:'晴朗',range:[-5,5]},{code:1,desc:'晴间多云',range:[-3,6]},{code:2,desc:'多云',range:[-4,5]},{code:3,desc:'阴天',range:[-2,8]},{code:71,desc:'小雪',range:[-5,2]},{code:73,desc:'中雪',range:[-8,-1]},{code:45,desc:'有雾',range:[-4,3]}],
+  // 春季(10~25°C)
+  spring:[{code:0,desc:'晴朗',range:[15,25]},{code:1,desc:'晴间多云',range:[13,23]},{code:2,desc:'多云',range:[12,22]},{code:3,desc:'阴天',range:[10,20]},{code:51,desc:'小雨',range:[12,18]},{code:61,desc:'阵雨',range:[14,20]},{code:80,desc:'雷阵雨',range:[16,24]}],
+  // 夏季(25~38°C)
+  summer:[{code:0,desc:'晴朗',range:[28,38]},{code:1,desc:'晴间多云',range:[27,36]},{code:2,desc:'多云',range:[26,35]},{code:3,desc:'阴天',range:[25,32]},{code:95,desc:'雷阵雨',range:[26,34]},{code:80,desc:'阵雨',range:[24,30]},{code:61,desc:'小雨',range:[25,33]}],
+  // 秋季(8~22°C)
+  autumn:[{code:0,desc:'晴朗',range:[15,22]},{code:1,desc:'晴间多云',range:[13,20]},{code:2,desc:'多云',range:[10,18]},{code:3,desc:'阴天',range:[8,16]},{code:51,desc:'小雨',range:[10,15]},{code:45,desc:'有雾',range:[8,14]},{code:61,desc:'阵雨',range:[12,18]}]
+};
+function getSimSeason(){
+  var m=new Date().getMonth();// 0-11
+  if(m>=11||m<=1)return'winter';if(m>=2&&m<=4)return'spring';
+  if(m>=5&&m<=8)return'summer';return'autumn'
+}
+function simFetchWeather(){
+  var now=Date.now();
+  if(now-simWeather.lastUpdate<7200000&&simWeather.lastUpdate>0)return; // 2小时内不重复
+  simWeather.lastUpdate=now;
+  var pool=weatherPool[getSimSeason()];
+  var w=pool[Math.floor(Math.random()*pool.length)];
+  var t=Math.round(w.range[0]+Math.random()*(w.range[1]-w.range[0]));
+  // 浮动上次温度±3°C，让变化更自然
+  if(simWeather.temp) t=Math.round(simWeather.temp+(Math.random()*6-3));
+  t=Math.max(w.range[0]-3,Math.min(w.range[1]+3,t));
+  simWeather.temp=t;simWeather.code=w.code;
+}
+function applySimWeather(cityName){
+  simFetchWeather();
+  var w=weatherPool[getSimSeason()].find(function(x){return x.code===simWeather.code})||{desc:'多云'};
+  updateHeroWeather(weatherIcons[simWeather.code]||"🌡️",simWeather.temp,w.desc,cityName);
+}
+
+function fetchTaWeather(){
+  var raw=localStorage.getItem('murphy_ta_city')||'';
+  if(!raw){fetchWeather(39.9042,116.4074,'weatherTa','北京');return}
+  var parts=raw.split('|');// 格式：real|name,lat,lon  或  fake|城市名
+  if(parts[0]==='real'){
+    var d=parts[1].split(',');
+    fetchWeather(parseFloat(d[0]),parseFloat(d[1]),'weatherTa',d[2]);
+  }else if(parts[0]==='fake'){
+    applySimWeather(parts[1]);
+  }else{
+    // 兼容旧格式 lat,lon,name
+    var old=raw.split(',');
+    if(old.length===3){fetchWeather(parseFloat(old[0]),parseFloat(old[1]),'weatherTa',old[2]);return}
+    fetchWeather(39.9042,116.4074,'weatherTa','北京');
+  }
+}
+// 点击设置TA城市
+$('heroWeather').addEventListener('click',function(){
+  var raw=localStorage.getItem('murphy_ta_city')||'';
+  var curName='';
+  if(raw.startsWith('real|'))curName=raw.split('|')[1].split(',')[2]||'';
+  else if(raw.startsWith('fake|'))curName=raw.split('|')[1]||'';
+  var input=prompt('设置TA所在的城市\n\n输入真实城市名（如：东京）→ 获取真实天气\n输入自定义名称（如：他的心里）→ 内置天气模拟',curName);
+  if(!input)return;
+  var cityName=input.trim();
+  // 尝试搜索真实城市
+  fetch('https://geocoding-api.open-meteo.com/v1/search?name='+encodeURIComponent(cityName)+'&count=1&language=zh').then(function(r){return r.json()}).then(function(d){
+    if(d.results&&d.results[0]){
+      var r=d.results[0];var lat=r.latitude.toFixed(4);var lon=r.longitude.toFixed(4);
+      localStorage.setItem('murphy_ta_city','real|'+lat+','+lon+','+r.name);
+      fetchWeather(parseFloat(lat),parseFloat(lon),'weatherTa',r.name);
+      toast('TA的城市：'+r.name+'（真实天气）');
+    }else{
+      // 非真实城市，使用模拟
+      localStorage.setItem('murphy_ta_city','fake|'+cityName);
+      applySimWeather(cityName);
+      toast('TA在“'+cityName+'”（模拟天气）');
+    }
+  }).catch(function(){
+    // API挂了也走模拟
+    localStorage.setItem('murphy_ta_city','fake|'+cityName);
+    applySimWeather(cityName);
+    toast('TA在“'+cityName+'”（模拟天气）');
+  });
+});
+// 初始化
+fetchTaWeather();
+// 每30分钟刷新
+setInterval(fetchTaWeather,7200000); // 每2小时
+
 // ===== 锁屏 =====
 var LS=$('lockScreen'),sY=0,cY=0,iD=false,iU=false;
 function hs(y){if(iU)return;sY=y;cY=y;iD=true;LS.style.transition='none'}
@@ -1697,7 +1941,7 @@ dots.forEach(function(d){d.addEventListener('click',function(){if(iU)gP(parseInt
 var STK='murphy_settings';
 function lS(){try{var d=localStorage.getItem(STK);return d?JSON.parse(d):{}}catch(e){return{}}}
 function sS(v){localStorage.setItem(STK,JSON.stringify(v))}
-var stg=Object.assign({replyDelayMin:8000,replyDelayMax:25000,replyCount:'1-3',readNoReplyChance:0.15,soundEnabled:true,desktopNotif:false,mailPartnerSend:true,mailPartnerChance:30,mailPartnerInterval:60,movieTaFreqMin:5,movieTaFreqMax:12,movieTaChance:30,cardCombine:false,autoMsgSend:false,autoMsgFreq:15,autoCallSend:false,autoCallFreq:120,callDecline:true,callDeclineChance:30,callHangup:true,callHangupChance:15,replyQuoteChance:10,pokeChance:3,movieAcceptChance:50,catchUpChat:true,catchUpMail:true,catchUpCall:true,catchUpMovie:true,momentsAutoLike:true,momentsReplyChance:60,momentsReplyDelayMin:3,momentsReplyDelayMax:12},lS());
+var stg=Object.assign({replyDelayMin:8000,replyDelayMax:25000,replyCount:'1-3',readNoReplyChance:0.15,soundEnabled:true,desktopNotif:false,mailPartnerSend:true,mailPartnerChance:30,mailPartnerInterval:60,movieTaFreqMin:5,movieTaFreqMax:12,movieTaChance:30,cardCombine:false,autoMsgSend:false,autoMsgFreq:15,autoCallSend:false,autoCallFreq:120,callDecline:true,callDeclineChance:30,callHangup:true,callHangupChance:15,replyQuoteChance:10,pokeChance:3,movieAcceptChance:50,catchUpChat:true,catchUpMail:true,catchUpCall:true,catchUpMovie:true,momentsAutoLike:true,momentsReplyChance:60,momentsReplyDelayMin:3,momentsReplyDelayMax:12,momentsAutoPost:true,momentsAutoPostMin:120,momentsAutoPostMax:480,momentsAutoPostTextChance:80,momentsAutoPostImageChance:30},lS());
 sS(stg);
 
 // ==========================================
@@ -1719,6 +1963,24 @@ var DEFAULT_EMOJIS=[
   "🎀","🎵","🎶","💌","🍀","🌙","☀️","💧","🫶","🥳","🤗","💝","🫧","🐣","🐥",
   "🐱","🦋","🐰","🎂","🍰","🧸","💐"
 ];
+// 朋友圈自动发帖文本库
+var MOMENTS_TEXTS=[
+  "今天天气真好呀～阳光暖暖的 ☀️","又是元气满满的一天！","周末就应该窝在家里看剧 📺",
+  "好想出去玩！谁有空陪我～","好久没吃火锅了 🍲","今天的晚霞好美 🌅",
+  "买了一本新书，翻开第一页就停不下来 📖","咖啡续命 ☕","云吸猫的一天 🐱",
+  "突然好想你","降温了，记得多穿衣服","今天换了新发型 💇",
+  "下班路上的风景","厨房小白的第一次尝试 🍳","在公园散步，看到一只超可爱的小狗",
+  "最美好的不是未来，是今天","今天心情超级好！分享给你们 🌈","生活就像一盒巧克力",
+  "夜晚的星空总是让人安静下来 ✨","突然想听一首老歌","今天学会了一个新技能！",
+  "谢谢你一直陪在我身边 💕","生活需要一点仪式感","偶尔放空自己也是必要的",
+  "街角的小店总是有惊喜","有时候幸福就是一杯热茶"
+];
+// 朋友圈图片库
+var MOMENTS_IMAGES=JSON.parse(localStorage.getItem('murphy_moments_img_pool')||'[]');
+if(MOMENTS_IMAGES.length===0){
+  MOMENTS_IMAGES=['https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERZJFppi1tRqxFLIa21_jnwDknfmc2OgACViAAAt7rMVXs5ZGoWCUkxToE.png'];
+  localStorage.setItem('murphy_moments_img_pool',JSON.stringify(MOMENTS_IMAGES));
+}
 
 // ==========================================
 // 回复库
@@ -2743,6 +3005,27 @@ $('cinemaSettingsBtn').addEventListener('click',function(e){e.stopPropagation();
   p.style.display=show?'block':'none';
 });
 $('cfgMovieTaChance').addEventListener('input',function(){$('cfgMovieTaChanceVal').textContent=this.value+'%'});
+// 复古/现代皮肤切换
+(function(){var skins=['modern','retro','pixel','beeper'];
+var labels={modern:'✨ 现代',retro:'💾 复古QQ',pixel:'🎮 像素游戏',beeper:'📟 BP机'};
+var cur=localStorage.getItem('murphy_cinema_skin')||'modern';
+if(cur!=='modern')$('cinemaPane').classList.add(cur);
+var list=$('cinemaSkinList');
+list.innerHTML=skins.map(function(k){return '<div class="skin-opt" data-skin="'+k+'" style="padding:6px 8px;border-radius:8px;cursor:pointer;font-size:11px;transition:all 0.15s;'+(k===cur?'background:var(--accent-soft);color:var(--accent-dark);font-weight:600':'')+'">'+labels[k]+'</div>'}).join('');
+list.querySelectorAll('.skin-opt').forEach(function(d){d.addEventListener('click',function(e){e.stopPropagation();
+  var s=this.dataset.skin;
+  $('cinemaPane').className=$('cinemaPane').className.replace(/\b(retro|pixel|beeper)\b/g,'').trim();
+  if(s!=='modern')$('cinemaPane').classList.add(s);
+  localStorage.setItem('murphy_cinema_skin',s);$('cinemaSkinPop').style.display='none';
+  list.querySelectorAll('.skin-opt').forEach(function(o){o.style.background='';o.style.fontWeight='';o.style.color=''});
+  this.style.background='var(--accent-soft)';this.style.color='var(--accent-dark)';this.style.fontWeight='600';
+  toast(labels[s]);
+})});
+$('cinemaSkinToggle').addEventListener('click',function(e){e.stopPropagation();
+  var p=$('cinemaSkinPop');p.style.display=p.style.display==='none'?'block':'none';
+});
+document.addEventListener('click',function(e){if(!e.target.closest('#cinemaSkinPop')&&!e.target.closest('#cinemaSkinToggle')){$('cinemaSkinPop').style.display='none';}});
+})();
 $('cinemaSettingsClose').addEventListener('click',function(){
   stg.movieTaFreqMin=parseInt($('cfgMovieFreqMin').value)||5;
   stg.movieTaFreqMax=parseInt($('cfgMovieFreqMax').value)||12;
@@ -2766,12 +3049,18 @@ function startCinema(idx){
     var st=$('movieInviteStatus');
     if(accepted){st.textContent='TA同意了！一起看吧';st.style.color='var(--accent-dark)';setTimeout(function(){enterCinema(m)},600)}else{st.textContent='TA暂时不想看';$('movieInviteActions').style.display='flex'}
   },1500+Math.random()*2000);
-  function enterCinema(m){
+  function updateRetroInfo(){
+  var r=$('cinemaRetroInfo');if(!r)return;
+  var pn=profile.partnerName||'TA';
+  if(movieTaJoined)r.textContent='● '+pn+' — 正在和你一起看';
+  else r.textContent='● '+(profile.myName||'你')+' — 正在观看';
+}
+function enterCinema(m){
     $('movieInvitePane').style.display='none';$('cinemaPane').style.display='flex';
     $('cinemaIframe').src=m.url||('https://player.bilibili.com/player.html?bvid='+m.bvid);
     $('cinemaMovieName').textContent=m.title;movieChatMsgs=[];$('cinemaChat').innerHTML='';
     movieWatching=true;rCMsgCinema('system','🎬 开始看《'+m.title+'》');
-    scheduleMovieTa();
+    updateRetroInfo();scheduleMovieTa();
     // 独看模式：禁用输入，等TA加入后才开放
     if(!movieTaJoined){
       $('cinemaInput').disabled=true;$('cinemaSend').disabled=true;
@@ -2785,6 +3074,7 @@ function startCinema(idx){
         $('cinemaInput').disabled=false;$('cinemaSend').disabled=false;
         $('cinemaInput').placeholder='说点什么...';
         $('cinemaSend').style.opacity='';
+        updateRetroInfo();
       },joinDelay);
     }
   }
@@ -2840,8 +3130,9 @@ function rCMsgCinema(type,text,opts){
   var av=document.createElement('div');av.className='chat-msg-avatar';
   if(type==='sent')applyAvatar(av,profile.myAvatar,'👩🏻');else applyAvatar(av,profile.partnerAvatar,'🧑🏻');
   row.appendChild(av);var b=document.createElement('div');b.className='chat-msg-bubble';
-  if(opts.image){var img=document.createElement('img');img.src=opts.image;b.appendChild(img)}
-  else if(opts.emoji){b.innerHTML='<span class="msg-emoji">'+EH(opts.emoji)+'</span>'}
+  if(opts.image||opts.type==='image'){var src=opts.image||opts.content||'';if(src&&src.indexOf('data:image/')===0){var img=document.createElement('img');img.src=src;b.appendChild(img)}else if(src&&src.indexOf('http')===0){var img2=document.createElement('img');img2.src=src;b.appendChild(img2)}else{b.textContent='[图片]'}}
+  else if(opts.emoji||opts.type==='emoji'){b.innerHTML='<span class="msg-emoji">'+EH(opts.emoji||opts.content||'')+'</span>'}
+  else if(opts.type==='voice'){b.textContent='🎤 语音消息'}
   else{b.textContent=text||''}
   row.appendChild(b);cc.appendChild(row);cc.scrollTop=cc.scrollHeight;
 }
@@ -3380,7 +3671,7 @@ $('callSettingsModal').addEventListener('click',function(e){if(e.target===this)h
 // ===== 设置面板 =====
 function renderSettings(){
   var b=$('settingsBody');var curColor=localStorage.getItem('murphy_theme_color')||'gold';var curMode=localStorage.getItem('murphy_theme_mode')||'light';
-  b.innerHTML='<div class="settings-section"><div class="settings-section-title"><i class="fas fa-palette"></i> 主题色彩</div><div class="theme-grid"><div class="theme-dot gold'+(curColor==='gold'?' active':'')+'" data-color="gold" title="金色"></div><div class="theme-dot rose'+(curColor==='rose'?' active':'')+'" data-color="rose" title="玫瑰"></div><div class="theme-dot lavender'+(curColor==='lavender'?' active':'')+'" data-color="lavender" title="薰衣草"></div><div class="theme-dot sage'+(curColor==='sage'?' active':'')+'" data-color="sage" title="鼠尾草"></div><div class="theme-dot sky'+(curColor==='sky'?' active':'')+'" data-color="sky" title="天空"></div><div class="theme-dot blossom'+(curColor==='blossom'?' active':'')+'" data-color="blossom" title="花语"></div><div class="theme-dot mono'+(curColor==='mono'?' active':'')+'" data-color="mono" title="黑白"></div></div><div class="dark-toggle-wrap" style="margin-top:10px"><span class="dark-toggle-icon">'+(curMode==='dark'?'🌙':'☀️')+'</span><span style="flex:1;font-size:14px">暗黑模式</span><div class="settings-toggle'+(curMode==='dark'?' on':'')+'" id="cfgDarkToggle"></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-comment-dots"></i> 回复设置</div><div class="settings-row"><label>最短回复延迟</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgDelayMin" min="500" max="10000" value="'+stg.replyDelayMin+'" oninput="$(\'cfgDelayMinVal\').textContent=(this.value/1000).toFixed(1)+\'s\'"><span class="settings-range-val" id="cfgDelayMinVal">'+(stg.replyDelayMin/1000).toFixed(1)+'s</span></div></div><div class="settings-row"><label>最长回复延迟</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgDelayMax" min="1000" max="30000" value="'+stg.replyDelayMax+'" oninput="$(\'cfgDelayMaxVal\').textContent=(this.value/1000).toFixed(1)+\'s\'"><span class="settings-range-val" id="cfgDelayMaxVal">'+(stg.replyDelayMax/1000).toFixed(1)+'s</span></div></div><div class="settings-row"><label>每次回复条数</label><select id="cfgReplyCount" style="height:32px;border-radius:8px;border:1.5px solid var(--border-light);padding:0 8px;font-size:13px;background:var(--input-bg);color:var(--text-primary);outline:none;font-family:var(--font);cursor:pointer"><option value="1">1条</option><option value="1-2">1-2条</option><option value="1-3">1-3条</option><option value="2-3">2-3条</option></select></div><div class="settings-row"><label>已读不回概率</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgReadNoReply" min="0" max="50" value="'+Math.round(stg.readNoReplyChance*100)+'" oninput="$(\'cfgReadNoReplyVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgReadNoReplyVal">'+Math.round(stg.readNoReplyChance*100)+'%</span></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-dice"></i> 回复行为</div><div class="settings-row"><label>引用历史消息</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgReplyQuoteChance" min="0" max="50" value="'+stg.replyQuoteChance+'" oninput="$(\'cfgReplyQuoteChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgReplyQuoteChanceVal">'+stg.replyQuoteChance+'%</span></div></div><div class="settings-row"><label>拍一拍</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgPokeChance" min="0" max="20" value="'+stg.pokeChance+'" oninput="$(\'cfgPokeChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgPokeChanceVal">'+stg.pokeChance+'%</span></div></div><div class="settings-row"><label>电影接受邀请</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMovieAcceptChance" min="10" max="100" value="'+stg.movieAcceptChance+'" oninput="$(\'cfgMovieAcceptChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgMovieAcceptChanceVal">'+stg.movieAcceptChance+'%</span></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-bell"></i> 通知</div><div class="settings-row"><label><i class="fas fa-volume-up"></i> 音效</label><div class="settings-toggle'+(stg.soundEnabled?' on':'')+'" id="cfgSoundToggle"></div></div><div class="settings-row"><label><i class="fas fa-desktop"></i> 桌面通知</label><div class="settings-toggle'+(stg.desktopNotif?' on':'')+'" id="cfgNotifToggle"></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-clock"></i> 离线补发</div><div style="font-size:10px;color:var(--text-muted);padding:0 4px 6px">离线超5分钟后回来，自动补上期间错过的内容</div><div class="settings-row"><label>💬 聊天消息</label><div class="settings-toggle'+(stg.catchUpChat?' on':'')+'" id="cfgCatchUpChat"></div></div><div class="settings-row"><label>📧 邮件回信</label><div class="settings-toggle'+(stg.catchUpMail?' on':'')+'" id="cfgCatchUpMail"></div></div><div class="settings-row"><label>📞 未接来电</label><div class="settings-toggle'+(stg.catchUpCall?' on':'')+'" id="cfgCatchUpCall"></div></div><div class="settings-row"><label>🎬 电影邀请</label><div class="settings-toggle'+(stg.catchUpMovie?' on':'')+'" id="cfgCatchUpMovie"></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-envelope"></i> 信封设置</div><div class="settings-row"><label>对方主动来信</label><div class="settings-toggle'+(stg.mailPartnerSend?' on':'')+'" id="cfgMailPartnerSend"></div></div><div class="settings-row"><label>来信概率</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMailChance" min="5" max="80" value="'+stg.mailPartnerChance+'" oninput="$(\'cfgMailChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgMailChanceVal">'+stg.mailPartnerChance+'%</span></div></div><div class="settings-row"><label>检查间隔</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMailInterval" min="15" max="240" step="15" value="'+stg.mailPartnerInterval+'" oninput="$(\'cfgMailIntervalVal\').textContent=this.value+\'分钟\'"><span class="settings-range-val" id="cfgMailIntervalVal">'+stg.mailPartnerInterval+'分钟</span></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-cubes"></i> TA主动来电</div><div class="settings-row"><label>启用来电（30min~4h随机）</label><div class="settings-toggle" id="cfgAutoCallSend"></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-phone-slash"></i> TA挂断/拒接</div><div class="settings-row"><label>拒接来电</label><div class="settings-toggle'+(stg.callDecline?' on':'')+'" id="cfgCallDecline"></div></div><div class="settings-row"><label>拒接概率</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgCallDeclineChance" min="5" max="80" value="'+stg.callDeclineChance+'" oninput="$(\'cfgCallDeclineChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgCallDeclineChanceVal">'+stg.callDeclineChance+'%</span></div></div><div class="settings-row"><label>通话中挂断</label><div class="settings-toggle'+(stg.callHangup?' on':'')+'" id="cfgCallHangup"></div></div><div class="settings-row"><label>挂断概率</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgCallHangupChance" min="5" max="60" value="'+stg.callHangupChance+'" oninput="$(\'cfgCallHangupChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgCallHangupChanceVal">'+stg.callHangupChance+'%</span></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-cubes"></i> 字卡拼句</div><div class="settings-row"><label>启用拼句</label><div class="settings-toggle'+(stg.cardCombine?' on':'')+'" id="cfgCardCombine"></div></div><div style="font-size:10px;color:var(--text-muted);padding:0 4px 6px">TA回复时随机选取2-3条字卡拼成一句话</div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-paper-plane"></i> TA主动消息</div><div class="settings-row"><label>启用主动消息</label><div class="settings-toggle'+(stg.autoMsgSend?' on':'')+'" id="cfgAutoMsgSend"></div></div><div class="settings-row"><label>发送频率</label><div style="display:flex;align-items:center;gap:4px"><input type="number" id="cfgAutoMsgFreq" value="'+stg.autoMsgFreq+'" style="width:56px;height:24px;border-radius:6px;border:1px solid var(--border-light);text-align:center;font-size:11px;background:var(--input-bg);color:var(--text-primary);outline:none"> <span style="font-size:11px;color:var(--text-muted)">分钟/条</span></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-globe-asia"></i> 朋友圈</div><div class="settings-row"><label>TA自动点赞</label><div class="settings-toggle'+(stg.momentsAutoLike!==false?' on':'')+'" id="cfgMomentsAutoLike"></div></div><div class="settings-row"><label>评论回复概率</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMomentsReplyChance" min="0" max="100" value="'+stg.momentsReplyChance+'" oninput="$(\'cfgMomentsReplyChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgMomentsReplyChanceVal">'+stg.momentsReplyChance+'%</span></div></div><div class="settings-row"><label>最短回复延迟</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMomentsReplyDelayMin" min="1" max="30" value="'+stg.momentsReplyDelayMin+'" oninput="$(\'cfgMomentsReplyDelayMinVal\').textContent=this.value+\'秒\'"><span class="settings-range-val" id="cfgMomentsReplyDelayMinVal">'+stg.momentsReplyDelayMin+'秒</span></div></div><div class="settings-row"><label>最长回复延迟</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMomentsReplyDelayMax" min="1" max="60" value="'+stg.momentsReplyDelayMax+'" oninput="$(\'cfgMomentsReplyDelayMaxVal\').textContent=this.value+\'秒\'"><span class="settings-range-val" id="cfgMomentsReplyDelayMaxVal">'+stg.momentsReplyDelayMax+'秒</span></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-database"></i> 数据管理</div><button class="rl-btn rl-btn-danger" onclick="if(confirm(\'重置所有数据？此操作不可撤销！\')){localStorage.clear();location.reload()}" style="width:100%"><i class="fas fa-exclamation-triangle"></i> 重置所有数据</button></div>';
+  b.innerHTML='<div class="settings-section"><div class="settings-section-title"><i class="fas fa-palette"></i> 主题色彩</div><div class="theme-grid"><div class="theme-dot gold'+(curColor==='gold'?' active':'')+'" data-color="gold" title="金色"></div><div class="theme-dot rose'+(curColor==='rose'?' active':'')+'" data-color="rose" title="玫瑰"></div><div class="theme-dot lavender'+(curColor==='lavender'?' active':'')+'" data-color="lavender" title="薰衣草"></div><div class="theme-dot sage'+(curColor==='sage'?' active':'')+'" data-color="sage" title="鼠尾草"></div><div class="theme-dot sky'+(curColor==='sky'?' active':'')+'" data-color="sky" title="天空"></div><div class="theme-dot blossom'+(curColor==='blossom'?' active':'')+'" data-color="blossom" title="花语"></div><div class="theme-dot mono'+(curColor==='mono'?' active':'')+'" data-color="mono" title="黑白"></div></div><div class="dark-toggle-wrap" style="margin-top:10px"><span class="dark-toggle-icon">'+(curMode==='dark'?'🌙':'☀️')+'</span><span style="flex:1;font-size:14px">暗黑模式</span><div class="settings-toggle'+(curMode==='dark'?' on':'')+'" id="cfgDarkToggle"></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-comment-dots"></i> 回复设置</div><div class="settings-row"><label>最短回复延迟</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgDelayMin" min="500" max="10000" value="'+stg.replyDelayMin+'" oninput="$(\'cfgDelayMinVal\').textContent=(this.value/1000).toFixed(1)+\'s\'"><span class="settings-range-val" id="cfgDelayMinVal">'+(stg.replyDelayMin/1000).toFixed(1)+'s</span></div></div><div class="settings-row"><label>最长回复延迟</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgDelayMax" min="1000" max="30000" value="'+stg.replyDelayMax+'" oninput="$(\'cfgDelayMaxVal\').textContent=(this.value/1000).toFixed(1)+\'s\'"><span class="settings-range-val" id="cfgDelayMaxVal">'+(stg.replyDelayMax/1000).toFixed(1)+'s</span></div></div><div class="settings-row"><label>每次回复条数</label><select id="cfgReplyCount" style="height:32px;border-radius:8px;border:1.5px solid var(--border-light);padding:0 8px;font-size:13px;background:var(--input-bg);color:var(--text-primary);outline:none;font-family:var(--font);cursor:pointer"><option value="1">1条</option><option value="1-2">1-2条</option><option value="1-3">1-3条</option><option value="2-3">2-3条</option></select></div><div class="settings-row"><label>已读不回概率</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgReadNoReply" min="0" max="50" value="'+Math.round(stg.readNoReplyChance*100)+'" oninput="$(\'cfgReadNoReplyVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgReadNoReplyVal">'+Math.round(stg.readNoReplyChance*100)+'%</span></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-dice"></i> 回复行为</div><div class="settings-row"><label>引用历史消息</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgReplyQuoteChance" min="0" max="50" value="'+stg.replyQuoteChance+'" oninput="$(\'cfgReplyQuoteChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgReplyQuoteChanceVal">'+stg.replyQuoteChance+'%</span></div></div><div class="settings-row"><label>拍一拍</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgPokeChance" min="0" max="20" value="'+stg.pokeChance+'" oninput="$(\'cfgPokeChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgPokeChanceVal">'+stg.pokeChance+'%</span></div></div><div class="settings-row"><label>电影接受邀请</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMovieAcceptChance" min="10" max="100" value="'+stg.movieAcceptChance+'" oninput="$(\'cfgMovieAcceptChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgMovieAcceptChanceVal">'+stg.movieAcceptChance+'%</span></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-bell"></i> 通知</div><div class="settings-row"><label><i class="fas fa-volume-up"></i> 音效</label><div class="settings-toggle'+(stg.soundEnabled?' on':'')+'" id="cfgSoundToggle"></div></div><div class="settings-row"><label><i class="fas fa-desktop"></i> 桌面通知</label><div class="settings-toggle'+(stg.desktopNotif?' on':'')+'" id="cfgNotifToggle"></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-clock"></i> 离线补发</div><div style="font-size:10px;color:var(--text-muted);padding:0 4px 6px">离线超5分钟后回来，自动补上期间错过的内容</div><div class="settings-row"><label>💬 聊天消息</label><div class="settings-toggle'+(stg.catchUpChat?' on':'')+'" id="cfgCatchUpChat"></div></div><div class="settings-row"><label>📧 邮件回信</label><div class="settings-toggle'+(stg.catchUpMail?' on':'')+'" id="cfgCatchUpMail"></div></div><div class="settings-row"><label>📞 未接来电</label><div class="settings-toggle'+(stg.catchUpCall?' on':'')+'" id="cfgCatchUpCall"></div></div><div class="settings-row"><label>🎬 电影邀请</label><div class="settings-toggle'+(stg.catchUpMovie?' on':'')+'" id="cfgCatchUpMovie"></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-envelope"></i> 信封设置</div><div class="settings-row"><label>对方主动来信</label><div class="settings-toggle'+(stg.mailPartnerSend?' on':'')+'" id="cfgMailPartnerSend"></div></div><div class="settings-row"><label>来信概率</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMailChance" min="5" max="80" value="'+stg.mailPartnerChance+'" oninput="$(\'cfgMailChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgMailChanceVal">'+stg.mailPartnerChance+'%</span></div></div><div class="settings-row"><label>检查间隔</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMailInterval" min="15" max="240" step="15" value="'+stg.mailPartnerInterval+'" oninput="$(\'cfgMailIntervalVal\').textContent=this.value+\'分钟\'"><span class="settings-range-val" id="cfgMailIntervalVal">'+stg.mailPartnerInterval+'分钟</span></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-cubes"></i> TA主动来电</div><div class="settings-row"><label>启用来电（30min~4h随机）</label><div class="settings-toggle" id="cfgAutoCallSend"></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-phone-slash"></i> TA挂断/拒接</div><div class="settings-row"><label>拒接来电</label><div class="settings-toggle'+(stg.callDecline?' on':'')+'" id="cfgCallDecline"></div></div><div class="settings-row"><label>拒接概率</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgCallDeclineChance" min="5" max="80" value="'+stg.callDeclineChance+'" oninput="$(\'cfgCallDeclineChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgCallDeclineChanceVal">'+stg.callDeclineChance+'%</span></div></div><div class="settings-row"><label>通话中挂断</label><div class="settings-toggle'+(stg.callHangup?' on':'')+'" id="cfgCallHangup"></div></div><div class="settings-row"><label>挂断概率</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgCallHangupChance" min="5" max="60" value="'+stg.callHangupChance+'" oninput="$(\'cfgCallHangupChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgCallHangupChanceVal">'+stg.callHangupChance+'%</span></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-cubes"></i> 字卡拼句</div><div class="settings-row"><label>启用拼句</label><div class="settings-toggle'+(stg.cardCombine?' on':'')+'" id="cfgCardCombine"></div></div><div style="font-size:10px;color:var(--text-muted);padding:0 4px 6px">TA回复时随机选取2-3条字卡拼成一句话</div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-paper-plane"></i> TA主动消息</div><div class="settings-row"><label>启用主动消息</label><div class="settings-toggle'+(stg.autoMsgSend?' on':'')+'" id="cfgAutoMsgSend"></div></div><div class="settings-row"><label>发送频率</label><div style="display:flex;align-items:center;gap:4px"><input type="number" id="cfgAutoMsgFreq" value="'+stg.autoMsgFreq+'" style="width:56px;height:24px;border-radius:6px;border:1px solid var(--border-light);text-align:center;font-size:11px;background:var(--input-bg);color:var(--text-primary);outline:none"> <span style="font-size:11px;color:var(--text-muted)">分钟/条</span></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-globe-asia"></i> 朋友圈</div><div class="settings-row"><label>TA自动点赞</label><div class="settings-toggle'+(stg.momentsAutoLike!==false?' on':'')+'" id="cfgMomentsAutoLike"></div></div><div class="settings-row"><label>评论回复概率</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMomentsReplyChance" min="0" max="100" value="'+stg.momentsReplyChance+'" oninput="$(\'cfgMomentsReplyChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgMomentsReplyChanceVal">'+stg.momentsReplyChance+'%</span></div></div><div class="settings-row"><label>最短回复延迟</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMomentsReplyDelayMin" min="1" max="30" value="'+stg.momentsReplyDelayMin+'" oninput="$(\'cfgMomentsReplyDelayMinVal\').textContent=this.value+\'秒\'"><span class="settings-range-val" id="cfgMomentsReplyDelayMinVal">'+stg.momentsReplyDelayMin+'秒</span></div></div><div class="settings-row"><label>最长回复延迟</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMomentsReplyDelayMax" min="1" max="60" value="'+stg.momentsReplyDelayMax+'" oninput="$(\'cfgMomentsReplyDelayMaxVal\').textContent=this.value+\'秒\'"><span class="settings-range-val" id="cfgMomentsReplyDelayMaxVal">'+stg.momentsReplyDelayMax+'秒</span></div></div><div class="settings-row"><label>TA自动发朋友圈</label><div class="settings-toggle'+(stg.momentsAutoPost?' on':'')+'" id="cfgMomentsAutoPost"></div></div><div class="settings-row"><label>发送间隔</label><div style="display:flex;align-items:center;gap:4px"><input type="number" id="cfgMomentsPostMin" value="'+stg.momentsAutoPostMin+'" style="width:48px;height:24px;border-radius:6px;border:1px solid var(--border-light);text-align:center;font-size:11px;background:var(--input-bg);color:var(--text-primary);outline:none"> <span style="font-size:11px;color:var(--text-muted)">至</span> <input type="number" id="cfgMomentsPostMax" value="'+stg.momentsAutoPostMax+'" style="width:48px;height:24px;border-radius:6px;border:1px solid var(--border-light);text-align:center;font-size:11px;background:var(--input-bg);color:var(--text-primary);outline:none"> <span style="font-size:11px;color:var(--text-muted)">分钟</span></div></div><div class="settings-row"><label>文字概率</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMomentsTextChance" min="0" max="100" value="'+stg.momentsAutoPostTextChance+'" oninput="$(\'cfgMomentsTextChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgMomentsTextChanceVal">'+stg.momentsAutoPostTextChance+'%</span></div></div><div class="settings-row"><label>图片概率</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMomentsImageChance" min="0" max="100" value="'+stg.momentsAutoPostImageChance+'" oninput="$(\'cfgMomentsImageChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgMomentsImageChanceVal">'+stg.momentsAutoPostImageChance+'%</span></div></div></div>';
   setTimeout(function(){
     var rc=$('cfgReplyCount');var cfs=$('cfgAutoCallFreq');if(cfs)cfs.value=stg.autoCallFreq;var ctg=$('cfgAutoCallSend');if(ctg){if(stg.autoCallSend)ctg.classList.add('on');else ctg.classList.remove('on')}
 // 绑定动态元素事件
@@ -3403,7 +3694,7 @@ $('cfgAutoCallSend').addEventListener('click',function(){this.classList.toggle('
     $('cfgCallDecline').addEventListener('click',function(){this.classList.toggle('on');stg.callDecline=this.classList.contains('on');sS(stg)});$('cfgCallDeclineChance').addEventListener('input',function(){stg.callDeclineChance=parseInt(this.value);sS(stg)});
     $('cfgCallHangup').addEventListener('click',function(){this.classList.toggle('on');stg.callHangup=this.classList.contains('on');sS(stg)});$('cfgCallHangupChance').addEventListener('input',function(){stg.callHangupChance=parseInt(this.value);sS(stg)});
     ['cfgReplyQuoteChance','cfgPokeChance','cfgMovieAcceptChance'].forEach(function(id){var el=$(id);if(!el)return;el.addEventListener('input',function(){if(id==='cfgReplyQuoteChance')stg.replyQuoteChance=parseInt(this.value);else if(id==='cfgPokeChance')stg.pokeChance=parseInt(this.value);else if(id==='cfgMovieAcceptChance')stg.movieAcceptChance=parseInt(this.value);sS(stg)})});
-$('cfgCardCombine').addEventListener('click',function(){this.classList.toggle('on');stg.cardCombine=this.classList.contains('on');sS(stg)});$('cfgAutoMsgSend').addEventListener('click',function(){this.classList.toggle('on');stg.autoMsgSend=this.classList.contains('on');sS(stg);if(stg.autoMsgSend)startAutoMsg()});$('cfgMomentsAutoLike').addEventListener('click',function(){this.classList.toggle('on');stg.momentsAutoLike=this.classList.contains('on');sS(stg)});['cfgMomentsReplyChance','cfgMomentsReplyDelayMin','cfgMomentsReplyDelayMax'].forEach(function(id){var el=$(id);if(!el)return;el.addEventListener('input',function(){if(id==='cfgMomentsReplyChance')stg.momentsReplyChance=parseInt(this.value);else if(id==='cfgMomentsReplyDelayMin')stg.momentsReplyDelayMin=parseInt(this.value);else stg.momentsReplyDelayMax=parseInt(this.value);sS(stg)})});$('cfgAutoMsgFreq').addEventListener('change',function(){stg.autoMsgFreq=parseInt(this.value)||15;sS(stg)});['cfgDelayMin','cfgDelayMax','cfgReplyCount','cfgReadNoReply'].forEach(function(id){var el=$(id);if(!el)return;el.addEventListener('change',function(){if(id==='cfgDelayMin')stg.replyDelayMin=parseInt(this.value);else if(id==='cfgDelayMax')stg.replyDelayMax=parseInt(this.value);else if(id==='cfgReplyCount')stg.replyCount=this.value;else if(id==='cfgReadNoReply')stg.readNoReplyChance=parseInt(this.value)/100;sS(stg)});if(el.type==='range')el.addEventListener('input',function(){if(id==='cfgDelayMin')stg.replyDelayMin=parseInt(this.value);else if(id==='cfgDelayMax')stg.replyDelayMax=parseInt(this.value);else if(id==='cfgReadNoReply')stg.readNoReplyChance=parseInt(this.value)/100;sS(stg)})});
+$('cfgCardCombine').addEventListener('click',function(){this.classList.toggle('on');stg.cardCombine=this.classList.contains('on');sS(stg)});$('cfgAutoMsgSend').addEventListener('click',function(){this.classList.toggle('on');stg.autoMsgSend=this.classList.contains('on');sS(stg);if(stg.autoMsgSend)startAutoMsg()});$('cfgMomentsAutoLike').addEventListener('click',function(){this.classList.toggle('on');stg.momentsAutoLike=this.classList.contains('on');sS(stg)});['cfgMomentsReplyChance','cfgMomentsReplyDelayMin','cfgMomentsReplyDelayMax'].forEach(function(id){var el=$(id);if(!el)return;el.addEventListener('input',function(){if(id==='cfgMomentsReplyChance')stg.momentsReplyChance=parseInt(this.value);else if(id==='cfgMomentsReplyDelayMin')stg.momentsReplyDelayMin=parseInt(this.value);else stg.momentsReplyDelayMax=parseInt(this.value);sS(stg)})});$('cfgMomentsAutoPost').addEventListener('click',function(){this.classList.toggle('on');stg.momentsAutoPost=this.classList.contains('on');sS(stg);scheduleAutoPost()});['cfgMomentsPostMin','cfgMomentsPostMax','cfgMomentsTextChance','cfgMomentsImageChance'].forEach(function(id){var el=$(id);if(!el)return;el.addEventListener('input',function(){if(id==='cfgMomentsPostMin')stg.momentsAutoPostMin=parseInt(this.value)||120;else if(id==='cfgMomentsPostMax')stg.momentsAutoPostMax=parseInt(this.value)||480;else if(id==='cfgMomentsTextChance')stg.momentsAutoPostTextChance=parseInt(this.value);else stg.momentsAutoPostImageChance=parseInt(this.value);sS(stg);scheduleAutoPost()})});$('cfgAutoMsgFreq').addEventListener('change',function(){stg.autoMsgFreq=parseInt(this.value)||15;sS(stg)});['cfgDelayMin','cfgDelayMax','cfgReplyCount','cfgReadNoReply'].forEach(function(id){var el=$(id);if(!el)return;el.addEventListener('change',function(){if(id==='cfgDelayMin')stg.replyDelayMin=parseInt(this.value);else if(id==='cfgDelayMax')stg.replyDelayMax=parseInt(this.value);else if(id==='cfgReplyCount')stg.replyCount=this.value;else if(id==='cfgReadNoReply')stg.readNoReplyChance=parseInt(this.value)/100;sS(stg)});if(el.type==='range')el.addEventListener('input',function(){if(id==='cfgDelayMin')stg.replyDelayMin=parseInt(this.value);else if(id==='cfgDelayMax')stg.replyDelayMax=parseInt(this.value);else if(id==='cfgReadNoReply')stg.readNoReplyChance=parseInt(this.value)/100;sS(stg)})});
   },50);
 }
 
@@ -3424,9 +3715,9 @@ $('backupImportChatFile').addEventListener('change',function(){
   var r=new FileReader();r.onload=function(){try{var d=JSON.parse(r.result);if(Array.isArray(d)){messages=d.slice(-500);saveMsgs();renderAllMsgs();toast('已导入'+d.length+'条')}}catch(e){toast('格式错误')}};r.readAsText(f);this.value='';
 });
 $('backupExportAll').addEventListener('click',function(){
-  var all={};for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k.indexOf('murphy_')===0)all[k]=stripImages(JSON.parse(localStorage.getItem(k)))}
-  var b=new Blob([JSON.stringify(all,null,2)],{type:'application/json'});
-  var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='Murphy全量备份_'+new Date().toISOString().slice(0,10)+'.json';a.click();toast('导出成功（已剔除图片）');
+  var all={};for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k.indexOf('murphy_')===0){try{var v=localStorage.getItem(k);var p=JSON.parse(v);all[k]=stripImages(p)}catch(e){all[k]=localStorage.getItem(k)}}}
+  try{var b=new Blob([JSON.stringify(all,null,2)],{type:'application/json'});
+  var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='Murphy数据备份_'+new Date().toISOString().slice(0,10)+'.json';a.click();toast('导出成功')}catch(e){toast('导出失败：'+e.message)}
 });
 $('backupImportAll').addEventListener('click',function(){$('backupImportAllFile').click()});
 $('backupImportAllFile').addEventListener('change',function(){
@@ -3639,6 +3930,37 @@ var TA_MOMENTS_POOL=[
   "窗外的晚霞美到窒息 🌇","今天穿了新买的那件衣服，心情好 💫","刷到一首好听的歌，循环了一天 🎵",
   "今天才发现家附近有一家超棒的店 🏠","看书看到停不下来，太精彩了 📖","今天什么都不想做，躺了一天 😴"
 ];
+// TA自动发朋友圈
+function autoPostMoment(){
+  if(!stg.momentsAutoPost)return;
+  var hasText=Math.random()*100<stg.momentsAutoPostTextChance;
+  var hasImage=Math.random()*100<stg.momentsAutoPostImageChance;
+  if(!hasText&&!hasImage){hasText=true} // 至少发一样
+  var post={id:Date.now(),time:Date.now(),author:'partner',text:[],images:[],likes:[],comments:[]};
+  if(hasText){
+    var count=1+Math.floor(Math.random()*2); // 1-2条文字
+    for(var i=0;i<count;i++){
+      var t=MOMENTS_TEXTS[Math.floor(Math.random()*MOMENTS_TEXTS.length)];
+      if(post.text.indexOf(t)===-1)post.text.push(t);
+    }
+  }
+  if(hasImage&&MOMENTS_IMAGES.length>0){
+    var imgCount=1+Math.floor(Math.random()*Math.min(3,MOMENTS_IMAGES.length));
+    var shuffled=MOMENTS_IMAGES.slice().sort(function(){return Math.random()-0.5});
+    for(var j=0;j<imgCount;j++)post.images.push(shuffled[j]);
+  }
+  moments.unshift(post);saveMoments(moments);
+  if($('momentsOverlay').style.display==='flex')renderMoments();
+}
+var momentsPostTimer=null;
+function scheduleAutoPost(){
+  if(momentsPostTimer)clearTimeout(momentsPostTimer);
+  if(!stg.momentsAutoPost)return;
+  var delay=(stg.momentsAutoPostMin+Math.random()*(stg.momentsAutoPostMax-stg.momentsAutoPostMin))*60000;
+  momentsPostTimer=setTimeout(function(){autoPostMoment();scheduleAutoPost()},delay);
+}
+scheduleAutoPost();
+
 function getMomentComment(){
   var pool=getAllReplies();if(pool.length===0)return'好棒呀！';
   var r=pool[Math.floor(Math.random()*pool.length)];
@@ -3874,3 +4196,29 @@ if('serviceWorker' in navigator){navigator.serviceWorker.register('service-worke
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
