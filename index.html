@@ -1,19 +1,19 @@
 ﻿<!DOCTYPE html>
-<html lang="zh-CN" data-theme="light" data-color="gold">
+<html lang="zh-CN" data-theme="light" data-color="blue">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover,height=device-height">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#c5a47e">
+<meta name="theme-color" content="#3090e8">
 <link rel="manifest" href="manifest.json">
 <title>Murphy传讯</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script><script>
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"><script>
 </script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;scrollbar-width:none;-ms-overflow-style:none}
@@ -27,22 +27,22 @@
   --shadow-lg:0 8px 30px rgba(0,0,0,0.1);
   --font-size:16px;--message-font-size:14px;
   --in-chat-avatar-size:36px;
-  --accent:#c5a47e;--accent-dark:#b8945c;--accent-light:rgba(197,164,126,0.15);--accent-rgb:197,164,126;--accent-soft:rgba(197,164,126,0.08);
-  --bg-primary:#faf5f0;--bg-secondary:#fffcf8;--bg-tertiary:#f5ede0;
-  --text-primary:#3d2b1f;--text-secondary:#8b7355;--text-muted:#b8a088;
-  --border:#e8d5c4;--border-light:rgba(180,140,110,0.2);
+  --accent:#3090e8;--accent-dark:#1870b8;--accent-light:rgba(48,144,232,0.22);--accent-rgb:48,144,232;--accent-soft:rgba(48,144,232,0.13);
+  --bg-primary:#f2f5f9;--bg-secondary:#f8fafd;--bg-tertiary:#e4ebf4;
+  --text-primary:#283648;--text-secondary:#556678;--text-muted:#8492a2;
+  --border:#cdd7e4;--border-light:rgba(107,148,196,0.2);
   --msg-sent-bg:var(--accent);--msg-sent-text:#fff;
-  --msg-recv-bg:#fff;--msg-recv-text:#3d2b1f;
-  --header-bg:rgba(255,252,248,0.95);--input-bg:#fff;
-  --card-bg:rgba(255,252,248,0.85);--overlay-bg:#faf5f0;
-  --heart-color:#d4786e;--fav-color:#e8a840;--favorite-color:#e8a840;
+  --msg-recv-bg:#fff;--msg-recv-text:#2d3a4a;
+  --header-bg:rgba(250,251,253,0.95);--input-bg:#fff;
+  --card-bg:rgba(250,251,253,0.85);--overlay-bg:#f4f6f9;
+  --heart-color:#c48b8b;--fav-color:#b8b0d8;--favorite-color:#b8b0d8;
 }
-html[data-color="gold"]{--accent:#c5a47e;--accent-dark:#b8945c;--accent-rgb:197,164,126;--accent-light:rgba(197,164,126,0.15);--accent-soft:rgba(197,164,126,0.08)}
-html[data-color="rose"]{--accent:#d4a0a0;--accent-dark:#c08080;--accent-rgb:212,160,160;--accent-light:rgba(212,160,160,0.15);--accent-soft:rgba(212,160,160,0.08)}
-html[data-color="lavender"]{--accent:#bba0c8;--accent-dark:#a888b8;--accent-rgb:187,160,200;--accent-light:rgba(187,160,200,0.15);--accent-soft:rgba(187,160,200,0.08)}
-html[data-color="sage"]{--accent:#9bba90;--accent-dark:#7ea870;--accent-rgb:155,186,144;--accent-light:rgba(155,186,144,0.15);--accent-soft:rgba(155,186,144,0.08)}
-html[data-color="sky"]{--accent:#8aacc8;--accent-dark:#6e98b8;--accent-rgb:138,172,200;--accent-light:rgba(138,172,200,0.15);--accent-soft:rgba(138,172,200,0.08)}
-html[data-color="blossom"]{--accent:#e8a8b8;--accent-dark:#d490a0;--accent-rgb:232,168,184;--accent-light:rgba(232,168,184,0.15);--accent-soft:rgba(232,168,184,0.08)}
+html[data-color="blue"]{--accent:#3090e8;--accent-dark:#1870b8;--accent-rgb:48,144,232;--accent-light:rgba(48,144,232,0.22);--accent-soft:rgba(48,144,232,0.13)}
+html[data-color="rose"]{--accent:#c8a0a8;--accent-dark:#b08890;--accent-rgb:200,160,168;--accent-light:rgba(200,160,168,0.15);--accent-soft:rgba(200,160,168,0.08)}
+html[data-color="lavender"]{--accent:#b0a0c8;--accent-dark:#9888b0;--accent-rgb:176,160,200;--accent-light:rgba(176,160,200,0.15);--accent-soft:rgba(176,160,200,0.08)}
+html[data-color="sage"]{--accent:#8faa8a;--accent-dark:#759070;--accent-rgb:143,170,138;--accent-light:rgba(143,170,138,0.15);--accent-soft:rgba(143,170,138,0.08)}
+html[data-color="sky"]{--accent:#7da8c0;--accent-dark:#628ea8;--accent-rgb:125,168,192;--accent-light:rgba(125,168,192,0.15);--accent-soft:rgba(125,168,192,0.08)}
+html[data-color="blossom"]{--accent:#d8a8b8;--accent-dark:#c090a0;--accent-rgb:216,168,184;--accent-light:rgba(216,168,184,0.15);--accent-soft:rgba(216,168,184,0.08)}
 html[data-color="mono"]{--accent:#6b6b6b;--accent-dark:#4a4a4a;--accent-rgb:107,107,107;--accent-light:rgba(107,107,107,0.15);--accent-soft:rgba(107,107,107,0.08)}
 html[data-theme="dark"]{
 html[data-theme="dark"] .hero-card{background:linear-gradient(135deg,rgba(40,38,35,0.7),rgba(30,28,26,0.5));box-shadow:0 8px 32px rgba(0,0,0,0.25),inset 0 1px 0 rgba(255,255,255,0.04)}
@@ -74,20 +74,20 @@ body{background:var(--bg-primary);margin:0;padding:0;display:flex;justify-conten
 .swipe-arrow{width:28px;height:28px;border-left:2px solid var(--text-muted);border-top:2px solid var(--text-muted);transform:rotate(45deg);animation:arrowBounce 2s ease-in-out infinite;border-radius:2px}
 @keyframes arrowBounce{0%,100%{transform:rotate(45deg)translate(0,0);opacity:0.2}50%{transform:rotate(45deg)translate(-8px,-8px);opacity:1}}
 .home-screen{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(180deg,var(--bg-tertiary) 0%,var(--bg-primary) 25%,var(--bg-primary) 100%);z-index:30;display:flex;flex-direction:column;overflow:hidden;transition:opacity 0.3s ease}
-.hero-card{margin:calc(10px + env(safe-area-inset-top,0px)) 18px 0;background:linear-gradient(135deg,rgba(255,255,255,0.7),rgba(255,252,248,0.5));backdrop-filter:blur(28px) saturate(1.2);-webkit-backdrop-filter:blur(28px) saturate(1.2);border-radius:24px;padding:20px 24px 16px;text-align:center;position:relative;z-index:2;flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:10px;box-shadow:0 8px 32px rgba(120,80,50,0.08),0 2px 8px rgba(120,80,50,0.04),inset 0 1px 0 rgba(255,255,255,0.6);border:1px solid rgba(200,160,120,0.2);transition:var(--transition)}
+.hero-card{margin:calc(10px + env(safe-area-inset-top,0px)) 18px 0;background:linear-gradient(135deg,rgba(255,255,255,0.7),rgba(255,252,248,0.5));backdrop-filter:blur(28px) saturate(1.2);-webkit-backdrop-filter:blur(28px) saturate(1.2);border-radius:24px;padding:20px 24px 16px;text-align:center;position:relative;z-index:2;flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:10px;box-shadow:0 8px 32px rgba(90,110,140,0.08),0 2px 8px rgba(90,110,140,0.04),inset 0 1px 0 rgba(255,255,255,0.6);border:1px solid rgba(123,158,196,0.2);transition:var(--transition)}
 .hero-time .time{font-size:38px;font-weight:200;color:var(--text-primary);letter-spacing:3px;line-height:1}
 .hero-time .date{font-size:12px;color:var(--text-secondary);margin-top:2px;letter-spacing:1px}
 .hero-divider-wrap{position:relative;display:flex;align-items:center;justify-content:center;width:100%}
 .hero-divider{position:absolute;left:20px;right:20px;top:50%;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
 .hero-couple{display:flex;align-items:center;gap:2px;position:relative;z-index:1;padding:8px 18px;background:var(--bg-secondary);border-radius:30px;border:1px solid var(--border-light);box-shadow:0 2px 8px rgba(0,0,0,0.04);cursor:pointer;transition:all 0.3s ease}.hero-couple:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(var(--accent-rgb),0.12);border-color:var(--accent)}
-.couple-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent-soft),var(--accent-light));display:flex;align-items:center;justify-content:center;font-size:22px;transition:transform 0.3s ease;overflow:hidden}.couple-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.couple-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--accent-soft),var(--accent-light));display:flex;align-items:center;justify-content:center;font-size:22px;transition:transform 0.3s ease;overflow:hidden}.couple-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
 .hero-couple:hover .couple-avatar{transform:scale(1.05)}
 .couple-heart{font-size:16px;margin:0 -2px;z-index:1;animation:heartBeat 1.5s ease-in-out infinite;color:var(--heart-color);filter:drop-shadow(0 0 4px rgba(212,120,110,0.3))}
 @keyframes heartBeat{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
 .couple-label{font-size:11px;color:var(--accent);letter-spacing:3px;font-weight:500;opacity:0.8;transition:opacity 0.3s ease}.hero-card:hover .couple-label{opacity:1}
 .widgets-area{padding:10px 16px 0;display:flex;flex-direction:column;gap:8px;position:relative;z-index:2}
 .widget-row{display:flex;gap:8px}
-.widget{background:linear-gradient(135deg,rgba(255,255,255,0.55),rgba(255,252,248,0.35));backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:22px;padding:16px;flex:1;min-width:0;color:var(--text-primary);overflow:hidden;position:relative;box-shadow:0 4px 16px rgba(120,80,50,0.05),inset 0 1px 0 rgba(255,255,255,0.45);border:1px solid rgba(200,160,120,0.12);transition:all 0.3s ease}.widget:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(120,80,50,0.08)}.widget:active{transform:scale(0.98)}
+.widget{background:linear-gradient(135deg,rgba(255,255,255,0.55),rgba(255,252,248,0.35));backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:22px;padding:16px;flex:1;min-width:0;color:var(--text-primary);overflow:hidden;position:relative;box-shadow:0 4px 16px rgba(120,80,50,0.05),inset 0 1px 0 rgba(255,255,255,0.45);border:1px solid rgba(123,158,196,0.12);transition:all 0.3s ease}.widget:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(90,110,140,0.08)}.widget:active{transform:scale(0.98)}
 .widget-quote{display:flex;align-items:flex-start;gap:10px}
 .quote-icon{font-size:22px;flex-shrink:0;transition:transform 0.3s ease}.widget:hover .quote-icon{transform:scale(1.1)}
 .quote-text{font-size:13px;line-height:1.65;color:var(--text-primary);font-weight:400}
@@ -102,10 +102,10 @@ body{background:var(--bg-primary);margin:0;padding:0;display:flex;justify-conten
 .app-pages{flex:1;overflow:hidden;position:relative;z-index:2}
 .app-pages-inner{display:flex;width:200%;height:100%;transition:transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94)}
 .app-page{width:50%;height:100%;overflow-y:auto}
-.app-grid{display:flex;flex-wrap:wrap;align-content:flex-start;padding:22px 14px 0;gap:14px 18px}
+.app-grid{display:flex;flex-wrap:wrap;justify-content:flex-start;align-content:center;padding:20px 18px 20px 44px;gap:14px 18px;flex:1}
 /* 全屏滑动 */
 .home-slider{flex:1;overflow:hidden;position:relative;z-index:2}
-.home-slider-inner{display:flex;width:200%;height:100%;transition:transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94)}
+.home-slider-inner{display:flex;width:200%;height:100%;transition:transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94);will-change:transform;-webkit-transform:translateZ(0)}
 .home-page{width:50%;height:100%;overflow:hidden;display:flex;flex-direction:column;position:relative}
 /* 拍立得卡片 */
 .polaroid-area{position:relative;min-height:180px;margin:12px 14px;flex-shrink:0}
@@ -154,30 +154,30 @@ body{background:var(--bg-primary);margin:0;padding:0;display:flex;justify-conten
 .period-legend .lg-marked{background:#f0c8d0}
 .period-legend .lg-pred{background:rgba(240,200,210,0.4);border:1px dashed rgba(200,120,140,0.4)}
 .period-legend .lg-ovu{background:rgba(200,220,255,0.4);border:1px dashed rgba(100,140,200,0.3)}
-.app-icon{width:64px;display:flex;flex-direction:column;align-items:center;gap:7px;cursor:pointer;transition:all 0.25s cubic-bezier(0.4,0,0.2,1)}.app-icon:hover{transform:translateY(-3px)}.app-icon:hover .app-icon-img{box-shadow:0 8px 24px rgba(var(--accent-rgb),0.3)}.app-icon:hover .app-icon-label{color:var(--accent-dark)}
+.app-icon{width:56px;display:flex;flex-direction:column;align-items:center;gap:7px;cursor:pointer;transition:all 0.25s cubic-bezier(0.4,0,0.2,1)}.app-icon:hover{transform:translateY(-3px)}.app-icon:hover .app-icon-img{background:rgba(var(--accent-rgb),0.06);border-color:var(--accent);color:var(--accent-dark)}.app-icon:hover .app-icon-label{color:var(--accent-dark)}
 .app-icon:active{transform:scale(0.85)}
-.app-icon-img{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 3px 12px rgba(var(--accent-rgb),0.15);transition:all 0.25s cubic-bezier(0.4,0,0.2,1)}.app-icon-img i{font-size:24px}
+.app-icon-img{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;background:transparent;border:1px solid rgba(var(--accent-rgb),0.25);color:var(--accent);transition:all 0.25s cubic-bezier(0.4,0,0.2,1)}.app-icon-img i{font-size:20px}
 .app-icon-label{font-size:10px;color:var(--text-secondary);text-align:center;max-width:72px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:color 0.2s ease;font-weight:500}
 .page-dots{display:flex;justify-content:center;gap:8px;padding:8px 0 4px;position:relative;z-index:2;flex-shrink:0}
 .page-dots .dot{width:6px;height:6px;border-radius:50%;background:var(--text-muted);opacity:0.3;cursor:pointer;transition:all 0.3s ease}.page-dots .dot:hover{opacity:0.5;transform:scale(1.2)}
 .page-dots .dot.active{opacity:0.7;width:20px;border-radius:4px;background:var(--accent)}
-.app-chat .app-icon-img{background:linear-gradient(135deg,var(--accent),var(--accent-dark))}
 
-.app-mail .app-icon-img{background:linear-gradient(135deg,rgba(var(--accent-rgb),0.7),rgba(var(--accent-rgb),0.5))}
-.app-settings .app-icon-img{background:linear-gradient(135deg,rgba(var(--accent-rgb),0.5),rgba(var(--accent-rgb),0.35))}
-.app-reply .app-icon-img{background:linear-gradient(135deg,rgba(var(--accent-rgb),0.8),rgba(var(--accent-rgb),0.6))}
-.app-beauty .app-icon-img{background:linear-gradient(135deg,#e8c4b8,#d4a898)}
-.app-journal .app-icon-img{background:linear-gradient(135deg,#d4b896,#c4a47a)}
-.app-check .app-icon-img{background:linear-gradient(135deg,#a8c4a2,#8aae80)}
-.app-diary .app-icon-img{background:linear-gradient(135deg,#d4c4a0,#c4b080)}
-.app-movie .app-icon-img{background:linear-gradient(135deg,#c4a0a0,#a88080)}
-.app-music .app-icon-img{background:linear-gradient(135deg,#b0a8c8,#9080b0)}
-.app-yn .app-icon-img{background:linear-gradient(135deg,#d4b0a0,#c09080)}
-.app-survey .app-icon-img{background:linear-gradient(135deg,#c0b0a0,#a89080)}
-.app-murmur .app-icon-img{background:linear-gradient(135deg,#c0b4d0,#a894c0)}
-.app-memo .app-icon-img{background:linear-gradient(135deg,#d4c8a0,#c4b480)}
-.app-report .app-icon-img{background:linear-gradient(135deg,#b4c4a8,#94a888)}
-.app-revsurvey .app-icon-img{background:linear-gradient(135deg,#d0b8c8,#b898b0)}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes movieCardIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 @keyframes waitingDot{0%,100%{opacity:0.2}50%{opacity:0.9}}
@@ -227,7 +227,7 @@ body{background:var(--bg-primary);margin:0;padding:0;display:flex;justify-conten
 .rl-item-actions{display:flex;gap:2px;flex-shrink:0}
 .rl-item-copy,.rl-item-del{font-size:11px;cursor:pointer;flex-shrink:0;color:var(--text-muted);padding:3px 5px;border-radius:6px;transition:all 0.15s ease}.rl-item-copy:hover{color:var(--accent);background:var(--accent-soft)}.rl-item-del:hover{color:#d4786e;background:rgba(212,120,110,0.08)}
 /* 空状态 */
-.rl-empty{text-align:center;color:var(--text-muted);padding:40px 20px;font-size:14px;line-height:2;flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column}.rl-empty span{font-size:11px;opacity:0.6}.rl-empty i{font-size:36px;margin-bottom:10px;opacity:0.2}
+.rl-empty{text-align:center;color:var(--text-muted);padding:44px 20px;font-size:14px;line-height:2;flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column}.rl-empty span{font-size:11px;opacity:0.6}.rl-empty i{font-size:36px;margin-bottom:10px;opacity:0.2}
 /* 添加栏 */
 .rl-add-bar{display:flex;gap:6px;padding:8px 0 0;border-top:1px solid var(--border-light);flex-shrink:0;margin-top:4px;transition:border-color 0.5s ease}
 .rl-add-input{flex:1;height:36px;border-radius:18px;border:1.5px solid transparent;padding:0 14px;font-size:13px;background:var(--input-bg);color:var(--text-primary);outline:none;transition:all 0.25s ease;font-family:var(--font)}.rl-add-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(var(--accent-rgb),0.06)}
@@ -311,10 +311,10 @@ body{background:var(--bg-primary);margin:0;padding:0;display:flex;justify-conten
 .chat-reply-preview{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;gap:8px;padding:6px 14px;background:var(--accent-soft);border-left:3px solid var(--accent);font-size:11px;color:var(--text-secondary);border-bottom:1px solid var(--border-light);animation:fadeIn 0.2s ease}
 .chat-reply-preview-text{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .chat-reply-preview-close{cursor:pointer;color:var(--text-muted);font-size:14px;padding:2px 6px;transition:color 0.15s}.chat-reply-preview-close:hover{color:#d4786e}
-.chat-input{flex:1;height:40px;border-radius:20px;border:1px solid transparent;padding:0 16px;font-size:15px;outline:none;transition:all 0.25s ease;min-width:0}.chat-input::placeholder{color:var(--text-muted);font-weight:400}.chat-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(var(--accent-rgb),0.08)}
-.chat-send{height:40px;border-radius:20px;border:none;padding:0 18px;font-size:14px;font-weight:600;background:var(--accent);color:#fff;cursor:pointer;flex-shrink:0;transition:all 0.2s ease}.chat-send:active{transform:scale(0.95);opacity:0.85}
+.chat-input{flex:1;height:44px;border-radius:20px;border:1px solid transparent;padding:0 16px;font-size:15px;outline:none;transition:all 0.25s ease;min-width:0}.chat-input::placeholder{color:var(--text-muted);font-weight:400}.chat-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(var(--accent-rgb),0.08)}
+.chat-send{height:44px;border-radius:20px;border:none;padding:0 18px;font-size:14px;font-weight:600;background:var(--accent);color:#fff;cursor:pointer;flex-shrink:0;transition:all 0.2s ease}.chat-send:active{transform:scale(0.95);opacity:0.85}
 /* 功能菜单按钮 */
-.chat-img-btn{font-size:24px;cursor:pointer;flex-shrink:0;opacity:0.55;line-height:40px;position:relative;transition:opacity 0.2s}.chat-img-btn:hover{opacity:0.85}
+.chat-img-btn{font-size:24px;cursor:pointer;flex-shrink:0;opacity:0.55;line-height:44px;position:relative;transition:opacity 0.2s}.chat-img-btn:hover{opacity:0.85}
 .chat-func-menu{position:absolute;bottom:calc(100% + 8px);left:10px;background:var(--bg-secondary);border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,0.12);border:1px solid var(--border-light);padding:6px;z-index:20;display:flex;flex-direction:column;min-width:150px;animation:fadeUp 0.2s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 .chat-func-item{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:10px;cursor:pointer;font-size:13px;font-weight:500;color:var(--text-primary);transition:all 0.15s ease}.chat-func-item:hover{background:var(--accent-soft);color:var(--accent)}
@@ -345,7 +345,7 @@ body{background:var(--bg-primary);margin:0;padding:0;display:flex;justify-conten
 .theme-grid{display:flex;flex-wrap:wrap;gap:10px}
 .theme-dot{width:36px;height:36px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:all 0.2s ease;display:flex;align-items:center;justify-content:center;position:relative}.theme-dot:hover{transform:scale(1.15);box-shadow:0 4px 12px rgba(0,0,0,0.15)}
 .theme-dot.active{border-color:var(--accent);box-shadow:0 0 0 4px rgba(var(--accent-rgb),0.25);transform:scale(1.1)}
-.theme-dot.gold{background:linear-gradient(135deg,#c5a47e,#b8945c)}
+.theme-dot.blue{background:linear-gradient(135deg,#3090e8,#1870b8)}
 .theme-dot.rose{background:linear-gradient(135deg,#d4a0a0,#c08080)}
 .theme-dot.lavender{background:linear-gradient(135deg,#bba0c8,#a888b8)}
 .theme-dot.sage{background:linear-gradient(135deg,#9bba90,#7ea870)}
@@ -380,7 +380,7 @@ input,textarea,select{transition:all 0.2s ease}
 .settings-toggle{transition:background 0.3s ease}
 /* App icons */
 .app-icon{cursor:pointer;transition:transform 0.2s cubic-bezier(0.4,0,0.2,1),opacity 0.2s ease}
-.app-icon:hover{transform:translateY(-2px)}.app-icon:hover .app-icon-img{box-shadow:0 6px 20px rgba(var(--accent-rgb),0.25)}
+.app-icon:hover{transform:translateY(-2px)}.app-icon:hover .app-icon-img{background:rgba(var(--accent-rgb),0.06);border-color:var(--accent);color:var(--accent-dark)}
 /* Toggle pills */
 .settings-toggle::after{transition:left 0.3s cubic-bezier(0.4,0,0.2,1),box-shadow 0.2s ease}
 .settings-toggle.on::after{box-shadow:0 2px 6px rgba(0,0,0,0.2)}
@@ -399,7 +399,7 @@ html[data-theme="dark"] .chat-date-divider span{background:var(--bg-primary)}
 html[data-theme="dark"] input,html[data-theme="dark"] textarea,html[data-theme="dark"] select{color:var(--text-primary);background:var(--input-bg)}
 html[data-theme="dark"] .rl-item:hover{box-shadow:0 4px 16px rgba(255,255,255,0.04)}
 html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,255,0.03)}
-@media(max-width:430px){.lock-time-wrap{margin-top:120px}.hero-card{margin-top:16px}}
+@media(max-width:430px){.lock-time-wrap{margin-top:120px}.hero-card{margin-top:16px}.widget{backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}.hero-card{backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}.movie-header,.chat-header,#cinemaBar{backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}}
 
 /* ===== 视频通话（微信风格双窗口）===== */
 .call-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:#000;z-index:500;display:flex;flex-direction:column;align-items:center;justify-content:space-between;overflow:hidden}
@@ -427,7 +427,7 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 .call-caller-hint{color:rgba(255,255,255,0.55);font-size:13px;margin-top:6px;letter-spacing:1px}
 .call-outgoing-text{animation:callOutPulse 1.8s ease-in-out infinite}
 @keyframes callOutPulse{0%,100%{opacity:1}50%{opacity:0.4}}
-.call-bottom-ctrls{position:absolute;bottom:0;left:0;right:0;z-index:5;display:flex;gap:32px;align-items:center;justify-content:center;padding:0 20px 40px;background:linear-gradient(to top,rgba(0,0,0,0.55),transparent)}
+.call-bottom-ctrls{position:absolute;bottom:0;left:0;right:0;z-index:5;display:flex;gap:32px;align-items:center;justify-content:center;padding:0 20px 44px;background:linear-gradient(to top,rgba(0,0,0,0.55),transparent)}
 .call-ctrl-item{display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer}
 .call-ctrl-circle{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.12);box-shadow:0 4px 16px rgba(0,0,0,0.3);transition:all 0.2s;color:#fff;font-size:20px}
 .call-ctrl-circle.muted,.call-ctrl-circle.camoff{background:rgba(255,255,255,0.25)}
@@ -463,7 +463,7 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 /* 表情选择器popover */
 .emoji-picker-popover{
   position:absolute;bottom:calc(100% + 8px);right:0;
-  width:300px;max-width:calc(100vw - 40px);height:340px;
+  width:300px;max-width:calc(100vw - 44px);height:344px;
   background:var(--bg-secondary);border:1px solid var(--border-light);
   border-radius:16px;box-shadow:var(--shadow-lg);
   z-index:150;display:none;flex-direction:column;overflow:hidden;
@@ -483,7 +483,7 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 .emoji-picker-body .emoji-cell:hover{background:var(--accent-soft);transform:scale(1.1)}
 .emoji-picker-body .sticker-cell .del-sticker{position:absolute;top:2px;right:2px;width:16px;height:16px;background:rgba(0,0,0,0.5);color:#fff;border-radius:50%;font-size:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:opacity 0.2s}
 .emoji-picker-body .sticker-cell:hover .del-sticker{opacity:1}
-.emoji-picker-empty{width:100%;text-align:center;color:var(--text-muted);padding:40px 20px;font-size:13px;line-height:2}
+.emoji-picker-empty{width:100%;text-align:center;color:var(--text-muted);padding:44px 20px;font-size:13px;line-height:2}
 
 /* 编辑资料弹窗 */
 .profile-edit-backdrop{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.45);z-index:250;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
@@ -523,7 +523,7 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 .movie-card:nth-child(1){animation-delay:0.02s}.movie-card:nth-child(2){animation-delay:0.06s}.movie-card:nth-child(3){animation-delay:0.1s}.movie-card:nth-child(4){animation-delay:0.14s}.movie-card:nth-child(5){animation-delay:0.18s}.movie-card:nth-child(6){animation-delay:0.22s}.movie-card:nth-child(7){animation-delay:0.26s}.movie-card:nth-child(8){animation-delay:0.3s}
 .movie-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(var(--accent-rgb),0.12),0 4px 12px rgba(0,0,0,0.06);border-color:rgba(var(--accent-rgb),0.35)}
 /* 封面区 */
-.movie-card-cover{width:100%;height:105px;display:flex;align-items:center;justify-content:center;font-size:40px;flex-shrink:0;background:linear-gradient(155deg,var(--accent-light) 0%,var(--accent-soft) 35%,var(--bg-tertiary) 100%);transition:all 0.35s ease;position:relative}
+.movie-card-cover{width:100%;height:105px;display:flex;align-items:center;justify-content:center;font-size:44px;flex-shrink:0;background:linear-gradient(155deg,var(--accent-light) 0%,var(--accent-soft) 35%,var(--bg-tertiary) 100%);transition:all 0.35s ease;position:relative}
 .movie-card:hover .movie-card-cover{filter:brightness(1.05)}
 /* 悬停播放图标 */
 .movie-card-cover::after{content:'\25B6';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;background:rgba(0,0,0,0.25);opacity:0;transition:opacity 0.3s ease;backdrop-filter:blur(1px);-webkit-backdrop-filter:blur(1px)}
@@ -567,7 +567,7 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 .cinema-chat .chat-msg-row.me .chat-msg-bubble{background:var(--accent);color:#fff;font-size:13px;padding:8px 12px;border-radius:14px 14px 4px 14px;box-shadow:0 2px 8px rgba(var(--accent-rgb),0.2);line-height:1.45}
 /* 对方气泡 */
 .cinema-chat .chat-msg-row.ta .chat-msg-bubble{background:var(--msg-recv-bg);color:var(--msg-recv-text);font-size:13px;padding:8px 12px;border-radius:14px 14px 14px 4px;box-shadow:0 1px 3px rgba(0,0,0,0.05);border-left:3px solid var(--accent);line-height:1.45}
-.cinema-chat .chat-msg-bubble img{max-width:140px;max-height:140px;border-radius:8px}
+.cinema-chat .chat-msg-bubble img{max-width:144px;max-height:144px;border-radius:8px}
 .cinema-chat .chat-msg-avatar{width:28px;height:28px;border-radius:6px;font-size:11px;opacity:0.85;margin-top:2px;flex-shrink:0}
 /* 系统消息 */
 .cinema-status{text-align:center;font-size:10px;color:var(--text-muted);padding:10px 0;font-weight:400;letter-spacing:1px;font-style:italic;opacity:0.7}
@@ -697,16 +697,16 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 #cinemaPane.pixel .cinema-skin-bar-pixel{display:block;background:#c4945a;color:#3d2810;font-size:8px;font-weight:bold;font-family:'Press Start 2P','SimHei',monospace;padding:5px 10px;border:3px solid #8b6e4a;border-top-color:#a0805a;border-left-color:#a0805a;border-bottom-color:#6b3e1c;border-right-color:#6b3e1c;margin-bottom:4px;text-align:center;letter-spacing:2px;box-shadow:inset 1px 1px 0 rgba(255,255,255,0.15),inset -1px -1px 0 rgba(0,0,0,0.1)}
 #cinemaPane.beeper .cinema-skin-bar-beeper{display:flex;justify-content:space-between;align-items:center;background:#2a2a2a;color:#555;font-size:7px;font-weight:bold;font-family:'Courier New',monospace;padding:2px 8px;letter-spacing:2px;border-bottom:1px solid #1a1a1a}
 /* ===== Yes or No ===== */
-.yn-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:var(--overlay-bg);z-index:225;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:18px;padding:60px 30px 40px;overflow-y:auto}
+.yn-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:var(--overlay-bg);z-index:225;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:18px;padding:60px 30px 44px;overflow-y:auto}
 /* 标题 */
 .yn-title{font-size:20px;font-weight:700;color:var(--text-primary);letter-spacing:3px;text-align:center;margin-bottom:4px}
-.yn-title::after{content:'';display:block;width:40px;height:2px;background:var(--accent);margin:10px auto 0;border-radius:1px;opacity:0.5}
+.yn-title::after{content:'';display:block;width:44px;height:2px;background:var(--accent);margin:10px auto 0;border-radius:1px;opacity:0.5}
 /* 设置按钮 */
 .yn-settings-btn{position:absolute;top:18px;right:18px;font-size:15px;color:var(--text-muted);cursor:pointer;transition:all 0.2s ease;z-index:2}.yn-settings-btn:hover{color:var(--accent);transform:rotate(60deg)}
 /* 返回按钮 */
 .yn-back{position:absolute;top:18px;left:18px;font-size:15px;color:var(--accent);cursor:pointer;transition:opacity 0.2s;z-index:2}.yn-back:hover{opacity:0.6}
 /* 输入框 */
-.yn-input{width:260px;height:42px;border-radius:21px;border:1.5px solid var(--border-light);padding:0 18px;font-size:14px;background:var(--input-bg);color:var(--text-primary);outline:none;font-family:var(--font);text-align:center;transition:all 0.25s ease}
+.yn-input{width:260px;height:44px;border-radius:21px;border:1.5px solid var(--border-light);padding:0 18px;font-size:14px;background:var(--input-bg);color:var(--text-primary);outline:none;font-family:var(--font);text-align:center;transition:all 0.25s ease}
 .yn-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(var(--accent-rgb),0.08)}
 .yn-input::placeholder{color:var(--text-muted);font-weight:300}
 /* 硬币 */
@@ -714,7 +714,7 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 .yn-coin{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 1.2s cubic-bezier(0.22,1,0.36,1)}
 .yn-coin-face{position:absolute;inset:0;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;backface-visibility:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.18),inset 0 2px 0 rgba(255,255,255,0.15);letter-spacing:3px;overflow:hidden}
 .yn-coin-face img{width:100%;height:100%;object-fit:cover;border-radius:50%}
-.yn-coin-front{background:linear-gradient(145deg,#b8945c 0%,#c5a47e 30%,#d4b896 60%,#a07848 100%);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.2)}
+.yn-coin-front{background:linear-gradient(145deg,#5f85b0 0%,#7b9ec4 30%,#9eb8d8 60%,#4a6a90 100%);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.2)}
 .yn-coin-back{background:linear-gradient(145deg,#8b6b5a 0%,#a0846c 30%,#b89880 60%,#7a5848 100%);color:#fff;transform:rotateY(180deg);text-shadow:0 1px 2px rgba(0,0,0,0.2)}
 /* 答案展示 */
 .yn-answer{font-size:18px;font-weight:600;color:var(--accent-dark);text-align:center;min-height:48px;display:flex;align-items:center;justify-content:center;max-width:300px;line-height:1.6;padding:10px 20px;background:var(--accent-soft);border-radius:16px;animation:ynAnswerIn 0.5s ease}
@@ -814,7 +814,7 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 .music-ctrl-btn{width:28px;height:28px;border-radius:50%;border:none;background:var(--accent-soft);color:var(--accent-dark);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:12px;transition:var(--transition)}
 .music-ctrl-btn:active{transform:scale(0.9)}
 .music-now-title{text-align:center;font-size:10px;color:var(--text-muted);padding:2px 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.music-playlist{max-height:140px;overflow-y:auto;margin-top:6px;border-top:1px solid var(--border-light);padding-top:6px}
+.music-playlist{max-height:144px;overflow-y:auto;margin-top:6px;border-top:1px solid var(--border-light);padding-top:6px}
 .music-playlist-item{display:flex;align-items:center;justify-content:space-between;padding:5px 8px;border-radius:6px;font-size:12px;cursor:pointer;color:var(--text-secondary);transition:var(--transition)}
 .music-playlist-item:hover{background:var(--accent-soft)}
 .music-playlist-item.active{color:var(--accent-dark);font-weight:600;background:var(--accent-soft)}
@@ -928,7 +928,7 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 .beauty-bg-item:hover{transform:scale(1.05)}
 .beauty-bg-item.active{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
 .beauty-bg-item.add{display:flex;align-items:center;justify-content:center;border:2px dashed var(--border);color:var(--text-muted);font-size:22px;background:var(--bg-primary)}
-.beauty-theme-dot{width:40px;height:40px;border-radius:50%;cursor:pointer;border:3px solid transparent;transition:var(--transition);box-shadow:0 2px 8px rgba(0,0,0,0.1);position:relative}
+.beauty-theme-dot{width:44px;height:44px;border-radius:50%;cursor:pointer;border:3px solid transparent;transition:var(--transition);box-shadow:0 2px 8px rgba(0,0,0,0.1);position:relative}
 .beauty-theme-dot:hover{transform:scale(1.1)}
 .beauty-theme-dot.active{border-color:var(--text-primary);box-shadow:0 0 0 4px var(--accent-soft)}
 
@@ -967,7 +967,7 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 .mail-compose-info{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);padding:6px 0 12px;font-weight:500;font-style:italic}
 .mail-actions{display:flex;gap:8px}
 .mail-empty{text-align:center;color:var(--text-muted);padding:50px 20px;font-size:15px;line-height:2;flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column}
-.mail-empty i{font-size:40px;margin-bottom:12px;opacity:0.2}
+.mail-empty i{font-size:44px;margin-bottom:12px;opacity:0.2}
 /* 收件箱分板块 */
 .mail-inbox-section{margin-bottom:6px}
 .mail-inbox-label{font-size:11px;font-weight:600;color:var(--accent);padding:6px 4px 4px;letter-spacing:1px;opacity:0.8}
@@ -989,12 +989,12 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 .mail-view-actions button{flex:1;height:36px;border-radius:18px;border:none;font-size:13px;cursor:pointer;font-family:var(--font);font-weight:500;transition:all 0.2s ease}
 
 /* ===== 朋友圈 ===== */
-.app-moments .app-icon-img{background:linear-gradient(135deg,#5a9e7e,#3d7a5e)}
+
 .moments-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:var(--overlay-bg);z-index:225;display:flex;flex-direction:column;overflow-y:auto;transition:background-color 0.5s ease}
 .moments-header{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;flex-shrink:0;background:var(--header-bg);z-index:5;position:sticky;top:0;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
 .moments-back{font-size:16px;color:var(--accent);cursor:pointer;padding:4px 0;transition:opacity 0.2s}.moments-back:hover{opacity:0.7}
 /* 封面背景区 */
-.moments-banner{position:relative;width:100%;height:240px;flex-shrink:0;overflow:visible}
+.moments-banner{position:relative;width:100%;height:244px;flex-shrink:0;overflow:visible}
 .moments-cover-default{position:absolute;inset:0;background:linear-gradient(180deg,#4a5a6a 0%,#3a4a5a 40%,#5a6a7a 70%,#6a7a8a 100%)}
 .moments-cover-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 /* 右上角操作按钮 */
@@ -1011,7 +1011,7 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 /* 单条动态 */
 .moment-item{display:flex;gap:10px;padding:16px 0;border-bottom:1px solid var(--border-light);animation:murmurIn 0.4s ease backwards}
 .moment-item:nth-child(1){animation-delay:0.02s}.moment-item:nth-child(2){animation-delay:0.06s}.moment-item:nth-child(3){animation-delay:0.1s}.moment-item:nth-child(4){animation-delay:0.14s}.moment-item:nth-child(5){animation-delay:0.18s}.moment-item:nth-child(6){animation-delay:0.22s}.moment-item:nth-child(7){animation-delay:0.26s}.moment-item:nth-child(8){animation-delay:0.3s}
-.moment-avatar{width:42px;height:42px;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px;background:var(--accent-soft);overflow:hidden}
+.moment-avatar{width:44px;height:44px;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px;background:var(--accent-soft);overflow:hidden}
 .moment-avatar img{width:100%;height:100%;object-fit:cover}
 .moment-main{flex:1;min-width:0}
 .moment-name{font-size:14px;font-weight:600;color:#5a7e9e;margin-bottom:3px}
@@ -1019,7 +1019,7 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 .moment-text{font-size:15px;color:var(--text-primary);line-height:1.7;margin-bottom:6px;word-break:break-word}
 /* 图片网格 */
 .moment-images{display:grid;gap:4px;margin-bottom:8px;border-radius:8px;overflow:hidden}
-.moment-images.img1{grid-template-columns:1fr;max-width:240px}
+.moment-images.img1{grid-template-columns:1fr;max-width:244px}
 .moment-images.img2{grid-template-columns:1fr 1fr;max-width:280px}
 .moment-images.img3{grid-template-columns:1fr 1fr;max-width:280px}.moment-images.img3 .moment-img:first-child{grid-row:span 2;grid-column:span 2}.moment-images.img3 .moment-img:nth-child(2),.moment-images.img3 .moment-img:nth-child(3){grid-column:span 1}
 .moment-images.img4,.moment-images.img5,.moment-images.img6,.moment-images.img7,.moment-images.img8,.moment-images.img9{grid-template-columns:repeat(3,1fr);max-width:280px}
@@ -1041,7 +1041,7 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 .moments-compose-cancel{font-size:15px;color:var(--text-muted);cursor:pointer;padding:4px 0;transition:color 0.2s}.moments-compose-cancel:hover{color:var(--text-primary)}
 .moments-compose-submit{height:32px;border-radius:16px;border:none;padding:0 18px;font-size:13px;font-weight:600;background:var(--accent);color:#fff;cursor:pointer;font-family:var(--font);transition:all 0.2s}.moments-compose-submit:active{transform:scale(0.95)}.moments-compose-submit:disabled{opacity:0.4;pointer-events:none}
 /* 文案编辑区 */
-.moments-compose-editor{flex:1;width:100%;border:none;padding:20px 18px;font-size:16px;background:transparent;color:var(--text-primary);outline:none;font-family:var(--font);resize:none;line-height:1.8;min-height:160px}
+.moments-compose-editor{flex:1;width:100%;border:none;padding:20px 18px 20px 44px;font-size:16px;background:transparent;color:var(--text-primary);outline:none;font-family:var(--font);resize:none;line-height:1.8;min-height:160px}
 .moments-compose-editor::placeholder{color:var(--text-muted);font-weight:300;font-size:15px}
 /* 图片区 - 虚线框 */
 .moments-compose-images{display:flex;flex-wrap:wrap;gap:8px;padding:8px 18px 20px;align-items:flex-start}
@@ -1057,7 +1057,7 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 .mco-label{font-size:14px;color:var(--text-primary);font-weight:500}
 .mco-val{font-size:13px;color:var(--text-muted);display:flex;align-items:center;gap:4px}
 .moments-empty{text-align:center;color:var(--text-muted);padding:60px 20px;font-size:14px;line-height:2;flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column}
-.moments-empty i{font-size:40px;margin-bottom:12px;opacity:0.2}
+.moments-empty i{font-size:44px;margin-bottom:12px;opacity:0.2}
 
 </style>
 </head>
@@ -1107,27 +1107,27 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
           </div>
 
           <div class="app-grid">
-            <div class="app-icon app-chat" id="appChat"><div class="app-icon-img"><i class="ph-fill ph-chats-circle"></i></div><span class="app-icon-label">Murphy传讯</span></div>
-            <div class="app-icon app-moments" id="appMoments"><div class="app-icon-img"><i class="ph-fill ph-globe-hemisphere-east"></i></div><span class="app-icon-label">朋友圈</span></div>
-            <div class="app-icon app-mail" id="appMail"><div class="app-icon-img"><i class="ph-fill ph-envelope"></i></div><span class="app-icon-label">邮件</span></div>
-            <div class="app-icon app-settings" id="appSettings"><div class="app-icon-img"><i class="ph-fill ph-gear"></i></div><span class="app-icon-label">设置</span></div>
-            <div class="app-icon app-reply" id="appReply"><div class="app-icon-img"><i class="ph-fill ph-clipboard-text"></i></div><span class="app-icon-label">回复库</span></div>
-            <div class="app-icon app-beauty" id="appBeauty"><div class="app-icon-img"><i class="ph-fill ph-paint-brush"></i></div><span class="app-icon-label">美化</span></div>
-            <div class="app-icon app-journal" id="appJournal"><div class="app-icon-img"><i class="ph-fill ph-floppy-disk"></i></div><span class="app-icon-label">数据</span></div>
-            <div class="app-icon app-check" id="appCheck"><div class="app-icon-img"><i class="ph-fill ph-map-pin"></i></div><span class="app-icon-label">查岗</span></div>
-            <div class="app-icon app-diary" id="appDiary"><div class="app-icon-img"><i class="ph-fill ph-book-open"></i></div><span class="app-icon-label">日记本</span></div>
-            <div class="app-icon app-movie" id="appMovie"><div class="app-icon-img"><i class="ph-fill ph-film-strip"></i></div><span class="app-icon-label">一起看电影</span></div>
-            <div class="app-icon app-music" id="appMusic"><div class="app-icon-img"><i class="ph-fill ph-music-notes"></i></div><span class="app-icon-label">一起听音乐</span></div>
+            <div class="app-icon app-chat" id="appChat"><div class="app-icon-img"><i class="ph ph-chats-circle"></i></div><span class="app-icon-label">Murphy传讯</span></div>
+            <div class="app-icon app-moments" id="appMoments"><div class="app-icon-img"><i class="ph ph-globe-hemisphere-east"></i></div><span class="app-icon-label">朋友圈</span></div>
+            <div class="app-icon app-mail" id="appMail"><div class="app-icon-img"><i class="ph ph-envelope"></i></div><span class="app-icon-label">邮件</span></div>
+            <div class="app-icon app-settings" id="appSettings"><div class="app-icon-img"><i class="ph ph-gear"></i></div><span class="app-icon-label">设置</span></div>
+            <div class="app-icon app-reply" id="appReply"><div class="app-icon-img"><i class="ph ph-clipboard-text"></i></div><span class="app-icon-label">回复库</span></div>
+            <div class="app-icon app-beauty" id="appBeauty"><div class="app-icon-img"><i class="ph ph-paint-brush"></i></div><span class="app-icon-label">美化</span></div>
+            <div class="app-icon app-journal" id="appJournal"><div class="app-icon-img"><i class="ph ph-floppy-disk"></i></div><span class="app-icon-label">数据</span></div>
+            <div class="app-icon app-check" id="appCheck"><div class="app-icon-img"><i class="ph ph-map-pin"></i></div><span class="app-icon-label">查岗</span></div>
+            <div class="app-icon app-diary" id="appDiary"><div class="app-icon-img"><i class="ph ph-book-open"></i></div><span class="app-icon-label">日记本</span></div>
+            <div class="app-icon app-movie" id="appMovie"><div class="app-icon-img"><i class="ph ph-film-strip"></i></div><span class="app-icon-label">一起看电影</span></div>
+            <div class="app-icon app-music" id="appMusic"><div class="app-icon-img"><i class="ph ph-music-notes"></i></div><span class="app-icon-label">一起听音乐</span></div>
           </div>
-    </div><div class="home-page"><div class="app-grid" style="padding-top:80px">
-            <div class="app-icon app-yn" id="appYN"><div class="app-icon-img"><i class="ph-fill ph-target"></i></div><span class="app-icon-label">Yes or No</span></div>
-            <div class="app-icon app-survey" id="appSurvey"><div class="app-icon-img"><i class="ph-fill ph-list-checks"></i></div><span class="app-icon-label">问卷</span></div>
-            <div class="app-icon app-murmur" id="appMurmur"><div class="app-icon-img"><i class="ph-fill ph-chat-circle-dots"></i></div><span class="app-icon-label">碎碎念</span></div>
-            <div class="app-icon app-memo" id="appMemo"><div class="app-icon-img"><i class="ph-fill ph-note"></i></div><span class="app-icon-label">备忘录</span></div>
-            <div class="app-icon app-report" id="appReport"><div class="app-icon-img"><i class="ph-fill ph-chart-bar"></i></div><span class="app-icon-label">相处报告</span></div>
-            <div class="app-icon app-revsurvey" id="appRevSurvey"><div class="app-icon-img"><i class="ph-fill ph-arrows-clockwise"></i></div><span class="app-icon-label">反向问卷</span></div>
+    </div><div class="home-page"><div class="app-grid">
+            <div class="app-icon app-yn" id="appYN"><div class="app-icon-img"><i class="ph ph-target"></i></div><span class="app-icon-label">Yes or No</span></div>
+            <div class="app-icon app-survey" id="appSurvey"><div class="app-icon-img"><i class="ph ph-list-checks"></i></div><span class="app-icon-label">问卷</span></div>
+            <div class="app-icon app-murmur" id="appMurmur"><div class="app-icon-img"><i class="ph ph-chat-circle-dots"></i></div><span class="app-icon-label">碎碎念</span></div>
+            <div class="app-icon app-memo" id="appMemo"><div class="app-icon-img"><i class="ph ph-note"></i></div><span class="app-icon-label">备忘录</span></div>
+            <div class="app-icon app-report" id="appReport"><div class="app-icon-img"><i class="ph ph-chart-bar"></i></div><span class="app-icon-label">相处报告</span></div>
+            <div class="app-icon app-revsurvey" id="appRevSurvey"><div class="app-icon-img"><i class="ph ph-arrows-clockwise"></i></div><span class="app-icon-label">反向问卷</span></div>
 
-          </div><div class="polaroid-area"><div class="polaroid-card" id="polaroid1" data-idx="0"><div class="polaroid-inner"><div class="polaroid-img"><span class="polaroid-placeholder">📷</span><img src="" alt="" style="display:none"></div><div class="polaroid-cap">我们的瞬间</div></div></div><div class="polaroid-card" id="polaroid2" data-idx="1"><div class="polaroid-inner"><div class="polaroid-img"><span class="polaroid-placeholder">📷</span><img src="" alt="" style="display:none"></div><div class="polaroid-cap">最好的时光</div></div></div></div><div class="period-card" id="periodCard"><div class="period-head"><span class="period-prev" id="periodPrev">◀</span><span class="period-month" id="periodMonth"></span><span class="period-next" id="periodNext">▶</span><span class="period-gear" id="periodGear">⚙</span></div><div class="period-input-row"><span>本次开始</span><input type="date" id="periodStartDate"><span>周期</span><input type="number" id="periodQuickCycle" min="21" max="45" value="28" style="width:42px"><span>天</span></div><div class="period-week"><span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span></div><div class="period-grid" id="periodGrid"></div><div class="period-info" id="periodInfo"></div></div>
+          </div><div class="polaroid-area"><div class="polaroid-card" id="polaroid1" data-idx="0"><div class="polaroid-inner"><div class="polaroid-img"><span class="polaroid-placeholder">📷</span><img src="" alt="" style="display:none"></div><div class="polaroid-cap">我们的瞬间</div></div></div><div class="polaroid-card" id="polaroid2" data-idx="1"><div class="polaroid-inner"><div class="polaroid-img"><span class="polaroid-placeholder">📷</span><img src="" alt="" style="display:none"></div><div class="polaroid-cap">最好的时光</div></div></div></div><div class="period-card" id="periodCard"><div class="period-head"><span class="period-prev" id="periodPrev">◀</span><span class="period-month" id="periodMonth"></span><span class="period-next" id="periodNext">▶</span><span class="period-gear" id="periodGear">⚙</span></div><div class="period-input-row"><span>本次开始</span><input type="date" id="periodStartDate"><span>周期</span><input type="number" id="periodQuickCycle" min="21" max="45" value="28" style="width:44px"><span>天</span></div><div class="period-week"><span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span></div><div class="period-grid" id="periodGrid"></div><div class="period-info" id="periodInfo"></div></div>
     </div></div></div><div class="page-dots" id="pageDots"><span class="dot active" data-page="0"></span><span class="dot" data-page="1"></span></div>
   </div>
 
@@ -1257,7 +1257,7 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
     </div>
     <!-- 邀请中 -->
     <div id="movieInvitePane" style="display:none;flex-direction:column;align-items:center;justify-content:center;flex:1;gap:24px">
-      <div class="yn-coin-wrap" style="cursor:default"><div class="yn-coin" id="movieInviteCoin"><div class="yn-coin-face yn-coin-front"><i class="ph-fill ph-film-strip"></i></div><div class="yn-coin-face yn-coin-back">🍿</div></div></div>
+      <div class="yn-coin-wrap" style="cursor:default"><div class="yn-coin" id="movieInviteCoin"><div class="yn-coin-face yn-coin-front"><i class="ph ph-film-strip"></i></div><div class="yn-coin-face yn-coin-back">🍿</div></div></div>
       <div style="font-size:16px;font-weight:600;color:var(--text-primary)" id="movieInviteTitle">邀请TA一起看</div>
       <div style="font-size:13px;color:var(--text-muted)" id="movieInviteStatus">等待TA回应...</div>
       <div id="movieInviteActions" style="display:none;gap:8px">
@@ -1564,11 +1564,11 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
       <div id="reportContent"></div>
     </div>
   </div>
-<div class="survey-overlay" id="beautyOverlay" style="display:none"><div class="rl-header"><div class="rl-back" id="beautyBack">‹ 返回</div><div class="rl-title">🎨 外观设置</div><div style="font-size:11px;color:var(--accent);cursor:pointer" id="beautyReset">重置</div></div><div class="survey-body"><div id="beautyNav" class="beauty-grid"><div class="beauty-card" data-panel="theme"><i class="fas fa-paint-roller"></i><span>主题配色</span><small>7色换肤</small></div><div class="beauty-card" data-panel="fontbg"><i class="fas fa-font"></i><span>背景 & 字体</span><small>字号+壁纸</small></div><div class="beauty-card" data-panel="bubble"><i class="fas fa-comment"></i><span>气泡 & CSS</span><small>样式+颜色</small></div><div class="beauty-card" data-panel="avatar"><i class="fas fa-user-circle"></i><span>聊天头像</span><small>大小+圆角</small></div><div class="beauty-card" data-panel="moments"><i class="fas fa-globe-asia"></i><span>朋友圈封面</span><small>背景图片</small></div></div><div id="beautyPanels"><div class="beauty-panel" id="beautyPanelTheme"><div class="settings-section-title"><i class="fas fa-paint-roller"></i> 快捷换肤</div><div style="display:flex;flex-wrap:wrap;gap:6px" id="beautyThemeDots"></div><button class="rl-btn rl-btn-add" style="width:100%;margin-top:8px" onclick="document.getElementById('settingsOverlay').style.display='flex';renderSettings()">更多主题设置 →</button></div><div class="beauty-panel" id="beautyPanelFontbg"><div class="settings-section-title"><i class="fas fa-font"></i> 字体大小</div><div class="beauty-font-row"><label>全局</label><input type="range" id="bfontSize" min="12" max="22" value="16"><span id="bfontSizeVal">16px</span></div><div class="beauty-font-row"><label>消息</label><input type="range" id="bmsgSize" min="12" max="24" value="16"><span id="bmsgSizeVal">16px</span></div><div class="settings-section-title" style="margin-top:10px"><i class="fas fa-image"></i> 聊天背景</div><div class="beauty-bg-grid" id="beautyBgGrid"><div class="beauty-bg-item add" id="beautyBgAdd">+</div></div><button class="rl-btn" id="beautyBgReset" style="width:100%;margin-top:6px">恢复默认背景</button><input type="file" id="beautyBgInput" accept="image/*" style="display:none"><div class="settings-section-title" style="margin-top:10px"><i class="fas fa-images"></i> 全屏壁纸</div><div style="font-size:11px;color:var(--text-muted);margin-bottom:6px">为不同页面设置背景图片</div><div class="beauty-row"><label>目标页面</label><select id="bgTarget" style="font-size:12px;height:28px;border-radius:8px;border:1px solid var(--border-light);background:var(--input-bg);color:var(--text-primary);flex:1"><option value="home">主屏</option><option value="lock">锁屏</option><option value="chat">传讯聊天</option><option value="reply">回复库</option><option value="mail">信封邮件</option><option value="movie">一起看电影</option><option value="diary">日记本</option><option value="memo">备忘录</option><option value="survey">问卷</option><option value="checkin">查岗</option><option value="murmur">碎碎念</option><option value="yn">命运抉择</option><option value="report">相处报告</option><option value="settings">设置</option></select></div><div class="beauty-bg-grid" id="beautyBgAllGrid"><div class="beauty-bg-item add" id="beautyBgAllAdd">+</div></div><div style="display:flex;gap:6px;margin-top:6px"><button class="rl-btn rl-btn-add" id="beautyBgApplyAll" style="flex:1">🌐 应用到全部页面</button><button class="rl-btn" id="beautyBgAllReset" style="flex:1">清除当前页</button></div><input type="file" id="beautyBgAllInput" accept="image/*" style="display:none"></div><div class="beauty-panel" id="beautyPanelBubble"><div class="settings-section-title"><i class="fas fa-comment"></i> 气泡样式</div><div class="beauty-bubble-presets" id="beautyBubblePresets"><div class="beauty-bubble-preset active" data-style="0"><div class="bubble-preview"></div>标准尖角</div><div class="beauty-bubble-preset" data-style="1"><div class="bubble-preview"></div>圆角</div><div class="beauty-bubble-preset" data-style="2"><div class="bubble-preview"></div>大圆角胶囊</div><div class="beauty-bubble-preset" data-style="3"><div class="bubble-preview"></div>方形直角</div></div><div class="beauty-row" style="margin-top:8px"><label>我方色</label><input type="color" id="bSentColor" value="#95ec69"></div><div class="beauty-row"><label>对方色</label><input type="color" id="bRecvColor" value="#ffffff"></div><div class="settings-section-title" style="margin-top:10px"><i class="fas fa-code"></i> 自定义CSS</div><textarea class="beauty-css-area" id="bbCssRaw" placeholder="/* 自定义CSS */" style="min-height:60px"></textarea><div class="settings-section-title" style="margin-top:8px"><i class="ph-fill ph-app-window"></i> 图标CSS</div><textarea class="beauty-css-area" id="bbIconCssRaw" placeholder="/* 图标美化，可用选择器：&#10;.app-icon-img — 图标圆圈&#10;.app-icon-label — 图标文字&#10;.app-chat .app-icon-img — 单个图标 */" style="min-height:60px"></textarea><div class="settings-section-title" style="margin-top:8px"><i class="ph-fill ph-squares-four"></i> 首页卡片CSS</div><textarea class="beauty-css-area" id="bbWidgetCssRaw" placeholder="/* 首页小卡片美化，可用选择器：&#10;.widget — 所有卡片&#10;.widget-anniversary — 纪念日卡片&#10;.widget-quote — 悄悄话卡片&#10;.widget-weather — 天气卡片&#10;.weather-icon — 天气图标&#10;.weather-temp — 天气温度&#10;.hero-card — 顶部Hero卡片 */" style="min-height:50px"></textarea><div class="settings-section-title" style="margin-top:8px"><i class="fas fa-envelope"></i> 信件CSS</div><textarea class="beauty-css-area" id="bbMailCssRaw" placeholder="/* 信件美化，可用选择器：&#10;.mail-letter — 信件卡片&#10;.mail-letter.new — 新信件&#10;.mail-compose textarea — 写信框&#10;.mail-view-body — 读信正文&#10;.mail-view-top — 弹窗顶部 */" style="min-height:50px"></textarea></div><div class="beauty-panel" id="beautyPanelAvatar"><div class="settings-section-title"><i class="fas fa-user-circle"></i> 聊天头像</div><div class="beauty-font-row"><label>大小</label><input type="range" id="bAvatarSize" min="24" max="48" value="36"><span id="bAvatarSizeVal">36px</span></div><div class="beauty-font-row"><label>圆角</label><input type="range" id="bAvatarRadius" min="0" max="24" value="6"><span id="bAvatarRadiusVal">6px</span></div></div><div class="beauty-panel" id="beautyPanelMoments"><div class="settings-section-title"><i class="fas fa-globe-asia"></i> 朋友圈封面</div><div style="font-size:11px;color:var(--text-muted);margin-bottom:8px">设置朋友圈顶部的背景图片</div><div class="beauty-bg-grid" id="beautyMomentsBgGrid"><div class="beauty-bg-item add" id="beautyMomentsBgAdd">+</div></div><div style="display:flex;gap:6px;margin-top:6px"><button class="rl-btn rl-btn-danger" id="beautyMomentsBgReset" style="flex:1">清除封面</button></div><input type="file" id="beautyMomentsBgInput" accept="image/*" style="display:none"></div></div><button class="rl-btn" id="beautyBackNav" style="width:100%;margin-top:8px;display:none">‹ 返回</button></div></div>
+<div class="survey-overlay" id="beautyOverlay" style="display:none"><div class="rl-header"><div class="rl-back" id="beautyBack">‹ 返回</div><div class="rl-title">🎨 外观设置</div><div style="font-size:11px;color:var(--accent);cursor:pointer" id="beautyReset">重置</div></div><div class="survey-body"><div id="beautyNav" class="beauty-grid"><div class="beauty-card" data-panel="theme"><i class="fas fa-paint-roller"></i><span>主题配色</span><small>7色换肤</small></div><div class="beauty-card" data-panel="fontbg"><i class="fas fa-font"></i><span>背景 & 字体</span><small>字号+壁纸</small></div><div class="beauty-card" data-panel="bubble"><i class="fas fa-comment"></i><span>气泡 & CSS</span><small>样式+颜色</small></div><div class="beauty-card" data-panel="avatar"><i class="fas fa-user-circle"></i><span>聊天头像</span><small>大小+圆角</small></div><div class="beauty-card" data-panel="moments"><i class="fas fa-globe-asia"></i><span>朋友圈封面</span><small>背景图片</small></div></div><div id="beautyPanels"><div class="beauty-panel" id="beautyPanelTheme"><div class="settings-section-title"><i class="fas fa-paint-roller"></i> 快捷换肤</div><div style="display:flex;flex-wrap:wrap;gap:6px" id="beautyThemeDots"></div><button class="rl-btn rl-btn-add" style="width:100%;margin-top:8px" onclick="document.getElementById('settingsOverlay').style.display='flex';renderSettings()">更多主题设置 →</button></div><div class="beauty-panel" id="beautyPanelFontbg"><div class="settings-section-title"><i class="fas fa-font"></i> 字体大小</div><div class="beauty-font-row"><label>全局</label><input type="range" id="bfontSize" min="12" max="22" value="16"><span id="bfontSizeVal">16px</span></div><div class="beauty-font-row"><label>消息</label><input type="range" id="bmsgSize" min="12" max="24" value="16"><span id="bmsgSizeVal">16px</span></div><div class="settings-section-title" style="margin-top:10px"><i class="fas fa-image"></i> 聊天背景</div><div class="beauty-bg-grid" id="beautyBgGrid"><div class="beauty-bg-item add" id="beautyBgAdd">+</div></div><button class="rl-btn" id="beautyBgReset" style="width:100%;margin-top:6px">恢复默认背景</button><input type="file" id="beautyBgInput" accept="image/*" style="display:none"><div class="settings-section-title" style="margin-top:10px"><i class="fas fa-images"></i> 全屏壁纸</div><div style="font-size:11px;color:var(--text-muted);margin-bottom:6px">为不同页面设置背景图片</div><div class="beauty-row"><label>目标页面</label><select id="bgTarget" style="font-size:12px;height:28px;border-radius:8px;border:1px solid var(--border-light);background:var(--input-bg);color:var(--text-primary);flex:1"><option value="home">主屏</option><option value="lock">锁屏</option><option value="chat">传讯聊天</option><option value="reply">回复库</option><option value="mail">信封邮件</option><option value="movie">一起看电影</option><option value="diary">日记本</option><option value="memo">备忘录</option><option value="survey">问卷</option><option value="checkin">查岗</option><option value="murmur">碎碎念</option><option value="yn">命运抉择</option><option value="report">相处报告</option><option value="settings">设置</option></select></div><div class="beauty-bg-grid" id="beautyBgAllGrid"><div class="beauty-bg-item add" id="beautyBgAllAdd">+</div></div><div style="display:flex;gap:6px;margin-top:6px"><button class="rl-btn rl-btn-add" id="beautyBgApplyAll" style="flex:1">🌐 应用到全部页面</button><button class="rl-btn" id="beautyBgAllReset" style="flex:1">清除当前页</button></div><input type="file" id="beautyBgAllInput" accept="image/*" style="display:none"></div><div class="beauty-panel" id="beautyPanelBubble"><div class="settings-section-title"><i class="fas fa-comment"></i> 气泡样式</div><div class="beauty-bubble-presets" id="beautyBubblePresets"><div class="beauty-bubble-preset active" data-style="0"><div class="bubble-preview"></div>标准尖角</div><div class="beauty-bubble-preset" data-style="1"><div class="bubble-preview"></div>圆角</div><div class="beauty-bubble-preset" data-style="2"><div class="bubble-preview"></div>大圆角胶囊</div><div class="beauty-bubble-preset" data-style="3"><div class="bubble-preview"></div>方形直角</div></div><div class="beauty-row" style="margin-top:8px"><label>我方色</label><input type="color" id="bSentColor" value="#95ec69"></div><div class="beauty-row"><label>对方色</label><input type="color" id="bRecvColor" value="#ffffff"></div><div class="settings-section-title" style="margin-top:10px"><i class="fas fa-code"></i> 自定义CSS</div><textarea class="beauty-css-area" id="bbCssRaw" placeholder="/* 自定义CSS */" style="min-height:60px"></textarea><div class="settings-section-title" style="margin-top:8px"><i class="ph ph-app-window"></i> 图标CSS</div><textarea class="beauty-css-area" id="bbIconCssRaw" placeholder="/* 图标美化，可用选择器：&#10;.app-icon-img — 图标圆圈&#10;.app-icon-label — 图标文字&#10;.app-chat .app-icon-img — 单个图标 */" style="min-height:60px"></textarea><div class="settings-section-title" style="margin-top:8px"><i class="ph ph-squares-four"></i> 首页卡片CSS</div><textarea class="beauty-css-area" id="bbWidgetCssRaw" placeholder="/* 首页小卡片美化，可用选择器：&#10;.widget — 所有卡片&#10;.widget-anniversary — 纪念日卡片&#10;.widget-quote — 悄悄话卡片&#10;.widget-weather — 天气卡片&#10;.weather-icon — 天气图标&#10;.weather-temp — 天气温度&#10;.hero-card — 顶部Hero卡片 */" style="min-height:50px"></textarea><div class="settings-section-title" style="margin-top:8px"><i class="fas fa-envelope"></i> 信件CSS</div><textarea class="beauty-css-area" id="bbMailCssRaw" placeholder="/* 信件美化，可用选择器：&#10;.mail-letter — 信件卡片&#10;.mail-letter.new — 新信件&#10;.mail-compose textarea — 写信框&#10;.mail-view-body — 读信正文&#10;.mail-view-top — 弹窗顶部 */" style="min-height:50px"></textarea></div><div class="beauty-panel" id="beautyPanelAvatar"><div class="settings-section-title"><i class="fas fa-user-circle"></i> 聊天头像</div><div class="beauty-font-row"><label>大小</label><input type="range" id="bAvatarSize" min="24" max="48" value="36"><span id="bAvatarSizeVal">36px</span></div><div class="beauty-font-row"><label>圆角</label><input type="range" id="bAvatarRadius" min="0" max="24" value="6"><span id="bAvatarRadiusVal">6px</span></div></div><div class="beauty-panel" id="beautyPanelMoments"><div class="settings-section-title"><i class="fas fa-globe-asia"></i> 朋友圈封面</div><div style="font-size:11px;color:var(--text-muted);margin-bottom:8px">设置朋友圈顶部的背景图片</div><div class="beauty-bg-grid" id="beautyMomentsBgGrid"><div class="beauty-bg-item add" id="beautyMomentsBgAdd">+</div></div><div style="display:flex;gap:6px;margin-top:6px"><button class="rl-btn rl-btn-danger" id="beautyMomentsBgReset" style="flex:1">清除封面</button></div><input type="file" id="beautyMomentsBgInput" accept="image/*" style="display:none"></div></div><button class="rl-btn" id="beautyBackNav" style="width:100%;margin-top:8px;display:none">‹ 返回</button></div></div>
 
   <!-- 浮动音乐播放器 -->
   <div class="music-float" id="musicFloat" style="display:none">
-    <div class="music-mini-icon" id="musicMiniIcon"><i class="ph-fill ph-music-notes"></i></div>
+    <div class="music-mini-icon" id="musicMiniIcon"><i class="ph ph-music-notes"></i></div>
     <div class="music-header" id="musicDragHandle">
       <span>🎵 音乐</span>
       <div class="music-header-actions">
@@ -1754,7 +1754,7 @@ function dedupStrArray(arr){var seen=new Set();return arr.filter(function(item){
 
 // 主题管理
 function applyTheme(){
-  var color=localStorage.getItem('murphy_theme_color')||'gold';
+  var color=localStorage.getItem('murphy_theme_color')||'blue';
   var mode=localStorage.getItem('murphy_theme_mode')||'light';
   document.documentElement.setAttribute('data-color',color);
   document.documentElement.setAttribute('data-theme',mode);
@@ -2306,7 +2306,7 @@ function renderCheckin(){
   var b=$('checkinRefresh');if(b){b.disabled=!isToday;b.style.opacity=isToday?'1':'0.4'}
   if(!en.length){tl.innerHTML='';em.style.display='flex'}else{em.style.display='none';tl.innerHTML=en.map(function(e,i){return '<div class="checkin-item" onclick="showCK('+i+')"><div class="checkin-item-time">'+e.ts+'</div><div class="checkin-item-main"><div class="checkin-item-loc">📍 '+e.lo+'</div><div class="checkin-item-stat">📱 '+e.st+'</div></div><div class="checkin-item-sub"><span class="checkin-item-act">'+e.ac+'</span><span class="checkin-item-mood">'+e.mo+'</span></div></div>'}).join('')}
 }
-function showCK(i){var e=getCK(checkinViewDate)[i];if(!e)return;$('checkinDetailTime').textContent=e.ts;$('checkinDetailBody').innerHTML='<div style="text-align:center;font-size:40px;margin-bottom:16px">📍</div><div style="font-size:15px;color:var(--text-primary);text-align:center;line-height:2.2"><div>📍 '+e.lo+'</div><div>📱 '+e.st+'</div><div>🏃 '+e.ac+'</div><div>💬 '+e.mo+'</div></div>';$('checkinDetailBackdrop').style.display='flex'}
+function showCK(i){var e=getCK(checkinViewDate)[i];if(!e)return;$('checkinDetailTime').textContent=e.ts;$('checkinDetailBody').innerHTML='<div style="text-align:center;font-size:44px;margin-bottom:16px">📍</div><div style="font-size:15px;color:var(--text-primary);text-align:center;line-height:2.2"><div>📍 '+e.lo+'</div><div>📱 '+e.st+'</div><div>🏃 '+e.ac+'</div><div>💬 '+e.mo+'</div></div>';$('checkinDetailBackdrop').style.display='flex'}
 $('checkinBack').addEventListener('click',function(){$('checkinOverlay').style.display='none'});
 $('checkinDetailClose').addEventListener('click',function(){$('checkinDetailBackdrop').style.display='none'});
 $('checkinDetailBackdrop').addEventListener('click',function(e){if(e.target===this){$('checkinDetailBackdrop').style.display='none'}});
@@ -2625,7 +2625,7 @@ function compressImg(url,cb){var img=new Image();img.onload=function(){var c=doc
 var BG_TARGETS={chat:'.chat-screen',home:'.home-screen',lock:'.lock-screen',reply:'.rl-overlay',mail:'.mail-overlay',movie:'.movie-overlay',diary:'#diaryOverlay',memo:'#memoOverlay',survey:'.survey-overlay',checkin:'#checkinOverlay',murmur:'#murmurOverlay',yn:'.yn-overlay',report:'#reportOverlay',settings:'.settings-overlay',annWidget:'#anniversaryWidget',quoteWidget:'.widget-quote',heroCard:'.hero-card'};function compressImage(dataUrl,maxKB,cb){maxKB=maxKB||400;var img=new Image();img.onload=function(){var canvas=document.createElement('canvas');var ctx=canvas.getContext('2d');var scale=Math.min(1,Math.sqrt((maxKB*1024)/dataUrl.length));canvas.width=img.width*scale;canvas.height=img.height*scale;ctx.drawImage(img,0,0,canvas.width,canvas.height);cb(canvas.toDataURL('image/jpeg',0.75))};img.onerror=function(){cb(dataUrl)};img.src=dataUrl}
 function applyBeautyAll(){var root=document.documentElement.style;var fs=beautySets.fontSize+'';if(fs.indexOf('px')===-1)fs+='px';root.setProperty('--font-size',fs);var ms=beautySets.msgSize+'';if(ms.indexOf('px')===-1)ms+='px';root.setProperty('--message-font-size',ms);var av=beautySets.avatarSize+'';if(av.indexOf('px')===-1)av+='px';root.setProperty('--in-chat-avatar-size',av);var styles=[{radius:'16px'},{radius:'20px'},{radius:'28px'},{radius:'8px'}];var s=styles[beautySets.bubbleStyle];root.setProperty('--radius',s.radius);root.setProperty('--msg-sent-bg',beautySets.bubbleSent);root.setProperty('--msg-recv-bg',beautySets.bubbleRecv);root.setProperty('--avatar-radius',beautySets.avatarRadius);var bgEl=document.querySelector('.chat-screen');if(bgEl&&beautySets.bgActive){bgEl.style.background='url('+beautySets.bgActive+') center/cover no-repeat'}for(var k in BG_TARGETS){var img=beautySets.bgImgs&&beautySets.bgImgs[k+'_active'];if(img){var el=document.querySelector(BG_TARGETS[k]);if(el)el.style.background='url('+img+') center/cover no-repeat'}}try{var ls=document.getElementById('beautyLiveStyle');if(ls)ls.textContent=(beautySets.cssRaw||'')+'\n'+(beautySets.iconCssRaw||'')+'\n'+(beautySets.widgetCssRaw||'')+'\n'+(beautySets.mailCssRaw||'');var bfs=beautySets.fontSize+'';if(bfs.indexOf('px')===-1)bfs+='px';document.body.style.fontSize=bfs}catch(e){}}
 function openBeautyPanel(p){document.querySelectorAll('.beauty-panel').forEach(function(el){el.style.display='none'});document.getElementById('beautyNav').style.display=p?'none':'grid';document.getElementById('beautyBackNav').style.display=p?'block':'none';if(p==='theme'){buildThemeDots();document.getElementById('beautyPanelTheme').style.display='flex'}if(p==='fontbg'){document.getElementById('bfontSize').value=parseInt(beautySets.fontSize);document.getElementById('bfontSizeVal').textContent=beautySets.fontSize;document.getElementById('bmsgSize').value=parseInt(beautySets.msgSize);document.getElementById('bmsgSizeVal').textContent=beautySets.msgSize;renderBgGrid();document.getElementById('beautyPanelFontbg').style.display='flex'}if(p==='bubble'){document.querySelectorAll('.beauty-bubble-preset').forEach(function(el,i){el.classList.toggle('active',i===beautySets.bubbleStyle)});document.getElementById('bSentColor').value=beautySets.bubbleSent;document.getElementById('bRecvColor').value=beautySets.bubbleRecv;document.getElementById('bbCssRaw').value=beautySets.cssRaw||'';document.getElementById('bbIconCssRaw').value=beautySets.iconCssRaw||'';document.getElementById('bbWidgetCssRaw').value=beautySets.widgetCssRaw||'';document.getElementById('bbMailCssRaw').value=beautySets.mailCssRaw||'';document.getElementById('beautyPanelBubble').style.display='flex'}if(p==='avatar'){document.getElementById('bAvatarSize').value=parseInt(beautySets.avatarSize);document.getElementById('bAvatarSizeVal').textContent=beautySets.avatarSize;document.getElementById('bAvatarRadius').value=parseInt(beautySets.avatarRadius);document.getElementById('bAvatarRadiusVal').textContent=beautySets.avatarRadius;document.getElementById('beautyPanelAvatar').style.display='flex'}}
-function buildThemeDots(){var colors={gold:'#c5a47e',rose:'#d4a0a0',lavender:'#bba0c8',sage:'#9bba90',sky:'#8aacc8',blossom:'#e8a8b8',mono:'#6b6b6b'};var cur=localStorage.getItem('murphy_theme_color')||'gold';document.getElementById('beautyThemeDots').innerHTML=Object.keys(colors).map(function(k){return'<div class="beauty-theme-dot'+(k===cur?' active':'')+'" style="background:'+colors[k]+'" data-color="'+k+'"></div>'}).join('');document.querySelectorAll('#beautyThemeDots .beauty-theme-dot').forEach(function(d){d.addEventListener('click',function(){localStorage.setItem('murphy_theme_color',this.dataset.color);applyTheme();buildThemeDots()})})}
+function buildThemeDots(){var colors={blue:'#7b9ec4',rose:'#d4a0a0',lavender:'#bba0c8',sage:'#9bba90',sky:'#8aacc8',blossom:'#e8a8b8',mono:'#6b6b6b'};var cur=localStorage.getItem('murphy_theme_color')||'blue';document.getElementById('beautyThemeDots').innerHTML=Object.keys(colors).map(function(k){return'<div class="beauty-theme-dot'+(k===cur?' active':'')+'" style="background:'+colors[k]+'" data-color="'+k+'"></div>'}).join('');document.querySelectorAll('#beautyThemeDots .beauty-theme-dot').forEach(function(d){d.addEventListener('click',function(){localStorage.setItem('murphy_theme_color',this.dataset.color);applyTheme();buildThemeDots()})})}
 function renderBgGrid(){var g=document.getElementById('beautyBgGrid');g.querySelectorAll('.beauty-bg-item:not(.add)').forEach(function(el){el.remove()});beautySets.bgImages.forEach(function(img,i){var d=document.createElement('div');d.className='beauty-bg-item'+(img===beautySets.bgActive?' active':'');d.style.backgroundImage='url('+img+')';d.addEventListener('click',function(){beautySets.bgActive=img;saveBeauty();applyBeautyAll();renderBgGrid()});g.insertBefore(d,document.getElementById('beautyBgAdd'))})}
 document.getElementById('beautyBgAdd').addEventListener('click',function(){document.getElementById('beautyBgInput').click()});
 document.getElementById('beautyBgInput').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){compressImg(r.result,function(compressed){beautySets.bgImages.push(compressed);beautySets.bgActive=compressed;saveBeauty();applyBeautyAll();renderBgGrid()})};r.readAsDataURL(f);this.value=''});
@@ -2960,10 +2960,10 @@ function saveMovies(){localStorage.setItem('murphy_movies',JSON.stringify(movieL
 function renderMovieList(){
   var g=$('movieGrid');
   if(movieList.length===0){
-    g.innerHTML='<div style="width:100%;text-align:center;color:var(--text-muted);padding:40px 20px;line-height:2"><i class="fas fa-film" style="font-size:40px;opacity:0.3;display:block;margin-bottom:12px"></i>还没有添加电影<br><span style="font-size:12px">在下方粘贴B站视频链接来添加</span></div>';
+    g.innerHTML='<div style="width:100%;text-align:center;color:var(--text-muted);padding:44px 20px;line-height:2"><i class="fas fa-film" style="font-size:44px;opacity:0.3;display:block;margin-bottom:12px"></i>还没有添加电影<br><span style="font-size:12px">在下方粘贴B站视频链接来添加</span></div>';
   }else{
     g.innerHTML=movieList.map(function(m,i){
-      var coverHtml='';var c=m.cover||'🎥';if(c.match(/^https?:\/\//)||c.match(/^data:image\//)){coverHtml='<img src="'+c+'" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0" alt="">'}return '<div class="movie-card" data-idx="'+i+'"><div class="movie-card-cover">'+coverHtml+'<span style="position:relative;z-index:1;font-size:40px">'+(coverHtml?'':EH(c))+'</span></div><div class="movie-card-info"><div class="movie-card-name">'+EH(m.title)+'</div><div class="movie-card-tags">'+EH(m.tags||'')+'</div></div><div class="movie-card-del" data-idx="'+i+'"><i class="fas fa-times"></i></div></div>';
+      var coverHtml='';var c=m.cover||'🎥';if(c.match(/^https?:\/\//)||c.match(/^data:image\//)){coverHtml='<img src="'+c+'" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0" alt="">'}return '<div class="movie-card" data-idx="'+i+'"><div class="movie-card-cover">'+coverHtml+'<span style="position:relative;z-index:1;font-size:44px">'+(coverHtml?'':EH(c))+'</span></div><div class="movie-card-info"><div class="movie-card-name">'+EH(m.title)+'</div><div class="movie-card-tags">'+EH(m.tags||'')+'</div></div><div class="movie-card-del" data-idx="'+i+'"><i class="fas fa-times"></i></div></div>';
     }).join('');
     g.querySelectorAll('.movie-card').forEach(function(c){c.addEventListener('click',function(e){
       if(e.target.closest('.movie-card-del')){var i=parseInt(e.target.closest('.movie-card-del').dataset.idx);movieList.splice(i,1);saveMovies();renderMovieList();return}
@@ -3043,7 +3043,7 @@ function startCinema(idx){
   $('movieListPane').style.display='none';
   $('movieInvitePane').style.display='flex';
   $('cinemaPane').style.display='none';
-  $('movieInvitePane').innerHTML='<div style="background:var(--bg-secondary);border-radius:20px;padding:28px 24px;text-align:center;max-width:300px;box-shadow:var(--shadow-lg);animation:mailCardIn 0.3s ease"><div style="font-size:40px;margin-bottom:12px">🎬</div><div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:6px">邀请TA一起看</div><div style="font-size:14px;color:var(--accent-dark);margin-bottom:12px">《'+EH(m.title)+'》</div><div id="movieInviteStatus" style="font-size:13px;color:var(--text-muted);margin-bottom:18px">等待TA回应...</div><div id="movieInviteActions" style="display:none;gap:8px;justify-content:center"><button class="rl-btn rl-btn-add" id="movieInviteSolo">自己先看</button><button class="rl-btn" id="movieInviteRetry">再次邀请</button><button class="rl-btn rl-btn-danger" id="movieInviteBack">返回列表</button></div></div>';
+  $('movieInvitePane').innerHTML='<div style="background:var(--bg-secondary);border-radius:20px;padding:28px 24px;text-align:center;max-width:300px;box-shadow:var(--shadow-lg);animation:mailCardIn 0.3s ease"><div style="font-size:44px;margin-bottom:12px">🎬</div><div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:6px">邀请TA一起看</div><div style="font-size:14px;color:var(--accent-dark);margin-bottom:12px">《'+EH(m.title)+'》</div><div id="movieInviteStatus" style="font-size:13px;color:var(--text-muted);margin-bottom:18px">等待TA回应...</div><div id="movieInviteActions" style="display:none;gap:8px;justify-content:center"><button class="rl-btn rl-btn-add" id="movieInviteSolo">自己先看</button><button class="rl-btn" id="movieInviteRetry">再次邀请</button><button class="rl-btn rl-btn-danger" id="movieInviteBack">返回列表</button></div></div>';
   setTimeout(function(){
     var accepted=Math.random()<stg.movieAcceptChance/100;
     var st=$('movieInviteStatus');
@@ -3117,7 +3117,7 @@ function taInviteMovie(){
   var pn=profile.partnerName||'TA';
   $('movieOverlay').style.display='flex';$('movieListPane').style.display='none';
   $('movieInvitePane').style.display='flex';$('cinemaPane').style.display='none';
-  $('movieInvitePane').innerHTML='<div style="background:var(--bg-secondary);border-radius:20px;padding:28px 24px;text-align:center;max-width:300px;box-shadow:var(--shadow-lg);animation:mailCardIn 0.3s ease"><div style="font-size:40px;margin-bottom:12px">🎬</div><div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:6px">'+pn+'邀请你看电影</div><div style="font-size:14px;color:var(--accent-dark);margin-bottom:4px">《'+EH(m.title)+'》</div><div style="font-size:11px;color:var(--text-muted);margin-bottom:18px">要一起看吗？</div><div style="display:flex;gap:8px;justify-content:center"><button class="rl-btn rl-btn-add" id="taInvAccept" style="flex:1">接受</button><button class="rl-btn rl-btn-danger" id="taInvDecline" style="flex:1">拒绝</button></div></div>';
+  $('movieInvitePane').innerHTML='<div style="background:var(--bg-secondary);border-radius:20px;padding:28px 24px;text-align:center;max-width:300px;box-shadow:var(--shadow-lg);animation:mailCardIn 0.3s ease"><div style="font-size:44px;margin-bottom:12px">🎬</div><div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:6px">'+pn+'邀请你看电影</div><div style="font-size:14px;color:var(--accent-dark);margin-bottom:4px">《'+EH(m.title)+'》</div><div style="font-size:11px;color:var(--text-muted);margin-bottom:18px">要一起看吗？</div><div style="display:flex;gap:8px;justify-content:center"><button class="rl-btn rl-btn-add" id="taInvAccept" style="flex:1">接受</button><button class="rl-btn rl-btn-danger" id="taInvDecline" style="flex:1">拒绝</button></div></div>';
   $('taInvAccept').addEventListener('click',function(){$('movieInvitePane').style.display='none';$('cinemaPane').style.display='flex';$('cinemaIframe').src=m.url||('https://player.bilibili.com/player.html?bvid='+m.bvid);$('cinemaMovieName').textContent=m.title;movieChatMsgs=[];$('cinemaChat').innerHTML='';movieWatching=true;movieTaJoined=true;rCMsgCinema('system','🎬 '+pn+'邀请你看《'+m.title+'》');scheduleMovieTa()});
   $('taInvDecline').addEventListener('click',function(){$('movieOverlay').style.display='none';$('movieInvitePane').style.display='none';$('movieListPane').style.display='block';toast('你拒绝了'+pn+'的电影邀请')});
 }
@@ -3670,8 +3670,8 @@ $('callSettingsModal').addEventListener('click',function(e){if(e.target===this)h
 
 // ===== 设置面板 =====
 function renderSettings(){
-  var b=$('settingsBody');var curColor=localStorage.getItem('murphy_theme_color')||'gold';var curMode=localStorage.getItem('murphy_theme_mode')||'light';
-  b.innerHTML='<div class="settings-section"><div class="settings-section-title"><i class="fas fa-palette"></i> 主题色彩</div><div class="theme-grid"><div class="theme-dot gold'+(curColor==='gold'?' active':'')+'" data-color="gold" title="金色"></div><div class="theme-dot rose'+(curColor==='rose'?' active':'')+'" data-color="rose" title="玫瑰"></div><div class="theme-dot lavender'+(curColor==='lavender'?' active':'')+'" data-color="lavender" title="薰衣草"></div><div class="theme-dot sage'+(curColor==='sage'?' active':'')+'" data-color="sage" title="鼠尾草"></div><div class="theme-dot sky'+(curColor==='sky'?' active':'')+'" data-color="sky" title="天空"></div><div class="theme-dot blossom'+(curColor==='blossom'?' active':'')+'" data-color="blossom" title="花语"></div><div class="theme-dot mono'+(curColor==='mono'?' active':'')+'" data-color="mono" title="黑白"></div></div><div class="dark-toggle-wrap" style="margin-top:10px"><span class="dark-toggle-icon">'+(curMode==='dark'?'🌙':'☀️')+'</span><span style="flex:1;font-size:14px">暗黑模式</span><div class="settings-toggle'+(curMode==='dark'?' on':'')+'" id="cfgDarkToggle"></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-comment-dots"></i> 回复设置</div><div class="settings-row"><label>最短回复延迟</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgDelayMin" min="500" max="10000" value="'+stg.replyDelayMin+'" oninput="$(\'cfgDelayMinVal\').textContent=(this.value/1000).toFixed(1)+\'s\'"><span class="settings-range-val" id="cfgDelayMinVal">'+(stg.replyDelayMin/1000).toFixed(1)+'s</span></div></div><div class="settings-row"><label>最长回复延迟</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgDelayMax" min="1000" max="30000" value="'+stg.replyDelayMax+'" oninput="$(\'cfgDelayMaxVal\').textContent=(this.value/1000).toFixed(1)+\'s\'"><span class="settings-range-val" id="cfgDelayMaxVal">'+(stg.replyDelayMax/1000).toFixed(1)+'s</span></div></div><div class="settings-row"><label>每次回复条数</label><select id="cfgReplyCount" style="height:32px;border-radius:8px;border:1.5px solid var(--border-light);padding:0 8px;font-size:13px;background:var(--input-bg);color:var(--text-primary);outline:none;font-family:var(--font);cursor:pointer"><option value="1">1条</option><option value="1-2">1-2条</option><option value="1-3">1-3条</option><option value="2-3">2-3条</option></select></div><div class="settings-row"><label>已读不回概率</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgReadNoReply" min="0" max="50" value="'+Math.round(stg.readNoReplyChance*100)+'" oninput="$(\'cfgReadNoReplyVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgReadNoReplyVal">'+Math.round(stg.readNoReplyChance*100)+'%</span></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-dice"></i> 回复行为</div><div class="settings-row"><label>引用历史消息</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgReplyQuoteChance" min="0" max="50" value="'+stg.replyQuoteChance+'" oninput="$(\'cfgReplyQuoteChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgReplyQuoteChanceVal">'+stg.replyQuoteChance+'%</span></div></div><div class="settings-row"><label>拍一拍</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgPokeChance" min="0" max="20" value="'+stg.pokeChance+'" oninput="$(\'cfgPokeChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgPokeChanceVal">'+stg.pokeChance+'%</span></div></div><div class="settings-row"><label>电影接受邀请</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMovieAcceptChance" min="10" max="100" value="'+stg.movieAcceptChance+'" oninput="$(\'cfgMovieAcceptChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgMovieAcceptChanceVal">'+stg.movieAcceptChance+'%</span></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-bell"></i> 通知</div><div class="settings-row"><label><i class="fas fa-volume-up"></i> 音效</label><div class="settings-toggle'+(stg.soundEnabled?' on':'')+'" id="cfgSoundToggle"></div></div><div class="settings-row"><label><i class="fas fa-desktop"></i> 桌面通知</label><div class="settings-toggle'+(stg.desktopNotif?' on':'')+'" id="cfgNotifToggle"></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-clock"></i> 离线补发</div><div style="font-size:10px;color:var(--text-muted);padding:0 4px 6px">离线超5分钟后回来，自动补上期间错过的内容</div><div class="settings-row"><label>💬 聊天消息</label><div class="settings-toggle'+(stg.catchUpChat?' on':'')+'" id="cfgCatchUpChat"></div></div><div class="settings-row"><label>📧 邮件回信</label><div class="settings-toggle'+(stg.catchUpMail?' on':'')+'" id="cfgCatchUpMail"></div></div><div class="settings-row"><label>📞 未接来电</label><div class="settings-toggle'+(stg.catchUpCall?' on':'')+'" id="cfgCatchUpCall"></div></div><div class="settings-row"><label>🎬 电影邀请</label><div class="settings-toggle'+(stg.catchUpMovie?' on':'')+'" id="cfgCatchUpMovie"></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-envelope"></i> 信封设置</div><div class="settings-row"><label>对方主动来信</label><div class="settings-toggle'+(stg.mailPartnerSend?' on':'')+'" id="cfgMailPartnerSend"></div></div><div class="settings-row"><label>来信概率</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMailChance" min="5" max="80" value="'+stg.mailPartnerChance+'" oninput="$(\'cfgMailChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgMailChanceVal">'+stg.mailPartnerChance+'%</span></div></div><div class="settings-row"><label>检查间隔</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMailInterval" min="15" max="240" step="15" value="'+stg.mailPartnerInterval+'" oninput="$(\'cfgMailIntervalVal\').textContent=this.value+\'分钟\'"><span class="settings-range-val" id="cfgMailIntervalVal">'+stg.mailPartnerInterval+'分钟</span></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-cubes"></i> TA主动来电</div><div class="settings-row"><label>启用来电（30min~4h随机）</label><div class="settings-toggle" id="cfgAutoCallSend"></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-phone-slash"></i> TA挂断/拒接</div><div class="settings-row"><label>拒接来电</label><div class="settings-toggle'+(stg.callDecline?' on':'')+'" id="cfgCallDecline"></div></div><div class="settings-row"><label>拒接概率</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgCallDeclineChance" min="5" max="80" value="'+stg.callDeclineChance+'" oninput="$(\'cfgCallDeclineChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgCallDeclineChanceVal">'+stg.callDeclineChance+'%</span></div></div><div class="settings-row"><label>通话中挂断</label><div class="settings-toggle'+(stg.callHangup?' on':'')+'" id="cfgCallHangup"></div></div><div class="settings-row"><label>挂断概率</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgCallHangupChance" min="5" max="60" value="'+stg.callHangupChance+'" oninput="$(\'cfgCallHangupChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgCallHangupChanceVal">'+stg.callHangupChance+'%</span></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-cubes"></i> 字卡拼句</div><div class="settings-row"><label>启用拼句</label><div class="settings-toggle'+(stg.cardCombine?' on':'')+'" id="cfgCardCombine"></div></div><div style="font-size:10px;color:var(--text-muted);padding:0 4px 6px">TA回复时随机选取2-3条字卡拼成一句话</div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-paper-plane"></i> TA主动消息</div><div class="settings-row"><label>启用主动消息</label><div class="settings-toggle'+(stg.autoMsgSend?' on':'')+'" id="cfgAutoMsgSend"></div></div><div class="settings-row"><label>发送频率</label><div style="display:flex;align-items:center;gap:4px"><input type="number" id="cfgAutoMsgFreq" value="'+stg.autoMsgFreq+'" style="width:56px;height:24px;border-radius:6px;border:1px solid var(--border-light);text-align:center;font-size:11px;background:var(--input-bg);color:var(--text-primary);outline:none"> <span style="font-size:11px;color:var(--text-muted)">分钟/条</span></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-globe-asia"></i> 朋友圈</div><div class="settings-row"><label>TA自动点赞</label><div class="settings-toggle'+(stg.momentsAutoLike!==false?' on':'')+'" id="cfgMomentsAutoLike"></div></div><div class="settings-row"><label>评论回复概率</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMomentsReplyChance" min="0" max="100" value="'+stg.momentsReplyChance+'" oninput="$(\'cfgMomentsReplyChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgMomentsReplyChanceVal">'+stg.momentsReplyChance+'%</span></div></div><div class="settings-row"><label>最短回复延迟</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMomentsReplyDelayMin" min="1" max="30" value="'+stg.momentsReplyDelayMin+'" oninput="$(\'cfgMomentsReplyDelayMinVal\').textContent=this.value+\'秒\'"><span class="settings-range-val" id="cfgMomentsReplyDelayMinVal">'+stg.momentsReplyDelayMin+'秒</span></div></div><div class="settings-row"><label>最长回复延迟</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMomentsReplyDelayMax" min="1" max="60" value="'+stg.momentsReplyDelayMax+'" oninput="$(\'cfgMomentsReplyDelayMaxVal\').textContent=this.value+\'秒\'"><span class="settings-range-val" id="cfgMomentsReplyDelayMaxVal">'+stg.momentsReplyDelayMax+'秒</span></div></div><div class="settings-row"><label>TA自动发朋友圈</label><div class="settings-toggle'+(stg.momentsAutoPost?' on':'')+'" id="cfgMomentsAutoPost"></div></div><div class="settings-row"><label>发送间隔</label><div style="display:flex;align-items:center;gap:4px"><input type="number" id="cfgMomentsPostMin" value="'+stg.momentsAutoPostMin+'" style="width:48px;height:24px;border-radius:6px;border:1px solid var(--border-light);text-align:center;font-size:11px;background:var(--input-bg);color:var(--text-primary);outline:none"> <span style="font-size:11px;color:var(--text-muted)">至</span> <input type="number" id="cfgMomentsPostMax" value="'+stg.momentsAutoPostMax+'" style="width:48px;height:24px;border-radius:6px;border:1px solid var(--border-light);text-align:center;font-size:11px;background:var(--input-bg);color:var(--text-primary);outline:none"> <span style="font-size:11px;color:var(--text-muted)">分钟</span></div></div><div class="settings-row"><label>文字概率</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMomentsTextChance" min="0" max="100" value="'+stg.momentsAutoPostTextChance+'" oninput="$(\'cfgMomentsTextChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgMomentsTextChanceVal">'+stg.momentsAutoPostTextChance+'%</span></div></div><div class="settings-row"><label>图片概率</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMomentsImageChance" min="0" max="100" value="'+stg.momentsAutoPostImageChance+'" oninput="$(\'cfgMomentsImageChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgMomentsImageChanceVal">'+stg.momentsAutoPostImageChance+'%</span></div></div></div>';
+  var b=$('settingsBody');var curColor=localStorage.getItem('murphy_theme_color')||'blue';var curMode=localStorage.getItem('murphy_theme_mode')||'light';
+  b.innerHTML='<div class="settings-section"><div class="settings-section-title"><i class="fas fa-palette"></i> 主题色彩</div><div class="theme-grid"><div class="theme-dot blue'+(curColor==='blue'?' active':'')+'" data-color="blue" title="浅蓝"></div><div class="theme-dot rose'+(curColor==='rose'?' active':'')+'" data-color="rose" title="玫瑰"></div><div class="theme-dot lavender'+(curColor==='lavender'?' active':'')+'" data-color="lavender" title="薰衣草"></div><div class="theme-dot sage'+(curColor==='sage'?' active':'')+'" data-color="sage" title="鼠尾草"></div><div class="theme-dot sky'+(curColor==='sky'?' active':'')+'" data-color="sky" title="天空"></div><div class="theme-dot blossom'+(curColor==='blossom'?' active':'')+'" data-color="blossom" title="花语"></div><div class="theme-dot mono'+(curColor==='mono'?' active':'')+'" data-color="mono" title="黑白"></div></div><div class="dark-toggle-wrap" style="margin-top:10px"><span class="dark-toggle-icon">'+(curMode==='dark'?'🌙':'☀️')+'</span><span style="flex:1;font-size:14px">暗黑模式</span><div class="settings-toggle'+(curMode==='dark'?' on':'')+'" id="cfgDarkToggle"></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-comment-dots"></i> 回复设置</div><div class="settings-row"><label>最短回复延迟</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgDelayMin" min="500" max="10000" value="'+stg.replyDelayMin+'" oninput="$(\'cfgDelayMinVal\').textContent=(this.value/1000).toFixed(1)+\'s\'"><span class="settings-range-val" id="cfgDelayMinVal">'+(stg.replyDelayMin/1000).toFixed(1)+'s</span></div></div><div class="settings-row"><label>最长回复延迟</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgDelayMax" min="1000" max="30000" value="'+stg.replyDelayMax+'" oninput="$(\'cfgDelayMaxVal\').textContent=(this.value/1000).toFixed(1)+\'s\'"><span class="settings-range-val" id="cfgDelayMaxVal">'+(stg.replyDelayMax/1000).toFixed(1)+'s</span></div></div><div class="settings-row"><label>每次回复条数</label><select id="cfgReplyCount" style="height:32px;border-radius:8px;border:1.5px solid var(--border-light);padding:0 8px;font-size:13px;background:var(--input-bg);color:var(--text-primary);outline:none;font-family:var(--font);cursor:pointer"><option value="1">1条</option><option value="1-2">1-2条</option><option value="1-3">1-3条</option><option value="2-3">2-3条</option></select></div><div class="settings-row"><label>已读不回概率</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgReadNoReply" min="0" max="50" value="'+Math.round(stg.readNoReplyChance*100)+'" oninput="$(\'cfgReadNoReplyVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgReadNoReplyVal">'+Math.round(stg.readNoReplyChance*100)+'%</span></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-dice"></i> 回复行为</div><div class="settings-row"><label>引用历史消息</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgReplyQuoteChance" min="0" max="50" value="'+stg.replyQuoteChance+'" oninput="$(\'cfgReplyQuoteChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgReplyQuoteChanceVal">'+stg.replyQuoteChance+'%</span></div></div><div class="settings-row"><label>拍一拍</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgPokeChance" min="0" max="20" value="'+stg.pokeChance+'" oninput="$(\'cfgPokeChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgPokeChanceVal">'+stg.pokeChance+'%</span></div></div><div class="settings-row"><label>电影接受邀请</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMovieAcceptChance" min="10" max="100" value="'+stg.movieAcceptChance+'" oninput="$(\'cfgMovieAcceptChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgMovieAcceptChanceVal">'+stg.movieAcceptChance+'%</span></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-bell"></i> 通知</div><div class="settings-row"><label><i class="fas fa-volume-up"></i> 音效</label><div class="settings-toggle'+(stg.soundEnabled?' on':'')+'" id="cfgSoundToggle"></div></div><div class="settings-row"><label><i class="fas fa-desktop"></i> 桌面通知</label><div class="settings-toggle'+(stg.desktopNotif?' on':'')+'" id="cfgNotifToggle"></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-clock"></i> 离线补发</div><div style="font-size:10px;color:var(--text-muted);padding:0 4px 6px">离线超5分钟后回来，自动补上期间错过的内容</div><div class="settings-row"><label>💬 聊天消息</label><div class="settings-toggle'+(stg.catchUpChat?' on':'')+'" id="cfgCatchUpChat"></div></div><div class="settings-row"><label>📧 邮件回信</label><div class="settings-toggle'+(stg.catchUpMail?' on':'')+'" id="cfgCatchUpMail"></div></div><div class="settings-row"><label>📞 未接来电</label><div class="settings-toggle'+(stg.catchUpCall?' on':'')+'" id="cfgCatchUpCall"></div></div><div class="settings-row"><label>🎬 电影邀请</label><div class="settings-toggle'+(stg.catchUpMovie?' on':'')+'" id="cfgCatchUpMovie"></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-envelope"></i> 信封设置</div><div class="settings-row"><label>对方主动来信</label><div class="settings-toggle'+(stg.mailPartnerSend?' on':'')+'" id="cfgMailPartnerSend"></div></div><div class="settings-row"><label>来信概率</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMailChance" min="5" max="80" value="'+stg.mailPartnerChance+'" oninput="$(\'cfgMailChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgMailChanceVal">'+stg.mailPartnerChance+'%</span></div></div><div class="settings-row"><label>检查间隔</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMailInterval" min="15" max="240" step="15" value="'+stg.mailPartnerInterval+'" oninput="$(\'cfgMailIntervalVal\').textContent=this.value+\'分钟\'"><span class="settings-range-val" id="cfgMailIntervalVal">'+stg.mailPartnerInterval+'分钟</span></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-cubes"></i> TA主动来电</div><div class="settings-row"><label>启用来电（30min~4h随机）</label><div class="settings-toggle" id="cfgAutoCallSend"></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-phone-slash"></i> TA挂断/拒接</div><div class="settings-row"><label>拒接来电</label><div class="settings-toggle'+(stg.callDecline?' on':'')+'" id="cfgCallDecline"></div></div><div class="settings-row"><label>拒接概率</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgCallDeclineChance" min="5" max="80" value="'+stg.callDeclineChance+'" oninput="$(\'cfgCallDeclineChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgCallDeclineChanceVal">'+stg.callDeclineChance+'%</span></div></div><div class="settings-row"><label>通话中挂断</label><div class="settings-toggle'+(stg.callHangup?' on':'')+'" id="cfgCallHangup"></div></div><div class="settings-row"><label>挂断概率</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgCallHangupChance" min="5" max="60" value="'+stg.callHangupChance+'" oninput="$(\'cfgCallHangupChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgCallHangupChanceVal">'+stg.callHangupChance+'%</span></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-cubes"></i> 字卡拼句</div><div class="settings-row"><label>启用拼句</label><div class="settings-toggle'+(stg.cardCombine?' on':'')+'" id="cfgCardCombine"></div></div><div style="font-size:10px;color:var(--text-muted);padding:0 4px 6px">TA回复时随机选取2-3条字卡拼成一句话</div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-paper-plane"></i> TA主动消息</div><div class="settings-row"><label>启用主动消息</label><div class="settings-toggle'+(stg.autoMsgSend?' on':'')+'" id="cfgAutoMsgSend"></div></div><div class="settings-row"><label>发送频率</label><div style="display:flex;align-items:center;gap:4px"><input type="number" id="cfgAutoMsgFreq" value="'+stg.autoMsgFreq+'" style="width:56px;height:24px;border-radius:6px;border:1px solid var(--border-light);text-align:center;font-size:11px;background:var(--input-bg);color:var(--text-primary);outline:none"> <span style="font-size:11px;color:var(--text-muted)">分钟/条</span></div></div></div><div class="settings-section"><div class="settings-section-title"><i class="fas fa-globe-asia"></i> 朋友圈</div><div class="settings-row"><label>TA自动点赞</label><div class="settings-toggle'+(stg.momentsAutoLike!==false?' on':'')+'" id="cfgMomentsAutoLike"></div></div><div class="settings-row"><label>评论回复概率</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMomentsReplyChance" min="0" max="100" value="'+stg.momentsReplyChance+'" oninput="$(\'cfgMomentsReplyChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgMomentsReplyChanceVal">'+stg.momentsReplyChance+'%</span></div></div><div class="settings-row"><label>最短回复延迟</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMomentsReplyDelayMin" min="1" max="30" value="'+stg.momentsReplyDelayMin+'" oninput="$(\'cfgMomentsReplyDelayMinVal\').textContent=this.value+\'秒\'"><span class="settings-range-val" id="cfgMomentsReplyDelayMinVal">'+stg.momentsReplyDelayMin+'秒</span></div></div><div class="settings-row"><label>最长回复延迟</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMomentsReplyDelayMax" min="1" max="60" value="'+stg.momentsReplyDelayMax+'" oninput="$(\'cfgMomentsReplyDelayMaxVal\').textContent=this.value+\'秒\'"><span class="settings-range-val" id="cfgMomentsReplyDelayMaxVal">'+stg.momentsReplyDelayMax+'秒</span></div></div><div class="settings-row"><label>TA自动发朋友圈</label><div class="settings-toggle'+(stg.momentsAutoPost?' on':'')+'" id="cfgMomentsAutoPost"></div></div><div class="settings-row"><label>发送间隔</label><div style="display:flex;align-items:center;gap:4px"><input type="number" id="cfgMomentsPostMin" value="'+stg.momentsAutoPostMin+'" style="width:48px;height:24px;border-radius:6px;border:1px solid var(--border-light);text-align:center;font-size:11px;background:var(--input-bg);color:var(--text-primary);outline:none"> <span style="font-size:11px;color:var(--text-muted)">至</span> <input type="number" id="cfgMomentsPostMax" value="'+stg.momentsAutoPostMax+'" style="width:48px;height:24px;border-radius:6px;border:1px solid var(--border-light);text-align:center;font-size:11px;background:var(--input-bg);color:var(--text-primary);outline:none"> <span style="font-size:11px;color:var(--text-muted)">分钟</span></div></div><div class="settings-row"><label>文字概率</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMomentsTextChance" min="0" max="100" value="'+stg.momentsAutoPostTextChance+'" oninput="$(\'cfgMomentsTextChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgMomentsTextChanceVal">'+stg.momentsAutoPostTextChance+'%</span></div></div><div class="settings-row"><label>图片概率</label><div style="display:flex;align-items:center;gap:8px"><input type="range" id="cfgMomentsImageChance" min="0" max="100" value="'+stg.momentsAutoPostImageChance+'" oninput="$(\'cfgMomentsImageChanceVal\').textContent=this.value+\'%\'"><span class="settings-range-val" id="cfgMomentsImageChanceVal">'+stg.momentsAutoPostImageChance+'%</span></div></div></div>';
   setTimeout(function(){
     var rc=$('cfgReplyCount');var cfs=$('cfgAutoCallFreq');if(cfs)cfs.value=stg.autoCallFreq;var ctg=$('cfgAutoCallSend');if(ctg){if(stg.autoCallSend)ctg.classList.add('on');else ctg.classList.remove('on')}
 // 绑定动态元素事件
@@ -3699,11 +3699,15 @@ $('cfgCardCombine').addEventListener('click',function(){this.classList.toggle('o
 }
 
 // 数据备份
-function stripImages(obj){
+function stripImages(obj,preserveAvatars){
   if(!obj||typeof obj!=='object')return obj;
-  if(typeof obj==='string'){if(obj.startsWith('data:image/')&&obj.length>2000)return '[图片]';return obj}
-  if(Array.isArray(obj))return obj.map(stripImages);
-  var r={};for(var k in obj){if(k==='dataUrl'||k==='image'||k==='bgImage'||k==='partnerImage'||k==='myAvatar'||k==='partnerAvatar'){if(typeof obj[k]==='string'&&obj[k].startsWith('data:image/'))continue}r[k]=stripImages(obj[k])}return r;
+  if(typeof obj==='string'){if(obj.startsWith('data:image/')&&obj.length>50000)return '[图片]';return obj}
+  if(Array.isArray(obj))return obj.map(function(x){return stripImages(x,preserveAvatars)});
+  var r={};for(var k in obj){
+    if(k==='myAvatar'||k==='partnerAvatar'){r[k]=obj[k];continue} // 保留头像
+    if(k==='dataUrl'||k==='image'||k==='bgImage'||k==='partnerImage'){if(typeof obj[k]==='string'&&obj[k].startsWith('data:image/'))continue}
+    r[k]=stripImages(obj[k],preserveAvatars)
+  }return r;
 }
 $('backupExportChat').addEventListener('click',function(){
   var b=new Blob([JSON.stringify(messages.slice(-500),null,2)],{type:'application/json'});
@@ -3716,8 +3720,8 @@ $('backupImportChatFile').addEventListener('change',function(){
 });
 $('backupExportAll').addEventListener('click',function(){
   var all={};for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k.indexOf('murphy_')===0){try{var v=localStorage.getItem(k);var p=JSON.parse(v);all[k]=stripImages(p)}catch(e){all[k]=localStorage.getItem(k)}}}
-  try{var b=new Blob([JSON.stringify(all,null,2)],{type:'application/json'});
-  var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='Murphy数据备份_'+new Date().toISOString().slice(0,10)+'.json';a.click();toast('导出成功')}catch(e){toast('导出失败：'+e.message)}
+  var b=new Blob([JSON.stringify(all,null,2)],{type:'application/json'});
+  var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='Murphy数据备份_'+new Date().toISOString().slice(0,10)+'.json';a.click();toast('导出成功');
 });
 $('backupImportAll').addEventListener('click',function(){$('backupImportAllFile').click()});
 $('backupImportAllFile').addEventListener('change',function(){
@@ -4196,6 +4200,33 @@ if('serviceWorker' in navigator){navigator.serviceWorker.register('service-worke
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
