@@ -264,6 +264,12 @@ body{background:var(--bg-primary);margin:0;padding:0;display:flex;justify-conten
 .chat-header{display:flex;align-items:center;justify-content:space-between;height:44px;flex-shrink:0;padding:0 8px;border-bottom:1px solid var(--border-light);transition:background-color 0.5s ease,border-color 0.5s ease}
 .chat-back{font-size:16px;font-weight:500;color:var(--accent);cursor:pointer;padding:0 8px;line-height:44px;transition:color 0.2s}
 .chat-back:hover{opacity:0.7}
+.chat-actions{display:flex;align-items:center;gap:2px;position:relative}
+.chat-more-btn{font-size:18px;cursor:pointer;padding:0 8px;line-height:44px;opacity:0.5;transition:opacity 0.2s,transform 0.2s}.chat-more-btn:hover{opacity:1;transform:scale(1.15)}
+/* 功能菜单 */
+.chat-more-menu{position:absolute;top:48px;right:8px;z-index:220;background:var(--bg-secondary);border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,0.15);border:1px solid var(--border-light);padding:6px;display:flex;flex-direction:column;min-width:140px;animation:fadeUp 0.2s ease}
+.chat-more-item{display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:10px;cursor:pointer;font-size:13px;font-weight:500;color:var(--text-primary);transition:all 0.15s ease}.chat-more-item:hover{background:var(--accent-soft);color:var(--accent)}
+.block-item{justify-content:space-between}.block-item:hover{color:var(--text-primary)}
 .chat-title{display:flex;align-items:center;gap:8px;position:absolute;left:50%;transform:translateX(-50%);pointer-events:none}
 .chat-name{font-size:17px;font-weight:600;color:var(--text-primary);letter-spacing:0.3px}
 .chat-msgs{flex:1;overflow-y:auto;overflow-x:hidden;padding:16px 14px;display:flex;flex-direction:column;scroll-behavior:smooth;will-change:scroll-position;-webkit-overflow-scrolling:touch}
@@ -281,13 +287,29 @@ body{background:var(--bg-primary);margin:0;padding:0;display:flex;justify-conten
 .chat-msg-bubble .msg-emoji{font-size:36px;line-height:1.1}
 .chat-msg-card{background:var(--bg-secondary);color:var(--text-primary);border:2px solid var(--accent);border-radius:18px;padding:16px 18px;max-width:92%;font-size:12px;line-height:1.8;margin-left:6px;box-shadow:0 2px 12px rgba(var(--accent-rgb),0.1)}.chat-msg-card>div{margin-bottom:4px}
 .chat-msg-bubble audio{max-width:180px;height:32px;outline:none;border-radius:6px}
-.chat-msg-meta{display:flex;align-items:center;gap:6px;margin:6px 10px 0 10px;opacity:0.65;font-size:10px;color:var(--text-muted);height:16px;position:relative}
+.chat-msg-meta{display:flex;align-items:center;gap:6px;margin:6px 10px 0 10px;opacity:0.65;font-size:10px;color:var(--text-muted);min-height:20px;position:relative}
 .chat-msg-row.me .chat-msg-meta{justify-content:flex-end}
-.chat-msg-fav,.chat-msg-reply-btn{cursor:pointer;opacity:0;transform:translateY(4px);transition:all 0.2s ease;font-size:12px;padding:4px 6px}
-.chat-msg-row:hover .chat-msg-fav,.chat-msg-row:hover .chat-msg-reply-btn{opacity:0.5;transform:translateY(0)}
+.chat-msg-fav,.chat-msg-reply-btn,.chat-msg-recall-btn{cursor:pointer;opacity:0;transform:translateY(4px);transition:all 0.2s ease;font-size:12px;padding:4px 6px}
+.chat-msg-row:hover .chat-msg-fav,.chat-msg-row:hover .chat-msg-reply-btn,.chat-msg-row:hover .chat-msg-recall-btn{opacity:0.5;transform:translateY(0)}
 .chat-msg-fav:hover{opacity:1!important;color:var(--favorite-color);transform:scale(1.2)}
 .chat-msg-reply-btn:hover{opacity:0.8!important;color:var(--accent);transform:scale(1.2)}
 .chat-msg-fav.faved{opacity:1!important;color:var(--favorite-color)}
+.chat-msg-recall-btn:hover{opacity:1!important;color:#d4786e;transform:scale(1.2)}
+/* 收藏库 */
+.fav-panel{position:absolute;top:0;left:0;width:100%;height:100%;background:var(--overlay-bg);z-index:210;display:flex;flex-direction:column;overflow:hidden}
+.fav-panel-head{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;flex-shrink:0;background:var(--header-bg);border-bottom:1px solid var(--border-light);font-size:16px;font-weight:600;color:var(--text-primary);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.fav-panel-close{font-size:18px;color:var(--text-muted);cursor:pointer;padding:0 4px;transition:color 0.2s}.fav-panel-close:hover{color:#d4786e}
+.fav-panel-body{flex:1;overflow-y:auto;padding:12px}
+.fav-item{background:var(--bg-secondary);border-radius:12px;padding:12px 14px;margin-bottom:8px;border:1px solid var(--border-light);font-size:13px;line-height:1.6;color:var(--text-primary);position:relative;transition:all 0.2s ease}.fav-item:hover{border-color:var(--accent);transform:translateY(-1px)}
+.fav-item-text{word-break:break-word;white-space:pre-wrap}
+.fav-item-meta{display:flex;justify-content:space-between;align-items:center;margin-top:8px;font-size:10px;color:var(--text-muted)}
+.fav-item-sender{font-weight:600;color:var(--accent)}
+.fav-item-actions{display:flex;gap:8px}.fav-item-actions span{cursor:pointer;opacity:0.5;transition:opacity 0.2s,color 0.2s;font-size:12px}.fav-item-actions span:hover{opacity:1}.fav-item-unfav:hover{color:var(--favorite-color)}.fav-item-send:hover{color:var(--accent)}
+.fav-empty{text-align:center;color:var(--text-muted);padding:60px 20px;font-size:14px;line-height:2}
+/* 偷看TA界面 */
+.peek-panel{position:absolute;top:0;left:0;width:100%;height:100%;background:var(--bg-primary);z-index:210;display:flex;flex-direction:column;overflow:hidden}
+.peek-blocked-bar{text-align:center;padding:8px 0;font-size:13px;font-weight:700;color:#e04040;background:rgba(224,64,64,0.1);flex-shrink:0;letter-spacing:1px}
+.peek-msgs{flex:1}
 .chat-msg-sys{text-align:center;font-size:11px;color:var(--text-muted);padding:8px 0;letter-spacing:0.5px;opacity:0.7}
 /* 时间戳 */
 .chat-msg-time{font-size:10px;color:var(--text-muted);padding:0 4px;margin-top:2px;font-weight:500;text-shadow:0 1px 1px rgba(0,0,0,0.06)}
@@ -1198,8 +1220,34 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
     <div class="chat-header">
       <div class="chat-back" id="chatBack">‹ 返回</div>
       <div class="chat-title"><div class="chat-name" id="chatHeaderName">TA</div></div>
+      <div class="chat-actions">
+        <div class="chat-more-btn" id="chatMoreBtn" title="功能">☰</div>
+      </div>
+    </div>
+    <div class="chat-more-menu" id="chatMoreMenu" style="display:none">
+      <div class="chat-more-item" data-action="fav">⭐ 收藏库</div>
+      <div class="chat-more-item" data-action="replylib">📋 回复库</div>
+      <div class="chat-more-item" data-action="settings">⚙ 设置</div>
+      <div class="chat-more-item" data-action="backup">💾 数据</div>
+      <div class="chat-more-item" data-action="report">📊 相处报告</div>
+      <div class="chat-more-item" data-action="peek">👁 偷看TA界面</div>
+      <div class="chat-more-item block-item" data-action="block" id="chatBlockItem">🚫 拉黑对方<span class="settings-toggle" id="blockToggle"></span></div>
     </div>
     <div class="chat-msgs" id="chatMsgs"></div>
+    <div class="fav-panel" id="favPanel" style="display:none">
+      <div class="fav-panel-head"><span>⭐ 收藏库</span><span class="fav-panel-close" id="favPanelClose">✕</span></div>
+      <div class="fav-panel-body" id="favPanelBody"></div>
+    </div>
+    <div class="peek-panel" id="peekPanel" style="display:none">
+      <div class="chat-header">
+        <div class="chat-back" id="peekPanelClose">‹ 返回</div>
+        <div class="chat-title"><div class="chat-name" id="peekTitle">我</div></div>
+        <div></div>
+      </div>
+      <div class="peek-blocked-bar" id="peekBlockedBar" style="display:none">⚠ 已被对方拉黑</div>
+      <div class="chat-msgs peek-msgs" id="peekMsgs"></div>
+      <div class="chat-bar peek-bar"><input class="chat-input" disabled placeholder="TA的输入框（不可用）"></div>
+    </div>
     <div class="chat-bar" id="chatBar">
       <div class="chat-reply-preview" id="chatReplyPreview" style="display:none">
         <span style="color:var(--accent)"><i class="fas fa-reply"></i></span>
@@ -1544,20 +1592,59 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 
   <!-- 日记本 -->
   <div class="survey-overlay" id="diaryOverlay" style="display:none">
-    <div class="rl-header"><div class="rl-back" id="diaryBack">‹ 返回</div><div class="rl-title">📔 TA的日记</div><div></div></div>
-    <div class="survey-body" id="diaryBody">
-      <div id="diaryContent"></div>
-      <div class="rl-empty" id="diaryEmpty" style="display:none"><i class="fas fa-book"></i>这一天没有日记<br><span>TA可能太忙了</span></div>
-      <div class="diary-nav">
-        <button class="rl-btn" id="diaryPrev">◀ 前一天</button>
-        <span style="font-size:13px;color:var(--text-muted)" id="diaryDateLabel">今天</span>
-        <button class="rl-btn" id="diaryNext">后一天 ▶</button>
+    <div class="rl-header"><div class="rl-back" id="diaryBack">‹ 返回</div><div class="rl-title">📔 日记本</div><div></div></div>
+    <!-- 封面选择页 -->
+    <div class="survey-body" id="diaryCoverPage" style="display:flex;gap:10px;padding:20px;align-items:center;justify-content:center">
+      <div id="myDiaryCover" style="flex:1;aspect-ratio:3/4;background:linear-gradient(160deg,var(--accent-soft),var(--accent-light));border-radius:8px 16px 16px 8px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;border:1px solid var(--border-light);box-shadow:2px 4px 12px rgba(0,0,0,0.08);position:relative;overflow:hidden;transition:all 0.3s">
+        <div style="position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)"></div>
+        <div style="font-size:36px;margin-bottom:8px">✍️</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text-primary);letter-spacing:1px">我的日记</div>
+        <div style="font-size:9px;color:var(--text-muted);margin-top:4px">写你想写的</div>
       </div>
-      <button class="rl-btn rl-btn-add" id="diarySend" style="width:100%;margin-top:10px"><i class="fas fa-paper-plane"></i> 发送这一页到聊天</button>
+      <div id="taDiaryCover" style="flex:1;aspect-ratio:3/4;background:linear-gradient(160deg,rgba(var(--accent-rgb),0.12),rgba(var(--accent-rgb),0.2));border-radius:8px 16px 16px 8px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;border:1px solid var(--border-light);box-shadow:2px 4px 12px rgba(0,0,0,0.08);position:relative;overflow:hidden;transition:all 0.3s">
+        <div style="position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent-dark)"></div>
+        <div style="font-size:36px;margin-bottom:8px">📔</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text-primary);letter-spacing:1px">TA的日记</div>
+        <div style="font-size:9px;color:var(--text-muted);margin-top:4px">看看TA在想什么</div>
+      </div>
     </div>
-  </div>
-
-  <!-- 相处报告 -->
+    <!-- 我的日记内容页 -->
+    <div class="survey-body" id="myDiaryPage" style="display:none;flex-direction:column;padding:8px;overflow:hidden">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 12px;flex-shrink:0">
+        <span id="diaryBackToCover" style="cursor:pointer;color:var(--accent);font-size:13px">‹ 返回</span>
+        <span style="font-size:13px;font-weight:600;color:var(--text-primary)">✍ 我的日记</span>
+        <div style="display:flex;gap:8px"><span id="diaryPeekBtn" title="TA的偷看记录" style="cursor:pointer;font-size:16px">👁</span></div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 12px 8px;flex-shrink:0">
+        <button class="rl-btn" id="diaryPrev" style="font-size:10px">◀ 前一天</button>
+        <span style="font-size:11px;color:var(--text-muted)" id="myDiaryDate">今天</span>
+        <button class="rl-btn" id="diaryNext" style="font-size:10px">后一天 ▶</button>
+      </div>
+      <div id="myDiaryInputWrap" style="flex:1;overflow-y:auto;margin:6px 10px;border-radius:8px;background:#fffef9;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.03),0 2px 8px rgba(0,0,0,0.04)"><div id="myDiaryInput" contenteditable="true" style="min-height:100%;color:#4a3a2a;font-size:13px;padding:16px 14px;outline:none;font-family:var(--font);line-height:2;white-space:pre-wrap;word-break:break-word;background-image:repeating-linear-gradient(0deg,transparent,transparent 31px,rgba(180,160,140,0.1) 31px,rgba(180,160,140,0.1) 32px)"></div></div>
+      <div style="padding:8px 12px;flex-shrink:0"><button class="rl-btn rl-btn-add" id="diarySave" style="width:100%">💾 保存日记</button></div>
+    </div>
+    <!-- TA的日记内容页 -->
+    <div class="survey-body" id="taDiaryPage" style="display:none;flex-direction:column;padding:8px;overflow:hidden">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 12px;flex-shrink:0">
+        <span id="diaryBackToCoverTa" style="cursor:pointer;color:var(--accent);font-size:13px">‹ 返回</span>
+        <span style="font-size:13px;font-weight:600;color:var(--text-primary)">📔 TA的日记</span>
+        <div></div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 12px 8px;flex-shrink:0">
+        <button class="rl-btn" id="diaryPrevTa" style="font-size:10px">◀ 前一天</button>
+        <span style="font-size:11px;color:var(--text-muted)" id="taDiaryDate">今天</span>
+        <button class="rl-btn" id="diaryNextTa" style="font-size:10px">后一天 ▶</button>
+      </div>
+      <div id="taDiaryContent" style="flex:1;overflow-y:auto;padding:10px 12px;font-size:12px;line-height:1.7;color:var(--text-primary)"></div>
+      <div class="rl-empty" id="diaryEmpty" style="display:none;padding:20px;text-align:center"><i class="fas fa-book"></i>这一天没有日记<br><span>TA可能太忙了</span></div>
+      <div style="padding:8px 12px;flex-shrink:0"><button class="rl-btn rl-btn-add" id="diarySend" style="width:100%">📤 发送到聊天</button></div>
+    </div>
+    <!-- 偷看记录弹窗 -->
+    <div id="diaryPeekPop" style="display:none;position:absolute;inset:0;z-index:999;background:rgba(0,0,0,0.8);padding:20px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><span style="color:#fff;font-weight:bold">👁 TA的偷看记录</span><span id="diaryPeekClose" style="color:#ccc;font-size:22px;cursor:pointer">&times;</span></div>
+      <div id="diaryPeekList" style="color:#ccc;font-size:12px;line-height:2;max-height:70vh;overflow-y:auto"></div>
+    </div>
+  </div><!-- 相处报告 -->
   <div class="survey-overlay" id="reportOverlay" style="display:none">
     <div class="rl-header"><div class="rl-back" id="reportBack">‹ 返回</div><div class="rl-title">📊 相处报告</div><div></div></div>
     <div class="survey-body" style="padding-bottom:60px">
@@ -2556,14 +2643,20 @@ $('revsLibBack').addEventListener('click',function(){$('revsLibPane').style.disp
 $('revsShowLib').addEventListener('click',renderRevsLib);
 
 // ===== 日记本 =====
-var diaryDb={},diaryViewDate=new Date().toDateString();
+var diaryDb={},diaryViewDate=new Date().toDateString(),myDiaryDb={},diaryPeekLog=[];
 var DIARY_MOODS=[{icon:'💕',label:'想念'},{icon:'☀️',label:'开心'},{icon:'💧',label:'感伤'},{icon:'📸',label:'回忆'},{icon:'✨',label:'期待'},{icon:'😌',label:'平静'}];
+// ===== 日记本 =====
 (function(){try{var s=localStorage.getItem('murphy_diary');if(s)diaryDb=JSON.parse(s)}catch(e){}})();
+(function(){try{var s=localStorage.getItem('murphy_my_diary');if(s)myDiaryDb=JSON.parse(s)}catch(e){}})();
+(function(){try{var s=localStorage.getItem('murphy_diary_peek');if(s)diaryPeekLog=JSON.parse(s)}catch(e){}})();
+if(!diaryPeekLog)diaryPeekLog=[];
+if(!myDiaryDb)myDiaryDb={};
 function saveDiary(){localStorage.setItem('murphy_diary',JSON.stringify(diaryDb))}
+function saveMyDiary(){localStorage.setItem('murphy_my_diary',JSON.stringify(myDiaryDb))}
+function savePeekLog(){localStorage.setItem('murphy_diary_peek',JSON.stringify(diaryPeekLog))}
 
 function genDiaryEntry(){
-  var pool=getAllReplies();// 从回复库抽取
-  var count=3+Math.floor(Math.random()*4);// 3-6句
+  var pool=getAllReplies();var count=3+Math.floor(Math.random()*4);
   var lines=[];for(var i=0;i<count;i++)lines.push(pool[Math.floor(Math.random()*pool.length)].text);
   return lines.join('。\n')+'。';
 }
@@ -2577,11 +2670,9 @@ function getDiary(dateStr){
   }
   return diaryDb[dateStr];
 }
-// 每晚18:00-24:00之间随机时刻自动生成当天日记
 function autoGenDiary(){
   var now=new Date();if(now.getHours()<18)return;
-  var today=now.toDateString();
-  if(diaryDb[today])return; // 今天已生成
+  var today=now.toDateString();if(diaryDb[today])return;
   var today6pm=new Date(today+' 18:00').getTime();
   var todayMid=new Date(today+' 23:59').getTime();
   var genTime=today6pm+Math.floor(Math.random()*(todayMid-today6pm));
@@ -2589,26 +2680,105 @@ function autoGenDiary(){
   setTimeout(function(){getDiary(today)},delay);
 }
 autoGenDiary();setInterval(autoGenDiary,1800000);
-// 今天自动生成
 getDiary(new Date().toDateString());
 
-function renderDiary(){
-  var entry=getDiary(diaryViewDate);var ct=$('diaryContent'),em=$('diaryEmpty');
+// TA偷看我的日记
+function taPeekDiary(){
   var today=new Date().toDateString();
-  $('diaryDateLabel').textContent=diaryViewDate===today?'今天':diaryViewDate;
-  $('diaryNext').style.visibility='visible';
-  if(!entry){ct.innerHTML='';em.style.display='flex'}else{em.style.display='none';
-    ct.innerHTML='<div class="diary-entry"><div class="diary-date">'+diaryViewDate+'</div><div class="diary-content">'+EH(entry.text)+'</div><div class="diary-mood">'+entry.mood.icon+' '+entry.mood.label+'</div></div>';
+  if(!myDiaryDb[today]||!myDiaryDb[today].trim())return; // 我没写就不偷看
+  var already=diaryPeekLog.filter(function(p){return p.date===today}).length;
+  if(already>0)return; // 今天已偷看过
+  if(Math.random()<0.3){ // 30%概率偷看
+    diaryPeekLog.push({date:today,time:Date.now()});
+    savePeekLog();updatePeekBadge();
   }
 }
-$('diaryPrev').addEventListener('click',function(){var d=new Date(diaryViewDate);d.setDate(d.getDate()-1);diaryViewDate=d.toDateString();renderDiary()});
-$('diaryNext').addEventListener('click',function(){var d=new Date(diaryViewDate);d.setDate(d.getDate()+1);if(d>new Date())return toast('不能偷看未来');diaryViewDate=d.toDateString();renderDiary()});
+setInterval(taPeekDiary,600000); // 每10分钟检查一次
+
+function updatePeekBadge(){
+  var badge=$('diaryPeekBtn');if(!badge)return;
+  var unseen=diaryPeekLog.filter(function(p){return !p.seen}).length;
+  badge.textContent=unseen>0?'👁️':'👁';
+  badge.style.color=unseen>0?'var(--accent)':'';
+}
+
+// 渲染我的日记
+function renderMyDiary(){
+  var today=new Date().toDateString();
+  $('myDiaryDate').textContent=diaryViewDate===today?'✍ 今天':diaryViewDate;
+  $('myDiaryInput').innerHTML=myDiaryDb[diaryViewDate]||'';
+}
+// 渲染TA日记
+function renderDiary(){
+  var entry=getDiary(diaryViewDate);var ct=$('taDiaryContent'),em=$('diaryEmpty');
+  var today=new Date().toDateString();
+  $('taDiaryDate').textContent=diaryViewDate===today?'📔 今天':diaryViewDate;
+  if(!entry){ct.innerHTML='';em.style.display='flex'}else{em.style.display='none';
+    ct.innerHTML='<div class="diary-entry"><div class="diary-date" style="font-size:10px;color:var(--text-muted);margin-bottom:6px">'+diaryViewDate+'</div><div class="diary-content" style="white-space:pre-wrap">'+EH(entry.text)+'</div><div class="diary-mood" style="margin-top:8px;color:var(--accent)">'+entry.mood.icon+' '+entry.mood.label+'</div></div>';
+  }
+  // TA可能偷看我
+  taPeekDiary();
+}
+
+// 保存我的日记
+$('diarySave').addEventListener('click',function(){
+  var v=$('myDiaryInput').innerHTML;myDiaryDb[diaryViewDate]=v;saveMyDiary();
+  if(v&&v!=='<br>'&&v!=='<div><br></div>')toast('日记已保存 ✨');else toast('已清空');
+});
+
+// 我的日记翻页
+$('diaryPrev').addEventListener('click',function(){
+  var d=new Date(diaryViewDate);d.setDate(d.getDate()-1);diaryViewDate=d.toDateString();
+  renderMyDiary();renderDiary();
+});
+$('diaryNext').addEventListener('click',function(){
+  var d=new Date(diaryViewDate);d.setDate(d.getDate()+1);
+  if(d>new Date())return toast('不能偷看未来');
+  diaryViewDate=d.toDateString();renderMyDiary();renderDiary();
+});
+// TA日记翻页
+$('diaryPrevTa').addEventListener('click',function(){$('diaryPrev').click()});
+$('diaryNextTa').addEventListener('click',function(){$('diaryNext').click()});
+
+// 发送TA日记到聊天
 $('diarySend').addEventListener('click',function(){
   var entry=getDiary(diaryViewDate);if(!entry)return;
   var text='📔 TA的日记 '+diaryViewDate+'\n\n'+entry.text+'\n\n'+entry.mood.icon+' '+entry.mood.label;
   messages.push({id:Date.now(),sender:'user',text:text,timestamp:new Date(),favorited:false,type:'normal'});saveMsgs();rCMsg('sent',text,{msgId:Date.now()});if(!mM)tR();toast('已发送');
 });
-$('diaryBack').addEventListener('click',function(){$('diaryOverlay').style.display='none'});
+
+
+// 偷看记录
+function renderPeekLog(){
+  var el=$('diaryPeekList');if(!el)return;
+  if(diaryPeekLog.length===0){el.innerHTML='<div style="color:#666;text-align:center;padding:20px">TA还没偷看过你的日记</div>';return}
+  el.innerHTML=diaryPeekLog.slice().reverse().map(function(p){
+    var d=new Date(p.time);var ds=(d.getMonth()+1)+'/'+d.getDate()+' '+d.getHours()+':'+String(d.getMinutes()).padStart(2,'0');
+    return '<div style="display:flex;justify-content:space-between"><span>👁 TA在 '+p.date+' 偷看了你的日记</span><span style="color:#888;font-size:11px">'+ds+'</span></div>';
+  }).join('');
+  // 标记已读
+  diaryPeekLog.forEach(function(p){p.seen=true});savePeekLog();updatePeekBadge();
+}
+$('diaryPeekBtn').addEventListener('click',function(){$('diaryPeekPop').style.display='block';renderPeekLog()});
+$('diaryPeekClose').addEventListener('click',function(){$('diaryPeekPop').style.display='none'});
+
+$('diaryBack').addEventListener('click',function(){
+  if($('myDiaryPage').style.display==='flex'||$('taDiaryPage').style.display==='flex'){
+    $('myDiaryPage').style.display='none';$('taDiaryPage').style.display='none';$('diaryCoverPage').style.display='flex'
+  }else{$('diaryOverlay').style.display='none'}
+});
+// 打开时初始化
+// 封面切换
+$('myDiaryCover').addEventListener('click',function(){$('diaryCoverPage').style.display='none';$('myDiaryPage').style.display='flex';renderMyDiary()});
+$('taDiaryCover').addEventListener('click',function(){$('diaryCoverPage').style.display='none';$('taDiaryPage').style.display='flex';renderDiary()});
+$('diaryBackToCover').addEventListener('click',function(){$('myDiaryPage').style.display='none';$('diaryCoverPage').style.display='flex'});
+$('diaryBackToCoverTa').addEventListener('click',function(){$('taDiaryPage').style.display='none';$('diaryCoverPage').style.display='flex'});
+var diaryOpenOnce=false;
+$('appDiary').addEventListener('click',function(){
+  if(!iU)return;$('diaryOverlay').style.display='flex';diaryViewDate=new Date().toDateString();
+  $('diaryCoverPage').style.display='flex';$('myDiaryPage').style.display='none';$('taDiaryPage').style.display='none';
+  updatePeekBadge();
+});
 
 // ===== 美化 =====
 var beautySets={fontSize:'16px',msgSize:'16px',bubbleStyle:0,bubbleSent:'#95ec69',bubbleRecv:'#ffffff',avatarSize:'36px',avatarRadius:'6px',cssRaw:'',iconCssRaw:'',widgetCssRaw:'',mailCssRaw:'',bgImages:[],bgActive:null,bgImgs:{}};
@@ -2675,6 +2845,10 @@ function genMailReply(){
 }
 // 对方主动来信
 function partnerSendLetter(){
+  // 每天最多主动来一封
+  var today=new Date().toDateString();
+  if(mailData._lastPartnerDate===today)return;
+  mailData._lastPartnerDate=today;
   var pool=getAllReplies();var count=3+Math.floor(Math.random()*5);var lines=[];
   for(var i=0;i<count;i++){var r=pool[Math.floor(Math.random()*pool.length)];lines.push(r.text)}
   var content=lines.join('。')+'。';
@@ -3275,6 +3449,10 @@ var MSGK='murphy_chat_msgs';
 function lM(){try{var d=localStorage.getItem(MSGK);return d?JSON.parse(d):[]}catch(e){return[]}}
 function sM(d){localStorage.setItem(MSGK,JSON.stringify(d))}
 var cM=$('chatMsgs'),messages=lM(),currentReplyTo=null,mM=false,mP=false,replyTimers=[];
+var blocked=false,blockedQueue=[];
+(function(){try{var s=localStorage.getItem('murphy_blocked');if(s){var d=JSON.parse(s);blocked=d.blocked||false;blockedQueue=d.queue||[]}}catch(e){}})();
+function saveBlocked(){localStorage.setItem('murphy_blocked',JSON.stringify({blocked:blocked,queue:blockedQueue}))}
+(function(){if(blocked){var tg=$("blockToggle");if(tg)tg.classList.add("on")}})();
 var POKE_MESSAGES=["拍了拍你","戳了戳你的小脸","轻轻捏了捏你","给你发了一个 wink ✨","对你温柔地笑了笑","摸了摸你的头","从背后抱住了你","在你耳边轻轻说了句话","给你比了个心 ❤️","悄悄牵起你的手"];
 
 var _quoteData={text:'',next:0};
@@ -3303,6 +3481,8 @@ function gRR(){
 }
 
 function saveMsgs(){try{sM(messages.slice(-500))}catch(e){}}
+function canRecall(msg){if(!msg||msg.recalled||msg.type==='system')return false;return(Date.now()-new Date(msg.timestamp).getTime())<120000}
+function recallMsg(msgId){var msg=messages.find(function(m){return m.id===msgId});if(!canRecall(msg))return false;msg.recalled=true;saveMsgs();renderAllMsgs();return true}
 
 // 头像渲染工具
 var profile={myName:'',partnerName:'TA',myAvatar:'',partnerAvatar:'',coupleLabel:'你 和 TA'};
@@ -3322,6 +3502,7 @@ function rCMsg(type,text,opts){
   opts=opts||{};hT();
   var row=document.createElement('div');
   if(opts.sysMsg){row.className='chat-msg-sys';row.textContent=text;cM.appendChild(row);cM.scrollTop=cM.scrollHeight;_lastMsgSender=null;return}
+	if(opts.recalled){row.className='chat-msg-sys';row.innerHTML='<span style="opacity:0.5;font-style:italic">'+(type==='sent'?'你':'TA')+'撤回了一条消息</span>';cM.appendChild(row);cM.scrollTop=cM.scrollHeight;_lastMsgSender=null;return}
   // 日期分隔
   if(opts.dateStr&&opts.dateStr!==_lastMsgDate){_lastMsgDate=opts.dateStr;_lastMsgSender=null;
     var dd=document.createElement('div');dd.className='chat-date-divider';dd.innerHTML='<span>'+opts.dateStr+'</span>';cM.appendChild(dd)}
@@ -3351,13 +3532,14 @@ function rCMsg(type,text,opts){
   if(opts.timeStr){var tm=document.createElement('div');tm.className='chat-msg-time';tm.textContent=opts.timeStr;if(type==='sent'){var st=document.createElement('span');st.className='chat-msg-status';st.textContent=opts.read?'✓✓':'✓';tm.appendChild(st)}wrap.appendChild(tm)}
   var meta=document.createElement('div');meta.className='chat-msg-meta';
   if(opts.msgId){
-    var fav=document.createElement('span');fav.className='chat-msg-fav'+(opts.faved?' faved':'');fav.innerHTML='<i class="fas fa-star"></i>';
-    fav.addEventListener('click',function(){var msg=messages.find(function(m){return m.id===opts.msgId});if(msg){msg.favorited=!msg.favorited;fav.classList.toggle('faved',msg.favorited);saveMsgs()}});
+    var fav=document.createElement('span');fav.className='chat-msg-fav'+(opts.faved?' faved':'');fav.innerHTML='☆';
+    fav.addEventListener('click',function(){var msg=messages.find(function(m){return m.id===opts.msgId});if(msg){msg.favorited=!msg.favorited;fav.classList.toggle('faved',msg.favorited);fav.innerHTML=msg.favorited?'★':'☆';saveMsgs()}});
     meta.appendChild(fav);
-    var rpy=document.createElement('span');rpy.className='chat-msg-reply-btn';rpy.innerHTML='<i class="fas fa-reply"></i>';
+    var rpy=document.createElement('span');rpy.className='chat-msg-reply-btn';rpy.innerHTML='↩';
     rpy.addEventListener('click',function(){currentReplyTo={id:opts.msgId,sender:type==='sent'?'user':'partner',text:text||(opts.image?'[图片]':(opts.voice?'[语音]':''))};uReplyPreview()});
     meta.appendChild(rpy);
   }
+    if(type==='sent'&&opts.msgId&&(Date.now()-new Date(opts.timestamp||Date.now()).getTime())<120000){var rcl=document.createElement('span');rcl.className='chat-msg-recall-btn';rcl.title='撤回';rcl.innerHTML='撤';rcl.addEventListener('click',function(e){e.stopPropagation();if(confirm('撤回这条消息？')){if(!recallMsg(opts.msgId)){toast('已超过2分钟')}}});meta.appendChild(rcl)}
   wrap.appendChild(meta);row.appendChild(wrap);cM.appendChild(row);cM.scrollTop=cM.scrollHeight;
 }
 
@@ -3367,7 +3549,7 @@ function renderAllMsgs(){
   _lastMsgSender=null;_lastMsgDate='';cM.innerHTML='';
   messages.forEach(function(m){
     if(m.type==='system'){rCMsg(null,m.text||'',{sysMsg:true});return}
-    var isSent=m.sender==='user';rCMsg(isSent?'sent':'received',m.text||'',{image:m.image,emoji:m.emoji,voice:m.voice,replyTo:m.replyTo,msgId:m.id,faved:m.favorited,timeStr:fmtMsgTime(m.timestamp),dateStr:fmtMsgDate(m.timestamp),read:m.status==='read'});
+    var isSent=m.sender==='user';rCMsg(isSent?'sent':'received',m.text||'',{image:m.image,emoji:m.emoji,voice:m.voice,replyTo:m.replyTo,msgId:m.id,faved:m.favorited,timeStr:fmtMsgTime(m.timestamp),dateStr:fmtMsgDate(m.timestamp),read:m.status=='read',recalled:m.recalled});
   });
 }
 
@@ -3402,9 +3584,10 @@ function tR(){
         var r=gRR();var msgData={id:Date.now()+j,sender:'partner',text:r.content||'',timestamp:new Date(),favorited:false,type:'normal'};
         if(r.type==='image'){msgData.image=r.content;msgData.text=''}else if(r.type==='emoji'){msgData.emoji=r.content;msgData.text=''}else if(r.type==='voice'){msgData.voice=r.content;msgData.text=''}
         if(Math.random()<stg.replyQuoteChance/100){var ums=messages.filter(function(m){return m.sender==='user'}).slice(-10);if(ums.length>0){var rm=ums[Math.floor(Math.random()*ums.length)];msgData.replyTo={id:rm.id,sender:'user',text:rm.text}}}
-        messages.push(msgData);saveMsgs();messages.forEach(function(m){if(m.sender==='user'&&m.status!=='read')m.status='read'});rCMsg('received',msgData.text||'',{image:msgData.image,emoji:msgData.emoji,voice:msgData.voice,replyTo:msgData.replyTo,msgId:msgData.id,timeStr:fmtMsgTime(Date.now()),dateStr:fmtMsgDate(Date.now())});
-        if(stg.desktopNotif&&document.hidden&&'Notification' in window&&Notification.permission==='granted'){try{new Notification('TA',{body:(msgData.text||'[图片/语音]').slice(0,60),tag:'murphy-msg'})}catch(e){}}
+        if(blocked){msgData.blocked=true;blockedQueue.push(msgData);saveBlocked()}else{        messages.push(msgData);saveMsgs();messages.forEach(function(m){if(m.sender==='user'&&m.status!=='read')m.status='read'});rCMsg('received',msgData.text||'',{image:msgData.image,emoji:msgData.emoji,voice:msgData.voice,replyTo:msgData.replyTo,msgId:msgData.id,timeStr:fmtMsgTime(Date.now()),dateStr:fmtMsgDate(Date.now())});}
+        if(!blocked&&stg.desktopNotif&&document.hidden&&'Notification' in window&&Notification.permission==='granted'){try{new Notification('TA',{body:(msgData.text||'[图片/语音]').slice(0,60),tag:'murphy-msg'})}catch(e){}}
         if(Math.random()<stg.pokeChance/100&&j===replyCount-1){setTimeout(function(){var poke=POKE_MESSAGES[Math.floor(Math.random()*POKE_MESSAGES.length)];messages.push({id:Date.now()+999,sender:null,text:(profile.partnerName||'TA')+' '+poke,timestamp:new Date(),type:'system'});saveMsgs();rCMsg(null,(profile.partnerName||'TA')+' '+poke,{sysMsg:true})},400)}
+        if(j===replyCount-1){setTimeout(function(){var taMsgs=messages.filter(function(m){return m.sender==='partner'&&!m.recalled&&(Date.now()-new Date(m.timestamp).getTime())<120000});if(taMsgs.length>0&&Math.random()<0.25){var rm=taMsgs[Math.floor(Math.random()*taMsgs.length)];if(recallMsg(rm.id)){toast('TA撤回了一条消息',2000)}}},30000+Math.random()*90000)}
       }catch(e){console.log('reply err',e)}
       if(j===replyCount-1)hT();
     },totalDelay);replyTimers.push(tid)})(ri)}
@@ -3426,7 +3609,106 @@ document.addEventListener('click',function(e){if(menuOpen&&!e.target.closest('#c
 
 $('chatMultiSend').addEventListener('click',function(){if(mM&&mP){mP=false;tR()}});
 $('chatBack').addEventListener('click',function(){$('chatScreen').style.display='none'});
+// 收藏库
+function rFav(){
+  var body=$('favPanelBody');var favs=messages.filter(function(m){return m.favorited&&m.type!=='system'}).reverse();
+  if(favs.length===0){body.innerHTML='<div class="fav-empty">⭐<br>还没有收藏的消息<br><span style="font-size:11px;opacity:0.6">长按消息可以收藏哦</span></div>';return}
+  body.innerHTML=favs.map(function(m){
+    var sender=m.sender==='user'?'我':'TA';var time=m.timestamp?fmtMsgTime(m.timestamp):'';
+    var content=m.text||(m.image?'[图片]':(m.emoji?'[表情]':(m.voice?'[语音]':'')));
+    return '<div class="fav-item"><div class="fav-item-text">'+EH(content)+'</div><div class="fav-item-meta"><span class="fav-item-sender">'+sender+'</span><span>'+time+'</span><div class="fav-item-actions"><span class="fav-item-send" data-id="'+m.id+'" title="发送到聊天">📤</span><span class="fav-item-unfav" data-id="'+m.id+'" title="取消收藏">★</span></div></div></div>';
+  }).join('');
+  body.querySelectorAll('.fav-item-unfav').forEach(function(s){s.addEventListener('click',function(e){e.stopPropagation();var msg=messages.find(function(m){return m.id===parseInt(this.dataset.id)});if(msg){msg.favorited=false;saveMsgs();rFav();renderAllMsgs()}}.bind(s))});
+  body.querySelectorAll('.fav-item-send').forEach(function(s){s.addEventListener('click',function(e){e.stopPropagation();var msg=messages.find(function(m){return m.id===parseInt(this.dataset.id)});if(!msg)return;var text=msg.text||'';if(msg.image){var msgData={id:Date.now(),sender:'user',image:msg.image,text:'',timestamp:new Date(),favorited:false,type:'normal'};messages.push(msgData);saveMsgs();rCMsg('sent','',{image:msg.image,msgId:msgData.id})}else if(msg.emoji){sendEmoji(msg.emoji)}else if(msg.voice){var msgData={id:Date.now(),sender:'user',voice:msg.voice,text:'',timestamp:new Date(),favorited:false,type:'normal'};messages.push(msgData);saveMsgs();rCMsg('sent','',{voice:msg.voice,msgId:msgData.id})}else{messages.push({id:Date.now(),sender:'user',text:text,timestamp:new Date(),favorited:false,type:'normal'});saveMsgs();rCMsg('sent',text,{msgId:Date.now()})}tR()}.bind(s))});
+}
+$('favPanelClose').addEventListener('click',function(){$('favPanel').style.display='none';$('chatMsgs').style.display=''});
+// 右上角功能菜单
+$('chatMoreBtn').addEventListener('click',function(e){e.stopPropagation();var m=$('chatMoreMenu');m.style.display=m.style.display==='none'?'flex':'none'});
+document.addEventListener('click',function(e){if(!e.target.closest('#chatMoreBtn')&&!e.target.closest('#chatMoreMenu')){$('chatMoreMenu').style.display='none'}});
+function openFav(){$('favPanel').style.display='flex';$('chatMsgs').style.display='none';rFav()}
+$('chatMoreMenu').addEventListener('click',function(e){var act=e.target.closest('.chat-more-item');if(!act)return;$('chatMoreMenu').style.display='none';var a=act.dataset.action;
+  if(a==='fav'){openFav()}
+  else if(a==='replylib'){$('rlOverlay').style.display='flex';rLst()}
+  else if(a==='settings'){$('settingsOverlay').style.display='flex'}
+  else if(a==='backup'){$('backupOverlay').style.display='flex'}
+  else if(a==='report'){$('reportOverlay').style.display='flex';renderReport()}
+  else if(a==='peek'){openPeek()}
+  else if(a==='block'){toggleBlock()}
+});
 $('chatSend').addEventListener('click',sC);
+// 偷看TA界面
+function openPeek(){
+  $("peekPanel").style.display="flex";$("chatMsgs").style.display="none";
+  $("peekBlockedBar").style.display=blocked?"block":"none";
+  $("peekTitle").textContent=(profile.myName||"我")+"（TA的视角）";
+  renderPeek();
+}
+function renderPeek(){
+  var msgs=$("peekMsgs");msgs.innerHTML="";
+  var all=blocked?messages.concat(blockedQueue):messages.slice();
+  all.sort(function(a,b){return new Date(a.timestamp)-new Date(b.timestamp)});
+  var last='';
+  all.forEach(function(m){
+    var row=document.createElement("div");
+    if(m.type==="system"){row.className="chat-msg-sys";row.textContent=m.text||"";msgs.appendChild(row);last="";return}
+    if(m.recalled){row.className="chat-msg-sys";row.innerHTML="<span style=\"opacity:0.5;font-style:italic\">"+(m.sender==="user"?"我":"TA")+"撤回了一条消息</span>";msgs.appendChild(row);last="";return}
+    var isMine=m.sender==="user";
+    // TA视角：我发的消息=左边白气泡(ta)，TA发的=右边绿气泡(me)
+    row.className="chat-msg-row "+(isMine?"ta":"me");
+    var av=document.createElement("div");av.className="chat-msg-avatar";
+    if(last===m.sender){av.style.visibility="hidden";}else{av.innerHTML=isMine?(profile.myAvatar?"<img src=\""+profile.myAvatar+"\">":'👩🏻'):(profile.partnerAvatar?"<img src=\""+profile.partnerAvatar+"\">":'🧑🏻');}
+    last=m.sender;row.appendChild(av);
+    var wrap=document.createElement("div");wrap.className="chat-msg-wrap";
+    var b=document.createElement("div");b.className="chat-msg-bubble";
+    if(m.image){var img=document.createElement("img");img.src=m.image;img.style.cssText="max-width:180px;max-height:180px;border-radius:6px;display:block";b.appendChild(img);}
+    else if(m.emoji){b.innerHTML="<span class=\"msg-emoji\" style=\"font-size:36px\">"+EH(m.emoji)+"</span>";}
+    else if(m.voice){b.innerHTML="🔊 语音消息";b.style.minWidth="80px";}
+    else{
+      if(m.blocked){b.innerHTML="<span style=\"color:#e04040\">"+EH(m.text||"")+"</span> <span style=\"color:#e04040;font-size:9px\">(拉黑时期发送)</span>";}
+      else{b.textContent=m.text||"";}
+    }
+    if(m.blocked&&!isMine&&!m.text){b.innerHTML="<span style=\"color:#e04040\">"+(m.image?"[图片]":(m.emoji?"[表情]":"[语音]"))+"</span> <span style=\"color:#e04040;font-size:9px\">(拉黑时期发送)</span>";}
+    wrap.appendChild(b);
+    // time
+    if(m.timestamp){var tm=document.createElement("div");tm.className="chat-msg-time";tm.textContent=fmtMsgTime(m.timestamp);wrap.appendChild(tm);}
+    row.appendChild(wrap);msgs.appendChild(row);
+  });
+  msgs.scrollTop=msgs.scrollHeight;
+}
+$("peekPanelClose").addEventListener("click",function(){$("peekPanel").style.display="none";$("chatMsgs").style.display=""});
+// 拉黑/取消拉黑
+function toggleBlock(){
+  blocked=!blocked;
+  saveBlocked();
+  var tg=$("blockToggle");
+  if(tg){if(blocked)tg.classList.add("on");else tg.classList.remove("on")}
+  if(blocked){
+    toast("已拉黑对方，TA的消息将被拦截",2500);
+  }else{
+    if(blockedQueue.length>0){
+      blockedQueue.forEach(function(m){
+        messages.push(m);
+        var isText=m.text&&!m.image&&!m.emoji&&!m.voice;
+        var opts={msgId:m.id,replyTo:m.replyTo,timeStr:fmtMsgTime(m.timestamp),dateStr:fmtMsgDate(m.timestamp)};
+        if(m.image)opts.image=m.image;
+        if(m.emoji)opts.emoji=m.emoji;
+        if(m.voice)opts.voice=m.voice;
+        if(isText){
+          var redText="<span style=\"color:#e04040\">"+EH(m.text||"")+"</span>";
+          opts.html=redText;
+          rCMsg("received","",opts);
+        }else{
+          opts.html=(m.image?"[图片]":(m.emoji?"[表情]":"[语音]"))+" <span style=\"color:#e04040;font-size:10px\">(拉黑时期发送)</span>";
+          rCMsg("received","",opts);
+        }
+      });
+      saveMsgs();
+      toast("TA在拉黑期间发了 "+blockedQueue.length+" 条消息",2000);
+    }
+    blockedQueue=[];saveBlocked();
+    toast("已取消拉黑",1500);
+  }
+}
 $('chatInput').addEventListener('keydown',function(e){if(e.key==='Enter')sC()});
 $('chatImgInput').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){var msgData={id:Date.now(),sender:'user',image:r.result,text:'',timestamp:new Date(),favorited:false,type:'normal'};if(currentReplyTo)msgData.replyTo=currentReplyTo;messages.push(msgData);saveMsgs();rCMsg('sent','',{image:r.result,msgId:msgData.id,replyTo:currentReplyTo});currentReplyTo=null;uReplyPreview();tR()};r.readAsDataURL(f);this.value=''});
 
@@ -3786,7 +4068,7 @@ document.querySelectorAll('.app-icon').forEach(function(icon){icon.setAttribute(
 applyIconOrder();
 
 // ===== App点击 =====
-$('appChat').addEventListener('click',function(){if(!iU)return;$('chatScreen').style.display='flex';$('chatInput').focus();if(messages.length>0)renderAllMsgs()});
+$('appChat').addEventListener('click',function(){if(!iU)return;$('chatScreen').style.display='flex';$('favPanel').style.display='none';$('peekPanel').style.display='none';$('chatMsgs').style.display='';$('chatInput').focus();if(messages.length>0)renderAllMsgs()});
 
 // 视频通话按钮
 // 长按视频按钮弹出设置
@@ -3803,7 +4085,7 @@ $('appSurvey').addEventListener('click',function(){if(!iU)return;$('surveyOverla
 $('appRevSurvey').addEventListener('click',function(){if(!iU)return;$('revsOverlay').style.display='flex';renderRevsList()});
 $('appJournal').addEventListener('click',function(){if(!iU)return;$('backupOverlay').style.display='flex'});
 $('appReport').addEventListener('click',function(){if(!iU)return;$('reportOverlay').style.display='flex';genReport()});
-$('appDiary').addEventListener('click',function(){if(!iU)return;$('diaryOverlay').style.display='flex';diaryViewDate=new Date().toDateString();renderDiary()});
+
 
 // ===== 拍立得卡片：拖拽 + 换图 =====
 var polaroidData={pos:{},imgs:{}};
@@ -4200,6 +4482,9 @@ if('serviceWorker' in navigator){navigator.serviceWorker.register('service-worke
 
 </body>
 </html>
+
+
+
 
 
 
