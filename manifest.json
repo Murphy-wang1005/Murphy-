@@ -1,0 +1,18 @@
+﻿{
+  "name": "Murphy浼犺",
+  "short_name": "Murphy",
+  "description": "鎯呬荆浜掑姩浼犺搴旂敤",
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f4f6f9",
+  "theme_color": "#6cb8e8",
+  "icons": [{
+    "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='80' font-size='80'>馃挄</text></svg>",
+    "sizes": "100x100",
+    "type": "image/svg+xml"
+  }]
+}
+
+
+
