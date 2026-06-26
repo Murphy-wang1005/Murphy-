@@ -310,6 +310,14 @@ body{background:var(--bg-primary);margin:0;padding:0;display:flex;justify-conten
 .peek-panel{position:absolute;top:0;left:0;width:100%;height:100%;background:var(--bg-primary);z-index:210;display:flex;flex-direction:column;overflow:hidden}
 .peek-blocked-bar{text-align:center;padding:8px 0;font-size:13px;font-weight:700;color:#e04040;background:rgba(224,64,64,0.1);flex-shrink:0;letter-spacing:1px}
 .peek-msgs{flex:1}
+/* 一起拍照 */
+.photo-canvas-wrap{flex:1;position:relative;overflow:hidden;background:var(--bg-tertiary);border-radius:14px}
+.photo-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:13px;border-radius:14px;overflow:hidden;background:var(--bg-secondary)}
+.photo-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:14px}
+.photo-cam{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:14px}
+.photo-layer{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);touch-action:none;cursor:grab;user-select:none;-webkit-user-drag:none;z-index:5;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.2))}
+.photo-hint{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.55);color:#fff;font-size:10px;padding:4px 12px;border-radius:12px;pointer-events:none;transition:opacity 0.5s;opacity:0;z-index:10}
+.photo-snap-canvas{position:absolute;inset:0;z-index:1}
 .chat-msg-sys{text-align:center;font-size:11px;color:var(--text-muted);padding:8px 0;letter-spacing:0.5px;opacity:0.7}
 /* 时间戳 */
 .chat-msg-time{font-size:10px;color:var(--text-muted);padding:0 4px;margin-top:2px;font-weight:500;text-shadow:0 1px 1px rgba(0,0,0,0.06)}
@@ -1148,6 +1156,7 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
             <div class="app-icon app-memo" id="appMemo"><div class="app-icon-img"><i class="fas fa-sticky-note"></i></div><span class="app-icon-label">备忘录</span></div>
             <div class="app-icon app-report" id="appReport"><div class="app-icon-img"><i class="fas fa-chart-bar"></i></div><span class="app-icon-label">相处报告</span></div>
             <div class="app-icon app-revsurvey" id="appRevSurvey"><div class="app-icon-img"><i class="fas fa-sync-alt"></i></div><span class="app-icon-label">反向问卷</span></div>
+            <div class="app-icon app-photobooth" id="appPhotobooth"><div class="app-icon-img"><i class="fas fa-camera"></i></div><span class="app-icon-label">一起拍照</span></div>
 
           </div><div class="polaroid-area"><div class="polaroid-card" id="polaroid1" data-idx="0"><div class="polaroid-inner"><div class="polaroid-img"><span class="polaroid-placeholder">📷</span><img src="" alt="" style="display:none"></div><div class="polaroid-cap">我们的瞬间</div></div></div><div class="polaroid-card" id="polaroid2" data-idx="1"><div class="polaroid-inner"><div class="polaroid-img"><span class="polaroid-placeholder">📷</span><img src="" alt="" style="display:none"></div><div class="polaroid-cap">最好的时光</div></div></div></div><div class="period-card" id="periodCard"><div class="period-head"><span class="period-prev" id="periodPrev">◀</span><span class="period-month" id="periodMonth"></span><span class="period-next" id="periodNext">▶</span><span class="period-gear" id="periodGear">⚙</span></div><div class="period-input-row"><span>本次开始</span><input type="date" id="periodStartDate"><span>周期</span><input type="number" id="periodQuickCycle" min="21" max="45" value="28" style="width:44px"><span>天</span></div><div class="period-week"><span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span></div><div class="period-grid" id="periodGrid"></div><div class="period-info" id="periodInfo"></div></div>
     </div></div></div><div class="page-dots" id="pageDots"><span class="dot active" data-page="0"></span><span class="dot" data-page="1"></span></div>
@@ -1824,6 +1833,29 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
     <div class="mco-row" id="momentsPrivacyRow">
       <span class="mco-label">👁 谁可以看</span>
       <span class="mco-val" id="momentsPrivacyVal">公开</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- 一起拍照 -->
+<div class="survey-overlay" id="photoOverlay" style="display:none">
+  <div class="rl-header"><div class="rl-back" id="photoBack">‹ 返回</div><div class="rl-title">📸 一起拍照</div><div></div></div>
+  <div class="survey-body" style="display:flex;flex-direction:column;padding:12px">
+    <div class="photo-canvas-wrap" id="photoCanvasWrap">
+      <div class="photo-bg" id="photoBg"><span>点击下方按钮拍摄或选择照片</span></div>
+      <img class="photo-layer" id="photoTaOverlay" src="" alt="" style="display:none">
+      <video class="photo-cam" id="photoCam" autoplay playsinline style="display:none"></video>
+      <div class="photo-hint" id="photoHint">🖐 TA照片可双指缩放 · 单指拖动</div>
+      <canvas class="photo-snap-canvas" id="photoSnapCanvas" style="display:none"></canvas>
+    </div>
+    <div style="display:flex;gap:6px;padding-top:10px;flex-wrap:wrap">
+      <button class="rl-btn" id="photoCamBtn">📷 拍摄</button>
+      <button class="rl-btn" id="photoPickBtn">🖼 选照片</button>
+      <button class="rl-btn" id="photoTaBtn">+ TA照片</button>
+      <button class="rl-btn rl-btn-add" id="photoSaveBtn" disabled>💾 导出</button>
+      <input type="file" id="photoPickInput" accept="image/*" style="display:none">
+      <input type="file" id="photoTaInput" accept="image/*" style="display:none">
     </div>
   </div>
 </div>
@@ -4088,6 +4120,68 @@ $('appCheck').addEventListener('click',function(){if(!iU)return;$('checkinOverla
 $('appMurmur').addEventListener('click',function(){if(!iU)return;$('murmurOverlay').style.display='flex';renderMurmurPage()});
 $('appSurvey').addEventListener('click',function(){if(!iU)return;$('surveyOverlay').style.display='flex';$('surveyListPane').style.display='flex';$('surveyEditPane').style.display='none';$('surveyResultPane').style.display='none';$('surveyTitle').textContent='问卷';renderSurveyList()});
 $('appRevSurvey').addEventListener('click',function(){if(!iU)return;$('revsOverlay').style.display='flex';renderRevsList()});
+// ===== 一起拍照 =====
+var photo={bg:null,taImg:null,taScale:1,taX:80,taY:60,camStream:null};
+$('appPhotobooth').addEventListener('click',function(){if(!iU)return;$('photoOverlay').style.display='flex';stopPhotoCam()});
+$('photoBack').addEventListener('click',function(){$('photoOverlay').style.display='none';stopPhotoCam()});
+function stopPhotoCam(){if(photo.camStream){photo.camStream.getTracks().forEach(function(t){t.stop()});photo.camStream=null}$('photoCam').style.display='none';$('photoCam').srcObject=null}
+function setPhotoBg(src){photo.bg=src;var bg=$('photoBg');bg.innerHTML='<img src="'+src+'">';$('photoSaveBtn').disabled=false}
+// 拍摄（调用摄像头拍照）
+$('photoCamBtn').addEventListener('click',function(){
+  if(photo.camStream){stopPhotoCam();return}
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){toast('当前环境不支持摄像头，请用「选照片」');return}
+  var cam=$('photoCam');var bg=$('photoBg');
+  navigator.mediaDevices.getUserMedia({video:{facingMode:'user',width:{ideal:640},height:{ideal:640}}}).then(function(stream){
+    photo.camStream=stream;cam.srcObject=stream;cam.style.display='block';bg.style.display='none';
+    toast('📷 看镜头，点击底部👆确认拍摄',2000);
+    // 点击画面拍照
+    function snap(){if(!photo.camStream)return;
+      var c=$('photoSnapCanvas');var w=cam.videoWidth||cam.clientWidth;var h=cam.videoHeight||cam.clientHeight;
+      c.width=w;c.height=h;c.getContext('2d').drawImage(cam,0,0,w,h);
+      var data=c.toDataURL('image/jpeg',0.85);setPhotoBg(data);stopPhotoCam();$('photoBg').style.display='flex';
+      cam.removeEventListener('click',snap);toast('已拍摄 ✓');
+    }
+    cam.addEventListener('click',snap);
+  }).catch(function(){toast('无法访问摄像头，请用「选照片」')});
+});
+// 选照片
+$('photoPickBtn').addEventListener('click',function(){$('photoPickInput').click()});
+$('photoPickInput').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){setPhotoBg(r.result);stopPhotoCam();$('photoBg').style.display='flex'};r.readAsDataURL(f);this.value=''});
+// TA透明照片
+$('photoTaBtn').addEventListener('click',function(){$('photoTaInput').click()});
+$('photoTaInput').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){photo.taImg=r.result;photo.taScale=1;photo.taX=80;photo.taY=60;var ta=$('photoTaOverlay');ta.src=r.result;ta.style.display='block';ta.style.transform='translate('+photo.taX+'px,'+photo.taY+'px) scale(1)';$('photoHint').style.opacity='0.8';setTimeout(function(){$('photoHint').style.opacity='0'},3000)};r.readAsDataURL(f);this.value=''});
+// TA照片拖拽+双指缩放
+var pd=false,pp=false,pDist=0,pScale=1,pX=0,pY=0,pMidX=0,pMidY=0;
+function pDist2(a,b){var dx=a.clientX-b.clientX,dy=a.clientY-b.clientY;return Math.sqrt(dx*dx+dy*dy)}
+$('photoTaOverlay').addEventListener('touchstart',function(e){
+  if(this.style.display==='none')return;e.preventDefault();e.stopPropagation();
+  if(e.touches.length===1){pd=true;pX=e.touches[0].clientX-photo.taX;pY=e.touches[0].clientY-photo.taY}
+  else if(e.touches.length===2){pp=true;pd=false;pDist=pDist2(e.touches[0],e.touches[1]);pScale=photo.taScale;pMidX=(e.touches[0].clientX+e.touches[1].clientX)/2;pMidY=(e.touches[0].clientY+e.touches[1].clientY)/2;pX=photo.taX;pY=photo.taY}
+},{passive:false});
+$('photoTaOverlay').addEventListener('touchmove',function(e){
+  if(this.style.display==='none')return;e.preventDefault();
+  if(pd&&e.touches.length===1){photo.taX=e.touches[0].clientX-pX;photo.taY=e.touches[0].clientY-pY;this.style.transform='translate('+photo.taX+'px,'+photo.taY+'px) scale('+photo.taScale+')'}
+  else if(pp&&e.touches.length===2){var nd=pDist2(e.touches[0],e.touches[1]);photo.taScale=Math.max(0.2,Math.min(4,pScale*(nd/pDist)));var mx=(e.touches[0].clientX+e.touches[1].clientX)/2,my=(e.touches[0].clientY+e.touches[1].clientY)/2;photo.taX=pX+(mx-pMidX);photo.taY=pY+(my-pMidY);this.style.transform='translate('+photo.taX+'px,'+photo.taY+'px) scale('+photo.taScale+')'}
+},{passive:false});
+$('photoTaOverlay').addEventListener('touchend',function(){pd=false;pp=false});
+// 导出合成
+$('photoSaveBtn').addEventListener('click',function(){
+  if(!photo.bg)return toast('请先拍摄或选择照片');
+  var c=document.createElement('canvas');var wrap=$('photoCanvasWrap');var w=wrap.clientWidth;var h=wrap.clientHeight;
+  c.width=w;c.height=h;var ctx=c.getContext('2d');
+  // 1) 底片（我的照片，contain铺满）
+  var bgImg=new Image();bgImg.onload=function(){
+    var iw=bgImg.width,ih=bgImg.height;var scale=Math.min(w/iw,h/ih);var sw=iw*scale,sh=ih*scale;
+    ctx.drawImage(bgImg,(w-sw)/2,(h-sh)/2,sw,sh);
+    // 2) TA透明照片叠在上面
+    if(photo.taImg){var taImg=new Image();taImg.onload=function(){
+      ctx.save();ctx.translate(photo.taX+taImg.width*photo.taScale/2,photo.taY+taImg.height*photo.taScale/2);
+      ctx.scale(photo.taScale,photo.taScale);ctx.drawImage(taImg,-taImg.width/2,-taImg.height/2);ctx.restore();
+      exportImg(c);
+    };taImg.src=photo.taImg}else{exportImg(c)}
+  };bgImg.src=photo.bg;
+});
+function exportImg(c){var a=document.createElement('a');a.href=c.toDataURL('image/png');a.download='合影_'+new Date().toISOString().slice(0,10)+'.png';a.click();toast('已导出 ✓')}
 $('appJournal').addEventListener('click',function(){if(!iU)return;$('backupOverlay').style.display='flex'});
 $('appReport').addEventListener('click',function(){if(!iU)return;$('reportOverlay').style.display='flex';genReport()});
 
