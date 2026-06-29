@@ -225,7 +225,7 @@ body{background:var(--bg-primary);margin:0;padding:0;display:flex;justify-conten
 .rl-item-text{flex:1;font-size:14px;color:var(--text-primary);word-break:break-word;line-height:1.5;padding-right:4px}
 .rl-item-group{font-size:9px;padding:2px 8px;border-radius:8px;color:var(--accent-dark);background:var(--accent-soft);flex-shrink:0;letter-spacing:0.3px;font-weight:500}
 .rl-item-actions{display:flex;gap:2px;flex-shrink:0}
-.rl-item-copy,.rl-item-del{font-size:11px;cursor:pointer;flex-shrink:0;color:var(--text-muted);padding:3px 5px;border-radius:6px;transition:all 0.15s ease}.rl-item-copy:hover{color:var(--accent);background:var(--accent-soft)}.rl-item-del:hover{color:#d4786e;background:rgba(212,120,110,0.08)}
+.rl-item-copy,.rl-item-edit,.rl-item-del{font-size:11px;cursor:pointer;flex-shrink:0;color:var(--text-muted);padding:3px 5px;border-radius:6px;transition:all 0.15s ease}.rl-item-copy:hover{color:var(--accent);background:var(--accent-soft)}.rl-item-edit:hover{color:var(--accent);background:var(--accent-soft)}.rl-item-del:hover{color:#d4786e;background:rgba(212,120,110,0.08)}
 /* 空状态 */
 .rl-empty{text-align:center;color:var(--text-muted);padding:44px 20px;font-size:14px;line-height:2;flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column}.rl-empty span{font-size:11px;opacity:0.6}.rl-empty i{font-size:36px;margin-bottom:10px;opacity:0.2}
 /* 添加栏 */
@@ -490,6 +490,26 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 .call-settings-actions .btn-primary{background:var(--accent);color:#fff}
 .call-settings-actions .btn-secondary{background:var(--accent-soft);color:var(--text-secondary)}
 
+/* ===== 通话背景裁剪弹窗 ===== */
+.call-crop-backdrop{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.88);z-index:650;display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px}
+.call-crop-container{width:100%;max-width:430px;display:flex;flex-direction:column;align-items:center;gap:16px}
+.call-crop-title{color:rgba(255,255,255,0.85);font-size:14px;font-weight:600;text-align:center;letter-spacing:0.5px}
+.call-crop-viewport{position:relative;width:85%;max-width:360px;max-height:62vh;aspect-ratio:var(--crop-ar,9/16);overflow:hidden;border-radius:16px;border:2px solid rgba(255,255,255,0.5);box-shadow:0 0 0 9999px rgba(0,0,0,0.55);background:#111;touch-action:none;cursor:grab}
+.call-crop-viewport:active{cursor:grabbing}
+.call-crop-viewport img{position:absolute;top:50%;left:50%;transform-origin:center center;pointer-events:none;display:block}
+.call-crop-viewport .call-crop-grid{position:absolute;inset:0;pointer-events:none;z-index:2}
+.call-crop-grid::before,.call-crop-grid::after{content:'';position:absolute}
+.call-crop-grid::before{top:33.33%;left:0;right:0;border-top:1px solid rgba(255,255,255,0.18)}
+.call-crop-grid::after{left:33.33%;top:0;bottom:0;border-left:1px solid rgba(255,255,255,0.18)}
+.call-crop-zoom-row{display:flex;align-items:center;gap:10px;width:85%;max-width:300px}
+.call-crop-zoom-row i{color:rgba(255,255,255,0.6);font-size:11px}
+.call-crop-zoom-row input[type=range]{flex:1;height:4px;-webkit-appearance:none;appearance:none;background:rgba(255,255,255,0.25);border-radius:2px;outline:none}
+.call-crop-zoom-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:#fff;border:2px solid var(--accent);cursor:pointer}
+.call-crop-actions{display:flex;gap:10px;width:85%;max-width:300px}
+.call-crop-actions button{flex:1;height:40px;border-radius:20px;border:none;font-size:14px;cursor:pointer;font-family:var(--font);font-weight:500}
+.call-crop-actions .btn-primary{background:var(--accent);color:#fff}
+.call-crop-actions .btn-secondary{background:rgba(255,255,255,0.15);color:#fff}
+
 /* 表情选择器popover */
 .emoji-picker-popover{
   position:absolute;bottom:calc(100% + 8px);right:0;
@@ -741,7 +761,7 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 .yn-input::placeholder{color:var(--text-muted);font-weight:300}
 /* 硬币 */
 .yn-coin-wrap{perspective:700px;cursor:pointer;width:120px;height:120px;margin:4px 0}
-.yn-coin{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 1.2s cubic-bezier(0.22,1,0.36,1)}
+.yn-coin{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.85s cubic-bezier(0.22,1,0.36,1)}
 .yn-coin-face{position:absolute;inset:0;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;backface-visibility:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.18),inset 0 2px 0 rgba(255,255,255,0.15);letter-spacing:3px;overflow:hidden}
 .yn-coin-face img{width:100%;height:100%;object-fit:cover;border-radius:50%}
 .yn-coin-front{background:linear-gradient(145deg,#5f85b0 0%,#7b9ec4 30%,#9eb8d8 60%,#4a6a90 100%);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.2)}
@@ -769,7 +789,7 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 .yn-history-q{color:var(--text-secondary);font-size:11px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex-shrink:0}
 .yn-history-a{flex:1;color:var(--accent-dark);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .yn-history-time{font-size:9px;color:var(--text-muted);flex-shrink:0;opacity:0.7}
-.yn-history-yes,.yn-history-no{font-size:9px;font-weight:700;padding:2px 8px;border-radius:8px;flex-shrink:0;letter-spacing:0.5px}.yn-history-yes{background:rgba(180,150,100,0.2);color:#a08060}.yn-history-no{background:rgba(160,120,110,0.15);color:#907060}
+.yn-history-yes,.yn-history-no{font-size:9px;font-weight:700;padding:2px 8px;border-radius:8px;flex-shrink:0;letter-spacing:0.5px}.yn-history-yes{background:rgba(72,180,120,0.18);color:#3a9060}.yn-history-no{background:rgba(210,100,100,0.15);color:#b85050}
 .yn-history-empty{text-align:center;color:var(--text-muted);padding:16px 0;font-size:12px;line-height:1.8}.yn-history-empty span{font-size:10px;opacity:0.6}
 
 
@@ -1781,6 +1801,26 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
   </div>
 </div>
 
+<!-- 通话背景裁剪 -->
+<div class="call-crop-backdrop" id="callCropModal">
+  <div class="call-crop-container">
+    <div class="call-crop-title" id="callCropTitle">📐 拖动调整裁剪区域</div>
+    <div class="call-crop-viewport" id="callCropViewport">
+      <img id="callCropImage" src="" alt="" draggable="false">
+      <div class="call-crop-grid"></div>
+    </div>
+    <div class="call-crop-zoom-row">
+      <i class="fas fa-search-minus"></i>
+      <input type="range" id="callCropZoom" min="50" max="200" value="50">
+      <i class="fas fa-search-plus"></i>
+    </div>
+    <div class="call-crop-actions">
+      <button class="btn-secondary" id="callCropCancel">取消</button>
+      <button class="btn-primary" id="callCropConfirm">确认裁剪 ✓</button>
+    </div>
+  </div>
+</div>
+
 <style id="beautyLiveStyle"></style>
 
 <!-- 朋友圈 -->
@@ -2149,12 +2189,15 @@ function rLst(){
     lst.innerHTML=fd.map(function(item){
       var isDef=item.isDefault;var ridx=isDef?('def_'+DEFAULT_REPLIES.indexOf(item.text)):('cus_'+rD.indexOf(item));
       var ck=rS.indexOf(ridx)!==-1?' checked':'';
-      var actions=isDef?'<div class="rl-item-copy" data-copy="'+EH(item.text)+'" title="复制为自定义"><i class="fas fa-copy"></i></div>':'<div class="rl-item-del" data-idx="'+rD.indexOf(item)+'"><i class="fas fa-times"></i></div>';
+      var actions='<span class="rl-item-edit-def" data-text="'+EH(item.text)+'" data-group="'+EH(item.group||'其他')+'" data-isdef="'+(isDef?'1':'0')+'" data-idx="'+(isDef?'':rD.indexOf(item))+'" title="编辑">✏</span>'+(isDef?'<span class="rl-item-copy" data-copy="'+EH(item.text)+'" title="复制为自定义">📋</span>':'<span class="rl-item-del" data-idx="'+rD.indexOf(item)+'">✕</span>');
       return '<div class="rl-item"><div class="rl-item-check'+ck+'" data-idx="'+EH(ridx)+'">'+(ck?'<i class="fas fa-check"></i>':'')+'</div><div class="rl-item-text">'+EH(item.text)+'</div><div class="rl-item-group">'+EH(item.group||'其他')+'</div><div class="rl-item-actions">'+actions+'</div></div>';
     }).join('');
     lst.querySelectorAll('.rl-item-check').forEach(function(cb){cb.addEventListener('click',function(){var i=this.dataset.idx;var p=rS.indexOf(i);if(p===-1)rS.push(i);else rS.splice(p,1);rLst()})});
     lst.querySelectorAll('.rl-item-del').forEach(function(dl){dl.addEventListener('click',function(){var i=parseInt(this.dataset.idx);rD.splice(i,1);sR(rD);rS=rS.filter(function(x){return x!=='cus_'+i});rLst()})});
-    lst.querySelectorAll('.rl-item-copy').forEach(function(cp){cp.addEventListener('click',function(){var t=this.dataset.copy;if(t){rD.push({text:t,group:'默认'});sR(rD);toast('已复制到自定义回复 ✓');rLst()}})})
+    lst.querySelectorAll('.rl-item-copy').forEach(function(cp){cp.addEventListener('click',function(){var t=this.dataset.copy;if(t){rD.push({text:t,group:'默认'});sR(rD);toast('已复制到自定义回复 ✓');rLst()}})});
+	  lst.querySelectorAll('.rl-item-edit-def').forEach(function(ed){ed.addEventListener('click',function(){var isDef=this.dataset.isdef==='1';var idx=parseInt(this.dataset.idx);var text=this.dataset.text;var group=this.dataset.group;
+    if(isDef){var n=prompt('编辑默认字卡（将复制到自定义列表）：',text);if(!n||!n.trim())return;var g2=prompt('编辑分组：',group);rD.push({text:n.trim(),group:g2&&g2.trim()?g2.trim():'其他'});sR(rD);rLst();toast('已复制并编辑 ✓')}
+    else{var item=rD[idx];if(!item)return;var t=prompt('编辑内容：',item.text);if(t===null)return;var g=prompt('编辑分组：',item.group||'其他');if(g===null){g=item.group||'其他'}item.text=t.trim();item.group=g.trim()||'其他';sR(rD);rLst();toast('已更新 ✓')}})})
   }
 }
 
@@ -2202,7 +2245,7 @@ $('rlDelSelected').addEventListener('click',function(){
   rS=[];sR(rD);sDE(rDisabled);rLst();rEmojiLst();toast('已处理');
 });
 $('rlClearAll').addEventListener('click',function(){if(!confirm('清空所有自定义回复？'))return;rD=[];rS=[];sR(rD);rLst()});
-$('rlImportBtn').addEventListener('click',function(){var i=document.createElement('input');i.type='file';i.accept='.json,.txt';i.onchange=function(){var f=i.files[0];if(!f)return;var r=new FileReader();r.onload=function(){var isAppend=confirm("追加导入？确定=追加，取消=覆盖全部");var c=0;if(!isAppend){rD=[]}try{var d=JSON.parse(r.result);if(Array.isArray(d))d.forEach(function(it){var t=typeof it==='string'?it:it.text||'';var g=it.group||'其他';if(t.trim()){rD.push({text:t.trim(),group:g});c++}})}catch(e){r.result.split(/[\r\n]+/).forEach(function(l){if(l.trim()){rD.push({text:l.trim(),group:'其他'});c++}})}rD=dedupArray(rD);sR(rD);rLst();toast('导入'+c+'条 ✓')};r.readAsText(f)};i.click()});
+$('rlImportBtn').addEventListener('click',function(){var i=document.createElement('input');i.type='file';i.accept='.json,.txt';i.onchange=function(){var f=i.files[0];if(!f)return;var r=new FileReader();r.onload=function(){var isAppend=confirm("追加导入？确定=追加，取消=覆盖全部");var c=0;if(!isAppend){rD=[]}try{var d=JSON.parse(r.result);if(Array.isArray(d))d.forEach(function(it){var t=typeof it==='string'?it:it.text||'';var g=it.group||'其他';if(t.trim()){rD.push({text:t.trim(),group:g});c++}})}catch(e){r.result.split(/[\r\n]+/).forEach(function(l){l=l.trim();if(!l)return;var parts=l.split('\t');if(parts.length>=2){rD.push({text:parts[1].trim(),group:parts[0].trim()||'其他'});c++}else if(l.indexOf('|')>=0){var p=l.split('|');rD.push({text:p.slice(1).join('|').trim(),group:p[0].trim()||'其他'});c++}else{rD.push({text:l,group:'其他'});c++}})}rD=dedupArray(rD);sR(rD);rLst();toast('导入'+c+'条 ✓')};r.readAsText(f)};i.click()});
 $('rlExportBtn').addEventListener('click',function(){var all=rD.slice();if(all.length===0){toast('无内容可导出');return};var b=new Blob([JSON.stringify(all,null,2)],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='Murphy回复库_'+new Date().toISOString().slice(0,10)+'.json';a.click();toast('导出'+all.length+'条 ✓')});
 
 
@@ -3371,23 +3414,23 @@ document.addEventListener('click',function(e){if(!e.target.closest('#cinemaEmoji
 // Yes or No
 // ==========================================
 var ynFlipping=false,ynLastAnswer='',ynCurrentDeg=0,ynHistory=[];
-(function(){try{var s=localStorage.getItem('murphy_yn_history');if(s)ynHistory=JSON.parse(s)}catch(e){}})();
+(function(){try{var s=localStorage.getItem('murphy_yn_history');if(s){ynHistory=JSON.parse(s);ynHistory.forEach(function(h){h.isYes=!!h.isYes})}}catch(e){}})();
 function saveYnHistory(){if(ynHistory.length>20)ynHistory=ynHistory.slice(-20);localStorage.setItem('murphy_yn_history',JSON.stringify(ynHistory))}
 function ynFlip(){
   if(ynFlipping)return;ynFlipping=true;
   var coin=$('ynCoin');var answer=$('ynAnswer');answer.textContent='';$('ynSend').style.display='none';
   var isYes=Math.random()<0.5;
-  ynCurrentDeg+= (isYes?1080:900);
+  // 修正：先对齐到360的整数倍，再加偏移，确保YES面=0°、NO面=180°
+  ynCurrentDeg=Math.floor(ynCurrentDeg/360)*360+(isYes?1080:900);
   coin.style.transform='rotateY('+ynCurrentDeg+'deg)';
   setTimeout(function(){
     var all=getAllReplies();var ans=all[Math.floor(Math.random()*all.length)].text;
     answer.textContent=ans;answer.classList.remove('show');void answer.offsetWidth;answer.classList.add('show');
     ynLastAnswer=ans;ynFlipping=false;$('ynSend').style.display='inline-block';
-    // 保存历史
     var q=$('ynInput').value.trim();
     ynHistory.push({question:q||'(未提问)',answer:ans,isYes:isYes,time:Date.now()});
     saveYnHistory();renderYnHistory();
-  },700);
+  },900);
 }
 function renderYnHistory(){
   var el=$('ynHistoryList');if(!el)return;
@@ -3979,13 +4022,149 @@ function showCallSettings(){
 }
 function hideCallSettings(){$('callSettingsModal').style.display='none'}
 $('callBgGrid').addEventListener('click',function(e){var dot=e.target.closest('.call-bg-dot');if(!dot)return;document.querySelectorAll('#callBgGrid .call-bg-dot').forEach(function(d){d.classList.remove('active')});dot.classList.add('active');callSet.bgType=dot.dataset.bg;callSet.bgImage='';applyCallBg();saveCallSet()});
-$('callBgUpload').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){callSet.bgType='custom';callSet.bgImage=r.result;applyCallBg();saveCallSet();document.querySelectorAll('#callBgGrid .call-bg-dot').forEach(function(d){d.classList.remove('active')})};r.readAsDataURL(f);this.value=''});
+$('callBgUpload').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){openCallCrop(r.result)};r.readAsDataURL(f);this.value=''});
 $('callPartnerImgSet').addEventListener('click',function(){$('callPartnerImgSetInput').click()});
 $('callPartnerImgSetInput').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){callSet.partnerImage=r.result;saveCallSet();toast('对方画面已设置 ✓')};r.readAsDataURL(f);this.value=''});
 $('callPartnerImgClear').addEventListener('click',function(){callSet.partnerImage='';saveCallSet();toast('已清除')});
 $('callSettingsCancel').addEventListener('click',hideCallSettings);
 $('callSettingsSave').addEventListener('click',function(){saveCallSet();hideCallSettings();toast('通话设置已保存 ✓')});
 $('callSettingsModal').addEventListener('click',function(e){if(e.target===this)hideCallSettings()});
+
+// ===== 通话背景裁剪 =====
+var cropState={imgDataUrl:'',natW:0,natH:0,scale:1,baseScale:1,tx:0,ty:0, dragging:false,lastX:0,lastY:0};
+
+function openCallCrop(dataUrl){
+  cropState.imgDataUrl=dataUrl;
+  cropState.scale=1; cropState.baseScale=1; cropState.tx=0; cropState.ty=0; cropState.dragging=false;
+  var img=$('callCropImage');img.src=dataUrl;
+  img.onload=function(){
+    cropState.natW=img.naturalWidth; cropState.natH=img.naturalHeight;
+    var vp=$('callCropViewport');var vpW=vp.clientWidth;var vpH=vp.clientHeight;
+    // 计算刚好覆盖viewport的缩放比例
+    var sx=vpW/cropState.natW;var sy=vpH/cropState.natH;
+    cropState.baseScale=Math.max(sx,sy);
+    cropState.scale=cropState.baseScale;
+    cropState.tx=0; cropState.ty=0;
+    applyCropTransform();
+    $('callCropZoom').value=50;
+    // 设置viewport宽高比，与通话背景区域（phone-screen）一致
+    var phone=document.querySelector('.phone-screen');
+    var ar=phone.clientWidth/phone.clientHeight;
+    vp.style.setProperty('--crop-ar',ar.toFixed(4));
+    vp.style.aspectRatio=(ar.toFixed(4));
+  };
+  $('callCropModal').style.display='flex';
+  hideCallSettings();
+}
+
+function applyCropTransform(){
+  var img=$('callCropImage');
+  img.style.transform='translate('+cropState.tx+'px,'+cropState.ty+'px) scale('+cropState.scale+')';
+}
+
+function clampCropPos(){
+  var vp=$('callCropViewport');var vpW=vp.clientWidth;var vpH=vp.clientHeight;
+  var s=cropState.scale;var nW=cropState.natW;var nH=cropState.natH;
+  // 图片显示尺寸
+  var dW=nW*s;var dH=nH*s;
+  // 允许移动的范围：图片边缘不进入viewport内部
+  var maxTx=(dW-vpW)/2;if(maxTx<0)maxTx=0;
+  var maxTy=(dH-vpH)/2;if(maxTy<0)maxTy=0;
+  cropState.tx=Math.max(-maxTx,Math.min(maxTx,cropState.tx));
+  cropState.ty=Math.max(-maxTy,Math.min(maxTy,cropState.ty));
+}
+
+function getCropPointerPos(e){
+  var t=e.touches?e.touches[0]:e;
+  return {x:t.clientX,y:t.clientY};
+}
+
+// 拖拽：鼠标 + 触摸
+(function initCropDrag(){
+  var vp=$('callCropViewport');
+  var start=function(e){
+    cropState.dragging=true;
+    var p=getCropPointerPos(e);
+    cropState.lastX=p.x; cropState.lastY=p.y;
+    vp.style.cursor='grabbing';
+    e.preventDefault();
+  };
+  var move=function(e){
+    if(!cropState.dragging)return;
+    var p=getCropPointerPos(e);
+    var dx=p.x-cropState.lastX;var dy=p.y-cropState.lastY;
+    cropState.lastX=p.x; cropState.lastY=p.y;
+    cropState.tx+=dx; cropState.ty+=dy;
+    clampCropPos();
+    applyCropTransform();
+    e.preventDefault();
+  };
+  var end=function(){
+    cropState.dragging=false;
+    vp.style.cursor='grab';
+  };
+  vp.addEventListener('mousedown',start);
+  window.addEventListener('mousemove',move);
+  window.addEventListener('mouseup',end);
+  vp.addEventListener('touchstart',start,{passive:false});
+  window.addEventListener('touchmove',move,{passive:false});
+  window.addEventListener('touchend',end);
+})();
+
+// 缩放滑块
+$('callCropZoom').addEventListener('input',function(){
+  var sliderVal=parseInt(this.value); // 50~200
+  var oldScale=cropState.scale;
+  // slider 50→baseScale*1.0, 150→baseScale*3.0, 200→baseScale*3.0(封顶)
+  cropState.scale=cropState.baseScale * Math.min(3, Math.max(1, sliderVal/50));
+  // 以viewport中心为缩放原点，调整位移
+  var ratio=cropState.scale/oldScale;
+  cropState.tx*=ratio; cropState.ty*=ratio;
+  clampCropPos();
+  applyCropTransform();
+});
+
+// 确认裁剪
+$('callCropConfirm').addEventListener('click',function(){
+  var img=$('callCropImage');if(!img.naturalWidth){toast('图片未加载');return;}
+  var vp=$('callCropViewport');var vpW=vp.clientWidth;var vpH=vp.clientHeight;
+  var s=cropState.scale;var nW=cropState.natW;var nH=cropState.natH;
+  var tx=cropState.tx;var ty=cropState.ty;
+  // 计算在原图上的裁剪区域
+  var sx=(nW*s/2 - vpW/2 - tx)/s;
+  var sy=(nH*s/2 - vpH/2 - ty)/s;
+  var sw=vpW/s;var sh=vpH/s;
+  // 边界钳制
+  if(sx<0){sw+=sx;sx=0}
+  if(sy<0){sh+=sy;sy=0}
+  if(sx+sw>nW)sw=nW-sx;
+  if(sy+sh>nH)sh=nH-sy;
+  if(sw<=0||sh<=0){toast('裁剪区域无效');return;}
+  // Canvas裁剪 — 输出分辨率与viewport显示一致（2x保证清晰度）
+  var scale=Math.min(window.devicePixelRatio||1,2);
+  var canvas=document.createElement('canvas');
+  canvas.width=Math.round(vpW*scale);canvas.height=Math.round(vpH*scale);
+  var ctx=canvas.getContext('2d');ctx.drawImage(img,sx,sy,sw,sh,0,0,canvas.width,canvas.height);
+  var cropped=canvas.toDataURL('image/jpeg',0.88);
+  // 应用
+  callSet.bgType='custom';
+  callSet.bgImage=cropped;
+  applyCallBg();
+  saveCallSet();
+  document.querySelectorAll('#callBgGrid .call-bg-dot').forEach(function(d){d.classList.remove('active')});
+  closeCallCrop();
+  toast('背景已裁剪并应用 ✓');
+});
+
+// 取消裁剪
+$('callCropCancel').addEventListener('click',closeCallCrop);
+$('callCropModal').addEventListener('click',function(e){if(e.target===this)closeCallCrop()});
+
+function closeCallCrop(){
+  $('callCropModal').style.display='none';
+  $('callCropImage').src='';
+  cropState.imgDataUrl='';
+}
 
 // ===== 设置面板 =====
 function renderSettings(){
