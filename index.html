@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN" data-theme="light" data-color="blue">
 <head>
 <meta charset="UTF-8">
@@ -186,29 +186,39 @@ body{background:var(--bg-primary);margin:0;padding:0;display:flex;justify-conten
 
 /* ===== 回复库 ===== */
 .rl-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:var(--overlay-bg);z-index:220;display:flex;flex-direction:column;transition:background-color 0.5s ease}
-.rl-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px 10px;flex-shrink:0;background:var(--header-bg);border-bottom:1px solid var(--border-light);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 2px 8px rgba(0,0,0,0.04);transition:background-color 0.5s ease,border-color 0.5s ease}
+/* 顶部冻结包裹层 */
+.rl-top-wrap{flex-shrink:0;position:sticky;top:0;z-index:15;background:var(--header-bg);box-shadow:0 4px 20px rgba(0,0,0,0.07);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);transition:background-color 0.5s ease}
+.rl-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px 10px;border-bottom:1px solid var(--border-light);transition:border-color 0.5s ease}
 .rl-back{font-size:15px;color:var(--accent);cursor:pointer;padding:4px 0;transition:opacity 0.2s}.rl-back:hover{opacity:0.7}
 .rl-title{font-size:17px;font-weight:600;color:var(--text-primary);letter-spacing:1px}
 .rl-count{font-size:10px;color:var(--accent-dark);background:var(--accent-soft);padding:4px 10px;border-radius:10px;font-weight:600;letter-spacing:0.5px}
 /* Tabs */
-.rl-tabs{display:flex;padding:10px 12px 8px;gap:6px;flex-shrink:0;background:var(--header-bg);border-bottom:1px solid var(--border-light);overflow-x:auto;scrollbar-width:none}.rl-tabs::-webkit-scrollbar{display:none}
+.rl-tabs{display:flex;padding:8px 12px;gap:6px;flex-shrink:0;overflow-x:auto;scrollbar-width:none}.rl-tabs::-webkit-scrollbar{display:none}
 .rl-tab{flex-shrink:0;text-align:center;padding:8px 12px;border-radius:14px;font-size:11px;font-weight:600;color:var(--text-secondary);background:var(--accent-soft);cursor:pointer;transition:all 0.25s cubic-bezier(0.25,0.8,0.25,1);border:1px solid transparent;white-space:nowrap}
 .rl-tab:hover{background:var(--border-light);color:var(--text-primary)}
 .rl-tab.active{background:var(--accent);color:#fff;box-shadow:0 3px 10px rgba(var(--accent-rgb),0.3);transform:translateY(-1px)}
 /* 工具栏 */
-.rl-toolbar{flex-shrink:0;background:var(--header-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border-light);padding:8px 12px;box-shadow:0 1px 3px rgba(0,0,0,0.02);transition:background-color 0.5s ease}
-.rl-toolbar-inner{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.rl-toolbar .rl-search{flex:1;min-width:80px;height:32px;border-radius:16px;border:1.5px solid var(--border-light);padding:0 14px;font-size:12px;background:var(--input-bg);color:var(--text-primary);outline:none;transition:all 0.25s ease}
-.rl-toolbar .rl-search:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(var(--accent-rgb),0.06)}
-.rl-toolbar .rl-search::placeholder{color:var(--text-muted);font-size:11px}
-.rl-toolbar .rl-btn{height:28px;font-size:10px;padding:0 10px;border-radius:10px;transition:all 0.2s ease;font-weight:500}.rl-toolbar .rl-btn:hover{transform:translateY(-1px)}
+.rl-toolbar{flex-shrink:0;padding:4px 12px 8px;transition:background-color 0.5s ease}
+.rl-toolbar-inner{display:flex;flex-direction:column;gap:5px}
+.rl-toolbar-row{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.rl-toolbar-sep{width:1px;height:18px;background:var(--border);flex-shrink:0;margin:0 2px;opacity:0.6}
+.rl-search-wrap{display:flex;align-items:center;gap:0;flex-shrink:0}
+.rl-search-btn{width:26px;height:26px;padding:0!important;justify-content:center;font-size:11px;flex-shrink:0}
+.rl-toolbar .rl-search{width:0;height:26px;border-radius:13px;border:1px solid transparent;padding:0;font-size:11px;background:var(--input-bg);color:var(--text-primary);outline:none;transition:all 0.25s ease;box-sizing:border-box;opacity:0}
+.rl-search-wrap.open .rl-search{width:130px;padding:0 10px;border-color:var(--border-light);opacity:1;margin-left:4px}
+.rl-search-wrap.open .rl-search:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(var(--accent-rgb),0.05)}
+.rl-toolbar .rl-search::placeholder{color:var(--text-muted);font-size:10px}
+.rl-toolbar .rl-btn{height:26px;font-size:10px;padding:0 9px;border-radius:13px;transition:all 0.15s ease;font-weight:400;letter-spacing:0.2px;color:var(--text-secondary);background:var(--accent-soft);border:1px solid transparent}.rl-toolbar .rl-btn:hover{background:rgba(var(--accent-rgb),0.12);color:var(--text-primary);transform:translateY(-1px)}
+.rl-toolbar .rl-btn.rl-btn-add{background:var(--accent);color:#fff;font-weight:500}.rl-toolbar .rl-btn.rl-btn-add:hover{opacity:0.88}
+.rl-toolbar .rl-btn.rl-btn-danger{background:transparent;color:var(--text-muted)}.rl-toolbar .rl-btn.rl-btn-danger:hover{color:#d4786e;background:rgba(212,120,110,0.08)}
+.rl-toolbar .rl-btn.rl-btn-dedup{background:transparent;color:var(--text-muted)}.rl-toolbar .rl-btn.rl-btn-dedup:hover{color:var(--accent);background:var(--accent-soft)}
 .rl-body{flex:1;overflow-y:auto;display:flex;flex-direction:column;padding:10px 12px}
 .rl-pane{display:flex;flex-direction:column;flex:1}
 /* 分组 */
-.rl-groups{display:flex;gap:5px;padding:0 0 8px;flex-wrap:wrap}
-.rl-group{font-size:10px;padding:4px 12px;border-radius:12px;background:var(--accent-soft);color:var(--text-secondary);cursor:pointer;white-space:nowrap;transition:all 0.2s ease;border:1px solid transparent;font-weight:500}.rl-group:hover{background:rgba(var(--accent-rgb),0.12);color:var(--text-primary)}
-.rl-group.active{background:var(--accent);color:#fff;font-weight:600;box-shadow:0 2px 6px rgba(var(--accent-rgb),0.2)}.rl-group-del{display:none;margin-left:3px;font-size:9px;cursor:pointer;opacity:0.5}.rl-group:hover .rl-group-del{display:inline}.rl-group-del:hover{opacity:1;color:#d4786e}
-.rl-group-mgr-toggle{font-size:10px;color:var(--accent);cursor:pointer;letter-spacing:0.5px;transition:opacity 0.2s;opacity:0.7}.rl-group-mgr-toggle:hover{opacity:1}
+.rl-groups{display:flex;gap:5px;flex-wrap:wrap;padding:4px 0 0}
+.rl-group{font-size:9px;padding:3px 10px;border-radius:10px;background:transparent;color:var(--text-muted);cursor:pointer;white-space:nowrap;transition:all 0.15s ease;border:1px solid transparent;font-weight:400;letter-spacing:0.3px}.rl-group:hover{background:var(--accent-soft);color:var(--text-primary)}
+.rl-group.active{background:var(--accent);color:#fff;font-weight:600;box-shadow:0 2px 6px rgba(var(--accent-rgb),0.15)}.rl-group-del{display:none;margin-left:2px;font-size:8px;cursor:pointer;opacity:0.5}.rl-group:hover .rl-group-del{display:inline}.rl-group-del:hover{opacity:1;color:#d4786e}
+.rl-group-mgr-toggle{font-size:10px;color:var(--text-muted);cursor:pointer;letter-spacing:0.3px;transition:all 0.15s ease;padding:2px 0;opacity:0.6}.rl-group-mgr-toggle:hover{opacity:1;color:var(--accent)}
 .rl-group-mgr{display:flex;flex-wrap:wrap;gap:6px;padding:4px 0 8px;align-items:center}
 .rl-group-input{width:100px;height:30px;border-radius:15px;border:1.5px solid var(--border-light);padding:0 10px;font-size:11px;background:var(--input-bg);color:var(--text-primary);outline:none;transition:all 0.25s ease;font-family:var(--font)}.rl-group-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(var(--accent-rgb),0.06)}
 .rl-group-list{display:flex;flex-wrap:wrap;gap:5px;flex:1}
@@ -223,7 +233,17 @@ body{background:var(--bg-primary);margin:0;padding:0;display:flex;justify-conten
 .rl-item-check{width:18px;height:18px;border-radius:50%;border:2px solid var(--border);cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:8px;transition:all 0.2s ease}.rl-item-check:hover{border-color:var(--accent);transform:scale(1.1)}
 .rl-item-check.checked{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 2px 4px rgba(var(--accent-rgb),0.25)}
 .rl-item-text{flex:1;font-size:14px;color:var(--text-primary);word-break:break-word;line-height:1.5;padding-right:4px}
-.rl-item-group{font-size:9px;padding:2px 8px;border-radius:8px;color:var(--accent-dark);background:var(--accent-soft);flex-shrink:0;letter-spacing:0.3px;font-weight:500}
+.rl-item-group{font-size:9px;padding:2px 8px;border-radius:8px;color:var(--accent-dark);background:var(--accent-soft);flex-shrink:0;letter-spacing:0.3px;font-weight:500;cursor:pointer;transition:all 0.15s ease;position:relative}.rl-item-group:hover{background:var(--accent);color:#fff}
+/* 分组弹窗 */
+.rl-group-pop{position:absolute;top:100%;left:0;z-index:30;background:var(--bg-secondary);border:1px solid var(--border-light);border-radius:12px;box-shadow:0 8px 28px rgba(0,0,0,0.12);padding:6px;min-width:80px;display:none;flex-direction:column;gap:1px;animation:popIn 0.15s ease}
+@keyframes popIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.rl-group-pop-item{font-size:11px;padding:6px 10px;border-radius:8px;cursor:pointer;color:var(--text-primary);white-space:nowrap;transition:all 0.1s ease;font-weight:400}.rl-group-pop-item:hover{background:var(--accent-soft);color:var(--accent-dark)}
+.rl-group-pop-item.current{font-weight:700;color:var(--accent)}
+/* 工具栏下拉菜单 */
+.rl-tb-drop{position:relative;flex-shrink:0}.rl-tb-drop>.rl-btn .fa-caret-down{font-size:8px;margin-left:2px;opacity:0.5;transition:opacity 0.15s}.rl-tb-drop>.rl-btn:hover .fa-caret-down{opacity:0.8}
+.rl-tb-pop{position:absolute;top:100%;left:0;z-index:25;background:var(--bg-secondary);border:1px solid var(--border-light);border-radius:12px;box-shadow:0 8px 28px rgba(0,0,0,0.12);padding:4px;min-width:110px;display:none;flex-direction:column;gap:1px;margin-top:4px;animation:popIn 0.15s ease}
+.rl-tb-pop-item{font-size:11px;padding:7px 12px;border-radius:8px;cursor:pointer;color:var(--text-primary);white-space:nowrap;transition:all 0.1s ease;font-weight:400;display:flex;align-items:center;gap:6px}.rl-tb-pop-item:hover{background:var(--accent-soft);color:var(--accent-dark)}
+.rl-tb-pop-item.danger{color:#c06060}.rl-tb-pop-item.danger:hover{background:rgba(212,120,110,0.1);color:#d4786e}
 .rl-item-actions{display:flex;gap:2px;flex-shrink:0}
 .rl-item-copy,.rl-item-edit,.rl-item-del{font-size:11px;cursor:pointer;flex-shrink:0;color:var(--text-muted);padding:3px 5px;border-radius:6px;transition:all 0.15s ease}.rl-item-copy:hover{color:var(--accent);background:var(--accent-soft)}.rl-item-edit:hover{color:var(--accent);background:var(--accent-soft)}.rl-item-del:hover{color:#d4786e;background:rgba(212,120,110,0.08)}
 /* 空状态 */
@@ -233,6 +253,7 @@ body{background:var(--bg-primary);margin:0;padding:0;display:flex;justify-conten
 .rl-add-input{flex:1;height:36px;border-radius:18px;border:1.5px solid transparent;padding:0 14px;font-size:13px;background:var(--input-bg);color:var(--text-primary);outline:none;transition:all 0.25s ease;font-family:var(--font)}.rl-add-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(var(--accent-rgb),0.06)}
 .rl-add-input::placeholder{color:var(--text-muted);font-weight:400;font-size:12px}
 .rl-add-group{width:68px;height:36px;border-radius:18px;border:1.5px solid var(--border-light);font-size:10px;background:var(--input-bg);color:var(--text-secondary);outline:none;padding:0 4px;cursor:pointer;transition:all 0.2s ease;font-family:var(--font)}
+.rl-sel-group{width:auto;min-width:78px;height:26px;border-radius:13px;border:1px solid transparent;font-size:10px;background:var(--accent-soft);color:var(--text-secondary);outline:none;padding:0 6px;cursor:pointer;transition:all 0.15s ease;font-family:var(--font);flex-shrink:0;font-weight:400}.rl-sel-group:hover{background:rgba(var(--accent-rgb),0.12);color:var(--text-primary)}.rl-sel-group:focus{border-color:var(--accent);box-shadow:0 0 0 2px rgba(var(--accent-rgb),0.08)}
 /* 按钮 */
 .rl-btn{height:32px;border-radius:16px;border:none;font-size:11px;cursor:pointer;background:var(--accent-soft);color:var(--text-secondary);padding:0 14px;white-space:nowrap;transition:all 0.2s cubic-bezier(0.25,0.8,0.25,1);letter-spacing:0.3px;font-weight:500;font-family:var(--font)}
 .rl-btn:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,0.05)}
@@ -432,10 +453,10 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 @media(max-width:430px){.lock-time-wrap{margin-top:120px}.hero-card{margin-top:16px}.widget{backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}.hero-card{backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}.movie-header,.chat-header,#cinemaBar{backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}}
 
 /* ===== 视频通话（微信风格双窗口）===== */
-.call-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:#000;z-index:500;display:flex;flex-direction:column;align-items:center;justify-content:space-between;overflow:hidden}
-.call-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0;transition:background 0.5s}
-.call-bg-tint{position:absolute;inset:0;background:rgba(0,0,0,0.35);z-index:1}
-.call-top-bar{position:absolute;top:0;left:0;right:0;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:linear-gradient(to bottom,rgba(0,0,0,0.55),transparent)}
+.call-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:#000;z-index:500;display:flex;flex-direction:column;align-items:center;justify-content:space-between;overflow:hidden;box-shadow:0 0 120px rgba(var(--accent-rgb),0.15)}
+.call-bg-fill{position:absolute;inset:-30px;background-size:cover;background-position:center;filter:blur(40px) brightness(0.45);z-index:-1;transform:scale(1.1)}.call-bg{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat;z-index:0;transition:background 0.5s}.call-bg.custom-contain{background-size:85%;background-color:#000}
+.call-bg-tint{position:absolute;inset:0;background:rgba(0,0,0,0.35);z-index:1}.call-gradient{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at 50% 30%,rgba(0,0,0,0) 40%,rgba(0,0,0,0.3) 100%),linear-gradient(to bottom,rgba(0,0,0,0.1) 0%,transparent 30%,transparent 70%,rgba(0,0,0,0.35) 100%)}.call-particles{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}.call-particle{position:absolute;border-radius:50%;background:rgba(255,255,255,0.25);animation:particleFloat linear infinite}@keyframes particleFloat{0%{transform:translateY(0) translateX(0) scale(1);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-100vh) translateX(40px) scale(.3);opacity:0}}.call-gradient{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at 50% 30%,rgba(0,0,0,0) 40%,rgba(0,0,0,0.3) 100%),linear-gradient(to bottom,rgba(0,0,0,0.1) 0%,transparent 30%,transparent 70%,rgba(0,0,0,0.35) 100%)}.call-particles{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}.call-particle{position:absolute;border-radius:50%;background:rgba(255,255,255,0.25);animation:particleFloat linear infinite}@keyframes particleFloat{0%{transform:translateY(0) translateX(0) scale(1);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-100vh) translateX(40px) scale(.3);opacity:0}}
+.call-top-bar{position:absolute;top:0;left:0;right:0;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:linear-gradient(to bottom,rgba(0,0,0,0.55) 0%,transparent 100%);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
 .call-top-status{color:rgba(255,255,255,0.8);font-size:12px;display:flex;align-items:center;gap:6px}
 .call-top-timer{color:#fff;font-size:15px;font-weight:600;letter-spacing:1px}
 .call-top-minimize{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,0.15);border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px}
@@ -452,27 +473,27 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 .call-center-content{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;margin-top:50px}
 .call-ring-anim{width:90px;height:90px;border-radius:50%;overflow:hidden;border:3px solid rgba(255,255,255,0.25);animation:callRingPulse 1.5s ease-out infinite}
 .call-ring-anim img{width:100%;height:100%;object-fit:cover}
-@keyframes callRingPulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,0.5)}50%{box-shadow:0 0 0 28px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
+@keyframes callRingPulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,0.5),0 0 30px rgba(var(--accent-rgb),0.2)}50%{box-shadow:0 0 0 28px rgba(255,255,255,0),0 0 80px rgba(var(--accent-rgb),0.4)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0),0 0 30px rgba(var(--accent-rgb),0.2)}}
 .call-caller-name{color:#fff;font-size:22px;font-weight:600;margin-top:14px;text-shadow:0 2px 10px rgba(0,0,0,0.3)}
 .call-caller-hint{color:rgba(255,255,255,0.55);font-size:13px;margin-top:6px;letter-spacing:1px}
 .call-outgoing-text{animation:callOutPulse 1.8s ease-in-out infinite}
-@keyframes callOutPulse{0%,100%{opacity:1}50%{opacity:0.4}}
+@keyframes callOutPulse{0%,100%{opacity:1;letter-spacing:1px}50%{opacity:0.4;letter-spacing:3px}}@keyframes callActiveGlow{0%,100%{box-shadow:0 0 15px rgba(74,222,128,.3),0 0 30px rgba(74,222,128,.1)}50%{box-shadow:0 0 25px rgba(74,222,128,.5),0 0 50px rgba(74,222,128,.2)}}.call-active-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#4ade80;margin-right:6px;animation:callActiveGlow 2s ease-in-out infinite}
 .call-bottom-ctrls{position:absolute;bottom:0;left:0;right:0;z-index:5;display:flex;gap:32px;align-items:center;justify-content:center;padding:0 20px 44px;background:linear-gradient(to top,rgba(0,0,0,0.55),transparent)}
 .call-ctrl-item{display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer}
-.call-ctrl-circle{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.12);box-shadow:0 4px 16px rgba(0,0,0,0.3);transition:all 0.2s;color:#fff;font-size:20px}
+.call-ctrl-circle{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.12);box-shadow:0 8px 24px rgba(0,0,0,0.4),0 0 0 1px rgba(255,255,255,0.2),inset 0 1px 0 rgba(255,255,255,0.15);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:all 0.25s;color:#fff;font-size:20px}
 .call-ctrl-circle.muted,.call-ctrl-circle.camoff{background:rgba(255,255,255,0.25)}
 .call-ctrl-label{font-size:10px;color:rgba(255,255,255,0.7);letter-spacing:0.5px}
 .call-ctrl-hangup .call-ctrl-circle{background:rgba(255,60,60,0.85);width:60px;height:60px;font-size:26px}
 .call-ctrl-hangup .call-ctrl-circle i{transform:rotate(135deg)}
 .call-answer-row{display:flex;gap:36px;align-items:center}
-.call-answer-btn{width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,0.4);color:#fff;font-size:26px}
+.call-answer-btn{width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.15);color:#fff;font-size:26px;transition:transform 0.2s cubic-bezier(0.175,0.885,0.32,1.275),box-shadow 0.2s}.call-answer-btn:hover{transform:scale(1.08);box-shadow:0 14px 38px rgba(0,0,0,0.55),0 0 0 2px rgba(255,255,255,0.25)}.call-answer-btn:active{transform:scale(0.88)}
 .call-answer-decline{background:rgba(255,60,60,0.85)}.call-answer-decline i{transform:rotate(135deg)}
 .call-answer-accept{background:rgba(50,200,90,0.85)}
-.call-mini-bubble{position:absolute;bottom:110px;right:14px;z-index:400;background:rgba(25,30,50,0.94);border-radius:50px;padding:8px 16px;display:flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,0.15);box-shadow:0 6px 28px rgba(0,0,0,0.5);cursor:grab;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);touch-action:none;user-select:none}
+.call-mini-bubble{position:absolute;bottom:110px;right:14px;z-index:400;background:rgba(20,24,40,0.94);border-radius:50px;padding:8px 16px;display:flex;align-items:center;gap:8px;border:1px solid rgba(var(--accent-rgb),0.5);box-shadow:0 8px 32px rgba(0,0,0,0.55),0 0 0 1px rgba(255,255,255,0.08),0 0 20px rgba(var(--accent-rgb),0.12);cursor:grab;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);touch-action:none;user-select:none;transition:all 0.25s}.call-mini-bubble:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,0.6),0 0 0 1px rgba(255,255,255,0.12),0 0 30px rgba(var(--accent-rgb),0.2)}
 .call-mini-bubble:active{cursor:grabbing;box-shadow:0 8px 32px rgba(0,0,0,0.7)}
-.call-mini-dot{width:7px;height:7px;border-radius:50%;background:#4ade80;animation:callOutPulse 1s ease-in-out infinite}
+.call-mini-dot{width:10px;height:10px;border-radius:50%;background:#4ade80;animation:callActiveGlow 1.5s ease-in-out infinite;box-shadow:0 0 8px rgba(74,222,128,0.5)}
 .call-mini-timer{font-size:13px;font-weight:700;color:#fff;letter-spacing:0.5px}
-.call-mini-hangup{width:26px;height:26px;border-radius:50%;background:rgba(255,60,60,0.7);border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:10px}
+.call-mini-hangup{width:26px;height:26px;border-radius:50%;background:rgba(255,60,60,0.7);border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:10px}.call-icon-btn{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.12);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;color:#fff}.call-icon-btn:hover{background:rgba(255,255,255,0.22);border-color:rgba(255,255,255,0.35);box-shadow:0 0 15px rgba(255,255,255,0.1)}.call-icon-btn{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.12);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;color:#fff}.call-icon-btn:hover{background:rgba(255,255,255,0.22);border-color:rgba(255,255,255,0.35);box-shadow:0 0 15px rgba(255,255,255,0.1)}
 .call-partner-upload{position:absolute;bottom:100px;left:50%;transform:translateX(-50%);z-index:6;background:rgba(0,0,0,0.45);color:rgba(255,255,255,0.7);border:1px dashed rgba(255,255,255,0.3);border-radius:16px;padding:6px 14px;font-size:11px;cursor:pointer;letter-spacing:0.5px}
 .call-settings-backdrop{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:600;display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .call-settings-panel{width:100%;max-width:430px;background:var(--bg-secondary);border-radius:24px 24px 0 0;padding:20px 20px 30px;animation:callSlideUp 0.3s ease;border-top:1px solid var(--border-light)}
@@ -494,9 +515,9 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 .call-crop-backdrop{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.88);z-index:650;display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px}
 .call-crop-container{width:100%;max-width:430px;display:flex;flex-direction:column;align-items:center;gap:16px}
 .call-crop-title{color:rgba(255,255,255,0.85);font-size:14px;font-weight:600;text-align:center;letter-spacing:0.5px}
-.call-crop-viewport{position:relative;width:85%;max-width:360px;max-height:62vh;aspect-ratio:var(--crop-ar,9/16);overflow:hidden;border-radius:16px;border:2px solid rgba(255,255,255,0.5);box-shadow:0 0 0 9999px rgba(0,0,0,0.55);background:#111;touch-action:none;cursor:grab}
+.call-crop-viewport{position:relative;width:92%;max-width:400px;max-height:68vh;aspect-ratio:var(--crop-ar,9/16);overflow:hidden;border-radius:16px;border:2px solid rgba(255,255,255,0.5);box-shadow:0 0 0 9999px rgba(0,0,0,0.55);background:#111;touch-action:none;cursor:grab}
 .call-crop-viewport:active{cursor:grabbing}
-.call-crop-viewport img{position:absolute;top:50%;left:50%;transform-origin:center center;pointer-events:none;display:block}
+.call-crop-viewport img{position:absolute;top:0;left:0;transform-origin:0 0;pointer-events:none;display:block}
 .call-crop-viewport .call-crop-grid{position:absolute;inset:0;pointer-events:none;z-index:2}
 .call-crop-grid::before,.call-crop-grid::after{content:'';position:absolute}
 .call-crop-grid::before{top:33.33%;left:0;right:0;border-top:1px solid rgba(255,255,255,0.18)}
@@ -1184,35 +1205,67 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 
   <!-- 回复库 -->
   <div class="rl-overlay" id="rlOverlay" style="display:none">
-    <div class="rl-header"><div class="rl-back" id="rlBack">‹ 返回</div><div class="rl-title">📋 回复库</div><div class="rl-count" id="rlCount">0条</div></div>
+    <div class="rl-top-wrap">
+      <div class="rl-header"><div class="rl-back" id="rlBack">‹ 返回</div><div class="rl-title">📋 回复库</div><div class="rl-count" id="rlCount">0条</div></div>
     <div class="rl-tabs"><div class="rl-tab active" data-tab="text">💬 主回复库</div><div class="rl-tab" data-tab="emoji">😊 表情库</div><div class="rl-tab" data-tab="sticker">🖼️ 表情包</div><div class="rl-tab" data-tab="voice">🎤 语音回复</div><div class="rl-tab" data-tab="murmur">💭 碎碎念</div><div class="rl-tab" data-tab="diary">📔 日记库</div></div>
     <div class="rl-toolbar" id="rlToolbar">
       <div class="rl-toolbar-inner" id="rlToolbarText">
-        <input type="text" class="rl-search" id="rlSearch" placeholder="🔍 搜索回复...">
-        <button class="rl-btn rl-btn-dedup" id="rlDedupBtn"><i class="fas fa-broom"></i> 去重</button>
-        <button class="rl-btn" id="rlImportBtn"><i class="fas fa-file-import"></i> 导入</button>
-        <button class="rl-btn" id="rlExportBtn"><i class="fas fa-file-export"></i> 导出</button>
-        <button class="rl-btn rl-btn-danger" id="rlDelSelected"><i class="fas fa-trash-alt"></i> 选中</button>
-        <button class="rl-btn rl-btn-danger" id="rlClearAll">清空</button>
+        <div class="rl-toolbar-row">
+          <span class="rl-search-wrap" id="rlSearchWrap">
+            <button class="rl-btn rl-search-btn" id="rlSearchBtn" title="搜索"><i class="fas fa-search"></i></button>
+            <input type="text" class="rl-search" id="rlSearch" placeholder="搜索...">
+          </span>
+          <div class="rl-tb-drop" id="rlDataDrop">
+            <button class="rl-btn"><i class="fas fa-file-import"></i> 导入导出 <i class="fas fa-caret-down"></i></button>
+            <div class="rl-tb-pop">
+              <div class="rl-tb-pop-item" data-action="import"><i class="fas fa-download"></i> 导入</div>
+              <div class="rl-tb-pop-item" data-action="export"><i class="fas fa-upload"></i> 导出</div>
+            </div>
+          </div>
+          <span class="rl-toolbar-sep"></span>
+          <div class="rl-tb-drop" id="rlToolsDrop">
+            <button class="rl-btn"><i class="fas fa-wrench"></i> 工具 <i class="fas fa-caret-down"></i></button>
+            <div class="rl-tb-pop">
+              <div class="rl-tb-pop-item" data-action="dedup"><i class="fas fa-broom"></i> 去重</div>
+              <div class="rl-tb-pop-item danger" data-action="clear"><i class="fas fa-eraser"></i> 清空全部</div>
+            </div>
+          </div>
+          <select class="rl-sel-group" id="rlSelGroup"><option value="">移至分组...</option></select>
+          <span class="rl-toolbar-sep"></span>
+          <button class="rl-btn rl-btn-danger" id="rlDelSelected"><i class="fas fa-trash-alt"></i> 删选中</button>
+        </div>
+        <button id="rlImportBtn" style="display:none"></button><button id="rlExportBtn" style="display:none"></button><button id="rlDedupBtn" style="display:none"></button><button id="rlClearAll" style="display:none"></button>
+        <div class="rl-groups" id="rlGroups"><span class="rl-group active" data-group="all">全部</span></div>
+        <div class="rl-group-mgr" id="rlGroupMgr" style="display:none"><input type="text" class="rl-group-input" id="rlGroupInput" placeholder="新分组名称"><button class="rl-btn rl-btn-add" id="rlGroupAdd">添加</button><div class="rl-group-list" id="rlGroupList"></div><button class="rl-btn" id="rlGroupDone">完成</button></div>
+        <div class="rl-group-mgr-toggle" id="rlGroupToggle">⚙️ 管理分组</div>
       </div>
       <div class="rl-toolbar-inner" id="rlToolbarEmoji" style="display:none">
         <span style="font-size:12px;color:var(--text-muted);flex:1">点击表情可启用/禁用 · 已禁用的表情对方将不会发送</span>
       </div>
       <div class="rl-toolbar-inner" id="rlToolbarSticker" style="display:none">
-        <button class="rl-btn rl-btn-add" id="rlStickerUpload"><i class="fas fa-upload"></i> 上传图片</button>
-        <button class="rl-btn rl-btn-danger" id="rlStickerDelSel"><i class="fas fa-trash-alt"></i> 删除选中</button>
-        <span class="rl-count" id="rlStickerCount">0张</span>
+        <div class="rl-toolbar-row">
+          <button class="rl-btn rl-btn-add" id="rlStickerUpload"><i class="fas fa-upload"></i> 上传图片</button>
+          <button class="rl-btn rl-btn-danger" id="rlStickerDelSel"><i class="fas fa-trash-alt"></i> 删除选中</button>
+          <span class="rl-count" id="rlStickerCount">0张</span>
+        </div>
       </div>
       <div class="rl-toolbar-inner" id="rlToolbarVoice" style="display:none">
-        <button class="rl-btn rl-btn-add" id="rlVoiceUpload"><i class="fas fa-upload"></i> 上传音频</button>
-        <button class="rl-btn rl-btn-danger" id="rlVoiceDelSel"><i class="fas fa-trash-alt"></i> 删除选中</button>
-        <span class="rl-count" id="rlVoiceCount">0条</span>
+        <div class="rl-toolbar-row">
+          <button class="rl-btn rl-btn-add" id="rlVoiceUpload"><i class="fas fa-upload"></i> 上传音频</button>
+          <button class="rl-btn rl-btn-danger" id="rlVoiceDelSel"><i class="fas fa-trash-alt"></i> 删除选中</button>
+          <span class="rl-count" id="rlVoiceCount">0条</span>
+        </div>
       </div>
+      <div class="rl-toolbar-inner" id="rlToolbarMurmur" style="display:none">
+        <span style="font-size:12px;color:var(--text-muted)">💭 TA的碎碎念专用库，与聊天回复分开</span>
+      </div>
+      <div class="rl-toolbar-inner" id="rlToolbarDiary" style="display:none">
+        <span style="font-size:12px;color:var(--text-muted)">📔 日记专用素材库，私密内容</span>
+      </div>
+    </div>
     </div>
     <div class="rl-body">
       <div class="rl-pane rl-pane-text" id="rlPaneText">
-        <div class="rl-groups" id="rlGroups"><span class="rl-group active" data-group="all">全部</span></div>
-        <div class="rl-group-mgr" id="rlGroupMgr" style="display:none"><input type="text" class="rl-group-input" id="rlGroupInput" placeholder="新分组名称"><button class="rl-btn rl-btn-add" id="rlGroupAdd">添加</button><div class="rl-group-list" id="rlGroupList"></div><button class="rl-btn" id="rlGroupDone">完成</button></div><div style="padding:0 0 6px"><span class="rl-group-mgr-toggle" id="rlGroupToggle">⚙️ 管理分组</span></div>
         <div class="rl-list" id="rlList"></div>
         <div class="rl-empty" id="rlEmpty"><i class="fas fa-inbox"></i>📭 回复库为空<br><span>在下方添加或导入回复</span></div>
         <div class="rl-add-bar"><input type="text" class="rl-add-input" id="rlAddInput" placeholder="输入一条新回复..."><select class="rl-add-group" id="rlAddGroup"></select><button class="rl-btn rl-btn-add" id="rlAddBtn">添加</button></div>
@@ -1238,10 +1291,7 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
         <div class="rl-add-bar"><input type="text" class="rl-add-input" id="rlMurmurInput" placeholder="添加一句碎碎念..."><button class="rl-btn rl-btn-add" id="rlMurmurAddBtn">添加</button></div>
       </div>
     </div>
-  </div>
-  <div class="rl-toolbar-inner" id="rlToolbarMurmur" style="display:none">
-    <span style="font-size:12px;color:var(--text-muted);flex:1">💭 TA的碎碎念专用库，与聊天回复分开</span>
-      <div class="rl-toolbar-inner" id="rlToolbarDiary" style="display:none"><span style="font-size:12px;color:var(--text-muted);flex:1">📔 日记专用素材库，私密内容</span></div>
+    <div class="rl-group-pop" id="rlGroupPop"></div>
   </div>
 
   <!-- 聊天 -->
@@ -1644,10 +1694,10 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
         <span style="font-size:13px;font-weight:600;color:var(--text-primary)">✍ 我的日记</span>
         <div style="display:flex;gap:8px"><span id="diaryPeekBtn" title="TA的偷看记录" style="cursor:pointer;font-size:16px">👁</span></div>
       </div>
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 12px 8px;flex-shrink:0">
-        <button class="rl-btn" id="diaryPrev" style="font-size:10px">◀ 前一天</button>
-        <span style="font-size:11px;color:var(--text-muted)" id="myDiaryDate">今天</span>
-        <button class="rl-btn" id="diaryNext" style="font-size:10px">后一天 ▶</button>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 12px 8px;flex-shrink:0;gap:6px">
+        <button class="rl-btn" id="diaryPrev" style="font-size:10px">◀</button>
+        <input type="date" id="myDiaryPicker" style="flex:1;height:28px;border-radius:10px;border:1px solid var(--border-light);padding:0 8px;font-size:11px;background:var(--input-bg);color:var(--text-primary);outline:none;font-family:var(--font);text-align:center;max-width:140px">
+        <button class="rl-btn" id="diaryNext" style="font-size:10px">▶</button>
       </div>
       <div id="myDiaryInputWrap" style="flex:1;overflow-y:auto;margin:6px 10px;border-radius:8px;background:#fffef9;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.03),0 2px 8px rgba(0,0,0,0.04)"><div id="myDiaryInput" contenteditable="true" style="min-height:100%;color:#4a3a2a;font-size:13px;padding:16px 14px;outline:none;font-family:var(--font);line-height:2;white-space:pre-wrap;word-break:break-word;background-image:repeating-linear-gradient(0deg,transparent,transparent 31px,rgba(180,160,140,0.1) 31px,rgba(180,160,140,0.1) 32px)"></div></div>
       <div style="padding:8px 12px;flex-shrink:0"><button class="rl-btn rl-btn-add" id="diarySave" style="width:100%">💾 保存日记</button></div>
@@ -1659,10 +1709,10 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
         <span style="font-size:13px;font-weight:600;color:var(--text-primary)">📔 TA的日记</span>
         <div></div>
       </div>
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 12px 8px;flex-shrink:0">
-        <button class="rl-btn" id="diaryPrevTa" style="font-size:10px">◀ 前一天</button>
-        <span style="font-size:11px;color:var(--text-muted)" id="taDiaryDate">今天</span>
-        <button class="rl-btn" id="diaryNextTa" style="font-size:10px">后一天 ▶</button>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 12px 8px;flex-shrink:0;gap:6px">
+        <button class="rl-btn" id="diaryPrevTa" style="font-size:10px">◀</button>
+        <input type="date" id="taDiaryPicker" style="flex:1;height:28px;border-radius:10px;border:1px solid var(--border-light);padding:0 8px;font-size:11px;background:var(--input-bg);color:var(--text-primary);outline:none;font-family:var(--font);text-align:center;max-width:140px">
+        <button class="rl-btn" id="diaryNextTa" style="font-size:10px">▶</button>
       </div>
       <div id="taDiaryContent" style="flex:1;overflow-y:auto;padding:10px 12px;font-size:12px;line-height:1.7;color:var(--text-primary)"></div>
       <div class="rl-empty" id="diaryEmpty" style="display:none;padding:20px;text-align:center"><i class="fas fa-book"></i>这一天没有日记<br><span>TA可能太忙了</span></div>
@@ -1710,7 +1760,8 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 
   <!-- 视频通话 - 来电 -->
   <div class="call-overlay" id="callIncoming" style="display:none">
-    <div class="call-bg" id="callIncomingBg"></div><div class="call-bg-tint"></div>
+    <div class="call-bg-fill" id="callIncomingBgFill" style="display:none"></div><div class="call-bg" id="callIncomingBg"></div><div class="call-gradient"></div><div class="call-bg-tint"></div>
+    <button class="call-icon-btn" style="position:absolute;top:14px;right:14px;z-index:10" id="callSettingsBtn1" title="通话设置"><i class="fas fa-cog"></i></button>
     <div class="call-center-content">
       <p style="color:rgba(255,255,255,0.55);font-size:11px;letter-spacing:3px;z-index:3">视频通话邀请</p>
       <div class="call-ring-anim" style="margin:16px 0"><img id="callIncomingAvatar" src="" alt=""></div>
@@ -1725,7 +1776,8 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 
   <!-- 视频通话 - 去电 -->
   <div class="call-overlay" id="callOutgoing" style="display:none">
-    <div class="call-bg" id="callOutgoingBg"></div><div class="call-bg-tint"></div>
+    <div class="call-bg-fill" id="callOutgoingBgFill" style="display:none"></div><div class="call-bg" id="callOutgoingBg"></div><div class="call-gradient"></div><div class="call-bg-tint"></div>
+    <button class="call-icon-btn" style="position:absolute;top:14px;right:14px;z-index:10" id="callSettingsBtn2" title="通话设置"><i class="fas fa-cog"></i></button>
     <div class="call-center-content">
       <div style="width:90px;height:90px;border-radius:50%;overflow:hidden;border:3px solid rgba(255,255,255,0.25);box-shadow:0 8px 30px rgba(0,0,0,0.3)"><img id="callOutgoingAvatar" src="" alt=""></div>
       <h2 class="call-caller-name" id="callOutgoingName" style="margin-top:16px">TA</h2>
@@ -1738,7 +1790,7 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 
   <!-- 视频通话 - 通话中（微信风格双窗口） -->
   <div class="call-overlay" id="callActive" style="display:none">
-    <div class="call-bg" id="callActiveBg"></div><div class="call-bg-tint"></div>
+    <div class="call-bg-fill" id="callActiveBgFill" style="display:none"></div><div class="call-bg" id="callActiveBg"></div><div class="call-gradient"></div><div class="call-bg-tint"></div>
     <div class="call-partner-area" id="callPartnerArea">
       <img id="callPartnerImg" src="" alt="" style="display:none">
       <div class="call-partner-placeholder" id="callPartnerPlaceholder"><i class="fas fa-user-circle"></i><span>TA 的视频画面</span></div>
@@ -1747,11 +1799,13 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
       <video id="callSelfVideo" autoplay playsinline muted style="display:none"></video>
       <div class="call-self-pip-off" id="callSelfOff"><i class="fas fa-video-slash"></i></div>
     </div>
-    <button class="call-partner-upload" id="callPartnerUpload"><i class="fas fa-camera"></i> 设置对方画面</button>
     <div class="call-top-bar">
       <span class="call-top-status"><div class="call-mini-dot"></div> 视频通话中</span>
       <span class="call-top-timer" id="callDuration">00:00</span>
-      <button class="call-top-minimize" id="callMinimizeBtn"><i class="fas fa-window-minimize"></i></button>
+      <span style="display:flex;gap:8px">
+        <button class="call-icon-btn" id="callSettingsBtn3" title="通话设置"><i class="fas fa-cog"></i></button>
+        <button class="call-top-minimize" id="callMinimizeBtn"><i class="fas fa-window-minimize"></i></button>
+      </span>
     </div>
     <div class="call-bottom-ctrls">
       <div class="call-ctrl-item" id="callMuteBtn"><div class="call-ctrl-circle"><i class="fas fa-microphone"></i></div><span class="call-ctrl-label">麦克风</span></div>
@@ -1759,7 +1813,6 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
       <div class="call-ctrl-item" id="callBeautyBtn"><div class="call-ctrl-circle"><i class="fas fa-magic"></i></div><span class="call-ctrl-label" id="callBeautyLabel">美颜关</span></div>
       <div class="call-ctrl-item" id="callCamToggle"><div class="call-ctrl-circle camoff"><i class="fas fa-video-slash"></i></div><span class="call-ctrl-label">摄像头</span></div>
     </div>
-    <input type="file" id="callPartnerImgInput" accept="image/*" style="display:none">
   </div>
 
   <!-- 视频通话 - 缩小化气泡 -->
@@ -1781,8 +1834,16 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
           <div class="call-bg-dot" data-bg="ocean" style="background:linear-gradient(135deg,#3a70b0,#1e4a78)">🌊</div>
           <div class="call-bg-dot" data-bg="forest" style="background:linear-gradient(135deg,#5a8a4a,#3a6a2a)">🌲</div>
           <div class="call-bg-dot" data-bg="purple" style="background:linear-gradient(135deg,#9a7eb8,#5a3e78)">🌸</div>
+          <div class="call-bg-dot" data-bg="starry" style="background:linear-gradient(135deg,#0c0c1e,#1a1a3e 30%,#2d2d5e 60%,#0c0c1e)">✨</div>
+          <div class="call-bg-dot" data-bg="cherry" style="background:linear-gradient(135deg,#f8cdda,#ffb6c1 30%,#f8a5b8 70%,#f8cdda)">🌸</div>
+          <div class="call-bg-dot" data-bg="aurora" style="background:linear-gradient(135deg,#0f2027,#203a43 30%,#2c5364 60%,#0f2027)">🌌</div>
           <label class="call-bg-upload" for="callBgUpload" title="自定义"><i class="fas fa-cloud-upload-alt"></i></label>
           <input type="file" id="callBgUpload" accept="image/*" style="display:none">
+        </div>
+        <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border-light);font-size:12px">
+          <div style="font-weight:600;color:var(--text-secondary);margin-bottom:6px"><i class="fas fa-expand"></i> 图片填充模式</div>
+          <label style="display:flex;align-items:center;gap:6px;padding:8px 12px;background:var(--bg-primary);border-radius:10px;cursor:pointer;margin-bottom:6px"><input type="radio" name="fitMode" id="callFitContain" checked style="accent-color:var(--accent)"><span>完整显示</span><small style="color:var(--text-secondary)">原图完整可见</small></label>
+          <label style="display:flex;align-items:center;gap:6px;padding:8px 12px;background:var(--bg-primary);border-radius:10px;cursor:pointer"><input type="radio" name="fitMode" id="callFitCover" style="accent-color:var(--accent)"><span>填充铺满</span><small style="color:var(--text-secondary)">铺满可能裁切</small></label>
         </div>
       </div>
       <div class="call-settings-section">
@@ -1809,9 +1870,14 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
       <img id="callCropImage" src="" alt="" draggable="false">
       <div class="call-crop-grid"></div>
     </div>
+    <div style="display:flex;gap:6px;width:92%;max-width:400px;flex-wrap:wrap;justify-content:center">
+      <button class="rl-btn" id="callCropFitContain" style="font-size:11px;padding:5px 12px;border-radius:14px"><i class="fas fa-image"></i> 完整显示</button>
+      <button class="rl-btn" id="callCropFitCover" style="font-size:11px;padding:5px 12px;border-radius:14px"><i class="fas fa-expand"></i> 填充铺满</button>
+      <button class="rl-btn" id="callCropReset" style="font-size:11px;padding:5px 12px;border-radius:14px"><i class="fas fa-undo"></i> 重置</button>
+    </div>
     <div class="call-crop-zoom-row">
       <i class="fas fa-search-minus"></i>
-      <input type="range" id="callCropZoom" min="50" max="200" value="50">
+      <input type="range" id="callCropZoom" min="0" max="100" value="0">
       <i class="fas fa-search-plus"></i>
     </div>
     <div class="call-crop-actions">
@@ -2175,6 +2241,8 @@ function rGp(){
   rG.forEach(function(g){el.innerHTML+='<span class="rl-group" data-group="'+EH(g)+'">'+EH(g)+'</span>'});
   el.innerHTML+='<span class="rl-group" data-group="默认">默认</span>';
   var sl=$('rlAddGroup');sl.innerHTML='';rG.forEach(function(g){sl.innerHTML+='<option>'+EH(g)+'</option>'});
+  // 同步更新「移至分组」下拉框
+  var sg=$('rlSelGroup');if(sg){sg.innerHTML='<option value="">移至分组...</option>';rG.forEach(function(g){sg.innerHTML+='<option value="'+EH(g)+'">'+EH(g)+'</option>'});sg.innerHTML+='<option value="默认">默认</option>'}
   el.querySelectorAll('.rl-group').forEach(function(g){g.addEventListener('click',function(){el.querySelectorAll('.rl-group').forEach(function(x){x.classList.remove('active')});this.classList.add('active');rF=this.dataset.group;rLst()})});
 }
 
@@ -2190,7 +2258,8 @@ function rLst(){
       var isDef=item.isDefault;var ridx=isDef?('def_'+DEFAULT_REPLIES.indexOf(item.text)):('cus_'+rD.indexOf(item));
       var ck=rS.indexOf(ridx)!==-1?' checked':'';
       var actions='<span class="rl-item-edit-def" data-text="'+EH(item.text)+'" data-group="'+EH(item.group||'其他')+'" data-isdef="'+(isDef?'1':'0')+'" data-idx="'+(isDef?'':rD.indexOf(item))+'" title="编辑">✏</span>'+(isDef?'<span class="rl-item-copy" data-copy="'+EH(item.text)+'" title="复制为自定义">📋</span>':'<span class="rl-item-del" data-idx="'+rD.indexOf(item)+'">✕</span>');
-      return '<div class="rl-item"><div class="rl-item-check'+ck+'" data-idx="'+EH(ridx)+'">'+(ck?'<i class="fas fa-check"></i>':'')+'</div><div class="rl-item-text">'+EH(item.text)+'</div><div class="rl-item-group">'+EH(item.group||'其他')+'</div><div class="rl-item-actions">'+actions+'</div></div>';
+      var gid=isDef?('def_'+DEFAULT_REPLIES.indexOf(item.text)):('cus_'+rD.indexOf(item));
+      return '<div class="rl-item"><div class="rl-item-check'+ck+'" data-idx="'+EH(ridx)+'">'+(ck?'<i class="fas fa-check"></i>':'')+'</div><div class="rl-item-text">'+EH(item.text)+'</div><div class="rl-item-group" data-gidx="'+EH(gid)+'" data-gname="'+EH(item.group||'其他')+'">'+EH(item.group||'其他')+'</div><div class="rl-item-actions">'+actions+'</div></div>';
     }).join('');
     lst.querySelectorAll('.rl-item-check').forEach(function(cb){cb.addEventListener('click',function(){var i=this.dataset.idx;var p=rS.indexOf(i);if(p===-1)rS.push(i);else rS.splice(p,1);rLst()})});
     lst.querySelectorAll('.rl-item-del').forEach(function(dl){dl.addEventListener('click',function(){var i=parseInt(this.dataset.idx);rD.splice(i,1);sR(rD);rS=rS.filter(function(x){return x!=='cus_'+i});rLst()})});
@@ -2198,6 +2267,29 @@ function rLst(){
 	  lst.querySelectorAll('.rl-item-edit-def').forEach(function(ed){ed.addEventListener('click',function(){var isDef=this.dataset.isdef==='1';var idx=parseInt(this.dataset.idx);var text=this.dataset.text;var group=this.dataset.group;
     if(isDef){var n=prompt('编辑默认字卡（将复制到自定义列表）：',text);if(!n||!n.trim())return;var g2=prompt('编辑分组：',group);rD.push({text:n.trim(),group:g2&&g2.trim()?g2.trim():'其他'});sR(rD);rLst();toast('已复制并编辑 ✓')}
     else{var item=rD[idx];if(!item)return;var t=prompt('编辑内容：',item.text);if(t===null)return;var g=prompt('编辑分组：',item.group||'其他');if(g===null){g=item.group||'其他'}item.text=t.trim();item.group=g.trim()||'其他';sR(rD);rLst();toast('已更新 ✓')}})})
+    // 点击分组标签切换分组
+    lst.querySelectorAll('.rl-item-group').forEach(function(gb){gb.addEventListener('click',function(e){e.stopPropagation();
+      var gidx=this.dataset.gidx;var pop=$('rlGroupPop');
+      // 定位弹窗
+      var rect=this.getBoundingClientRect();var overlayRect=$('rlOverlay').getBoundingClientRect();
+      pop.style.top=(rect.bottom-overlayRect.top+2)+'px';pop.style.left=(rect.left-overlayRect.left)+'px';pop.style.display='flex';
+      // 填充分组选项
+      var curGroup=this.dataset.gname;
+      pop.innerHTML='';
+      rG.forEach(function(g){var opt=document.createElement('div');opt.className='rl-group-pop-item'+(g===curGroup?' current':'');opt.textContent=g;
+        opt.addEventListener('click',function(){
+          if(gidx.indexOf('cus_')===0){var i=parseInt(gidx.replace('cus_',''));if(rD[i]){rD[i].group=g;sR(rD);rLst()}}
+          else if(gidx.indexOf('def_')===0){var t=DEFAULT_REPLIES[parseInt(gidx.replace('def_',''))];if(t){rD.push({text:t,group:g});sR(rD);rLst();toast('已复制并移至「'+g+'」 ✓')}}
+          pop.style.display='none';
+        });pop.appendChild(opt);
+      });
+      var optDef=document.createElement('div');optDef.className='rl-group-pop-item'+('默认'===curGroup?' current':'');optDef.textContent='默认';
+      optDef.addEventListener('click',function(){
+        if(gidx.indexOf('cus_')===0){var i=parseInt(gidx.replace('cus_',''));if(rD[i]){rD[i].group='默认';sR(rD);rLst()}}
+        else if(gidx.indexOf('def_')===0){var t=DEFAULT_REPLIES[parseInt(gidx.replace('def_',''))];if(t){rD.push({text:t,group:'默认'});sR(rD);rLst();toast('已复制并移至「默认」 ✓')}}
+        pop.style.display='none';
+      });pop.appendChild(optDef);
+    })});
   }
 }
 
@@ -2228,6 +2320,15 @@ function rEmojiLst(){
 $('rlAddBtn').addEventListener('click',function(){var i=$('rlAddInput');var t=i.value.trim();if(!t)return;var g=$('rlAddGroup').value||'其他';rD.push({text:t,group:g});sR(rD);i.value='';rLst()});
 $('rlAddInput').addEventListener('keydown',function(e){if(e.key==='Enter')$('rlAddBtn').click()});
 $('rlSearch').addEventListener('input',function(){rLst()});
+// 搜索收起/展开
+$('rlSearchBtn').addEventListener('click',function(){
+  var wrap=$('rlSearchWrap');var inp=$('rlSearch');
+  wrap.classList.add('open');inp.focus();
+});
+$('rlSearch').addEventListener('blur',function(){
+  if(!this.value.trim())$('rlSearchWrap').classList.remove('open');
+});
+$('rlSearch').addEventListener('keydown',function(e){if(e.key==='Escape'){this.value='';this.blur();rLst()}});
 $('rlDedupBtn').addEventListener('click',function(){
   var seen=new Set();var dedup=[];var removed=0;
   rD.forEach(function(item){var k=item.text.trim();if(seen.has(k))removed++;else{seen.add(k);dedup.push(item)}});
@@ -2244,9 +2345,42 @@ $('rlDelSelected').addEventListener('click',function(){
   toRemove.sort(function(a,b){return b-a});toRemove.forEach(function(i){rD.splice(i,1)});
   rS=[];sR(rD);sDE(rDisabled);rLst();rEmojiLst();toast('已处理');
 });
+$('rlSelGroup').addEventListener('change',function(){
+  var g=this.value;if(!g){return}
+  if(rS.length===0){toast('请先勾选字卡');this.value='';return}
+  var moved=0;rS.forEach(function(rid){
+    if(rid.indexOf('cus_')===0){
+      var i=parseInt(rid.replace('cus_',''));if(rD[i]){rD[i].group=g;moved++}
+    }else if(rid.indexOf('def_')===0){
+      // 默认字卡先复制到自定义再改分组
+      var t=DEFAULT_REPLIES[parseInt(rid.replace('def_',''))];if(t){rD.push({text:t,group:g});moved++}
+    }
+  });
+  rS=[];sR(rD);rLst();this.value='';toast('已移动 '+moved+' 条至「'+g+'」 ✓');
+});
 $('rlClearAll').addEventListener('click',function(){if(!confirm('清空所有自定义回复？'))return;rD=[];rS=[];sR(rD);rLst()});
 $('rlImportBtn').addEventListener('click',function(){var i=document.createElement('input');i.type='file';i.accept='.json,.txt';i.onchange=function(){var f=i.files[0];if(!f)return;var r=new FileReader();r.onload=function(){var isAppend=confirm("追加导入？确定=追加，取消=覆盖全部");var c=0;if(!isAppend){rD=[]}try{var d=JSON.parse(r.result);if(Array.isArray(d))d.forEach(function(it){var t=typeof it==='string'?it:it.text||'';var g=it.group||'其他';if(t.trim()){rD.push({text:t.trim(),group:g});c++}})}catch(e){r.result.split(/[\r\n]+/).forEach(function(l){l=l.trim();if(!l)return;var parts=l.split('\t');if(parts.length>=2){rD.push({text:parts[1].trim(),group:parts[0].trim()||'其他'});c++}else if(l.indexOf('|')>=0){var p=l.split('|');rD.push({text:p.slice(1).join('|').trim(),group:p[0].trim()||'其他'});c++}else{rD.push({text:l,group:'其他'});c++}})}rD=dedupArray(rD);sR(rD);rLst();toast('导入'+c+'条 ✓')};r.readAsText(f)};i.click()});
 $('rlExportBtn').addEventListener('click',function(){var all=rD.slice();if(all.length===0){toast('无内容可导出');return};var b=new Blob([JSON.stringify(all,null,2)],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='Murphy回复库_'+new Date().toISOString().slice(0,10)+'.json';a.click();toast('导出'+all.length+'条 ✓')});
+// 工具栏下拉菜单
+document.querySelectorAll('.rl-tb-drop').forEach(function(drop){
+  var btn=drop.querySelector('button');var pop=drop.querySelector('.rl-tb-pop');
+  btn.addEventListener('click',function(e){e.stopPropagation();
+    // 关闭其他下拉
+    document.querySelectorAll('.rl-tb-pop').forEach(function(p){if(p!==pop)p.style.display='none'});
+    pop.style.display=pop.style.display==='flex'?'none':'flex';
+  });
+  pop.querySelectorAll('.rl-tb-pop-item').forEach(function(item){
+    item.addEventListener('click',function(e){e.stopPropagation();pop.style.display='none';
+      var action=this.dataset.action;
+      if(action==='import')$('rlImportBtn').click();
+      else if(action==='export')$('rlExportBtn').click();
+      else if(action==='dedup')$('rlDedupBtn').click();
+      else if(action==='clear')$('rlClearAll').click();
+    });
+  });
+});
+// 点击外部关闭所有下拉
+document.addEventListener('click',function(e){if(!e.target.closest('.rl-tb-drop')){document.querySelectorAll('.rl-tb-pop').forEach(function(p){p.style.display='none'})}});
 
 
 
@@ -2267,6 +2401,8 @@ function switchTab(tb){rActiveTab=tb;
 }
 rTabs.forEach(function(t){t.addEventListener('click',function(){switchTab(this.dataset.tab)})});
 rGp();rLst();
+// 点击其他地方关闭分组弹窗
+document.addEventListener('click',function(e){if(!e.target.closest('.rl-item-group')&&!e.target.closest('#rlGroupPop')){$('rlGroupPop').style.display='none'}});
 
 // 表情包库
 var STIK='murphy_rl_sticker',sSel=[];
@@ -2777,23 +2913,35 @@ function updatePeekBadge(){
   badge.style.color=unseen>0?'var(--accent)':'';
 }
 
+// 同步日期到选择器
+function syncDiaryPickers(){
+  var ds=diaryViewDate;var d=new Date(ds);
+  var yyyy=d.getFullYear(),mm=String(d.getMonth()+1).padStart(2,'0'),dd=String(d.getDate()).padStart(2,'0');
+  var val=yyyy+'-'+mm+'-'+dd;
+  var mp=$('myDiaryPicker');if(mp)mp.value=val;
+  var tp=$('taDiaryPicker');if(tp)tp.value=val;
+}
 // 渲染我的日记
 function renderMyDiary(){
-  var today=new Date().toDateString();
-  $('myDiaryDate').textContent=today?'✍ 今天':fmtDMY(diaryViewDate);
+  syncDiaryPickers();
   $('myDiaryInput').innerHTML=myDiaryDb[diaryViewDate]||'';
 }
 // 渲染TA日记
 function renderDiary(){
+  syncDiaryPickers();
   var entry=getDiary(diaryViewDate);var ct=$('taDiaryContent'),em=$('diaryEmpty');
-  var today=new Date().toDateString();
-  $('taDiaryDate').textContent=today?'📔 今天':fmtDMY(diaryViewDate);
   if(!entry){ct.innerHTML='';em.style.display='flex'}else{em.style.display='none';
     ct.innerHTML='<div class="diary-entry"><div class="diary-date" style="font-size:10px;color:var(--text-muted);margin-bottom:6px">'+fmtDMY(diaryViewDate)+'</div><div class="diary-content" style="white-space:pre-wrap">'+EH(entry.text)+'</div><div class="diary-mood" style="margin-top:8px;color:var(--accent)">'+entry.mood.icon+' '+entry.mood.label+'</div></div>';
   }
-  // TA可能偷看我
   taPeekDiary();
 }
+// 日期选择器 → 跳转
+function jumpDiaryDate(dateStr){
+  var d=new Date(dateStr);if(d>new Date()){toast('不能偷看未来');syncDiaryPickers();return}
+  diaryViewDate=d.toDateString();renderMyDiary();renderDiary();
+}
+$('myDiaryPicker').addEventListener('change',function(){jumpDiaryDate(this.value)});
+$('taDiaryPicker').addEventListener('change',function(){jumpDiaryDate(this.value)});
 
 // 保存我的日记
 $('diarySave').addEventListener('click',function(){
@@ -3873,11 +4021,12 @@ document.addEventListener('click',function(e){
 // ==========================================
 var callState={status:'idle',caller:'them',muted:false,camOn:false};
 var callDurSec=0,callDurTimer=null,callRingTimer=null,callRingIntv=null;
-var callSet={bgType:'default',bgImage:'',partnerImage:''};
+var callSet={bgType:'default',bgImage:'',bgFitMode:'contain',partnerImage:''};
 var callStream=null;
 
 (function initCallSettings(){
-  try{var s=localStorage.getItem('murphy_call_set');if(s){var p=JSON.parse(s);callSet.bgType=p.bgType||'default';callSet.bgImage=p.bgImage||'';callSet.partnerImage=p.partnerImage||''}}catch(e){}
+  try{var s=localStorage.getItem('murphy_call_set');if(s){var p=JSON.parse(s);callSet.bgType=p.bgType||'default';callSet.bgImage=p.bgImage||'';callSet.bgFitMode=p.bgFitMode||'contain';callSet.partnerImage=p.partnerImage||''}}catch(e){}
+  setTimeout(function(){applyCallBg()},200);
 })();
 function saveCallSet(){localStorage.setItem('murphy_call_set',JSON.stringify(callSet))}
 
@@ -3888,18 +4037,42 @@ function playRingBeep(){
   try{var ctx=new(window.AudioContext||window.webkitAudioContext)();[0,0.15,0.3].forEach(function(o){var osc=ctx.createOscillator();var g=ctx.createGain();osc.connect(g);g.connect(ctx.destination);osc.frequency.value=480+o*100;osc.type='sine';var t=ctx.currentTime+o;g.gain.setValueAtTime(0.15,t);g.gain.exponentialRampToValueAtTime(0.001,t+0.12);osc.start(t);osc.stop(t+0.12)})}catch(e){}
 }
 function startRinging(){playRingBeep();callRingIntv=setInterval(playRingBeep,2000)}
+function createCallParticles(id){
+  var c=$(id);if(!c)return;var ex=c.querySelector('.call-particles');if(ex)ex.remove();
+  var p=document.createElement('div');p.className='call-particles';
+  for(var i=0;i<15;i++){var d=document.createElement('div');d.className='call-particle';
+    var s=2+Math.random()*4;d.style.width=s+'px';d.style.height=s+'px';d.style.left=Math.random()*100+'%';
+    d.style.bottom=-(Math.random()*40)+'px';d.style.animationDuration=(8+Math.random()*15)+'s';
+    d.style.animationDelay=Math.random()*10+'s';d.style.opacity=(0.15+Math.random()*0.35);p.appendChild(d)}
+  c.appendChild(p)}
+
 function stopRinging(){if(callRingIntv){clearInterval(callRingIntv);callRingIntv=null}}
 
 function updateCallUI(){
-  var n='TA';var a=callSet.partnerImage||'';
-  ['Incoming','Outgoing'].forEach(function(t){var av=$('call'+t+'Avatar');var nm=$('call'+t+'Name');if(av&&a)av.src=a;if(nm)nm.textContent=n});
+  var n=profile.partnerName||'TA';
+  var a=profile.partnerAvatar||callSet.partnerImage||'';
+  ['Incoming','Outgoing'].forEach(function(t){
+    var av=$('call'+t+'Avatar');var nm=$('call'+t+'Name');
+    if(av&&a)av.src=a;
+    if(nm)nm.textContent=n
+  });
 }
 function applyCallBg(){
-  var m={default:'linear-gradient(135deg,#1a1f3a 0%,#2d3561 50%,#1a1f3a 100%)',sunset:'linear-gradient(135deg,#e85d5d 0%,#f09080 100%)',ocean:'linear-gradient(135deg,#3a70b0 0%,#1e4a78 100%)',forest:'linear-gradient(135deg,#5a8a4a 0%,#3a6a2a 100%)',purple:'linear-gradient(135deg,#9a7eb8 0%,#5a3e78 100%)'};
-  ['Incoming','Outgoing','Active'].forEach(function(t){var bg=$('call'+t+'Bg');if(!bg)return;
-    if(callSet.bgType==='custom'&&callSet.bgImage){bg.style.backgroundImage='url('+callSet.bgImage+')';bg.style.backgroundSize='cover';bg.style.backgroundPosition='center'}
-    else{bg.style.backgroundImage='';bg.style.background=m[callSet.bgType]||m.default}
+  var m={default:'linear-gradient(135deg,#1a1f3a 0%,#2d3561 50%,#1a1f3a 100%)',sunset:'linear-gradient(135deg,#e85d5d 0%,#f09080 100%)',ocean:'linear-gradient(135deg,#3a70b0 0%,#1e4a78 100%)',forest:'linear-gradient(135deg,#5a8a4a 0%,#3a6a2a 100%)',purple:'linear-gradient(135deg,#9a7eb8 0%,#5a3e78 100%)',starry:'linear-gradient(135deg,#0c0c1e 0%,#1a1a3e 30%,#2d2d5e 60%,#0c0c1e 100%)',cherry:'linear-gradient(135deg,#f8cdda 0%,#ffb6c1 30%,#f8a5b8 70%,#f8cdda 100%)',aurora:'linear-gradient(135deg,#0f2027 0%,#203a43 30%,#2c5364 60%,#0f2027 100%)'};
+  var fm=callSet.bgFitMode||'contain';
+  ['Incoming','Outgoing','Active'].forEach(function(t){var bg=$('call'+t+'Bg');var bf=$('call'+t+'BgFill');if(!bg)return;
+    if(callSet.bgType==='custom'&&callSet.bgImage){bg.style.background='';bg.style.backgroundImage='url('+callSet.bgImage+')';bg.style.opacity='1';
+      if(fm==='contain'){bg.classList.add('custom-contain');if(bf){bf.style.background='';bf.style.backgroundImage='url('+callSet.bgImage+')';bf.style.display='block'}}
+      else{bg.classList.remove('custom-contain');if(bf)bf.style.display='none'}
+    }else{bg.style.background=m[callSet.bgType]||m.default;bg.style.backgroundImage='';bg.style.opacity='';bg.classList.remove('custom-contain');if(bf)bf.style.display='none'}
   });
+  // 自定义背景时隐藏遮罩层，让背景清晰可见
+  var isCustom=callSet.bgType==='custom'&&callSet.bgImage;
+  document.querySelectorAll('.call-bg-tint').forEach(function(el){el.style.display=isCustom?'none':''});
+  document.querySelectorAll('.call-gradient').forEach(function(el){el.style.opacity=isCustom?'0.5':'1'});
+  // 同步更新对方画面区（通话中全屏显示）
+  var pi=$('callPartnerImg');if(pi&&isCustom&&!callSet.partnerImage){pi.src=callSet.bgImage;pi.style.display='block';var ph=$('callPartnerPlaceholder');if(ph)ph.style.display='none'}
+  document.querySelectorAll('#callBgGrid .call-bg-dot').forEach(function(d){d.classList.toggle('active',d.dataset.bg===callSet.bgType)});
 }
 function applyPartnerImg(){
   var img=$('callPartnerImg');var ph=$('callPartnerPlaceholder');
@@ -3910,7 +4083,7 @@ function showCallOverlay(type){
   ['callIncoming','callOutgoing','callActive','callMinimized'].forEach(function(id){var el=$(id);if(el)el.style.display='none'});
   if(type==='incoming')$('callIncoming').style.display='flex';
   else if(type==='outgoing')$('callOutgoing').style.display='flex';
-  else if(type==='active'){$('callActive').style.display='flex';applyPartnerImg();applyCallBg();$('callPartnerUpload').style.display='block'}
+  else if(type==='active'){$('callActive').style.display='flex';applyPartnerImg();applyCallBg();setTimeout(function(){createCallParticles('callActive')},100)}
   else if(type==='minimized'){$('callMinimized').style.display='flex';$('callMiniTimer').textContent=fmtCallDur()}
   if(type!=='idle')updateCallUI();
 }
@@ -3969,7 +4142,7 @@ function initiateCall(by){
     callRingTimer=setTimeout(function(){if(callState.status==='outgoing'){
       if(stg.callDecline&&Math.random()<stg.callDeclineChance/100){declineCall(true);toast('📞 '+(profile.partnerName||'TA')+'暂时无法接听')}else startActiveCall()
     }},1500+Math.random()*2500);
-  }else{callState.status='incoming';showCallOverlay('incoming');updateCallUI();applyCallBg();startRinging();
+  }else{callState.status='incoming';showCallOverlay('incoming');updateCallUI();applyCallBg();setTimeout(function(){createCallParticles('callIncoming')},100);startRinging();
     toast('📞 '+(profile.partnerName||'TA')+' 来电');callRingTimer=setTimeout(function(){if(callState.status==='incoming'){declineCall(true);toast('📞 '+(profile.partnerName||'TA')+'的来电超时未接')}},30000)}
 }
 
@@ -4002,8 +4175,7 @@ var beautyFilters=[
   {label:'白皙',filter:'brightness(1.25) contrast(0.85) saturate(0.9) blur(1.5px)'}
 ];
 $('callBeautyBtn').addEventListener('click',function(){beautyLevel=(beautyLevel+1)%beautyFilters.length;var bf=beautyFilters[beautyLevel];$('callBeautyLabel').textContent=bf.label;$('callSelfVideo').style.filter=bf.filter;$('callSelfPip').style.filter=bf.filter});
-$('callPartnerUpload').addEventListener('click',function(){$('callPartnerImgInput').click()});
-$('callPartnerImgInput').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){callSet.partnerImage=r.result;saveCallSet();applyPartnerImg();toast('对方画面已更新 ✓')};r.readAsDataURL(f);this.value=''});
+// 对方画面上传已移至设置面板
 
 // 小窗拖动
 (function(){var pip=$('callSelfPip'),d=false,ox=0,oy=0,ix=0,iy=0;
@@ -4018,36 +4190,43 @@ $('callPartnerImgInput').addEventListener('change',function(){var f=this.files[0
 // 设置面板
 function showCallSettings(){
   document.querySelectorAll('#callBgGrid .call-bg-dot').forEach(function(d){d.classList.toggle('active',d.dataset.bg===callSet.bgType)});
+  var fc=$('callFitContain'),fv=$('callFitCover');if(fc&&fv){if(callSet.bgFitMode==='cover')fv.checked=true;else fc.checked=true}
   $('callSettingsModal').style.display='flex';
 }
 function hideCallSettings(){$('callSettingsModal').style.display='none'}
-$('callBgGrid').addEventListener('click',function(e){var dot=e.target.closest('.call-bg-dot');if(!dot)return;document.querySelectorAll('#callBgGrid .call-bg-dot').forEach(function(d){d.classList.remove('active')});dot.classList.add('active');callSet.bgType=dot.dataset.bg;callSet.bgImage='';applyCallBg();saveCallSet()});
+$('callBgGrid').addEventListener('click',function(e){var dot=e.target.closest('.call-bg-dot');if(!dot)return;document.querySelectorAll('#callBgGrid .call-bg-dot').forEach(function(d){d.classList.remove('active')});dot.classList.add('active');callSet.bgType=dot.dataset.bg;callSet.bgImage='';applyCallBg();saveCallSet();document.querySelectorAll('#callBgGrid .call-bg-dot').forEach(function(d){d.classList.toggle('active',d.dataset.bg===callSet.bgType)});document.querySelectorAll('#callBgGrid .call-bg-dot').forEach(function(d){d.classList.toggle('active',d.dataset.bg===callSet.bgType)})});
 $('callBgUpload').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){openCallCrop(r.result)};r.readAsDataURL(f);this.value=''});
 $('callPartnerImgSet').addEventListener('click',function(){$('callPartnerImgSetInput').click()});
-$('callPartnerImgSetInput').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){callSet.partnerImage=r.result;saveCallSet();toast('对方画面已设置 ✓')};r.readAsDataURL(f);this.value=''});
+$('callPartnerImgSetInput').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){openCallCrop(r.result,'partner')};r.readAsDataURL(f);this.value=''});
 $('callPartnerImgClear').addEventListener('click',function(){callSet.partnerImage='';saveCallSet();toast('已清除')});
+var fc=$('callFitContain');if(fc)fc.addEventListener('change',function(){if(this.checked){callSet.bgFitMode='contain';applyCallBg()}});
+var fv=$('callFitCover');if(fv)fv.addEventListener('change',function(){if(this.checked){callSet.bgFitMode='cover';applyCallBg()}});
 $('callSettingsCancel').addEventListener('click',hideCallSettings);
 $('callSettingsSave').addEventListener('click',function(){saveCallSet();hideCallSettings();toast('通话设置已保存 ✓')});
 $('callSettingsModal').addEventListener('click',function(e){if(e.target===this)hideCallSettings()});
+// 通话界面上的设置按钮
+['callSettingsBtn1','callSettingsBtn2','callSettingsBtn3'].forEach(function(id){var b=$(id);if(b)b.addEventListener('click',function(e){e.stopPropagation();showCallSettings()})});
 
 // ===== 通话背景裁剪 =====
-var cropState={imgDataUrl:'',natW:0,natH:0,scale:1,baseScale:1,tx:0,ty:0, dragging:false,lastX:0,lastY:0};
+var cropState={imgDataUrl:'',natW:0,natH:0,scale:1,containScale:1,coverScale:1,tx:0,ty:0, dragging:false,lastX:0,lastY:0,pinching:false,pinchDist:0,pinchScale:0,target:'bg'};
 
-function openCallCrop(dataUrl){
-  cropState.imgDataUrl=dataUrl;
-  cropState.scale=1; cropState.baseScale=1; cropState.tx=0; cropState.ty=0; cropState.dragging=false;
+function openCallCrop(dataUrl,target){
+  target=target||'bg';
+  cropState.imgDataUrl=dataUrl; cropState.target=target;
+  cropState.scale=1; cropState.containScale=1; cropState.coverScale=1; cropState.tx=0; cropState.ty=0; cropState.dragging=false; cropState.pinching=false;
+  var title=$('callCropTitle');
+  if(title)title.innerHTML=target==='partner'?'📐 裁剪对方画面':'📐 拖动调整裁剪区域';
   var img=$('callCropImage');img.src=dataUrl;
   img.onload=function(){
     cropState.natW=img.naturalWidth; cropState.natH=img.naturalHeight;
     var vp=$('callCropViewport');var vpW=vp.clientWidth;var vpH=vp.clientHeight;
-    // 计算刚好覆盖viewport的缩放比例
     var sx=vpW/cropState.natW;var sy=vpH/cropState.natH;
-    cropState.baseScale=Math.max(sx,sy);
-    cropState.scale=cropState.baseScale;
+    cropState.containScale=Math.min(sx,sy);
+    cropState.coverScale=Math.max(sx,sy);
+    cropState.scale=cropState.containScale;
     cropState.tx=0; cropState.ty=0;
     applyCropTransform();
-    $('callCropZoom').value=50;
-    // 设置viewport宽高比，与通话背景区域（phone-screen）一致
+    $('callCropZoom').value=0;
     var phone=document.querySelector('.phone-screen');
     var ar=phone.clientWidth/phone.clientHeight;
     vp.style.setProperty('--crop-ar',ar.toFixed(4));
@@ -4058,16 +4237,20 @@ function openCallCrop(dataUrl){
 }
 
 function applyCropTransform(){
-  var img=$('callCropImage');
-  img.style.transform='translate('+cropState.tx+'px,'+cropState.ty+'px) scale('+cropState.scale+')';
+  var img=$('callCropImage');var vp=$('callCropViewport');
+  var vpW=vp.clientWidth;var vpH=vp.clientHeight;
+  var imgW=cropState.natW*cropState.scale;
+  var imgH=cropState.natH*cropState.scale;
+  // 计算图片在当前缩放下的实际左上角（视窗居中为基准）
+  var baseX=(vpW-imgW)/2+cropState.tx;
+  var baseY=(vpH-imgH)/2+cropState.ty;
+  img.style.transform='translate('+baseX+'px,'+baseY+'px) scale('+cropState.scale+')';
 }
 
 function clampCropPos(){
   var vp=$('callCropViewport');var vpW=vp.clientWidth;var vpH=vp.clientHeight;
   var s=cropState.scale;var nW=cropState.natW;var nH=cropState.natH;
-  // 图片显示尺寸
   var dW=nW*s;var dH=nH*s;
-  // 允许移动的范围：图片边缘不进入viewport内部
   var maxTx=(dW-vpW)/2;if(maxTx<0)maxTx=0;
   var maxTy=(dH-vpH)/2;if(maxTy<0)maxTy=0;
   cropState.tx=Math.max(-maxTx,Math.min(maxTx,cropState.tx));
@@ -4079,30 +4262,66 @@ function getCropPointerPos(e){
   return {x:t.clientX,y:t.clientY};
 }
 
-// 拖拽：鼠标 + 触摸
+// 拖拽 + 双指缩放
 (function initCropDrag(){
   var vp=$('callCropViewport');
+  var DRAG_SPEED=0.55; // 拖动速度系数：手指移动10px，图片只移5.5px
+
   var start=function(e){
-    cropState.dragging=true;
-    var p=getCropPointerPos(e);
-    cropState.lastX=p.x; cropState.lastY=p.y;
+    if(e.touches&&e.touches.length===2){
+      // 双指缩放
+      cropState.pinching=true; cropState.dragging=false;
+      var dx=e.touches[0].clientX-e.touches[1].clientX;
+      var dy=e.touches[0].clientY-e.touches[1].clientY;
+      cropState.pinchDist=Math.sqrt(dx*dx+dy*dy);
+      cropState.pinchScale=cropState.scale;
+    }else{
+      cropState.dragging=true; cropState.pinching=false;
+      var p=getCropPointerPos(e);
+      cropState.lastX=p.x; cropState.lastY=p.y;
+    }
     vp.style.cursor='grabbing';
     e.preventDefault();
   };
+
   var move=function(e){
+    if(cropState.pinching&&e.touches&&e.touches.length===2){
+      var dx=e.touches[0].clientX-e.touches[1].clientX;
+      var dy=e.touches[0].clientY-e.touches[1].clientY;
+      var dist=Math.sqrt(dx*dx+dy*dy);
+      var ratio=dist/cropState.pinchDist;
+      var newScale=cropState.pinchScale*ratio;
+      var minS=cropState.containScale;
+      var maxS=cropState.coverScale*2;
+      newScale=Math.max(minS,Math.min(maxS,newScale));
+      var sr=newScale/cropState.scale;
+      cropState.tx*=sr; cropState.ty*=sr;
+      cropState.scale=newScale;
+      clampCropPos();
+      applyCropTransform();
+      // 更新滑块
+      var v=(newScale-minS)/(maxS-minS)*100;
+      $('callCropZoom').value=Math.round(v);
+      e.preventDefault();
+      return;
+    }
     if(!cropState.dragging)return;
     var p=getCropPointerPos(e);
-    var dx=p.x-cropState.lastX;var dy=p.y-cropState.lastY;
+    var dx=(p.x-cropState.lastX)*DRAG_SPEED;
+    var dy=(p.y-cropState.lastY)*DRAG_SPEED;
     cropState.lastX=p.x; cropState.lastY=p.y;
     cropState.tx+=dx; cropState.ty+=dy;
     clampCropPos();
     applyCropTransform();
     e.preventDefault();
   };
+
   var end=function(){
     cropState.dragging=false;
+    cropState.pinching=false;
     vp.style.cursor='grab';
   };
+
   vp.addEventListener('mousedown',start);
   window.addEventListener('mousemove',move);
   window.addEventListener('mouseup',end);
@@ -4111,17 +4330,34 @@ function getCropPointerPos(e){
   window.addEventListener('touchend',end);
 })();
 
-// 缩放滑块
+// 缩放滑块 0=contain, 50=cover, 100=cover×2
 $('callCropZoom').addEventListener('input',function(){
-  var sliderVal=parseInt(this.value); // 50~200
+  var v=parseInt(this.value);
+  var minS=cropState.containScale;
+  var maxS=cropState.coverScale*2;
   var oldScale=cropState.scale;
-  // slider 50→baseScale*1.0, 150→baseScale*3.0, 200→baseScale*3.0(封顶)
-  cropState.scale=cropState.baseScale * Math.min(3, Math.max(1, sliderVal/50));
-  // 以viewport中心为缩放原点，调整位移
+  cropState.scale=minS+v/100*(maxS-minS);
   var ratio=cropState.scale/oldScale;
   cropState.tx*=ratio; cropState.ty*=ratio;
   clampCropPos();
   applyCropTransform();
+});
+
+// 快捷预设按钮
+$('callCropFitContain').addEventListener('click',function(){
+  cropState.scale=cropState.containScale; cropState.tx=0; cropState.ty=0;
+  clampCropPos(); applyCropTransform();
+  $('callCropZoom').value=0;
+});
+$('callCropFitCover').addEventListener('click',function(){
+  cropState.scale=cropState.coverScale; cropState.tx=0; cropState.ty=0;
+  clampCropPos(); applyCropTransform();
+  $('callCropZoom').value=50;
+});
+$('callCropReset').addEventListener('click',function(){
+  cropState.scale=cropState.containScale; cropState.tx=0; cropState.ty=0;
+  clampCropPos(); applyCropTransform();
+  $('callCropZoom').value=0;
 });
 
 // 确认裁剪
@@ -4130,30 +4366,52 @@ $('callCropConfirm').addEventListener('click',function(){
   var vp=$('callCropViewport');var vpW=vp.clientWidth;var vpH=vp.clientHeight;
   var s=cropState.scale;var nW=cropState.natW;var nH=cropState.natH;
   var tx=cropState.tx;var ty=cropState.ty;
-  // 计算在原图上的裁剪区域
-  var sx=(nW*s/2 - vpW/2 - tx)/s;
-  var sy=(nH*s/2 - vpH/2 - ty)/s;
-  var sw=vpW/s;var sh=vpH/s;
-  // 边界钳制
-  if(sx<0){sw+=sx;sx=0}
-  if(sy<0){sh+=sy;sy=0}
-  if(sx+sw>nW)sw=nW-sx;
-  if(sy+sh>nH)sh=nH-sy;
-  if(sw<=0||sh<=0){toast('裁剪区域无效');return;}
-  // Canvas裁剪 — 输出分辨率与viewport显示一致（2x保证清晰度）
-  var scale=Math.min(window.devicePixelRatio||1,2);
+  // 图片在视窗中的左上角位置（与 applyCropTransform 一致）
+  var imgW=nW*s,imgH=nH*s;
+  var imgL=(vpW-imgW)/2+tx,imgT=(vpH-imgH)/2+ty;
+  // 可见区域 = 视窗 ∩ 图片（contain时=整张图，cover时=视窗）
+  var vL=Math.max(0,imgL),vT=Math.max(0,imgT);
+  var vR=Math.min(vpW,imgL+imgW),vB=Math.min(vpH,imgT+imgH);
+  var vW=vR-vL,vH=vB-vT;
+  if(vW<=0||vH<=0){toast('裁剪区域无效');return;}
+  // 转换到原图像素坐标
+  var sx=(vL-imgL)/s,sy=(vT-imgT)/s;
+  var sw=vW/s,sh=vH/s;
+  // Canvas — 裁剪可见区域
+  var dpr=Math.min(window.devicePixelRatio||1,2);
   var canvas=document.createElement('canvas');
-  canvas.width=Math.round(vpW*scale);canvas.height=Math.round(vpH*scale);
+  canvas.width=Math.round(vW*dpr);canvas.height=Math.round(vH*dpr);
   var ctx=canvas.getContext('2d');ctx.drawImage(img,sx,sy,sw,sh,0,0,canvas.width,canvas.height);
+  // 若宽高比与通话背景不一致，加黑边补齐，cover时不再二次裁切
+  var phone=document.querySelector('.phone-screen');
+  var targetAr=phone.clientWidth/phone.clientHeight;
+  var outAr=vW/vH;
+  if(Math.abs(outAr-targetAr)>0.005){
+    var pw=Math.round(Math.max(vW,vH*targetAr)*dpr);
+    var ph=Math.round(pw/targetAr);
+    var pad=document.createElement('canvas');pad.width=pw;pad.height=ph;
+    var pctx=pad.getContext('2d');pctx.fillStyle='#000';pctx.fillRect(0,0,pw,ph);
+    var dx=Math.round((pw-canvas.width)/2),dy=Math.round((ph-canvas.height)/2);
+    pctx.drawImage(canvas,dx,dy);
+    canvas=pad;
+  }
   var cropped=canvas.toDataURL('image/jpeg',0.88);
-  // 应用
-  callSet.bgType='custom';
-  callSet.bgImage=cropped;
-  applyCallBg();
-  saveCallSet();
-  document.querySelectorAll('#callBgGrid .call-bg-dot').forEach(function(d){d.classList.remove('active')});
-  closeCallCrop();
-  toast('背景已裁剪并应用 ✓');
+  // 应用到对应目标
+  if(cropState.target==='partner'){
+    callSet.partnerImage=cropped;
+    applyPartnerImg();
+    saveCallSet();
+    closeCallCrop();
+    toast('对方画面已裁剪并应用 ✓');
+  }else{
+    callSet.bgType='custom';
+    callSet.bgImage=cropped;
+    applyCallBg();
+    saveCallSet();
+    document.querySelectorAll('#callBgGrid .call-bg-dot').forEach(function(d){d.classList.remove('active')});
+    closeCallCrop();
+    toast('背景已裁剪并应用 ✓');
+  }
 });
 
 // 取消裁剪
@@ -4368,24 +4626,44 @@ $('appReport').addEventListener('click',function(){if(!iU)return;$('reportOverla
 // ===== 拍立得卡片：拖拽 + 换图 =====
 var polaroidData={pos:{},imgs:{}};
 (function(){try{var s=localStorage.getItem('murphy_polaroid');if(s){var d=JSON.parse(s);if(d.pos)polaroidData.pos=d.pos;if(d.imgs)polaroidData.imgs=d.imgs}}catch(e){}applyPolaroid()})();
-function savePolaroid(){localStorage.setItem('murphy_polaroid',JSON.stringify(polaroidData))}
+function savePolaroid(){try{localStorage.setItem('murphy_polaroid',JSON.stringify(polaroidData))}catch(e){toast('存储空间不足，请使用更小的图片')}}
+function compressPolaroid(dataUrl,cb){
+  var img=new Image();img.onload=function(){
+    var maxW=300;var scale=Math.min(1,maxW/Math.max(img.width,img.height));
+    var w=Math.round(img.width*scale),h=Math.round(img.height*scale);
+    var c=document.createElement('canvas');c.width=w;c.height=h;
+    c.getContext('2d').drawImage(img,0,0,w,h);
+    cb(c.toDataURL('image/jpeg',0.72));
+  };img.src=dataUrl;
+}
 function applyPolaroid(){['polaroid1','polaroid2'].forEach(function(id){var el=$(id);if(!el)return;
-  if(polaroidData.pos&&polaroidData.pos[id]){var ps=polaroidData.pos[id];el.style.left=ps.left;el.style.top=ps.top;el.style.transform=ps.transform||''}
+  if(polaroidData.pos&&polaroidData.pos[id]){var ps=polaroidData.pos[id];if(ps.left)el.style.left=ps.left;if(ps.top)el.style.top=ps.top;if(ps.transform)el.style.transform=ps.transform}
   if(polaroidData.imgs[id]){var img=el.querySelector('img');var ph=el.querySelector('.polaroid-placeholder');if(img){img.src=polaroidData.imgs[id];img.style.display='block'}if(ph)ph.style.display='none'}
 })}
-// 拖动
-document.querySelectorAll('.polaroid-card').forEach(function(card){
-  var d=false,ox=0,oy=0,ix=0,iy=0,ir=0;
-  card.addEventListener('touchstart',function(e){if(!iU)return;d=true;var t=e.touches[0];var r=card.getBoundingClientRect();ox=t.clientX-r.left;oy=t.clientY-r.top;card.style.transition='none';card.style.zIndex=10},{passive:false});
-  card.addEventListener('touchmove',function(e){if(!d)return;e.preventDefault();var t=e.touches[0];card.style.left=(t.clientX-ox-card.parentNode.getBoundingClientRect().left)+'px';card.style.top=(t.clientY-oy-card.parentNode.getBoundingClientRect().top)+'px'},{passive:false});
-  card.addEventListener('touchend',function(){if(!d)return;d=false;card.style.transition='';card.style.zIndex='';savePolaroidPos(card)});
-  card.addEventListener('mousedown',function(e){if(!iU)return;d=true;var r=card.getBoundingClientRect();ox=e.clientX-r.left;oy=e.clientY-r.top;card.style.transition='none';card.style.zIndex=10});
-  document.addEventListener('mousemove',function(e){if(!d)return;card.style.left=(e.clientX-ox-card.parentNode.getBoundingClientRect().left)+'px';card.style.top=(e.clientY-oy-card.parentNode.getBoundingClientRect().top)+'px'});
-  document.addEventListener('mouseup',function(){if(!d)return;d=false;card.style.transition='';card.style.zIndex='';savePolaroidPos(card)});
-  // 点击换图
-  card.addEventListener('click',function(e){var savedPos=(polaroidData.pos&&polaroidData.pos[card.id])?polaroidData.pos[card.id].left:'0';var moved=Math.abs(parseFloat(card.style.left||0)-parseFloat(savedPos||0))>10;if(moved)return;var inp=document.createElement('input');inp.type='file';inp.accept='image/*';inp.onchange=function(){var f=inp.files[0];if(!f)return;var r=new FileReader();r.onload=function(){polaroidData.imgs[card.id]=r.result;savePolaroid();applyPolaroid()};r.readAsDataURL(f)};inp.click()});
-});
-function savePolaroidPos(card){var id=card.id;if(!polaroidData.pos[id])polaroidData.pos[id]={};polaroidData.pos[id].left=card.style.left;polaroidData.pos[id].top=card.style.top;polaroidData.pos[id].transform=card.style.transform;savePolaroid()}
+// 拖动 + 点击换图（重写，修复拖动消失/上传失败）
+(function(){
+  var cards=document.querySelectorAll('.polaroid-card');
+  var dragCard=null,hasMoved=false,ox=0,oy=0,sl=0,st=0;
+  function getPos(e){var t=e.touches?e.touches[0]:e;return{x:t.clientX,y:t.clientY}}
+  function releaseCard(){
+    if(!dragCard)return;
+    dragCard.style.transition='';dragCard.style.zIndex='';
+    savePolaroidPos(dragCard);dragCard=null;
+  }
+  cards.forEach(function(card){
+    card.addEventListener('touchstart',function(e){if(!iU)return;dragCard=card;hasMoved=false;var p=getPos(e);var r=card.getBoundingClientRect();ox=p.x-r.left;oy=p.y-r.top;sl=parseFloat(card.style.left)||0;st=parseFloat(card.style.top)||0;card.style.transition='none';card.style.zIndex=10},{passive:false});
+    card.addEventListener('mousedown',function(e){if(!iU)return;dragCard=card;hasMoved=false;var p=getPos(e);var r=card.getBoundingClientRect();ox=p.x-r.left;oy=p.y-r.top;sl=parseFloat(card.style.left)||0;st=parseFloat(card.style.top)||0;card.style.transition='none';card.style.zIndex=10});
+    card.addEventListener('click',function(e){if(hasMoved)return;var inp=document.createElement('input');inp.type='file';inp.accept='image/*';inp.onchange=function(){var f=inp.files[0];if(!f)return;var r=new FileReader();r.onload=function(){compressPolaroid(r.result,function(cmp){polaroidData.imgs[card.id]=cmp;savePolaroid();applyPolaroid()})};r.readAsDataURL(f)};inp.click()});
+  });
+  // 用 window 而非 document：防止鼠标拖出窗口后 mouseup 丢失导致"粘住"
+  window.addEventListener('touchmove',function(e){if(!dragCard)return;e.preventDefault();hasMoved=true;var p=getPos(e);var area=dragCard.parentNode.getBoundingClientRect();dragCard.style.left=Math.max(-20,Math.min(p.x-ox-area.left,area.width-80))+'px';dragCard.style.top=Math.max(-20,Math.min(p.y-oy-area.top,area.height-80))+'px'},{passive:false});
+  window.addEventListener('touchend',releaseCard);
+  window.addEventListener('touchcancel',releaseCard);
+  window.addEventListener('mousemove',function(e){if(!dragCard)return;hasMoved=true;var p=getPos(e);var area=dragCard.parentNode.getBoundingClientRect();dragCard.style.left=Math.max(-20,Math.min(p.x-ox-area.left,area.width-80))+'px';dragCard.style.top=Math.max(-20,Math.min(p.y-oy-area.top,area.height-80))+'px'});
+  window.addEventListener('mouseup',releaseCard);
+  window.addEventListener('mouseleave',releaseCard);
+})();
+function savePolaroidPos(card){var id=card.id;if(!id)return;if(!polaroidData.pos[id])polaroidData.pos[id]={};polaroidData.pos[id].left=card.style.left;polaroidData.pos[id].top=card.style.top;polaroidData.pos[id].transform=card.style.transform;savePolaroid()}
 // ===== 经期日历 v3 =====
 var periodData={cycleLen:28,periodLen:5,lastStart:''};
 (function(){try{var s=localStorage.getItem('murphy_period2');if(s){var d=JSON.parse(s);periodData.cycleLen=d.cycleLen||28;periodData.periodLen=d.periodLen||5;periodData.lastStart=d.lastStart||''}}catch(e){}})();
@@ -4481,9 +4759,24 @@ $('profileCancelBtn').addEventListener('click',closeProfileEditor);
 $('profileEditBackdrop').addEventListener('click',function(e){if(e.target===this)closeProfileEditor()});
 // 离线补发
 (function(){var now=Date.now(),last=parseInt(localStorage.getItem('murphy_app_last')||'0');localStorage.setItem('murphy_app_last',String(now));if(!last||now-last<300000)return;
+var gap=now-last; // 离线时长
 if(stg.catchUpMail){var added=false;mailData.outbox.forEach(function(l){if(l.status==='pending'&&now>=l.replyTime){l.status='replied';mailData.inbox.unshift({id:'r_'+Date.now(),refId:l.id,from:'partner',content:genMailReply(),time:l.replyTime+60000,isNew:true});added=true}});if(stg.mailPartnerSend&&mailData._lastPartnerCheck){var ims=stg.mailPartnerInterval*60000;var ch=Math.floor((now-mailData._lastPartnerCheck)/ims);for(var i=0;i<ch&&i<10;i++){mailData._lastPartnerCheck+=ims;if(Math.random()<stg.mailPartnerChance/100)partnerSendLetter()}}if(added)saveMail()}
-if(stg.catchUpChat&&typeof messages!=='undefined'&&messages.length){var am=Math.floor((now-last)/60000);var mm=Math.floor(am/15);if(mm>8)mm=8;var c=1+Math.floor(Math.random()*mm);for(var j=0;j<c;j++){var r=gRR();if(r&&r.content){messages.push({id:'catch_'+Date.now()+j,sender:'partner',text:r.content,timestamp:last+Math.floor(Math.random()*(now-last)),favorited:false,type:'normal'})}}if(c>0)saveMsgs()}
-if(stg.catchUpCall&&stg.autoCallSend){var ci2=stg.autoCallFreq*60000;var mc=Math.floor((now-last)/ci2);for(var k=0;k<mc&&k<3;k++){messages.push({id:Date.now()+k,sender:'partner',text:'📞 '+(profile.partnerName||'TA')+'的未接来电',timestamp:last+Math.floor(Math.random()*(now-last)),type:'system'});saveMsgs()}}
+if(stg.catchUpChat&&typeof messages!=='undefined'&&messages.length){var am=Math.floor(gap/60000);var mm=Math.floor(am/15);if(mm>8)mm=8;var c=1+Math.floor(Math.random()*mm);var addedMsgs=[];
+  for(var j=0;j<c;j++){var r=gRR();if(r&&r.content){
+    // 按离线时长均匀分布时间戳，每条落在 1/(c+1) 到 c/(c+1) 的区间内，加上随机微调
+    var slot=j+1,slots=c+1;
+    var ts=last+Math.floor(gap*slot/slots)+Math.floor(Math.random()*Math.floor(gap/slots)*0.6);
+    addedMsgs.push({id:'catch_'+Date.now()+j,sender:'partner',text:r.content,timestamp:ts,favorited:false,type:'normal'});
+  }}
+  if(addedMsgs.length>0){
+    // 按时间戳排序后推入，再对整个消息数组排序
+    addedMsgs.sort(function(a,b){return a.timestamp-b.timestamp});
+    addedMsgs.forEach(function(m){messages.push(m)});
+    messages.sort(function(a,b){return a.timestamp-b.timestamp});
+    saveMsgs();
+  }
+}
+if(stg.catchUpCall&&stg.autoCallSend){var ci2=stg.autoCallFreq*60000;var mc=Math.floor(gap/ci2);for(var k=0;k<mc&&k<3;k++){var ts2=last+Math.floor(gap*(k+1)/(mc+1));messages.push({id:Date.now()+k,sender:'partner',text:'📞 '+(profile.partnerName||'TA')+'的未接来电',timestamp:ts2,type:'system'})}messages.sort(function(a,b){return a.timestamp-b.timestamp});saveMsgs()}
 if(stg.catchUpMovie&&typeof movieList!=='undefined'&&movieList.length&&now-last>3600000&&Math.random()<0.5){taInviteMovie()}
 })();
 // ===== 朋友圈 =====
