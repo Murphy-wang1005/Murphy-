@@ -1205,6 +1205,11 @@ html[data-theme="dark"] .game-card:hover{border-color:var(--accent)!important}
 html[data-theme="dark"] #gomokuCanvas{background:#c8b080}
 .gomoku-win-cell{animation:gomokuWinPulse 0.6s ease-in-out infinite alternate}
 @keyframes gomokuWinPulse{from{filter:brightness(1)}to{filter:brightness(1.4)}}
+.game-think-tag:hover{transform:translateY(-1px);box-shadow:2px 2px 5px #c8c9ce,-2px -2px 5px #ffffff!important}
+.game-think-del:hover{opacity:1!important;color:#d4786e}
+html[data-theme="dark"] #gomokuThinkPool{background:var(--bg-secondary)!important;box-shadow:none!important;border:1px solid var(--border-light)!important}
+html[data-theme="dark"] .game-think-tag{background:var(--bg-tertiary)!important;color:var(--text-secondary)!important;box-shadow:none!important}
+html[data-theme="dark"] #gomokuThinkInput{background:var(--input-bg)!important;color:var(--text-primary)!important;box-shadow:none!important}
 
 </style>
 </head>
@@ -1971,6 +1976,16 @@ html[data-theme="dark"] #gomokuCanvas{background:#c8b080}
       <div style="display:flex;gap:8px;width:100%">
         <button class="rl-btn" id="gomokuNewGame" style="flex:1">🔄 新一局</button>
         <button class="rl-btn" id="gomokuBackToList">‹ 返回列表</button>
+        <button class="rl-btn" id="gomokuThinkPoolBtn" title="思考语库" style="flex:0 0 auto;padding:0 10px">💭</button>
+      </div>
+      <!-- 思考语库编辑面板 -->
+      <div id="gomokuThinkPool" style="display:none;width:100%;background:#e8e9ee;border-radius:14px;padding:12px 14px;margin-top:2px;box-shadow:inset 2px 2px 6px #c8c9ce,inset -2px -2px 6px #ffffff">
+        <div style="font-size:11px;font-weight:600;color:#7a7a8a;margin-bottom:6px">💭 TA 思考语库 <span style="font-weight:400;color:#9a9aaa">（自定义TA下棋时的内心戏）</span></div>
+        <div id="gomokuThinkList" style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;max-height:140px;overflow-y:auto"></div>
+        <div style="display:flex;gap:5px">
+          <input id="gomokuThinkInput" placeholder="输入新的思考语..." style="flex:1;height:30px;border-radius:10px;border:none;padding:0 10px;font-size:11px;background:#e8e9ee;color:#5a5a6a;outline:none;font-family:var(--font);box-shadow:inset 3px 3px 7px #c8c9ce,inset -3px -3px 7px #ffffff">
+          <button class="rl-btn rl-btn-add" id="gomokuThinkAdd" style="height:30px;font-size:10px;padding:0 12px">添加</button>
+        </div>
       </div>
     </div>
   </div>
@@ -5214,6 +5229,40 @@ var gomokuHist=[]; // 对局历史
 (function(){try{var s=localStorage.getItem('murphy_gomoku_hist');if(s)gomokuHist=JSON.parse(s)}catch(e){}})();
 function saveGomokuHist(){if(gomokuHist.length>50)gomokuHist=gomokuHist.slice(-50);localStorage.setItem('murphy_gomoku_hist',JSON.stringify(gomokuHist))}
 
+// ===== 思考语库 =====
+var GOMOKU_THINK_KEY='murphy_gomoku_thinks';
+var DEFAULT_GOMOKU_THINKS=[
+  'TA 思考中...','TA 正在想下一步...','TA 犹豫了一下...',
+  'TA 歪头看了看棋盘...','TA 咬唇思索...','TA 皱起眉头...',
+  'TA 抿嘴笑了笑...','TA 用手指点了点下巴...','TA 轻轻叹了口气...',
+  'TA 托着腮帮子...','TA 眼睛一亮...','TA 摸了摸棋子...',
+  'TA 眨了眨眼...','TA 深吸一口气...','TA 哼起了小曲...'
+];
+var gomokuThinks=[];
+(function loadGomokuThinks(){
+  try{var s=localStorage.getItem(GOMOKU_THINK_KEY);if(s){gomokuThinks=JSON.parse(s);return}}catch(e){}
+  gomokuThinks=DEFAULT_GOMOKU_THINKS.slice();
+})();
+function saveGomokuThinks(){localStorage.setItem(GOMOKU_THINK_KEY,JSON.stringify(gomokuThinks))}
+function getRandomThink(){if(gomokuThinks.length===0)return'TA 思考中...';return gomokuThinks[Math.floor(Math.random()*gomokuThinks.length)]}
+
+function renderGomokuThinkPool(){
+  var lst=$('gomokuThinkList');if(!lst)return;
+  lst.innerHTML=gomokuThinks.map(function(t,i){return'<span class="game-think-tag" style="display:inline-flex;align-items:center;gap:4px;font-size:10px;padding:4px 10px;border-radius:10px;background:#e8e9ee;color:#7a7a8a;box-shadow:3px 3px 8px #c8c9ce,-3px -3px 8px #ffffff;cursor:default;transition:all 0.15s"><span style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+EH(t)+'</span><span class="game-think-del" data-idx="'+i+'" style="cursor:pointer;opacity:0.4;font-size:9px" title="删除">✕</span></span>'}).join('');
+  lst.querySelectorAll('.game-think-del').forEach(function(d){d.addEventListener('click',function(e){e.stopPropagation();var i=parseInt(this.dataset.idx);gomokuThinks.splice(i,1);if(gomokuThinks.length===0)gomokuThinks=DEFAULT_GOMOKU_THINKS.slice();saveGomokuThinks();renderGomokuThinkPool()})});
+}
+
+$('gomokuThinkAdd').addEventListener('click',function(){
+  var v=$('gomokuThinkInput').value.trim();if(!v)return;
+  gomokuThinks.push(v);saveGomokuThinks();$('gomokuThinkInput').value='';renderGomokuThinkPool();
+});
+$('gomokuThinkInput').addEventListener('keydown',function(e){if(e.key==='Enter')$('gomokuThinkAdd').click()});
+$('gomokuThinkPoolBtn').addEventListener('click',function(){
+  var p=$('gomokuThinkPool');var show=p.style.display==='none';
+  p.style.display=show?'block':'none';
+  if(show)renderGomokuThinkPool();
+});
+
 function renderGameList(){
   $('gameListPane').style.display='block';$('gomokuPane').style.display='none';
   if(gomokuHist.length>0){
@@ -5304,8 +5353,7 @@ function gomokuClick(e){
   if(isBoardFull()){gomokuState.gameOver=true;$('gomokuStatus').textContent='平局';gomokuHist.push({winner:0,moves:gomokuState.moveHistory.length,date:new Date().toLocaleDateString()});saveGomokuHist();toast('棋盘已满，平局！');return}
   // TA回合
   gomokuState.currentPlayer=2;
-  var thinkMsgs=['TA 思考中...','TA 正在想下一步...','TA 犹豫了一下...','TA 歪头看了看棋盘...','TA 咬唇思索...'];
-  $('gomokuStatus').textContent=thinkMsgs[Math.floor(Math.random()*thinkMsgs.length)];
+  $('gomokuStatus').textContent=getRandomThink();
   // 步数越多思考越久（模拟中盘长考）
   var baseDelay=gomokuState.moveHistory.length<6?600:(gomokuState.moveHistory.length<15?1200:2000);
   var delay=baseDelay+Math.random()*2000;
