@@ -974,34 +974,61 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
 .diary-mood{position:absolute;bottom:12px;right:16px;font-size:12px;color:var(--text-secondary)}
 .diary-nav{display:flex;align-items:center;justify-content:space-between;margin-top:12px}
 
-/* 美化 */
-.beauty-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:8px 0 16px}
-.beauty-card{background:linear-gradient(135deg,var(--bg-secondary),var(--bg-primary));border-radius:16px;padding:22px 14px 18px;text-align:center;cursor:pointer;border:1px solid var(--border-light);transition:all 0.25s;display:flex;flex-direction:column;align-items:center;gap:10px;box-shadow:var(--shadow-sm)}
-.beauty-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 6px 20px rgba(var(--accent-rgb),0.15)}
-.beauty-card i{font-size:28px;color:var(--accent);background:linear-gradient(135deg,var(--accent-soft),var(--accent-light));width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center}
-.beauty-card span{font-size:13px;color:var(--text-primary);font-weight:600;letter-spacing:0.5px}
-.beauty-card small{font-size:10px;color:var(--text-muted)}
+/* 美化 — 新拟物风格 */
+#beautyOverlay .survey-body{background:#e8e9ee;padding:8px 18px 20px}
+.beauty-grid{display:flex;flex-direction:column;gap:16px;padding:4px 2px}
+.beauty-grid::before{content:'外观';display:block;font-size:10px;font-weight:700;color:rgba(140,140,150,0.6);letter-spacing:3px;text-transform:uppercase;margin-bottom:2px}
+.beauty-card{cursor:pointer;display:flex;align-items:center;gap:18px;padding:20px 20px;transition:all 0.3s cubic-bezier(0.25,0.8,0.25,1);position:relative;overflow:hidden;background:#e8e9ee;border-radius:20px;border:none;box-shadow:8px 8px 18px #c8c9ce,-8px -8px 18px #ffffff}
+.beauty-card:hover{box-shadow:4px 4px 12px #c8c9ce,-4px -4px 12px #ffffff}
+.beauty-card:active{box-shadow:inset 6px 6px 14px #c8c9ce,inset -6px -6px 14px #ffffff}
+.beauty-card i{font-size:18px;color:#7a7a8a;background:#e8e9ee;width:48px;height:48px;border-radius:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.3s ease;box-shadow:4px 4px 10px #c8c9ce,-4px -4px 10px #ffffff}
+.beauty-card:hover i{color:var(--accent);box-shadow:3px 3px 8px #c8c9ce,-3px -3px 8px #ffffff}
+.beauty-card-text{display:flex;flex-direction:column;gap:3px;flex:1}
+.beauty-card span{font-size:15px;color:#5a5a6a;font-weight:600;letter-spacing:0.3px}
+.beauty-card small{font-size:11px;color:#9a9aaa;font-weight:400}
+.beauty-card-arrow{font-size:14px;color:#b0b0ba;flex-shrink:0;transition:all 0.3s ease}
+.beauty-card:hover .beauty-card-arrow{color:#7a7a8a;transform:translateX(2px)}
+/* 二级面板 — 新拟物风格 */
 .beauty-panel{display:none;flex-direction:column;gap:14px;animation:emojiFadeUp 0.25s ease}
-.beauty-bubble-presets{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.beauty-bubble-preset{padding:14px 10px;border-radius:14px;border:2px solid var(--border-light);text-align:center;cursor:pointer;font-size:12px;color:var(--text-primary);transition:var(--transition);background:var(--bg-secondary);position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:8px}
-.beauty-bubble-preset.active{border-color:var(--accent);background:var(--accent-soft);box-shadow:0 2px 12px rgba(var(--accent-rgb),0.15)}
-.beauty-bubble-preset .bubble-preview{width:60%;height:10px;border-radius:4px;background:var(--accent-soft)}
+#beautyPanels .settings-section-title{font-size:11px;font-weight:700;color:#7a7a8a;margin-bottom:6px;display:flex;align-items:center;gap:6px;letter-spacing:1.5px;text-transform:uppercase}
+.beauty-theme-dot{width:44px;height:44px;border-radius:50%;cursor:pointer;border:none;transition:all 0.3s ease;box-shadow:4px 4px 10px #c8c9ce,-4px -4px 10px #ffffff;position:relative}
+.beauty-theme-dot:hover{transform:scale(1.08);box-shadow:2px 2px 6px #c8c9ce,-2px -2px 6px #ffffff}
+.beauty-theme-dot.active{box-shadow:inset 3px 3px 7px #c8c9ce,inset -3px -3px 7px #ffffff;border:2px solid rgba(120,120,140,0.3)}
+.beauty-font-row{display:flex;align-items:center;gap:12px;padding:10px 16px;background:#e8e9ee;border-radius:14px;box-shadow:inset 3px 3px 7px #c8c9ce,inset -3px -3px 7px #ffffff}
+.beauty-font-row label{font-size:13px;color:#6a6a7a;min-width:44px;font-weight:600}
+.beauty-font-row input[type=range]{flex:1;accent-color:var(--accent);height:6px}
+.beauty-font-row span{font-size:12px;color:var(--accent-dark);min-width:34px;text-align:right;font-weight:600}
+.beauty-bubble-presets{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.beauty-bubble-preset{padding:16px 12px;border-radius:16px;border:none;text-align:center;cursor:pointer;font-size:12px;color:#6a6a7a;transition:all 0.3s ease;background:#e8e9ee;display:flex;flex-direction:column;align-items:center;gap:10px;box-shadow:5px 5px 12px #c8c9ce,-5px -5px 12px #ffffff}
+.beauty-bubble-preset:hover{box-shadow:3px 3px 8px #c8c9ce,-3px -3px 8px #ffffff}
+.beauty-bubble-preset:active,.beauty-bubble-preset.active{box-shadow:inset 4px 4px 10px #c8c9ce,inset -4px -4px 10px #ffffff;color:var(--accent)}
+.beauty-bubble-preset .bubble-preview{width:60%;height:10px;border-radius:4px;background:#c8c9ce}
 .beauty-bubble-preset[data-style="0"] .bubble-preview{border-radius:4px 4px 4px 1px}
 .beauty-bubble-preset[data-style="1"] .bubble-preview{border-radius:10px 10px 10px 2px}
 .beauty-bubble-preset[data-style="2"] .bubble-preview{border-radius:16px 16px 16px 3px}
 .beauty-bubble-preset[data-style="3"] .bubble-preview{border-radius:0}
-.beauty-font-row{display:flex;align-items:center;gap:10px;padding:6px 0}
-.beauty-font-row label{font-size:13px;color:var(--text-secondary);min-width:44px;font-weight:500}
-.beauty-font-row input[type=range]{flex:1;accent-color:var(--accent);height:6px}
-.beauty-font-row span{font-size:12px;color:var(--accent-dark);min-width:34px;text-align:right;font-weight:600}
-.beauty-bg-grid{display:flex;flex-wrap:wrap;gap:8px}
-.beauty-bg-item{width:60px;height:60px;border-radius:12px;cursor:pointer;border:2px solid var(--border-light);overflow:hidden;background-size:cover;background-position:center;transition:var(--transition);box-shadow:var(--shadow-sm)}
-.beauty-bg-item:hover{transform:scale(1.05)}
-.beauty-bg-item.active{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
-.beauty-bg-item.add{display:flex;align-items:center;justify-content:center;border:2px dashed var(--border);color:var(--text-muted);font-size:22px;background:var(--bg-primary)}
-.beauty-theme-dot{width:44px;height:44px;border-radius:50%;cursor:pointer;border:3px solid transparent;transition:var(--transition);box-shadow:0 2px 8px rgba(0,0,0,0.1);position:relative}
-.beauty-theme-dot:hover{transform:scale(1.1)}
-.beauty-theme-dot.active{border-color:var(--text-primary);box-shadow:0 0 0 4px var(--accent-soft)}
+.beauty-bg-grid{display:flex;flex-wrap:wrap;gap:10px}
+.beauty-bg-item{width:60px;height:60px;border-radius:14px;cursor:pointer;border:none;overflow:hidden;background-size:cover;background-position:center;transition:all 0.3s ease;box-shadow:4px 4px 10px #c8c9ce,-4px -4px 10px #ffffff}
+.beauty-bg-item:hover{transform:scale(1.06);box-shadow:2px 2px 6px #c8c9ce,-2px -2px 6px #ffffff}
+.beauty-bg-item.active{box-shadow:inset 3px 3px 8px rgba(0,0,0,0.15),inset -3px -3px 8px #ffffff;border:2px solid var(--accent)}
+.beauty-bg-item.add{display:flex;align-items:center;justify-content:center;color:#9a9aaa;font-size:22px;background:#e8e9ee;box-shadow:inset 3px 3px 7px #c8c9ce,inset -3px -3px 7px #ffffff;border:none}
+.beauty-bg-item.add:hover{box-shadow:inset 1px 1px 4px #c8c9ce,inset -1px -1px 4px #ffffff;transform:scale(1.04)}
+.beauty-row{display:flex;align-items:center;gap:12px;padding:10px 16px;background:#e8e9ee;border-radius:14px;box-shadow:inset 3px 3px 7px #c8c9ce,inset -3px -3px 7px #ffffff}
+.beauty-row label{font-size:13px;color:#6a6a7a;min-width:44px;font-weight:600}
+.beauty-row input[type=color]{width:36px;height:28px;border-radius:8px;border:none;cursor:pointer;background:#e8e9ee;box-shadow:3px 3px 7px #c8c9ce,-3px -3px 7px #ffffff}
+.beauty-row select{font-size:12px;height:30px;border-radius:10px;border:none;padding:0 10px;background:#e8e9ee;color:#5a5a6a;outline:none;cursor:pointer;box-shadow:inset 2px 2px 5px #c8c9ce,inset -2px -2px 5px #ffffff}
+.beauty-css-area{width:100%;min-height:50px;border-radius:14px;border:none;padding:14px 16px;font-size:11px;font-family:'SF Mono','Consolas','Menlo',monospace;background:#e8e9ee;color:#5a5a6a;outline:none;resize:vertical;line-height:1.6;transition:all 0.2s ease;box-shadow:inset 4px 4px 10px #c8c9ce,inset -4px -4px 10px #ffffff}
+.beauty-css-area:focus{box-shadow:inset 5px 5px 12px #c8c9ce,inset -5px -5px 12px #ffffff}
+.beauty-css-area::placeholder{color:#b0b0ba;font-style:italic}
+#beautyPanels .rl-btn{background:#e8e9ee;color:#6a6a7a;border:none;box-shadow:5px 5px 12px #c8c9ce,-5px -5px 12px #ffffff}
+#beautyPanels .rl-btn:hover{box-shadow:3px 3px 8px #c8c9ce,-3px -3px 8px #ffffff;transform:translateY(-1px);opacity:1;color:var(--accent)}
+#beautyPanels .rl-btn:active{box-shadow:inset 4px 4px 10px #c8c9ce,inset -4px -4px 10px #ffffff;transform:scale(0.97)}
+#beautyPanels .rl-btn-add{background:var(--accent);color:#fff;box-shadow:5px 5px 12px #c8c9ce,-5px -5px 12px #ffffff}
+#beautyPanels .rl-btn-add:hover{box-shadow:3px 3px 8px #c8c9ce,-3px -3px 8px #ffffff;opacity:0.9}
+#beautyPanels .rl-btn-danger{color:#c87a7a;background:#e8e9ee}
+#beautyPanels select{font-size:12px;height:30px;border-radius:10px;border:none;padding:0 10px;background:#e8e9ee;color:#5a5a6a;outline:none;cursor:pointer;box-shadow:inset 2px 2px 5px #c8c9ce,inset -2px -2px 5px #ffffff}
+#beautyPanels input[type=number],#beautyPanels input[type=text]{font-size:12px;height:30px;border-radius:10px;border:none;padding:0 10px;background:#e8e9ee;color:#5a5a6a;outline:none;box-shadow:inset 2px 2px 5px #c8c9ce,inset -2px -2px 5px #ffffff}
+#beautyPanels input:focus{box-shadow:inset 3px 3px 7px #c8c9ce,inset -3px -3px 7px #ffffff}
 
 /* ===== 信封/邮件 ===== */
 .mail-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:var(--overlay-bg);z-index:225;display:flex;flex-direction:column;transition:background-color 0.5s ease}
@@ -1730,7 +1757,7 @@ html[data-theme="dark"] .settings-row:hover{box-shadow:0 4px 16px rgba(255,255,2
       <div id="reportContent"></div>
     </div>
   </div>
-<div class="survey-overlay" id="beautyOverlay" style="display:none"><div class="rl-header"><div class="rl-back" id="beautyBack">‹ 返回</div><div class="rl-title">🎨 外观设置</div><div style="font-size:11px;color:var(--accent);cursor:pointer" id="beautyReset">重置</div></div><div class="survey-body"><div id="beautyNav" class="beauty-grid"><div class="beauty-card" data-panel="theme"><i class="fas fa-paint-roller"></i><span>主题配色</span><small>7色换肤</small></div><div class="beauty-card" data-panel="fontbg"><i class="fas fa-font"></i><span>背景 & 字体</span><small>字号+壁纸</small></div><div class="beauty-card" data-panel="bubble"><i class="fas fa-comment"></i><span>气泡 & CSS</span><small>样式+颜色</small></div><div class="beauty-card" data-panel="avatar"><i class="fas fa-user-circle"></i><span>聊天头像</span><small>大小+圆角</small></div><div class="beauty-card" data-panel="moments"><i class="fas fa-globe-asia"></i><span>朋友圈封面</span><small>背景图片</small></div></div><div id="beautyPanels"><div class="beauty-panel" id="beautyPanelTheme"><div class="settings-section-title"><i class="fas fa-paint-roller"></i> 快捷换肤</div><div style="display:flex;flex-wrap:wrap;gap:6px" id="beautyThemeDots"></div><button class="rl-btn rl-btn-add" style="width:100%;margin-top:8px" onclick="document.getElementById('settingsOverlay').style.display='flex';renderSettings()">更多主题设置 →</button></div><div class="beauty-panel" id="beautyPanelFontbg"><div class="settings-section-title"><i class="fas fa-font"></i> 字体大小</div><div class="beauty-font-row"><label>全局</label><input type="range" id="bfontSize" min="12" max="22" value="16"><span id="bfontSizeVal">16px</span></div><div class="beauty-font-row"><label>消息</label><input type="range" id="bmsgSize" min="12" max="24" value="16"><span id="bmsgSizeVal">16px</span></div><div class="settings-section-title" style="margin-top:10px"><i class="fas fa-image"></i> 聊天背景</div><div class="beauty-bg-grid" id="beautyBgGrid"><div class="beauty-bg-item add" id="beautyBgAdd">+</div></div><button class="rl-btn" id="beautyBgReset" style="width:100%;margin-top:6px">恢复默认背景</button><input type="file" id="beautyBgInput" accept="image/*" style="display:none"><div class="settings-section-title" style="margin-top:10px"><i class="fas fa-images"></i> 全屏壁纸</div><div style="font-size:11px;color:var(--text-muted);margin-bottom:6px">为不同页面设置背景图片</div><div class="beauty-row"><label>目标页面</label><select id="bgTarget" style="font-size:12px;height:28px;border-radius:8px;border:1px solid var(--border-light);background:var(--input-bg);color:var(--text-primary);flex:1"><option value="home">主屏</option><option value="lock">锁屏</option><option value="chat">传讯聊天</option><option value="reply">回复库</option><option value="mail">信封邮件</option><option value="movie">一起看电影</option><option value="diary">日记本</option><option value="memo">备忘录</option><option value="survey">问卷</option><option value="checkin">查岗</option><option value="murmur">碎碎念</option><option value="yn">命运抉择</option><option value="report">相处报告</option><option value="settings">设置</option></select></div><div class="beauty-bg-grid" id="beautyBgAllGrid"><div class="beauty-bg-item add" id="beautyBgAllAdd">+</div></div><div style="display:flex;gap:6px;margin-top:6px"><button class="rl-btn rl-btn-add" id="beautyBgApplyAll" style="flex:1">🌐 应用到全部页面</button><button class="rl-btn" id="beautyBgAllReset" style="flex:1">清除当前页</button></div><input type="file" id="beautyBgAllInput" accept="image/*" style="display:none"></div><div class="beauty-panel" id="beautyPanelBubble"><div class="settings-section-title"><i class="fas fa-comment"></i> 气泡样式</div><div class="beauty-bubble-presets" id="beautyBubblePresets"><div class="beauty-bubble-preset active" data-style="0"><div class="bubble-preview"></div>标准尖角</div><div class="beauty-bubble-preset" data-style="1"><div class="bubble-preview"></div>圆角</div><div class="beauty-bubble-preset" data-style="2"><div class="bubble-preview"></div>大圆角胶囊</div><div class="beauty-bubble-preset" data-style="3"><div class="bubble-preview"></div>方形直角</div></div><div class="beauty-row" style="margin-top:8px"><label>我方色</label><input type="color" id="bSentColor" value="#95ec69"></div><div class="beauty-row"><label>对方色</label><input type="color" id="bRecvColor" value="#ffffff"></div><div class="settings-section-title" style="margin-top:10px"><i class="fas fa-code"></i> 自定义CSS</div><textarea class="beauty-css-area" id="bbCssRaw" placeholder="/* 自定义CSS */" style="min-height:60px"></textarea><div class="settings-section-title" style="margin-top:8px"><i class="fas fa-window-maximize"></i> 图标CSS</div><textarea class="beauty-css-area" id="bbIconCssRaw" placeholder="/* 图标美化，可用选择器：&#10;.app-icon-img — 图标圆圈&#10;.app-icon-label — 图标文字&#10;.app-chat .app-icon-img — 单个图标 */" style="min-height:60px"></textarea><div class="settings-section-title" style="margin-top:8px"><i class="fas fa-th"></i> 首页卡片CSS</div><textarea class="beauty-css-area" id="bbWidgetCssRaw" placeholder="/* 首页小卡片美化，可用选择器：&#10;.widget — 所有卡片&#10;.widget-anniversary — 纪念日卡片&#10;.widget-quote — 悄悄话卡片&#10;.widget-weather — 天气卡片&#10;.weather-icon — 天气图标&#10;.weather-temp — 天气温度&#10;.hero-card — 顶部Hero卡片 */" style="min-height:50px"></textarea><div class="settings-section-title" style="margin-top:8px"><i class="fas fa-envelope"></i> 信件CSS</div><textarea class="beauty-css-area" id="bbMailCssRaw" placeholder="/* 信件美化，可用选择器：&#10;.mail-letter — 信件卡片&#10;.mail-letter.new — 新信件&#10;.mail-compose textarea — 写信框&#10;.mail-view-body — 读信正文&#10;.mail-view-top — 弹窗顶部 */" style="min-height:50px"></textarea><div class="settings-section-title" style="margin-top:8px"><i class="fas fa-map-marker-alt"></i> 查岗卡片CSS</div><textarea class="beauty-css-area" id="bbCheckinCssRaw" placeholder="/* 查岗卡片美化，可用选择器：&#10;.checkin-item — 时间线条目&#10;.checkin-item-time — 时间文本&#10;.checkin-item-loc — 位置文本&#10;.checkin-item-stat — 状态文本&#10;.checkin-item-act — 活动标签&#10;.checkin-item-mood — 心情文本&#10;.checkin-card — 定位卡片&#10;.checkin-loc — 定位图标&#10;.checkin-addr — 地址文本&#10;.checkin-status — 状态详情 */" style="min-height:50px"></textarea></div><div class="beauty-panel" id="beautyPanelAvatar"><div class="settings-section-title"><i class="fas fa-user-circle"></i> 聊天头像</div><div class="beauty-font-row"><label>大小</label><input type="range" id="bAvatarSize" min="24" max="48" value="36"><span id="bAvatarSizeVal">36px</span></div><div class="beauty-font-row"><label>圆角</label><input type="range" id="bAvatarRadius" min="0" max="24" value="6"><span id="bAvatarRadiusVal">6px</span></div></div><div class="beauty-panel" id="beautyPanelMoments"><div class="settings-section-title"><i class="fas fa-globe-asia"></i> 朋友圈封面</div><div style="font-size:11px;color:var(--text-muted);margin-bottom:8px">设置朋友圈顶部的背景图片</div><div class="beauty-bg-grid" id="beautyMomentsBgGrid"><div class="beauty-bg-item add" id="beautyMomentsBgAdd">+</div></div><div style="display:flex;gap:6px;margin-top:6px"><button class="rl-btn rl-btn-danger" id="beautyMomentsBgReset" style="flex:1">清除封面</button></div><input type="file" id="beautyMomentsBgInput" accept="image/*" style="display:none"></div></div><button class="rl-btn" id="beautyBackNav" style="width:100%;margin-top:8px;display:none">‹ 返回</button></div></div>
+<div class="survey-overlay" id="beautyOverlay" style="display:none"><div class="rl-header"><div class="rl-back" id="beautyBack">‹ 返回</div><div class="rl-title">🎨 外观设置</div><div style="font-size:11px;color:var(--accent);cursor:pointer" id="beautyReset">重置</div></div><div class="survey-body"><div id="beautyNav" class="beauty-grid"><div class="beauty-card" data-panel="theme"><i class="fas fa-palette"></i><div class="beauty-card-text"><span>主题配色</span><small>7套精选色系 · 一键换肤</small></div><span class="beauty-card-arrow">›</span></div><div class="beauty-card" data-panel="fontbg"><i class="fas fa-image"></i><div class="beauty-card-text"><span>背景与字体</span><small>字号 · 壁纸 · 全屏背景</small></div><span class="beauty-card-arrow">›</span></div><div class="beauty-card" data-panel="bubble"><i class="fas fa-comment-dots"></i><div class="beauty-card-text"><span>气泡与CSS</span><small>样式预设 · 取色器 · 代码注入</small></div><span class="beauty-card-arrow">›</span></div><div class="beauty-card" data-panel="avatar"><i class="fas fa-user-circle"></i><div class="beauty-card-text"><span>聊天头像</span><small>尺寸滑杆 · 圆角调节</small></div><span class="beauty-card-arrow">›</span></div><div class="beauty-card" data-panel="moments"><i class="fas fa-globe-asia"></i><div class="beauty-card-text"><span>朋友圈封面</span><small>自定义顶部大图背景</small></div><span class="beauty-card-arrow">›</span></div></div><div id="beautyPanels"><div class="beauty-panel" id="beautyPanelTheme"><div class="settings-section-title"><i class="fas fa-paint-roller"></i> 快捷换肤</div><div style="display:flex;flex-wrap:wrap;gap:6px" id="beautyThemeDots"></div><button class="rl-btn rl-btn-add" style="width:100%;margin-top:8px" onclick="document.getElementById('settingsOverlay').style.display='flex';renderSettings()">更多主题设置 →</button></div><div class="beauty-panel" id="beautyPanelFontbg"><div class="settings-section-title"><i class="fas fa-font"></i> 字体大小</div><div class="beauty-font-row"><label>全局</label><input type="range" id="bfontSize" min="12" max="22" value="16"><span id="bfontSizeVal">16px</span></div><div class="beauty-font-row"><label>消息</label><input type="range" id="bmsgSize" min="12" max="24" value="16"><span id="bmsgSizeVal">16px</span></div><div class="settings-section-title" style="margin-top:10px"><i class="fas fa-image"></i> 聊天背景</div><div class="beauty-bg-grid" id="beautyBgGrid"><div class="beauty-bg-item add" id="beautyBgAdd">+</div></div><button class="rl-btn" id="beautyBgReset" style="width:100%;margin-top:6px">恢复默认背景</button><input type="file" id="beautyBgInput" accept="image/*" style="display:none"><div class="settings-section-title" style="margin-top:10px"><i class="fas fa-images"></i> 全屏壁纸</div><div style="font-size:11px;color:var(--text-muted);margin-bottom:6px">为不同页面设置背景图片</div><div class="beauty-row"><label>目标页面</label><select id="bgTarget" style="font-size:12px;height:28px;border-radius:8px;border:1px solid var(--border-light);background:var(--input-bg);color:var(--text-primary);flex:1"><option value="home">主屏</option><option value="lock">锁屏</option><option value="chat">传讯聊天</option><option value="reply">回复库</option><option value="mail">信封邮件</option><option value="movie">一起看电影</option><option value="diary">日记本</option><option value="memo">备忘录</option><option value="survey">问卷</option><option value="checkin">查岗</option><option value="murmur">碎碎念</option><option value="yn">命运抉择</option><option value="report">相处报告</option><option value="settings">设置</option></select></div><div class="beauty-bg-grid" id="beautyBgAllGrid"><div class="beauty-bg-item add" id="beautyBgAllAdd">+</div></div><div style="display:flex;gap:6px;margin-top:6px"><button class="rl-btn rl-btn-add" id="beautyBgApplyAll" style="flex:1">🌐 应用到全部页面</button><button class="rl-btn" id="beautyBgAllReset" style="flex:1">清除当前页</button></div><input type="file" id="beautyBgAllInput" accept="image/*" style="display:none"></div><div class="beauty-panel" id="beautyPanelBubble"><div class="settings-section-title"><i class="fas fa-comment"></i> 气泡样式</div><div class="beauty-bubble-presets" id="beautyBubblePresets"><div class="beauty-bubble-preset active" data-style="0"><div class="bubble-preview"></div>标准尖角</div><div class="beauty-bubble-preset" data-style="1"><div class="bubble-preview"></div>圆角</div><div class="beauty-bubble-preset" data-style="2"><div class="bubble-preview"></div>大圆角胶囊</div><div class="beauty-bubble-preset" data-style="3"><div class="bubble-preview"></div>方形直角</div></div><div class="beauty-row" style="margin-top:8px"><label>我方色</label><input type="color" id="bSentColor" value="#95ec69"></div><div class="beauty-row"><label>对方色</label><input type="color" id="bRecvColor" value="#ffffff"></div><div class="settings-section-title" style="margin-top:10px"><i class="fas fa-code"></i> 自定义CSS</div><textarea class="beauty-css-area" id="bbCssRaw" placeholder="/* 自定义CSS */" style="min-height:60px"></textarea><div class="settings-section-title" style="margin-top:8px"><i class="fas fa-window-maximize"></i> 图标CSS</div><textarea class="beauty-css-area" id="bbIconCssRaw" placeholder="/* 图标美化，可用选择器：&#10;.app-icon-img — 图标圆圈&#10;.app-icon-label — 图标文字&#10;.app-chat .app-icon-img — 单个图标 */" style="min-height:60px"></textarea><div class="settings-section-title" style="margin-top:8px"><i class="fas fa-th"></i> 首页卡片CSS</div><textarea class="beauty-css-area" id="bbWidgetCssRaw" placeholder="/* 首页小卡片美化，可用选择器：&#10;.widget — 所有卡片&#10;.widget-anniversary — 纪念日卡片&#10;.widget-quote — 悄悄话卡片&#10;.widget-weather — 天气卡片&#10;.weather-icon — 天气图标&#10;.weather-temp — 天气温度&#10;.hero-card — 顶部Hero卡片 */" style="min-height:50px"></textarea><div class="settings-section-title" style="margin-top:8px"><i class="fas fa-envelope"></i> 信件CSS</div><textarea class="beauty-css-area" id="bbMailCssRaw" placeholder="/* 信件美化，可用选择器：&#10;.mail-letter — 信件卡片&#10;.mail-letter.new — 新信件&#10;.mail-compose textarea — 写信框&#10;.mail-view-body — 读信正文&#10;.mail-view-top — 弹窗顶部 */" style="min-height:50px"></textarea><div class="settings-section-title" style="margin-top:8px"><i class="fas fa-map-marker-alt"></i> 查岗卡片CSS</div><textarea class="beauty-css-area" id="bbCheckinCssRaw" placeholder="/* 查岗卡片美化，可用选择器：&#10;.checkin-item — 时间线条目&#10;.checkin-item-time — 时间文本&#10;.checkin-item-loc — 位置文本&#10;.checkin-item-stat — 状态文本&#10;.checkin-item-act — 活动标签&#10;.checkin-item-mood — 心情文本&#10;.checkin-card — 定位卡片&#10;.checkin-loc — 定位图标&#10;.checkin-addr — 地址文本&#10;.checkin-status — 状态详情 */" style="min-height:50px"></textarea></div><div class="beauty-panel" id="beautyPanelAvatar"><div class="settings-section-title"><i class="fas fa-user-circle"></i> 聊天头像</div><div class="beauty-font-row"><label>大小</label><input type="range" id="bAvatarSize" min="24" max="48" value="36"><span id="bAvatarSizeVal">36px</span></div><div class="beauty-font-row"><label>圆角</label><input type="range" id="bAvatarRadius" min="0" max="24" value="6"><span id="bAvatarRadiusVal">6px</span></div></div><div class="beauty-panel" id="beautyPanelMoments"><div class="settings-section-title"><i class="fas fa-globe-asia"></i> 朋友圈封面</div><div style="font-size:11px;color:var(--text-muted);margin-bottom:8px">设置朋友圈顶部的背景图片</div><div class="beauty-bg-grid" id="beautyMomentsBgGrid"><div class="beauty-bg-item add" id="beautyMomentsBgAdd">+</div></div><div style="display:flex;gap:6px;margin-top:6px"><button class="rl-btn rl-btn-danger" id="beautyMomentsBgReset" style="flex:1">清除封面</button></div><input type="file" id="beautyMomentsBgInput" accept="image/*" style="display:none"></div></div><button class="rl-btn" id="beautyBackNav" style="width:100%;margin-top:8px;display:none">‹ 返回</button></div></div>
 
   <!-- 浮动音乐播放器 -->
   <div class="music-float" id="musicFloat" style="display:none">
@@ -3706,7 +3733,18 @@ function gRR(){
   return{type:'text',content:'我在呢～'}
 }
 
-function saveMsgs(){try{sM(messages.slice(-500))}catch(e){}}
+function saveMsgs(){
+  var limits=[2000,1000,500,200,50,20];
+  for(var i=0;i<limits.length;i++){
+    try{sM(messages.length<=limits[i]?messages:messages.slice(-limits[i]));return}catch(e){}
+  }
+  // 所有长度尝试均失败（localStorage配额满），清除旧图片/语音数据后重试
+  var stripped=messages.slice(-50).map(function(m){
+    if(!m.image&&!m.voice)return m;
+    var c={};for(var k in m){if(k==='image'||k==='voice')c[k]='[已清理]';else c[k]=m[k]}return c;
+  });
+  try{sM(stripped);console.warn('[Murphy] 存储空间不足，已清除旧图片/语音数据')}catch(e){console.warn('[Murphy] 消息保存失败，存储已满')}
+}
 function canRecall(msg){if(!msg||msg.recalled||msg.type==='system')return false;return(Date.now()-new Date(msg.timestamp).getTime())<120000}
 function recallMsg(msgId){var msg=messages.find(function(m){return m.id===msgId});if(!canRecall(msg))return false;msg.recalled=true;saveMsgs();renderAllMsgs();return true}
 
@@ -3856,9 +3894,9 @@ function openFav(){$('favPanel').style.display='flex';$('chatMsgs').style.displa
 $('chatMoreMenu').addEventListener('click',function(e){var act=e.target.closest('.chat-more-item');if(!act)return;$('chatMoreMenu').style.display='none';var a=act.dataset.action;
   if(a==='fav'){openFav()}
   else if(a==='replylib'){$('rlOverlay').style.display='flex';rLst()}
-  else if(a==='settings'){$('settingsOverlay').style.display='flex'}
+  else if(a==='settings'){renderSettings();$('settingsOverlay').style.display='flex'}
   else if(a==='backup'){$('backupOverlay').style.display='flex'}
-  else if(a==='report'){$('reportOverlay').style.display='flex';renderReport()}
+  else if(a==='report'){$('reportOverlay').style.display='flex';genReport()}
   else if(a==='peek'){openPeek()}
   else if(a==='block'){toggleBlock()}
 });
@@ -4020,7 +4058,7 @@ document.addEventListener('click',function(e){
 // 视频通话（微信风格双窗口）
 // ==========================================
 var callState={status:'idle',caller:'them',muted:false,camOn:false};
-var callDurSec=0,callDurTimer=null,callRingTimer=null,callRingIntv=null;
+var callDurSec=0,callStartTs=0,callDurTimer=null,callRingTimer=null,callRingIntv=null;
 var callSet={bgType:'default',bgImage:'',bgFitMode:'contain',partnerImage:''};
 var callStream=null;
 
@@ -4030,7 +4068,8 @@ var callStream=null;
 })();
 function saveCallSet(){localStorage.setItem('murphy_call_set',JSON.stringify(callSet))}
 
-function fmtCallDur(){var m=Math.floor(callDurSec/60);var s=callDurSec%60;return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')}
+function getCallDurSec(){if(!callStartTs)return 0;return Math.floor((Date.now()-callStartTs)/1000)}
+function fmtCallDur(){var sec=getCallDurSec();var m=Math.floor(sec/60);var s=sec%60;return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')}
 
 function playRingBeep(){
   if(!stg.soundEnabled)return;
@@ -4103,9 +4142,11 @@ function stopCamera(){
 
 function startActiveCall(){
   stopRinging();if(callRingTimer){clearTimeout(callRingTimer);callRingTimer=null}
-  callState.status='active';callDurSec=0;showCallOverlay('active');
-  callDurTimer=setInterval(function(){callDurSec++;var d=fmtCallDur();var el=$('callDuration');var mi=$('callMiniTimer');if(el)el.textContent=d;if(mi)mi.textContent=d;
-    if(stg.callHangup&&callDurSec>30&&callDurSec%60===0&&Math.random()<stg.callHangupChance/100){hangupCall('partner');toast('📞 '+(profile.partnerName||'TA')+'挂断了通话')}
+  callState.status='active';callStartTs=Date.now();showCallOverlay('active');
+  var lastHangupCheck=0;
+  callDurTimer=setInterval(function(){var sec=getCallDurSec();var d=fmtCallDur();var el=$('callDuration');var mi=$('callMiniTimer');if(el)el.textContent=d;if(mi)mi.textContent=d;
+    var curMin=Math.floor(sec/60);
+    if(stg.callHangup&&sec>30&&curMin>0&&curMin!==lastHangupCheck&&Math.random()<stg.callHangupChance/100){lastHangupCheck=curMin;hangupCall('partner');toast('📞 '+(profile.partnerName||'TA')+'挂断了通话')}
   },1000);
 }
 function acceptCall(){stopRinging();if(callRingTimer){clearTimeout(callRingTimer);callRingTimer=null};startActiveCall()}
@@ -4126,8 +4167,8 @@ function declineCall(auto){
 function hangupCall(by){
   stopRinging();if(callRingTimer){clearTimeout(callRingTimer);callRingTimer=null}
   if(callDurTimer){clearInterval(callDurTimer);callDurTimer=null}
-  var wasActive=callState.status==='active'||callState.status==='minimized';var dur=callDurSec;
-  stopCamera();showCallOverlay('idle');callState.status='idle';callDurSec=0;beautyLevel=0;$('callSelfVideo').style.filter='';$('callSelfPip').style.filter='';$('callBeautyLabel').textContent='美颜关';
+  var wasActive=callState.status==='active'||callState.status==='minimized';var dur=getCallDurSec();
+  stopCamera();showCallOverlay('idle');callState.status='idle';callStartTs=0;beautyLevel=0;$('callSelfVideo').style.filter='';$('callSelfPip').style.filter='';$('callBeautyLabel').textContent='美颜关';
   if(wasActive&&dur>0){var m=Math.floor(dur/60);var s=dur%60;var durStr=(m>0?m+'分':'')+s+'秒';
     var pn=profile.partnerName||'TA';var who=by==='partner'?'partner':'user';var msg=(by==='partner'?'📞 '+pn+'挂断了通话 · 时长 ':'📹 你结束了通话 · 时长 ')+durStr;
     messages.push({id:Date.now(),sender:who,text:msg,timestamp:new Date(),type:'system'});saveMsgs();rCMsg(null,msg,{sysMsg:true})}
